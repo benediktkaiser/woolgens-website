@@ -1,7 +1,14 @@
-# Woolgens NextJS-TS-Scaffold
+# Woolgens Websites
 
-This project uses NextJS, the react framework for production.
-If you want to learn more about NextJS, please visit its website: https://nextjs.org/
+The is a "mono-repo" containing all website from `Woolgens.net`. 
+
+- [ ] Homepage
+- [ ] Store
+- [ ] Forum
+- [ ] Stats
+- [ ] Staff
+
+You can find the different pages under `/frontend/pages`. Please make Pull requests for all features, as without it we will easily enter merge hell! Thanks :D
 
 ## Usage
 
