@@ -1,8 +1,14 @@
 import SidebarLink from "./SidebarLink";
 import {HiHome, HiDatabase, HiX, HiUserGroup, HiCloud, HiBan, HiCalendar} from "react-icons/hi"
-import React from "react";
+import React, {FC} from "react";
 
-const Sidebar = ({extended = false, pathName = ""}) => {
+declare interface SidebarProps {
+    extended: boolean,
+    pathName: string,
+    toggleSidebar: () => void;
+}
+
+const Sidebar: FC<SidebarProps> = ({extended = false, pathName = "", toggleSidebar}) => {
 
     return (
         <div
@@ -13,7 +19,7 @@ const Sidebar = ({extended = false, pathName = ""}) => {
                         Woolgens
                     </a>
                     <div className="lg:hidden">
-                        <HiX size="2rem"/>
+                        <HiX onClick={toggleSidebar} size="2rem"/>
                     </div>
                 </div>
 
@@ -22,37 +28,37 @@ const Sidebar = ({extended = false, pathName = ""}) => {
                         icon={<HiHome size="1.2rem"/>}
                         title="Dashboard"
                         pathName={pathName}
-                        link="/"
+                        link="/staff"
                     />
                     <SidebarLink
                         icon={<HiCalendar size="1.2rem"/>}
                         title="Timetable"
                         pathName={pathName}
-                        link="/time-table"
+                        link="/staff/time-table"
                     />
                     <SidebarLink
                         icon={<HiBan size="1.2rem"/>}
                         title="Punishments"
                         pathName={pathName}
-                        link="/punishments"
+                        link="/staff/punishments"
                     />
                     <SidebarLink
                         icon={<HiDatabase size="1.2rem"/>}
                         title="Services"
                         pathName={pathName}
-                        link="/services"
+                        link="/staff/services"
                     />
                     <SidebarLink
                         icon={<HiCloud size="1.2rem"/>}
                         title="Cloud"
                         pathName={pathName}
-                        link="/cloud"
+                        link="/staff/cloud"
                     />
                     <SidebarLink
                         icon={<HiUserGroup size="1.2rem"/>}
                         title="Team"
                         pathName={pathName}
-                        link="/team"
+                        link="/staff/team"
                     />
                 </ul>
             </div>
