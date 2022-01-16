@@ -17,7 +17,7 @@ const UserDropdown: FC<UserDropdownProps> = ({username}) => {
         setPage("loading")
         setTimeout(() => {
             setPage(page)
-        }, 315)
+        }, 310)
     }
 
     return (
