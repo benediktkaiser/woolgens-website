@@ -40,10 +40,10 @@ const Userbar: FC<UserbarProps> = ({ username }) => {
     return (
         <div className="py-1 w-full bg-dark-light">
             <div className="container flex justify-between mx-auto">
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center md:space-x-3">
                     <UserbarLink title="Staff Dashboard" to="/staff" icon={<RiDashboard3Line />} />
                 </div>
-                <div className="flex items-center space-x-4">
+                <div className="flex items-center md:space-x-4">
                     <MessageDropdown />
                     <NotificationDropdown notifications={demoNotifications} />
                     <UserDropdown username={username} />

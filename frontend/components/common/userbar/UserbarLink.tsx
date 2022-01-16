@@ -13,11 +13,11 @@ const UserbarLink: FC<UserbarLinkProps> = ({ title, to = "#", ping = false, icon
         <Link href={to} passHref={true}>
             <span className="flex items-center py-2 px-3 hover:bg-dark rounded-lg cursor-pointer">
                 {icon && (
-                    <span className="mr-2">
+                    <span className="md:mr-2">
                         {icon}
                     </span>
                 )}
-                <span className="flex text-sm">
+                <span className="hidden md:flex text-sm">
                     {title}
                     {ping && (
                         <span className="flex relative ml-1 w-2 h-2">
