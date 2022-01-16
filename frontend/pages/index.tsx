@@ -1,12 +1,12 @@
 import {observer} from "mobx-react-lite";
-import DefaultLayout from "../layout/DefaultLayout";
+import NavbarLayout from "../layout/NavbarLayout";
 
 const IndexPage = observer(() => {
 
     return (
-        <DefaultLayout>
+        <NavbarLayout>
             Test Page
-        </DefaultLayout>
+        </NavbarLayout>
     )
 })
 

@@ -10,6 +10,7 @@ declare interface User {
 declare interface WebUser extends User {
     group: Group | string,
     joined: number, // is a timestamp
+    notifications: WebNotification[],
 }
 
 declare interface MinecraftUser extends User {
@@ -66,4 +67,11 @@ declare interface LandTransaction {
     issuer: string,
     timestamp: number,
     type: 'DEPOSIT' | 'WITHDRAW' | 'BUY_UPGRADE',
+}
+
+declare interface WebNotification {
+    title: string,
+    message: string,
+    link: string,
+    type: "success" | "warning" | "danger" | "info",
 }
