@@ -1,5 +1,4 @@
 import React, {FC} from "react";
-import UserDropdown from "../../common/dropdown/userDropdown/UserDropdown";
 import {GiHamburgerMenu} from "react-icons/gi";
 
 declare interface HeaderProps {
@@ -13,7 +12,6 @@ const Header: FC<HeaderProps> = ({ toggleSidebar }) => {
                 <div className="lg:hidden flex-grow">
                     <GiHamburgerMenu onClick={toggleSidebar} size="2rem" />
                 </div>
-                <UserDropdown username="TsukiDev" />
             </div>
         </div>
     )
