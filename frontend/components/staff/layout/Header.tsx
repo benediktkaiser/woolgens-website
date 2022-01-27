@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import UserDropdown from "./UserDropdown";
+import UserDropdown from "../../common/dropdown/userDropdown/UserDropdown";
 import {GiHamburgerMenu} from "react-icons/gi";
 
 declare interface HeaderProps {

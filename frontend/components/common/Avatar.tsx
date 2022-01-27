@@ -7,11 +7,7 @@ declare interface AvatarProps {
 }
 
 const Avatar: FC<AvatarProps> = ({player, size}) => {
-    return (
-        <div>
-            <Image height={size} width={size} className="rounded" src={`https://cravatar.eu/helmavatar/${player}/${size}`} alt="" />
-        </div>
-    )
+    return <Image height={size} width={size} className="rounded" src={`https://cravatar.eu/helmavatar/${player}/${size}`} alt="" />
 }
 
 export default Avatar
