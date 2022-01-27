@@ -13,7 +13,7 @@ const NavbarLayout: FC<DefaultLayoutProps> = ({children}) => {
             <Userbar username="tsuuukiii" />
             <Header />
             <Navbar />
-            <main>
+            <main className="container mx-auto mt-5">
                 {children}
             </main>
         </div>

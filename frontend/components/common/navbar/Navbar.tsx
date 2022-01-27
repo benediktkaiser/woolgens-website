@@ -1,10 +1,8 @@
 import React from "react";
 import {useRouter} from "next/router";
 import NavbarLink from "./NavbarLink";
-
 import {FiShoppingCart} from "react-icons/fi"
 import {RiMenu2Line} from "react-icons/ri"
-
 
 const Navbar = () => {
     const router = useRouter()
