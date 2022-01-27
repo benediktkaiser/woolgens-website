@@ -44,7 +44,7 @@ const Userbar: FC<UserbarProps> = ({ username }) => {
                     <UserbarLink title="Staff Dashboard" to="/staff" icon={<RiDashboard3Line />} />
                 </div>
                 <div className="flex items-center md:space-x-4">
-                    <div className="hidden sm:flex items-center">
+                    <div className="hidden sm:flex items-center md:space-x-4">
                         <MessageDropdown />
                         <NotificationDropdown notifications={demoNotifications} />
                     </div>
