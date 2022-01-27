@@ -7,10 +7,10 @@ import UserDropdownAccountPage from "./views/UserDropdownAccountPage";
 import UserDropdownSupportPage from "./views/UserDropdownSupportPage";
 
 declare interface UserDropdownProps {
-    username: string,
+    webUser: WebUser;
 }
 
-const UserDropdown: FC<UserDropdownProps> = ({username}) => {
+const UserDropdown: FC<UserDropdownProps> = ({webUser}) => {
     const [page, setPage] = useState("start")
 
     const changePage = (page) => {
@@ -24,8 +24,8 @@ const UserDropdown: FC<UserDropdownProps> = ({username}) => {
         <Menu as="div" className="inline-block relative text-left tex">
              <Menu.Button className="py-2 px-3 hover:bg-dark rounded-lg">
                 <div className="inline-flex items-center w-full">
-                    <span className="pr-3 text-sm">{username}</span>
-                    <Avatar player="a0c58393-42f4-4505-9770-b33292691057" size={25} />
+                    <span className="pr-3 text-sm">{webUser.name}</span>
+                    <Avatar player={webUser.uuid} size={25} />
                     <BsChevronDown size="0.75rem" className="ml-2"/>
                 </div>
             </Menu.Button>
@@ -39,7 +39,7 @@ const UserDropdown: FC<UserDropdownProps> = ({username}) => {
                 leaveTo="transform opacity-0 scale-95"
             >
                 <Menu.Items className="overflow-hidden absolute right-0 z-10 p-3 mt-3 w-80 bg-dark rounded-md ring-1 ring-black ring-opacity-5 shadow-lg origin-top-right focus:outline-none">
-                    <UserDropdownStartPage selectedPage={page} changePage={changePage} />
+                    <UserDropdownStartPage selectedPage={page} changePage={changePage}  webUser={webUser}/>
                     <UserDropdownAccountPage selectedPage={page} changePage={changePage} />
                     <UserDropdownSupportPage selectedPage={page} changePage={changePage} />
                 </Menu.Items>

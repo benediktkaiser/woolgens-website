@@ -5,7 +5,7 @@ export async function basicAuth(userName: string, password: string): Promise<{ t
         const data = await authAPI.post('/login/basic', {
             userName,
             password,
-            tokenLifeTime: 1
+            tokenLifeTime: "DAY" // DAY, WEEK OR MONTH
         })
         return data.data;
     }
@@ -20,7 +20,7 @@ export async function tokenAuth(token: string): Promise<WebUser> {
         const data = await authAPI.post('/login/token', {
             token
         })
-        return data.data;
+        return data.data.user;
     }
     catch (error) {
         console.error(error)

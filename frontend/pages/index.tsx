@@ -3,9 +3,6 @@ import NavbarLayout from "../layout/NavbarLayout";
 import React from "react";
 import BasicCard from "../components/common/cards/BasicCard";
 import CardWithHeader from "../components/common/cards/CardWithHeader";
-import {FiBell} from "react-icons/fi";
-import {BaseButton} from "../components/common/BaseButton";
-import Announcement from "../components/common/Announcement";
 
 const IndexPage = observer(() => {
 

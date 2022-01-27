@@ -6,7 +6,7 @@ import UserbarLink from "./UserbarLink";
 import {RiDashboard3Line, RiMailLine, RiNotificationLine} from "react-icons/ri"
 
 declare interface UserbarProps {
-    username: string;
+    webUser: WebUser;
 }
 
 const demoNotifications: WebNotification[] = [
@@ -36,24 +36,31 @@ const demoNotifications: WebNotification[] = [
     }
 ]
 
-const Userbar: FC<UserbarProps> = ({ username }) => {
+const Userbar: FC<UserbarProps> = ({ webUser }) => {
     return (
         <div className="py-1 w-full bg-dark-light">
             <div className="container flex justify-between mx-auto">
                 <div className="flex items-center md:space-x-3">
                     <UserbarLink title="Staff Dashboard" to="/staff" icon={<RiDashboard3Line />} />
                 </div>
-                <div className="flex items-center md:space-x-4">
-                    <div className="hidden sm:flex items-center md:space-x-4">
-                        <MessageDropdown />
-                        <NotificationDropdown notifications={demoNotifications} />
+                {webUser ? (
+                    <div className="flex items-center md:space-x-4">
+                        <div className="hidden sm:flex items-center md:space-x-4">
+                            <MessageDropdown />
+                            <NotificationDropdown notifications={demoNotifications} />
+                        </div>
+                        <div className="flex sm:hidden items-center">
+                            <UserbarLink title="Messages" to="/messages" icon={<RiMailLine />} />
+                            <UserbarLink title="Notifications" to="/notifications" icon={<RiNotificationLine />} />
+                        </div>
+                        <UserDropdown webUser={webUser} />
                     </div>
-                    <div className="flex sm:hidden items-center">
-                        <UserbarLink title="Messages" to="/messages" icon={<RiMailLine />} />
-                        <UserbarLink title="Notifications" to="/notifications" icon={<RiNotificationLine />} />
+                ) : (
+                    <div className="flex items-center md:space-x-4">
+                        <UserbarLink title="Register" to="/auth/register" />
+                        <UserbarLink title="Login" to="/auth/login" />
                     </div>
-                    <UserDropdown username={username} />
-                </div>
+                )}
             </div>
         </div>
     )
