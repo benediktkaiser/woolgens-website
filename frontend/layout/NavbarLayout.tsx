@@ -3,15 +3,18 @@ import Userbar from "../components/common/userbar/Userbar";
 import Header from "../components/common/header/Header"
 import Navbar from "../components/common/navbar/Navbar";
 import Footer from "../components/common/footer/Footer";
+import authStore from "../stores/AuthStore";
+import {observer} from "mobx-react-lite";
 
-interface DefaultLayoutProps {
+interface NavbarLayoutProps {
     children: React.ReactNode
 }
 
-const NavbarLayout: FC<DefaultLayoutProps> = ({children}) => {
+const NavbarLayout: FC<NavbarLayoutProps> = observer(({children}) => {
+
     return (
         <div className="min-h-screen text-gray-200 bg-dark-dark font-poppins">
-            <Userbar username="tsuuukiii" />
+            <Userbar webUser={authStore.webUser} />
             <Header />
             <Navbar />
             <main className="container mx-auto mt-5 min-h-[58vh]">
@@ -20,6 +23,6 @@ const NavbarLayout: FC<DefaultLayoutProps> = ({children}) => {
             <Footer />
         </div>
     )
-}
+})
 
 export default NavbarLayout

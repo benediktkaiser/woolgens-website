@@ -1,20 +1,20 @@
 import {makeAutoObservable, runInAction} from "mobx";
 import {makePersistable, getPersistedStore,} from "mobx-persist-store";
-import {basicAuth, tokenAuth} from "../core/auth";
-import {changeAPIToken} from "../core/api";
 import {getMinecraftUser} from "../core/minecraftUser";
+import {changeAPIToken} from "../core/api";
+import {basicAuth, tokenAuth} from "../core/auth";
 
 class AuthStore {
 
-    token: string | null;
-    webUser: WebUser;
-    minecraftUser: MinecraftUser;
+    token = "";
+    webUser: WebUser | undefined = undefined;
+    minecraftUser: MinecraftUser | undefined = undefined;
 
     constructor() {
         makeAutoObservable(this, {}, {autoBind: true});
 
         makePersistable(this, {
-            name: "PersistentStore",
+            name: "AuthStore",
             properties: ["token"],
         }).then(() => {
             return;
@@ -26,17 +26,17 @@ class AuthStore {
         console.info(JSON.stringify(data));
     }
 
-    async tokenAuth(token: string) {
+    async tokenAuth(token) {
         const webUser = await tokenAuth(token);
         const minecraftUser = await getMinecraftUser(webUser.uuid)
         changeAPIToken(token)
         runInAction(() => {
-            this.webUser = webUser
+            this.webUser = webUser;
             this.minecraftUser = minecraftUser
         })
     }
 
-    async basicAuth (username: string, password: string) {
+    async basicAuth(username, password) {
         const data = await basicAuth(username, password)
         const minecraftUser = await getMinecraftUser(data.user.uuid)
         changeAPIToken(data.token)

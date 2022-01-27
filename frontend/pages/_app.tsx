@@ -3,6 +3,8 @@ import '../plugins/persistent-store.plugin'
 
 import ProgressBar from "@badrap/bar-of-progress";
 import Router from "next/router";
+import {useEffect} from "react";
+import authStore from "../stores/AuthStore";
 
 const progress = new ProgressBar({
   size: 2,
@@ -15,8 +17,17 @@ Router.events.on("routeChangeStart", progress.start);
 Router.events.on("routeChangeComplete", progress.finish);
 Router.events.on("routeChangeError", progress.finish);
 
-function MyApp({ Component, pageProps }) {
+function App ({ Component, pageProps }) {
+
+  useEffect(() => {
+    if (authStore.token) {
+      authStore.tokenAuth(authStore.token).then(() => {
+        console.info(authStore.webUser)
+      })
+    }
+  }, [])
+
   return <Component {...pageProps} />
 }
 
-export default MyApp
+export default App

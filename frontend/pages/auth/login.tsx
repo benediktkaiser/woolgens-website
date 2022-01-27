@@ -4,6 +4,7 @@ import BaseInputWithLabel from "../../components/common/forms/BaseInputWithLabel
 import {BaseButton} from "../../components/common/BaseButton";
 import BasicCard from "../../components/common/cards/BasicCard";
 import {useState} from "react";
+import authStore from "../../stores/AuthStore";
 
 const RegisterPage = () => {
     const [username, setUsername] = useState(undefined)
@@ -25,10 +26,10 @@ const RegisterPage = () => {
                         onChange={(event) => setPassword(event.target.value)}
                     />
                     <div className="flex justify-end mt-2">
-                        <BaseButton type="primary" className="mr-4">
+                        <BaseButton type="primary" className="mr-4" onClick={() => authStore.getPersistedData()}>
                             Register
                         </BaseButton>
-                        <BaseButton type="success">
+                        <BaseButton onClick={() => authStore.basicAuth(username, password)} type="success">
                             Login
                         </BaseButton>
                     </div>
