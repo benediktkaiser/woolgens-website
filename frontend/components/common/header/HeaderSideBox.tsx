@@ -22,7 +22,7 @@ const HeaderSideBox: FC<HeaderSideBoxProps> = ({ title, subtitle, color, count, 
             </div>
             <span className="absolute -top-3 -right-5">
                 <span className={`inline-flex absolute w-full h-full rounded-full opacity-75 animate-ping ${color}`} />
-                <span className={`inline-flex relative px-3 pt-0.5 rounded-lg ${color}`}>{count}</span>
+                <span className={`inline-flex relative px-3 pt-0.5 rounded-lg ${color}`}>{count} online</span>
             </span>
         </div>
     )
