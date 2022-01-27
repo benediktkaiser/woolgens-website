@@ -4,6 +4,7 @@ import Announcement from "../../components/common/Announcement";
 import {FiBell} from "react-icons/fi"
 import {BaseButton} from "../../components/common/BaseButton";
 import React from "react";
+import BasicCard from "../../components/common/cards/BasicCard";
 
 const ForumIndexPage = observer(() => {
 
@@ -15,6 +16,11 @@ const ForumIndexPage = observer(() => {
                 rightComponent={<BaseButton type="primary">Create account</BaseButton>}
                 iconStyles="bg-blue-500 text-white"
             />
+            <div className="mt-5">
+                <BasicCard>
+                    Coming soon...
+                </BasicCard>
+            </div>
         </NavbarLayout>
     )
 })

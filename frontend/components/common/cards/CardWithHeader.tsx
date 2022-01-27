@@ -10,7 +10,7 @@ declare interface CardWithHeaderProps {
 const CardWithHeader: FC<CardWithHeaderProps> = ({title, right, children}) => {
     return (
         <BasicCard padding="p-0">
-            <div className="flex justify-between items-center p-4 rounded-t-md bg-gray-700/80">
+            <div className="flex justify-between items-center p-4 bg-dark-light rounded-t-md">
                 <h1 className="text-xl">
                     {title}
                 </h1>
