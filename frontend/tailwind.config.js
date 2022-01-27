@@ -20,7 +20,7 @@ module.exports = {
                     'light': '#24262d',
                     'dark': '#121317',
                 },
-                'mahogany': {
+                'accent': {
                     DEFAULT: '#CB3737',
                     '50': '#F1C9C9',
                     '100': '#EDB9B9',

@@ -21,7 +21,7 @@ const UserDropdown: FC<UserDropdownProps> = ({username}) => {
     }
 
     return (
-        <Menu as="div" className="inline-block relative text-left">
+        <Menu as="div" className="inline-block relative text-left tex">
              <Menu.Button className="py-2 px-3 hover:bg-dark rounded-lg">
                 <div className="inline-flex items-center w-full">
                     <span className="pr-3 text-sm">{username}</span>

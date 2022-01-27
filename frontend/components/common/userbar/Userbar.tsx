@@ -3,7 +3,7 @@ import UserDropdown from "../dropdown/userDropdown/UserDropdown";
 import NotificationDropdown from "../dropdown/notificationDropdown/NotificationDropdown";
 import MessageDropdown from "../dropdown/messageDropdown/MessageDropdown";
 import UserbarLink from "./UserbarLink";
-import {RiDashboard3Line} from "react-icons/ri"
+import {RiDashboard3Line, RiMailLine, RiNotificationLine} from "react-icons/ri"
 
 declare interface UserbarProps {
     username: string;
@@ -44,8 +44,14 @@ const Userbar: FC<UserbarProps> = ({ username }) => {
                     <UserbarLink title="Staff Dashboard" to="/staff" icon={<RiDashboard3Line />} />
                 </div>
                 <div className="flex items-center md:space-x-4">
-                    <MessageDropdown />
-                    <NotificationDropdown notifications={demoNotifications} />
+                    <div className="hidden sm:flex items-center">
+                        <MessageDropdown />
+                        <NotificationDropdown notifications={demoNotifications} />
+                    </div>
+                    <div className="flex sm:hidden items-center">
+                        <UserbarLink title="Messages" to="/messages" icon={<RiMailLine />} />
+                        <UserbarLink title="Notifications" to="/notifications" icon={<RiNotificationLine />} />
+                    </div>
                     <UserDropdown username={username} />
                 </div>
             </div>
