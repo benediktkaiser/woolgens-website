@@ -1,21 +1,34 @@
 import {observer} from "mobx-react-lite";
 import NavbarLayout from "../layout/NavbarLayout";
-import Announcement from "../components/common/Announcement";
-
-import {FiBell} from "react-icons/fi"
-import {BaseButton} from "../components/common/BaseButton";
 import React from "react";
+import BasicCard from "../components/common/cards/BasicCard";
+import CardWithHeader from "../components/common/cards/CardWithHeader";
+import {FiBell} from "react-icons/fi";
+import {BaseButton} from "../components/common/BaseButton";
+import Announcement from "../components/common/Announcement";
 
 const IndexPage = observer(() => {
 
     return (
         <NavbarLayout>
-            <Announcement
-                icon={<FiBell />}
-                text="Welcome to the new Website! We hope you enjoy it."
-                rightComponent={<BaseButton type="primary">Create account</BaseButton>}
-                iconStyles="bg-blue-500 text-white"
-            />
+            <section className="grid grid-cols-4 gap-4 mt-5">
+                <main className="flex flex-col col-span-3 gap-4">
+                    <BasicCard>
+                        Test Hi
+                    </BasicCard>
+                    <BasicCard>
+                        Test Hi
+                    </BasicCard>
+                    <BasicCard>
+                        Test Hi
+                    </BasicCard>
+                </main>
+                <aside>
+                    <CardWithHeader title="Test Card">
+                        Test Hi
+                    </CardWithHeader>
+                </aside>
+            </section>
         </NavbarLayout>
     )
 })
