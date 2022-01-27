@@ -12,7 +12,7 @@ declare interface HeaderSideBoxProps {
 const HeaderSideBox: FC<HeaderSideBoxProps> = ({ title, subtitle, color, count, onClick, icon }) => {
 
     return (
-        <div onClick={onClick} className="group hidden md:block relative transition ease-in-out hover:scale-105 cursor-pointer select-none">
+        <div onClick={onClick} className="group hidden md:block relative mt-14 transition ease-in-out hover:scale-105 cursor-pointer select-none">
             <div className="flex justify-between items-center py-4 px-8 rounded-2xl bg-dark-dark/60 group-hover:bg-dark-dark/80">
                 {icon}
                 <div className="hidden lg:block ml-5 leading-3">

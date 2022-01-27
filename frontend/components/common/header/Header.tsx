@@ -1,8 +1,7 @@
 import React from "react";
-import styles from "./Header.module.css"
 import HeaderSideBox from "./HeaderSideBox";
-
 import {IoLogoDiscord, IoGameController} from "react-icons/io5"
+import Logo from "../Logo";
 
 const copyIP = () => {
     navigator.clipboard.writeText("play.woolgens.net").then(() => console.info("COPIED IP TO CLIPBOARD"))
@@ -12,7 +11,7 @@ const Header = () => {
     return (
         <header className="relative bg-center bg-cover h-[250px]" style={{backgroundImage: "url('/background/mine_day.png')"}}>
             <div className="absolute top-0 w-full h-full bg-gradient-to-b from-dark/80 to-accent/50" />
-            <div className="container flex justify-between items-center pt-32 mx-auto w-full">
+            <div className="container flex justify-between items-center pt-8 mx-auto w-full">
                 <HeaderSideBox
                     title="play.woolgens.net"
                     subtitle="Click to copy!"
@@ -22,7 +21,7 @@ const Header = () => {
                     onClick={copyIP}
                 />
                 <div className="mx-auto">
-                    WOOLGENS LOGO HERE
+                    <Logo animated={true} />
                 </div>
                 <a href="https://woolgens.net" target="_blank" rel="noreferrer">
                     <HeaderSideBox
