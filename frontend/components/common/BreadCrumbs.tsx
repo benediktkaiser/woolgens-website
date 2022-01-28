@@ -33,20 +33,19 @@ const BreadCrumbs: FC<BreadCrumbsProps> = ({pathName}) => {
     }
 
     return (
-        <div>
-            <nav className="w-full font-sans text-sm rounded font-poppins">
-                <ol className="flex items-center list-reset">
-                    <li className="flex items-center">
-                        <Link href="/staff" passHref={true}>
-                            <a className="capitalize">Dashboard</a>
-                        </Link>
-                    </li>
-                    {(paths.map((path, key: number) => (
-                        <li key={key} className="flex items-center">
+        <nav className="text-sm font-poppins">
+            <ol className="flex items-center list-reset">
+                <li className="flex items-center">
+                    <Link href="/" passHref={true}>
+                        <a className="capitalize">Home</a>
+                    </Link>
+                </li>
+                {(paths.map((path, key: number) => (
+                    <li key={key} className="flex items-center">
                             <span className="px-1">
                                 <RiArrowRightSLine size="1.3rem"/>
                             </span>
-                            <span>
+                        <span>
                                 {(key + 1 === paths.length) ? (
                                     <a className="text-gray-400 capitalize">{isNumber(path) && "#"}{path}</a>
                                 ) : (
@@ -55,11 +54,10 @@ const BreadCrumbs: FC<BreadCrumbsProps> = ({pathName}) => {
                                     </Link>
                                 )}
                             </span>
-                        </li>
-                    )))}
-                </ol>
-            </nav>
-        </div>
+                    </li>
+                )))}
+            </ol>
+        </nav>
     )
 }
 

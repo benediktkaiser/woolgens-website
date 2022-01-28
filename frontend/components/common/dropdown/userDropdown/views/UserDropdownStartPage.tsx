@@ -23,7 +23,7 @@ const UserDropdownStartPage: FC<UserDropdownStartPageProps> = ({ selectedPage, c
             leaveTo="-translate-x-20 opacity-0">
 
             <Link href={`/profile/${webUser.name}`} passHref={true}>
-                <a className="flex items-center p-3 mb-2 hover:bg-dark-light rounded-lg cursor-pointer">
+                <a className="flex items-center p-3 mb-2 hover:bg-dark rounded-lg cursor-pointer">
                     <Avatar player={webUser.uuid} size={50} />
                     <span className="ml-3 font-avenir">
                     <h1 className="text-xl">

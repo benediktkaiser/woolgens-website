@@ -14,7 +14,7 @@ class UserStore {
             return this.users[username];
         }
 
-        const uuid = "6fc34392-2261-4c1b-be56-9b34e7b8d8f0"; // TODO: Get UUID FROM USERNAME
+        const uuid = "b2d820fe-3777-4a00-a792-f0d91a33c7b7"; // TODO: Get UUID FROM USERNAME
         const minecraftUser = await getMinecraftUser(uuid)
         //const webUser = await getWebUser(username)
 
