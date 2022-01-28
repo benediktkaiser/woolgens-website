@@ -16,31 +16,36 @@ const TopList: FC<TopListProps> = ({background = "bg-gradient-to-r to-blue-500 f
                     {title}
                 </h1>
             </div>
-            <div className="bg-dark-light">
+            <div className="py-2 bg-dark-light">
                 <TopListRow
                     minecraftUser={demoMinecraftUser}
                     value={demoMinecraftUser.seasons["1"].balance}
                     label="$"
+                    place={1}
                 />
                 <TopListRow
                     minecraftUser={demoMinecraftUser}
                     value={demoMinecraftUser.seasons["1"].balance}
                     label="$"
+                    place={2}
                 />
                 <TopListRow
                     minecraftUser={demoMinecraftUser}
                     value={demoMinecraftUser.seasons["1"].balance}
                     label="$"
+                    place={3}
                 />
                 <TopListRow
                     minecraftUser={demoMinecraftUser}
                     value={demoMinecraftUser.seasons["1"].balance}
                     label="$"
+                    place={4}
                 />
                 <TopListRow
                     minecraftUser={demoMinecraftUser}
                     value={demoMinecraftUser.seasons["1"].balance}
                     label="$"
+                    place={5}
                 />
             </div>
         </div>
