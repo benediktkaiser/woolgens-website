@@ -1,5 +1,3 @@
-import {Land} from "../additional";
-
 const DemoLand: Land = {
     "bank": {
         "balance": 19149,

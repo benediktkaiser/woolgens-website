@@ -1,5 +1,4 @@
 import DemoLand from "./DemoLand";
-import {MinecraftUser} from "../additional";
 
 const DemoMinecraftUser: MinecraftUser = {
     "booster": {
