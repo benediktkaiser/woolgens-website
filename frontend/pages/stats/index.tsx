@@ -32,7 +32,7 @@ const StatsIndexPage = observer(() => {
                         Player and Land Stats
                     </h1>
                 </div>
-                <StatsUserSearchBar usernames={demoUserNames} />
+                <StatsUserSearchBar items={demoUserNames} />
             </div>
             <div className="hidden lg:block">
                 <Announcement

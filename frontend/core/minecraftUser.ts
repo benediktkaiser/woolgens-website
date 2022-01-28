@@ -1,10 +1,10 @@
 import {minecraftUserAPI} from "./api";
-import {getLandByName} from "./land";
+import landStore from "../stores/LandStore";
 
 export async function getMinecraftUser(uuid: string): Promise<MinecraftUser> {
     try {
         const data = await minecraftUserAPI.get(`/users/${uuid}`)
-        const landData = await getLandByName(data.data.land)
+        const landData = await landStore.getLand(data.data.land)
 
         return {
             ...data.data,

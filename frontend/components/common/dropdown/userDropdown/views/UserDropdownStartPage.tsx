@@ -3,6 +3,7 @@ import {RiUser3Line, RiLifebuoyLine, RiLogoutBoxRLine} from "react-icons/ri"
 import Avatar from "../../../Avatar";
 import DropdownItem from "../../DropdownItem";
 import {Transition} from "@headlessui/react"
+import Link from "next/link"
 
 declare interface UserDropdownStartPageProps {
     selectedPage: string,
@@ -21,9 +22,10 @@ const UserDropdownStartPage: FC<UserDropdownStartPageProps> = ({ selectedPage, c
             leaveFrom="translate-x-0 opacity-100"
             leaveTo="-translate-x-20 opacity-0">
 
-            <div className="flex items-center p-3 mb-2 hover:bg-dark-light rounded-lg cursor-pointer">
-                <Avatar player={webUser.uuid} size={50} />
-                <span className="ml-3 font-avenir">
+            <Link href={`/profile/${webUser.name}`} passHref={true}>
+                <div className="flex items-center p-3 mb-2 hover:bg-dark-light rounded-lg cursor-pointer">
+                    <Avatar player={webUser.uuid} size={50} />
+                    <span className="ml-3 font-avenir">
                     <h1 className="text-xl">
                         {webUser.name}
                     </h1>
@@ -31,7 +33,8 @@ const UserDropdownStartPage: FC<UserDropdownStartPageProps> = ({ selectedPage, c
                         View your profile
                     </h3>
                 </span>
-            </div>
+                </div>
+            </Link>
 
             <hr className="my-2 border-gray-700"/>
 
