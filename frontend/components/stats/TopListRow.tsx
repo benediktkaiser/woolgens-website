@@ -22,7 +22,7 @@ const TopListRow: FC<TopListRowProps> = ({ minecraftUser, value, label, place })
                                 <IoMdTrophy className="mr-1 text-amber-400" />
                             )}
                             {place === 2 && (
-                                <IoMdTrophy className="mr-1 text-gray-400" />
+                                <IoMdTrophy className="mr-1 text-gray-300" />
                             )}
                             {place === 3 && (
                                 <IoMdTrophy className="mr-1 text-yellow-700" />
