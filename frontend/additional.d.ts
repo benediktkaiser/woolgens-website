@@ -16,8 +16,9 @@ declare interface WebUser extends User {
 declare interface MinecraftUser extends User {
     joined: number, // is a timestamp
     stats: Record<string, number>,
-    land: Land | string,
-    seasons: Record<string, MinecraftUserSeason>
+    land?: Land,
+    seasons: Record<string, MinecraftUserSeason>,
+    booster: Record<FarmingSkills, number>
 }
 
 declare interface MinecraftUserSeason {
@@ -26,6 +27,7 @@ declare interface MinecraftUserSeason {
     exp: number,
     stats: Record<string, number>,
     crates: Record<string, number>,
+    skills: Skills
 }
 
 declare interface Group {
@@ -35,15 +37,34 @@ declare interface Group {
     permissions: string[]
 }
 
+/* Skills */
+declare interface Skills {
+    basePoints: number,
+    farmingPoints: number,
+    base: Record<BaseSkills, number>
+    farming: Record<FarmingSkills, number>
+}
+
+declare type BaseSkills = "DEFENSE" | "ATTACK"
+declare type FarmingSkills = "MINING" | "AGRICULTURE" | "FISHING" | "LUMBERJACK"
+
 /* Land Types */
 declare interface Land {
     name: string,
+    id: string,
     registered: number, // is a timestamp
     owner: LandMember,
     bank: LandBank
     upgrades: Record<string, number>
     members: Record<string, LandMember>
+    invites: string[]
     roles: Record<string, LandRole>
+    chunks: Array<LandChunk>
+}
+
+declare interface LandChunk {
+    x: number,
+    z: number,
 }
 
 declare interface LandMember extends User {
@@ -54,6 +75,7 @@ declare interface LandRole {
     name: string,
     color: string,
     priority: number,
+    defaultRole: boolean,
     permissions: string[],
 }
 
