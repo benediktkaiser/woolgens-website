@@ -1,9 +1,17 @@
 import {minecraftUserAPI} from "./api";
+import {getLandByName} from "./land";
 
 export async function getMinecraftUser(uuid: string): Promise<MinecraftUser> {
     try {
         const data = await minecraftUserAPI.get(`/users/${uuid}`)
-        return data.data
+        const landData = await getLandByName(data.data.land)
+
+        return {
+            ...data.data,
+            land: {
+                ...landData
+            }
+        }
     }
     catch (error) {
         console.error(error)
