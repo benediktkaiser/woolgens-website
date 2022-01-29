@@ -1,5 +1,6 @@
 import {minecraftUserAPI} from "./api";
 import landStore from "../stores/LandStore";
+import {throwError} from "./error";
 
 export async function getMinecraftUser(uuid: string): Promise<MinecraftUser> {
     try {
@@ -18,8 +19,8 @@ export async function getMinecraftUser(uuid: string): Promise<MinecraftUser> {
         }
     }
     catch (error) {
-        console.error(error)
-        throw new Error(`Issue retrieving Minecraft User for uuid "${uuid}"`)
+        throwError(`Issue retrieving Minecraft User for uuid "${uuid}" - ${error}`)
+        return;
     }
 }
 
@@ -30,8 +31,8 @@ export async function getUsersSorted(sorted: string, pageIndex: number, pageSize
         return data.data
     }
     catch (error) {
-        console.error(error)
-        throw new Error(`Issue retrieved user sorted by "${sorted}" from page ${pageIndex} with ${pageSize} entries`)
+        throwError(`Issue retrieved user sorted by "${sorted}" from page ${pageIndex} with ${pageSize} entries" - ${error}`)
+        return;
     }
 }
 
@@ -41,8 +42,8 @@ export async function getUserNames() {
         return data.data
     }
     catch (error) {
-        console.error(error)
-        throw new Error(`Issue retrieved all usernames`)
+        throwError(`Issue retrieved all usernames" - ${error}`)
+        return;
     }
 }
 

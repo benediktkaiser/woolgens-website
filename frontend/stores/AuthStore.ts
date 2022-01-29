@@ -28,6 +28,13 @@ class AuthStore {
 
     async tokenAuth(token) {
         const webUser = await tokenAuth(token);
+        if (!webUser) {
+            runInAction(() => {
+                this.token = ""
+            })
+            return;
+        }
+
         const minecraftUser = await getMinecraftUser(webUser.uuid)
         changeAPIToken(token)
         runInAction(() => {
@@ -36,14 +43,27 @@ class AuthStore {
         })
     }
 
-    async basicAuth(username, password) {
+    async basicAuth(username, password): Promise<boolean> {
         const data = await basicAuth(username, password)
+        if (!data) {
+            return false;
+        }
+
         const minecraftUser = await getMinecraftUser(data.user.uuid)
         changeAPIToken(data.token)
         runInAction(() => {
             this.token = data.token;
             this.webUser = data.user;
             this.minecraftUser = minecraftUser
+        })
+        return true;
+    }
+
+    logout() {
+        runInAction(() => {
+            this.token = "";
+            this.webUser = undefined;
+            this.minecraftUser = undefined;
         })
     }
 }

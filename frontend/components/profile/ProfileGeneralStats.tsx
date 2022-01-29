@@ -21,7 +21,7 @@ const ProfileGeneralStats: FC<ProfileGeneralStatsProps> = ({ user, selectedSeaso
                 <StatsCard title="Playtime" value={(user.minecraftUser.stats.playtime / 1000 / 60 / 60).toFixed(1)} label="Hours" />
                 <StatsCard title="Joined" value={new Date(user.minecraftUser.joined).toDateString()} />
                 {user.minecraftUser.land && (
-                    <StatsCard title="Land" value={user.minecraftUser.land.name} link="/clan" />
+                    <StatsCard title="Land" value={user.minecraftUser.land.name} link={`/stats/lands/${user.minecraftUser.land.name}`} />
                 )}
                 <StatsCard title="Balance" value={user.minecraftUser.seasons[selectedSeason].balance.toFixed(0)} label="$" />
             </div>

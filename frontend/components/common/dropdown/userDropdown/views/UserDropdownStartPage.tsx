@@ -4,6 +4,7 @@ import Avatar from "../../../Avatar";
 import DropdownItem from "../../DropdownItem";
 import {Transition} from "@headlessui/react"
 import Link from "next/link"
+import authStore from "../../../../../stores/AuthStore";
 
 declare interface UserDropdownStartPageProps {
     selectedPage: string,
@@ -40,7 +41,7 @@ const UserDropdownStartPage: FC<UserDropdownStartPageProps> = ({ selectedPage, c
 
             <DropdownItem onClick={() => changePage("account")} title="Account" icon={<RiUser3Line size="1.5rem" />} withArrow={true}/>
             <DropdownItem onClick={() => changePage("support")} title="Support" icon={<RiLifebuoyLine size="1.5rem" />} withArrow={true}/>
-            <DropdownItem title="Logout" icon={<RiLogoutBoxRLine size="1.5rem" />}/>
+            <DropdownItem onClick={() => authStore.logout()} title="Logout" icon={<RiLogoutBoxRLine size="1.5rem" />}/>
         </Transition>
     )
 }
