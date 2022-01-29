@@ -7,7 +7,7 @@ declare interface BasicCardProps {
 
 const BasicCard: FC<BasicCardProps> = ({padding = "p-4", children}) => {
     return (
-        <div className={`${padding} bg-dark-light/50 rounded-md shadow overflow-hidden`}>
+        <div className={`${padding} bg-dark-light/50 rounded-md shadow`}>
             {children}
         </div>
     )
