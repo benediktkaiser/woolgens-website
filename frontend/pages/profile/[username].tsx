@@ -15,16 +15,23 @@ const ProfilePage = observer(() => {
     const [user, setUser] = useState<FullUser | undefined>(undefined)
 
     useEffect(() => {
-        userStore.getUser(username).then((user) => {
-            setSelectedSeason(Object.keys(user.minecraftUser.seasons).reverse()[0])
-            setUser(user)
-        });
+        if (username) {
+            userStore.getUser(username).then((user) => {
+                setSelectedSeason(Object.keys(user.minecraftUser.seasons).reverse()[0])
+                setUser(user)
+            });
+        }
     }, [username])
 
     return (
         <NavbarLayout>
             <section className="flex flex-col gap-3">
-                <ProfileToolBar pathName={router ? router.asPath : ""} selectedSeason={selectedSeason} user={user}/>
+                <ProfileToolBar
+                    pathName={router ? router.asPath : ""}
+                    selectedSeason={selectedSeason}
+                    user={user}
+                    setSelectedSeason={setSelectedSeason}
+                />
                 <div className="flex flex-col gap-4">
                     <ProfileUserBox user={user} seasonNumber={selectedSeason}/>
                     <section className="grid grid-cols-4 gap-4">

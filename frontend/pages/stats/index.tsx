@@ -29,6 +29,7 @@ const StatsIndexPage = observer(() => {
     const [levelTopList, setLevelTopList] = useState(undefined)
     const [balanceTopList, setBalanceTopList] = useState(undefined)
     const [playTimeTopList, setPlayTimeTopList] = useState(undefined)
+    const [autocompleteList, setAutocompleteList] = useState(undefined)
 
     useEffect(() => {
         topListStore.getSimpleTopList("level", `seasons.1.level`).then((result) => {

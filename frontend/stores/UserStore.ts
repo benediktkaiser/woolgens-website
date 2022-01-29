@@ -1,9 +1,10 @@
 import {makeAutoObservable, runInAction} from "mobx";
-import {getMinecraftUser} from "../core/minecraftUser";
+import {getMinecraftUser, getUserNames} from "../core/minecraftUser";
 
 class UserStore {
 
     users: Record<string, FullUser> = {}
+    usernames: Record<string, string> = undefined
 
     constructor() {
         makeAutoObservable(this, {}, {autoBind: true});
@@ -14,7 +15,7 @@ class UserStore {
             return this.users[username];
         }
 
-        const uuid = "b2d820fe-3777-4a00-a792-f0d91a33c7b7"; // TODO: Get UUID FROM USERNAME
+        const uuid = await this.getUUIDFromUserName(username)
         const minecraftUser = await getMinecraftUser(uuid)
         //const webUser = await getWebUser(username)
 
@@ -28,6 +29,26 @@ class UserStore {
             webUser: undefined,
             minecraftUser,
         }
+    }
+
+    async getUUIDFromUserName(username): Promise<string> {
+        if (this.usernames) {
+            if (this.usernames[username]) {
+                return this.usernames[username]
+            }
+            throw new Error(`Could not find a uuid for ${username}`)
+        }
+
+        const usernames = await getUserNames();
+
+        runInAction(() => {
+            this.usernames = usernames
+        })
+
+        if (usernames[username]) {
+            return usernames[username]
+        }
+        throw new Error(`Could not find a uuid for ${username}`)
     }
 }
 

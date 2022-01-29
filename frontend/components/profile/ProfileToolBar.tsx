@@ -7,10 +7,11 @@ import {FC} from "react";
 declare interface ProfileToolBarProps {
     pathName: string,
     selectedSeason: string,
-    user?: FullUser
+    user?: FullUser,
+    setSelectedSeason: (season: string) => void,
 }
 
-const ProfileToolBar: FC<ProfileToolBarProps> = ({pathName, selectedSeason, user}) => {
+const ProfileToolBar: FC<ProfileToolBarProps> = ({pathName, selectedSeason, user, setSelectedSeason}) => {
 
     if (!user) {
         return (
@@ -25,8 +26,11 @@ const ProfileToolBar: FC<ProfileToolBarProps> = ({pathName, selectedSeason, user
                 <div className="flex gap-3 items-center">
                     <Dropdown title={`Season ${selectedSeason}`}>
                         <div className="flex overflow-auto flex-col gap-2 p-2 bg-dark-light max-h-[300px]">
-                            {Object.keys(user.minecraftUser.seasons).reverse().map((value, index) => <DropdownItem
-                                key={index} title={`Season ${value}`}/>)}
+                            {Object.keys(user.minecraftUser.seasons).reverse().map((value, index) => (
+                                <div key={index} onClick={() => setSelectedSeason(value)}>
+                                    <DropdownItem title={`Season ${value}`}/>
+                                </div>
+                                ))}
                         </div>
                     </Dropdown>
                 </div>
