@@ -17,7 +17,7 @@ const NavbarLayout: FC<NavbarLayoutProps> = observer(({children}) => {
             <Userbar webUser={authStore.webUser} />
             <Header />
             <Navbar />
-            <main className="container mx-auto mt-5 min-h-[56.45vh]">
+            <main className="container mx-auto mt-5 min-h-[51.8vh]">
                 {children}
             </main>
             <Footer />

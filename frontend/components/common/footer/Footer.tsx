@@ -2,7 +2,7 @@ import FooterLink from "./FooterLink";
 
 const Footer = () => {
     return (
-        <footer className="mt-5 w-full bg-dark-light">
+        <footer className="mt-10 w-full bg-dark-light">
             <div className="container lg:flex justify-between items-center py-6 mx-auto text-center lg:text-left">
                 <div className="mb-4 lg:mb-0">
                     <h1 className="text-lg">Copyright © Woolgens 2022.</h1>

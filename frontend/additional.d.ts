@@ -21,6 +21,11 @@ declare interface MinecraftUser extends User {
     booster: Record<FarmingSkills, number>
 }
 
+declare interface FullUser {
+    webUser: WebUser,
+    minecraftUser: MinecraftUser
+}
+
 declare interface MinecraftUserSeason {
     balance: number,
     level: number,

@@ -1,13 +1,13 @@
-import {FC} from "react";
+import React, {FC} from "react";
 import TopListRow from "./TopListRow";
-import demoMinecraftUser from "../../data/DemoMinecraftUser";
 
 declare interface TopListProps {
     background?: string,
     title: string
+    children?: React.ReactNode
 }
 
-const TopList: FC<TopListProps> = ({background = "bg-gradient-to-r to-blue-500 from-cyan-500", title}) => {
+const TopList: FC<TopListProps> = ({background = "bg-gradient-to-r to-blue-500 from-cyan-500", title, children}) => {
 
     return (
         <div className="overflow-hidden rounded-lg">
@@ -16,32 +16,8 @@ const TopList: FC<TopListProps> = ({background = "bg-gradient-to-r to-blue-500 f
                     {title}
                 </h1>
             </div>
-            <div className="bg-dark-light">
-                <TopListRow
-                    minecraftUser={demoMinecraftUser}
-                    value={demoMinecraftUser.seasons["1"].balance}
-                    label="$"
-                />
-                <TopListRow
-                    minecraftUser={demoMinecraftUser}
-                    value={demoMinecraftUser.seasons["1"].balance}
-                    label="$"
-                />
-                <TopListRow
-                    minecraftUser={demoMinecraftUser}
-                    value={demoMinecraftUser.seasons["1"].balance}
-                    label="$"
-                />
-                <TopListRow
-                    minecraftUser={demoMinecraftUser}
-                    value={demoMinecraftUser.seasons["1"].balance}
-                    label="$"
-                />
-                <TopListRow
-                    minecraftUser={demoMinecraftUser}
-                    value={demoMinecraftUser.seasons["1"].balance}
-                    label="$"
-                />
+            <div className="py-2 bg-dark-light">
+                {children}
             </div>
         </div>
     )

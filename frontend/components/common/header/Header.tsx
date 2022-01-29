@@ -9,9 +9,9 @@ const copyIP = () => {
 
 const Header = () => {
     return (
-        <header className="relative bg-center bg-cover h-[250px]" style={{backgroundImage: "url('/background/mine_day.png')"}}>
+        <header className="relative bg-center bg-cover h-[285px]" style={{backgroundImage: "url('/background/mine_day.png')"}}>
             <div className="absolute top-0 w-full h-full bg-gradient-to-b from-dark/80 to-accent/50" />
-            <div className="container flex justify-between items-center pt-8 mx-auto w-full">
+            <div className="container flex justify-between items-center pt-2 mx-auto w-full">
                 <HeaderSideBox
                     title="play.woolgens.net"
                     subtitle="Click to copy!"

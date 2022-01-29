@@ -3,6 +3,6 @@ module.exports = {
         dirs: ['src'],
     },
     images: {
-        domains: ['woolgens.net', 'woolgens.com', 'cravatar.eu'],
+        domains: ['woolgens.net', 'woolgens.com', 'cravatar.eu', 'visage.surgeplay.com'],
     },
 }

@@ -11,7 +11,7 @@ declare interface DropdownItemProps extends React.HTMLAttributes<HTMLButtonEleme
 const DropdownItem: FC<DropdownItemProps> = ({title, icon, withArrow = false, withIconBackground= true, ...HTMLElements}) => {
 
     return (
-        <button {...HTMLElements} className="flex items-center py-3 px-2 w-full text-left hover:bg-dark-light rounded-lg">
+        <button {...HTMLElements} className="flex items-center py-3 px-2 w-full text-left bg-dark-light hover:bg-dark rounded-lg">
             {icon && (
                 <span className={`rounded-full ${withIconBackground ? 'p-3 bg-gray-700': 'ml-2'}`}>
                     {icon}
