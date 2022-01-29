@@ -9,6 +9,7 @@ If you want to learn more about NextJS, please visit its website: https://nextjs
 - NEXT_PUBLIC_MINECRAFT_USER_ENDPOINT
 - NEXT_PUBLIC_FORUM_ENDPOINT
 - NEXT_PUBLIC_LAND_ENDPOINT
+- NEXT_PUBLIC_CHANGELOG_ENDPOINT
 - NEXT_PUBLIC_CURRENT_SEASON
 
 - NEXT_PUBLIC_DEV_TOKEN (optional: used to auth a development enviorment)

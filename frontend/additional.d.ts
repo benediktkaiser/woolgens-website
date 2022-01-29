@@ -104,3 +104,11 @@ declare interface WebNotification {
     link: string,
     type: "success" | "warning" | "danger" | "info",
 }
+
+declare interface ChangeLog {
+    id: string,
+    title: string,
+    author: string,
+    timestamp: number,
+    lines: string[],
+}

@@ -28,3 +28,8 @@ export const landAPI = axios.create({
     baseURL: process.env.NEXT_PUBLIC_LAND_ENDPOINT,
     ...DEFAULT_API
 });
+
+export const changeLogAPI = axios.create({
+    baseURL: process.env.NEXT_PUBLIC_CHANGELOG_ENDPOINT,
+    ...DEFAULT_API
+});
