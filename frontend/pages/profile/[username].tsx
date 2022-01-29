@@ -1,12 +1,14 @@
 import NavbarLayout from "../../layout/NavbarLayout";
 import {useRouter} from "next/router";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {observer} from "mobx-react-lite";
 import userStore from "../../stores/UserStore";
 import ProfileUserBox from "../../components/profile/ProfileUserBox";
 import ProfileToolBar from "../../components/profile/ProfileToolBar";
 import ProfileSkills from "../../components/profile/ProfileSkills";
 import ProfileGeneralStats from "../../components/profile/ProfileGeneralStats";
+import Announcement from "../../components/common/Announcement";
+import {FiBell} from "react-icons/fi";
 
 const ProfilePage = observer(() => {
     const router = useRouter()
@@ -27,7 +29,6 @@ const ProfilePage = observer(() => {
         <NavbarLayout>
             <section className="flex flex-col gap-3">
                 <ProfileToolBar
-                    pathName={router ? router.asPath : ""}
                     selectedSeason={selectedSeason}
                     user={user}
                     setSelectedSeason={setSelectedSeason}
