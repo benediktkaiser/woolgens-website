@@ -1,28 +1,31 @@
-import {observer} from "mobx-react-lite";
 import NavbarLayout from "../../layout/NavbarLayout";
 import Announcement from "../../components/common/Announcement";
-import {FiBell} from "react-icons/fi"
-import {BaseButton} from "../../components/common/BaseButton";
-import React from "react";
-import BasicCard from "../../components/common/cards/BasicCard";
+import {FiBook} from "react-icons/fi"
+import React, {useEffect, useState} from "react";
+import ChangeLogGrid from "../../components/changelog/ChangeLogGrid";
+import changeLogStore from "../../stores/ChangeLogStore";
 
-const ForumIndexPage = observer(() => {
+const ForumIndexPage = () => {
+    const [changeLogs, setChangeLogs] = useState<ChangeLog[] | undefined>(undefined)
+
+    useEffect(() => {
+        changeLogStore.getChangeLogs().then(result => {
+            setChangeLogs(result)
+        })
+    }, [])
 
     return (
         <NavbarLayout>
             <Announcement
-                icon={<FiBell />}
-                text="Welcome to the new Website! We hope you enjoy it."
-                rightComponent={<BaseButton type="primary">Create account</BaseButton>}
+                icon={<FiBook />}
+                text="Below you can find the changelog to every single one of our releases."
                 iconStyles="bg-blue-500 text-white"
             />
-            <div className="mt-5">
-                <BasicCard>
-                    Coming soon...
-                </BasicCard>
-            </div>
+            {changeLogs && (
+                <ChangeLogGrid changelogs={changeLogs} />
+            )}
         </NavbarLayout>
     )
-})
+}
 
 export default ForumIndexPage

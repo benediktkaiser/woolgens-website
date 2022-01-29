@@ -1,5 +1,4 @@
 import React, {FC} from "react";
-import TopListRow from "./TopListRow";
 
 declare interface TopListProps {
     background?: string,
