@@ -23,7 +23,7 @@ const ProfileToolBar: FC<ProfileToolBarProps> = ({selectedSeason, user, setSelec
             <div className="flex justify-between items-center px-2">
                 <div className="flex items-center">
                     {process.env.NEXT_PUBLIC_CURRENT_SEASON !== selectedSeason && (
-                        <div className="flex items-center">
+                        <div className="hidden sm:flex items-center">
                             <div className="p-3 text-2xl bg-yellow-500 rounded-xl">
                                 <FiArchive />
                             </div>

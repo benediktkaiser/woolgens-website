@@ -19,11 +19,11 @@ const LandHeaderBar: FC<LandHeaderBarProps>= ({land}) => {
 
     return (
         <div className="p-4 w-full bg-dark-light rounded-lg select-none">
-            <div className="overflow-hidden relative rounded-lg h-[300px]">
-                <Image src={background} alt="profile background" />
+            <div className="overflow-hidden relative rounded-lg md:h-[200px] lg:h-[300px]">
+                <Image className="invisible 2xl:visible" src={background} alt="profile background" />
                 <div className="absolute top-0 w-full h-full bg-gradient-to-r from-accent-200/70 via-accent-500/90 to-accent-200/70" />
                 <div className="flex absolute top-0 justify-center items-center w-full">
-                    <h1 className="mt-2 font-bold leading-none uppercase text-[9rem] text-shadow">
+                    <h1 className="mt-2 font-bold leading-none uppercase text-[3rem] sm:text-[5rem] lg:text-[9rem] text-shadow">
                         {land.name}
                     </h1>
                 </div>

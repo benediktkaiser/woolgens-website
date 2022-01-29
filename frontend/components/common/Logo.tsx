@@ -1,6 +1,7 @@
 import Image from "next/image"
 import logo from "../../public/logo.png";
 import React, {FC} from "react";
+import Link from "next/link"
 
 declare interface LogoProps {
     width?: string,
@@ -11,7 +12,11 @@ declare interface LogoProps {
 const Logo: FC<LogoProps> = ({width = "275px", height = "275px", animated = false}) => {
     return (
         <div className={`${animated && 'animate-grow'}`}>
-            <Image width={width} height={height} src={logo} alt="WoolGens"/>
+            <Link href="/" passHref={true}>
+                <a>
+                    <Image width={width} height={height} src={logo} alt="WoolGens"/>
+                </a>
+            </Link>
         </div>
     )
 }
