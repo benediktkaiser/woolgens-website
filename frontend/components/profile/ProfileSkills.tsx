@@ -10,7 +10,7 @@ const ProfileSkills: FC<SkillsCardProps> = ({user, selectedSeason}) => {
 
     if (!user) {
         return (
-            <div className="grid grid-cols-6 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4">
                 <div className="h-32 rounded-xl animate-pulse bg-dark-light/50">
                     <span className="text-gray-400 group-hover:text-gray-100" />
                     <h1 className="mt-2 text-lg font-bold" />
@@ -46,7 +46,7 @@ const ProfileSkills: FC<SkillsCardProps> = ({user, selectedSeason}) => {
     }
 
     return (
-        <div className="grid grid-cols-6 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4">
             <SkillsCard level={user.minecraftUser.seasons[selectedSeason].skills.base.ATTACK}
                         skill="ATTACK"/>
             <SkillsCard level={user.minecraftUser.seasons[selectedSeason].skills.base.DEFENSE}

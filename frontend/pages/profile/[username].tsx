@@ -32,7 +32,7 @@ const ProfilePage = () => {
                 />
                 <div className="flex flex-col gap-4">
                     <ProfileUserBox user={user} seasonNumber={selectedSeason}/>
-                    <section className="grid grid-cols-4 gap-4">
+                    <section className="grid grid-cols-1 lg:grid-cols-3 2xl:grid-cols-4 lg:gap-x-4 gap-y-4">
                         <main className="flex flex-col col-span-3 gap-4">
                             <ProfileSkills selectedSeason={selectedSeason} user={user}/>
                         </main>

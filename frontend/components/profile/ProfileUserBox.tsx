@@ -26,13 +26,15 @@ const ProfileUserBox: FC<ProfileUserBoxProps> = ({user, seasonNumber}) => {
     return (
         <div className="p-4 w-full bg-dark-light rounded-lg">
             <div className="overflow-hidden relative h-52 rounded-lg">
-                <Image src={background} alt="profile background" />
+                <Image className="invisible lg:visible" src={background} alt="profile background" />
                 <div className="absolute top-0 w-full h-full bg-gradient-to-r to-accent-200/70 from-accent-500/90" />
-                <div className="absolute top-1/2 right-10 mt-1 -translate-y-1/2">
+                <div className="hidden md:block absolute top-1/2 right-10 mt-1 -translate-y-1/2">
                     <SkillsBadge skill={highestSkill} />
                 </div>
-                <div className="flex absolute top-0 left-0 items-center px-8 pt-4">
-                    <Bust uuid={user.minecraftUser.uuid} size={200} />
+                <div className="flex absolute top-0 left-0 items-center px-8 pt-4 h-full">
+                    <div className="hidden lg:block">
+                        <Bust uuid={user.minecraftUser.uuid} size={200} />
+                    </div>
                     <div>
                         <span className="text-md">
                             {SKILL_TITLES[highestSkill]}
