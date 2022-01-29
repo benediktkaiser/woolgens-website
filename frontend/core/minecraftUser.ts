@@ -45,3 +45,8 @@ export async function getUserNames() {
         throw new Error(`Issue retrieved all usernames`)
     }
 }
+
+export function getLatestSeasonStats(user: MinecraftUser): MinecraftUserSeason {
+    const latestSeason = Object.keys(user.seasons).reverse()[0]
+    return user.seasons[latestSeason]
+}

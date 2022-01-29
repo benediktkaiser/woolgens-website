@@ -10,38 +10,41 @@ import {AiOutlineArrowRight} from "react-icons/ai"
 import topListStore from "../../stores/TopListStore";
 import TopListRow from "../../components/stats/TopListRow";
 import LoadingTopList from "../../components/stats/LoadingTopList";
-
-const demoUserNames = [{
-    id: 0,
-    name: "tsuuukiii",
-    type: "player",
-}, {
-    id: 1,
-    name: "ReaperMaga",
-    type: "player"
-}, {
-    id: 3,
-    name: "MyLand",
-    type: "land"
-}]
+import {getLatestSeasonStats} from "../../core/minecraftUser";
+import userStore from "../../stores/UserStore";
 
 const StatsIndexPage = observer(() => {
     const [levelTopList, setLevelTopList] = useState(undefined)
     const [balanceTopList, setBalanceTopList] = useState(undefined)
     const [playTimeTopList, setPlayTimeTopList] = useState(undefined)
     const [autocompleteList, setAutocompleteList] = useState(undefined)
+    const seasonNumber = process.env.NEXT_PUBLIC_CURRENT_SEASON || "1"
 
     useEffect(() => {
-        topListStore.getSimpleTopList("level", `seasons.1.level`).then((result) => {
+        userStore.getAllUserNames().then((result) => {
+            const results = []
+            let num = 0
+            Object.keys(result).map((result) => {
+                results.push({
+                    id: num,
+                    name: result,
+                    type: "player"
+                })
+                num++
+            })
+            setAutocompleteList(results)
+        })
+
+        topListStore.getSimpleTopList("level", `seasons.${seasonNumber}.level`).then((result) => {
             setLevelTopList(result)
         })
-        topListStore.getSimpleTopList("balance", `seasons.1.balance`).then((result) => {
+        topListStore.getSimpleTopList("balance", `seasons.2.balance`).then((result) => {
             setBalanceTopList(result)
         })
         topListStore.getSimpleTopList("playTime", `stats.playtime`).then((result) => {
             setPlayTimeTopList(result)
         })
-    }, [])
+    }, [seasonNumber])
 
     return (
         <NavbarLayout>
@@ -51,7 +54,7 @@ const StatsIndexPage = observer(() => {
                         Player and Land Stats
                     </h1>
                 </div>
-                <StatsUserSearchBar items={demoUserNames}/>
+                <StatsUserSearchBar items={autocompleteList}/>
             </div>
             <div className="hidden lg:block">
                 <Announcement
@@ -76,7 +79,7 @@ const StatsIndexPage = observer(() => {
                                 <TopListRow
                                     key={index}
                                     minecraftUser={user}
-                                    value={user.seasons["1"].level}
+                                    value={getLatestSeasonStats(user).level}
                                     place={index + 1}
                                 />
                             )}
@@ -90,7 +93,7 @@ const StatsIndexPage = observer(() => {
                                 <TopListRow
                                     key={index}
                                     minecraftUser={user}
-                                    value={user.seasons["1"].balance}
+                                    value={getLatestSeasonStats(user).balance}
                                     label="$"
                                     place={index + 1}
                                 />

@@ -32,23 +32,23 @@ class UserStore {
     }
 
     async getUUIDFromUserName(username): Promise<string> {
-        if (this.usernames) {
-            if (this.usernames[username]) {
-                return this.usernames[username]
-            }
-            throw new Error(`Could not find a uuid for ${username}`)
-        }
-
-        const usernames = await getUserNames();
-
-        runInAction(() => {
-            this.usernames = usernames
-        })
+        const usernames = await this.getAllUserNames()
 
         if (usernames[username]) {
             return usernames[username]
         }
         throw new Error(`Could not find a uuid for ${username}`)
+    }
+
+    async getAllUserNames(): Promise<Record<string, string>> {
+        if (this.usernames) {
+            return this.usernames
+        }
+        const usernames = await getUserNames();
+        runInAction(() => {
+            this.usernames = usernames
+        })
+        return usernames
     }
 }
 
