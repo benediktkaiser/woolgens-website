@@ -1,16 +1,13 @@
 import NavbarLayout from "../../layout/NavbarLayout";
 import {useRouter} from "next/router";
 import React, {useEffect, useState} from "react";
-import {observer} from "mobx-react-lite";
 import userStore from "../../stores/UserStore";
 import ProfileUserBox from "../../components/profile/ProfileUserBox";
 import ProfileToolBar from "../../components/profile/ProfileToolBar";
 import ProfileSkills from "../../components/profile/ProfileSkills";
 import ProfileGeneralStats from "../../components/profile/ProfileGeneralStats";
-import Announcement from "../../components/common/Announcement";
-import {FiBell} from "react-icons/fi";
 
-const ProfilePage = observer(() => {
+const ProfilePage = () => {
     const router = useRouter()
     const {username} = router.query
     const [selectedSeason, setSelectedSeason] = useState("0")
@@ -47,6 +44,6 @@ const ProfilePage = observer(() => {
             </section>
         </NavbarLayout>
     )
-})
+}
 
 export default ProfilePage

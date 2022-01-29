@@ -17,7 +17,7 @@ class LandStore {
         const land = await getLandByName(name)
 
         runInAction(() => {
-            this.lands[name] = undefined
+            this.lands[name] = land
         })
         return land
     }

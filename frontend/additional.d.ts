@@ -64,7 +64,8 @@ declare interface Land {
     members: Record<string, LandMember>
     invites: string[]
     roles: Record<string, LandRole>
-    chunks: Array<LandChunk>
+    chunks: LandChunk[]
+    orderedMembers?: LandMember[]
 }
 
 declare interface LandChunk {
@@ -73,15 +74,16 @@ declare interface LandChunk {
 }
 
 declare interface LandMember extends User {
-    role: LandRole | string,
+    role: string,
+    landRole: LandRole,
 }
 
 declare interface LandRole {
     name: string,
     color: string,
     priority: number,
-    defaultRole: boolean,
-    permissions: string[],
+    defaultRole?: boolean,
+    permissions?: string[],
 }
 
 declare interface LandBank {
