@@ -31,18 +31,18 @@ const ProfileUserBox: FC<ProfileUserBoxProps> = ({user, seasonNumber}) => {
                 <div className="hidden md:block absolute top-1/2 right-10 mt-1 -translate-y-1/2">
                     <SkillsBadge skill={highestSkill} />
                 </div>
-                <div className="flex absolute top-0 left-0 items-center px-8 pt-4 h-full">
+                <div className="flex absolute top-0 left-0 items-center px-8 pt-4 w-full h-full">
                     <div className="hidden lg:block">
                         <Bust uuid={user.minecraftUser.uuid} size={200} />
                     </div>
-                    <div>
+                    <div className="w-full">
                         <span className="text-md">
                             {SKILL_TITLES[highestSkill]}
                         </span>
-                        <h1 className="flex items-end text-5xl font-bold">
+                        <h1 className="flex items-end text-3xl sm:text-5xl font-bold">
                             {user.minecraftUser.name}
                         </h1>
-                        <div className="overflow-hidden relative mt-2 w-80 rounded-full bg-dark-light/50">
+                        <div className="overflow-hidden relative mt-2 w-full sm:w-80 rounded-full bg-dark-light/50">
                             <div className="absolute py-0.5 pl-4 w-full h-full text-sm leading-none text-gray-100 bg-green-500 rounded-l-full"
                                 style={{width: `${getLevelProgressPercentage(user.minecraftUser.seasons[seasonNumber].level, user.minecraftUser.seasons[seasonNumber].exp)}%`}} />
                             <p className="relative z-20 pt-1 pb-0.5 ml-2 leading-none">

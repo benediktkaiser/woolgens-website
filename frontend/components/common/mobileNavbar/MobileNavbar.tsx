@@ -13,7 +13,7 @@ const MobileNavbar: FC<MobileNavbarProps> = ({isOpen, toggleMobileNavbar}) => {
     return (
         <Transition
             show={isOpen}
-            enter="transition-opacity duration-75"
+            enter="transition-opacity duration-150"
             enterFrom="opacity-0"
             enterTo="opacity-100"
             leave="transition-opacity duration-150"

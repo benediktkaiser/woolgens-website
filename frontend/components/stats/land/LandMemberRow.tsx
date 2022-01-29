@@ -16,7 +16,7 @@ const LandMemberRow: FC<LandMemberRowProps> = ({member}) => {
                             <Avatar player={member.uuid} size={40}/>
                         </div>
                         <div className="ml-4">
-                            <h1 className="flex items-center mb-px text-2xl">
+                            <h1 className="flex items-center mb-px text-lg sm:text-2xl">
                                 {member.name}
                             </h1>
                         </div>
