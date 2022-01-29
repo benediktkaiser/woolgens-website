@@ -28,9 +28,10 @@ const ProfileUserBox: FC<ProfileUserBoxProps> = ({user, seasonNumber}) => {
             <div className="overflow-hidden relative h-52 rounded-lg">
                 <Image className="invisible lg:visible" src={background} alt="profile background" />
                 <div className="absolute top-0 w-full h-full bg-gradient-to-r to-accent-200/70 from-accent-500/90" />
-                <div className="hidden md:block absolute top-1/2 right-10 mt-1 -translate-y-1/2">
+                <div className="absolute top-1/2 right-1 md:right-10 mt-1 -translate-y-1/2">
                     <SkillsBadge skill={highestSkill} />
                 </div>
+                <div className="md:hidden absolute top-0 w-full h-full bg-gradient-to-r to-accent-200/70 from-accent-500/50" />
                 <div className="flex absolute top-0 left-0 items-center px-8 pt-4 w-full h-full">
                     <div className="hidden lg:block">
                         <Bust uuid={user.minecraftUser.uuid} size={200} />
