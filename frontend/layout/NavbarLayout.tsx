@@ -1,26 +1,29 @@
-import React, {FC} from "react";
+import React, {FC, useState} from "react";
 import Userbar from "../components/common/userbar/Userbar";
 import Header from "../components/common/header/Header"
 import Navbar from "../components/common/navbar/Navbar";
 import Footer from "../components/common/footer/Footer";
 import authStore from "../stores/AuthStore";
 import {observer} from "mobx-react-lite";
+import MobileNavbar from "../components/common/mobileNavbar/MobileNavbar";
 
 interface NavbarLayoutProps {
     children: React.ReactNode
 }
 
 const NavbarLayout: FC<NavbarLayoutProps> = observer(({children}) => {
+    const [mobileNavBarOpen, setMobileNavBarOpen] = useState(false)
 
     return (
-        <div className="min-h-screen text-gray-200 bg-dark-dark font-poppins">
+        <div className={`${mobileNavBarOpen ? "h-screen overflow-hidden": "min-h-screen"} text-gray-200 bg-dark-dark font-poppins`}>
             <Userbar webUser={authStore.webUser} />
             <Header />
-            <Navbar />
+            <Navbar toggleMobileNavbar={() => setMobileNavBarOpen(!mobileNavBarOpen)} />
             <main className="container mx-auto mt-5 min-h-[51.8vh]">
                 {children}
             </main>
             <Footer />
+            <MobileNavbar isOpen={mobileNavBarOpen} toggleMobileNavbar={() => setMobileNavBarOpen(!mobileNavBarOpen)} />
         </div>
     )
 })
