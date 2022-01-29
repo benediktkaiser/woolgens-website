@@ -1,4 +1,5 @@
 import {landAPI} from "./api";
+import {throwError} from "./error";
 
 export async function getAllLands(): Promise<Land[]> {
     try {
@@ -6,8 +7,8 @@ export async function getAllLands(): Promise<Land[]> {
         return allLands.data;
     }
     catch (error) {
-        console.error(error)
-        throw new Error('Issue retrieving lands.')
+        throwError(`Issue retrieving lands." - ${error}`)
+        return;
     }
 }
 
@@ -30,8 +31,8 @@ export async function getLandByName(name: string): Promise<Land> {
         };
     }
     catch (error) {
-        console.error(error)
-        throw new Error(`Issue retrieving land "${name}"`)
+        throwError(`Issue retrieving the land "${name}" - ${error}`)
+        return;
     }
 }
 

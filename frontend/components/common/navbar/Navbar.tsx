@@ -15,7 +15,7 @@ const Navbar = () => {
                         <RiMenu2Line size="2rem"/>
                     </li>
                     <NavbarLink title="Home" pathName={router ? router.pathname : ""} link="/" />
-                    <NavbarLink title="Forum" pathName={router ? router.pathname : ""} link="/forum" />
+                    <NavbarLink title="News" pathName={router ? router.pathname : ""} link="/changelogs" />
                     <NavbarLink title="Stats" pathName={router ? router.pathname : ""} link="/stats" />
                     <NavbarLink title="Vote" pathName={router ? router.pathname : ""} link="/vote" />
                 </ul>

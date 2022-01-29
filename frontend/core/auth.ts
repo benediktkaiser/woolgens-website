@@ -1,6 +1,6 @@
 import {authAPI} from "./api";
 
-export async function basicAuth(userName: string, password: string): Promise<{ token: string, user: WebUser }> {
+export async function basicAuth(userName: string, password: string): Promise<{ token: string, user: WebUser } | undefined> {
     try {
         const data = await authAPI.post('/login/basic', {
             userName,
@@ -10,12 +10,11 @@ export async function basicAuth(userName: string, password: string): Promise<{ t
         return data.data;
     }
     catch (error) {
-        console.error(error)
-        throw new Error(`Issue retrieving user "${userName}"`)
+        return undefined;
     }
 }
 
-export async function tokenAuth(token: string): Promise<WebUser> {
+export async function tokenAuth(token: string): Promise<WebUser | undefined> {
     try {
         const data = await authAPI.post('/login/token', {
             token
@@ -23,8 +22,7 @@ export async function tokenAuth(token: string): Promise<WebUser> {
         return data.data.user;
     }
     catch (error) {
-        console.error(error)
-        throw new Error(`Issue retrieving token "${token}"`)
+        return undefined;
     }
 }
 
