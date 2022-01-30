@@ -33,3 +33,8 @@ export const changeLogAPI = axios.create({
     baseURL: process.env.NEXT_PUBLIC_CHANGELOG_ENDPOINT,
     ...DEFAULT_API
 });
+
+export const discordAPI = axios.create({
+    baseURL: `https://discord.com/api/guilds/${process.env.NEXT_PUBLIC_DISCORD_SERVER_ID}`,
+    ...DEFAULT_API
+});

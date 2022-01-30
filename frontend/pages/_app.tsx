@@ -32,7 +32,7 @@ function App ({ Component, pageProps }) {
     } else {
       setLoading(false)
     }
-  }, [])
+    }, [])
 
   if (loading) {
     return (

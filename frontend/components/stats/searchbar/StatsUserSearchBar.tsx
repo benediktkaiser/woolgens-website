@@ -1,6 +1,11 @@
 import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 import { useRouter } from 'next/router'
 import {FC} from "react";
+import {observer} from "mobx-react-lite";
+import landStore from "../../../stores/LandStore";
+import Avatar from "../../common/Avatar";
+import Image from "next/image"
+import grassBlock from "../../../public/icons/grass.jpeg"
 
 const styles = {
     zIndex: 2,
@@ -8,7 +13,7 @@ const styles = {
     fontSize: "20px",
     fontFamily: "Poppins",
     borderRadius: "15px",
-    backgroundColor: "rgb(36 38 45)",
+    backgroundColor: "rgb(54,56,65)",
     hoverBackgroundColor: "rgb(43,45,53)",
     color: "#f6faff",
     iconColor: "#f6faff",
@@ -29,16 +34,30 @@ declare interface StatsUserSearchBarProps {
     items: Array<Item>
 }
 
-const formatResult = (item) => {
-    return (
-        <div key={item} className="flex items-center py-1 space-x-2 cursor-pointer">
-            <p>{item}</p>
-        </div>
-    );
-}
-
-const StatsUserSearchBar: FC<StatsUserSearchBarProps> = ({items}) => {
+const StatsUserSearchBar: FC<StatsUserSearchBarProps> = observer(({items}) => {
     const router = useRouter()
+
+    const formatResult = (item) => {
+        if (!!landStore.landNames[item]) {
+            return (
+                <div key={item} className="flex items-center py-1 space-x-3 w-full cursor-pointer">
+                    <Image src={grassBlock} className="rounded" height={35} width={35} alt="Land" />
+                    <p className="text-green-400">
+                        {item}
+                    </p>
+                </div>
+            )
+        }
+
+        return (
+            <div key={item} className="flex items-center py-1 space-x-3 w-full cursor-pointer">
+                <Avatar player={item} size={35} />
+                <p className="text-blue-400">
+                    {item}
+                </p>
+            </div>
+        );
+    }
 
     const handleOnSelect = (item: Item) => {
         if (item.type === "player") {
@@ -46,7 +65,7 @@ const StatsUserSearchBar: FC<StatsUserSearchBarProps> = ({items}) => {
                 return null;
             })
         } else if (item.type === "land") {
-            router.push(`/stats/land/${item.name}`).then(() => {
+            router.push(`/stats/lands/${item.name}`).then(() => {
                 return null;
             })
         }
@@ -65,7 +84,7 @@ const StatsUserSearchBar: FC<StatsUserSearchBarProps> = ({items}) => {
             />
         </div>
     )
-}
+})
 
 
 export default StatsUserSearchBar
