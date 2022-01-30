@@ -12,6 +12,18 @@ export async function getAllLands(): Promise<Land[]> {
     }
 }
 
+export async function getLandsSorted(sorted: string, pageIndex: number, pageSize: number): Promise<Land[]> {
+    try {
+        const data = await landAPI.get(`/lands?sorted=${sorted}&pageindex=${pageIndex}&pagesize=${pageSize}`)
+
+        return data.data
+    }
+    catch (error) {
+        throwError(`Issue retrieved lands sorted by "${sorted}" from page ${pageIndex} with ${pageSize} entries" - ${error}`)
+        return;
+    }
+}
+
 export async function getLandByName(name: string): Promise<Land> {
     try {
         const loweredName = name.toLowerCase();
