@@ -5,6 +5,8 @@ import background from "../../public/background/mine_day.png"
 import Bust from "../common/Bust";
 import SkillsBadge from "./skills/SkillsBadge";
 import {getHighestSkill, getLevelProgressPercentage, SKILL_TITLES} from "../../core/skills";
+import informationStore from "../../stores/InformationStore";
+import OnlinePing from "./OnlinePing";
 
 declare interface ProfileUserBoxProps {
     user: FullUser
@@ -40,8 +42,11 @@ const ProfileUserBox: FC<ProfileUserBoxProps> = ({user, seasonNumber}) => {
                         <span className="text-md">
                             {SKILL_TITLES[highestSkill]}
                         </span>
-                        <h1 className="flex items-end text-3xl sm:text-5xl font-bold">
+                        <h1 className="flex items-start text-3xl sm:text-5xl font-bold">
                             {user.minecraftUser.name}
+                            {informationStore.isUserOnline(user.minecraftUser.name) && (
+                                <OnlinePing />
+                            )}
                         </h1>
                         <div className="overflow-hidden relative mt-2 w-full sm:w-80 rounded-full bg-dark-light/50">
                             <div className="absolute py-0.5 pl-4 w-full h-full text-sm leading-none text-gray-100 bg-green-500 rounded-l-full"

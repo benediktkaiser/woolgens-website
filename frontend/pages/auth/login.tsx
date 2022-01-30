@@ -45,7 +45,7 @@ const RegisterPage = observer(() => {
     return (
         <NavbarLayout>
             <div className="mx-auto max-w-lg">
-                <CardWithImageHeader top={<div className="p-4 w-full h-full text-3xl font-bold text-center bg-gradient-to-l from-accent to-accent-400">Login</div>}>
+                <CardWithImageHeader top={<div className="p-4 w-full h-full text-3xl font-bold text-center bg-gradient-to-l from-accent-600 to-accent-500 rounded-t-lg">Login</div>}>
                     <div className="flex flex-col gap-5 my-4">
                         <BaseInputWithLabel
                             label="Username"

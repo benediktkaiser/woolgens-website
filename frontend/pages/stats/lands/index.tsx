@@ -1,17 +1,17 @@
 import {observer} from "mobx-react-lite";
-import NavbarLayout from "../../layout/NavbarLayout";
+import NavbarLayout from "../../../layout/NavbarLayout";
 import React, {useEffect, useState} from "react";
-import StatsUserSearchBar from "../../components/stats/searchbar/StatsUserSearchBar";
-import userStore from "../../stores/UserStore";
-import landStore from "../../stores/LandStore";
-import UserStatsContainer from "../../components/stats/UserStatsContainer";
-import Announcement from "../../components/common/Announcement";
-import {FiUser} from "react-icons/fi";
-import {BaseButton} from "../../components/common/BaseButton";
+import StatsUserSearchBar from "../../../components/stats/searchbar/StatsUserSearchBar";
+import userStore from "../../../stores/UserStore";
+import landStore from "../../../stores/LandStore";
+import Announcement from "../../../components/common/Announcement";
+import {FiBox} from "react-icons/fi";
+import {BaseButton} from "../../../components/common/BaseButton";
 import {AiOutlineArrowRight} from "react-icons/ai";
+import LandStatsContainer from "../../../components/stats/LandStatsContainer";
 import Link from "next/link"
 
-const StatsIndexPage = observer(() => {
+const LandsIndexPage = observer(() => {
     const [autocompleteList, setAutocompleteList] = useState(undefined)
     const seasonNumber = process.env.NEXT_PUBLIC_CURRENT_SEASON || "1"
 
@@ -43,25 +43,25 @@ const StatsIndexPage = observer(() => {
             <div>
                 <div className="hidden lg:block">
                     <Announcement
-                        icon={<FiUser/>}
-                        text="You are currently viewing the player Top Lists! Check out our land Top Lists!"
+                        icon={<FiBox/>}
+                        text="You are currently viewing the lands Top Lists! Check out our player Top Lists!"
                         rightComponent={
-                            <Link href="/stats/lands" passHref={true}>
-                                <BaseButton type="primary">
+                            <Link href="/stats" passHref={true}>
+                                <BaseButton type="success">
                                     <span className="flex items-center">
-                                        To the Land Top Lists
+                                        To the Player Top list
                                         <AiOutlineArrowRight className="ml-2"/>
                                     </span>
                                 </BaseButton>
                             </Link>
                         }
-                        iconStyles="bg-blue-500 text-white"
+                        iconStyles="bg-green-500 text-white"
                     />
                 </div>
-                <UserStatsContainer seasonNumber={seasonNumber}/>
+                <LandStatsContainer/>
             </div>
         </NavbarLayout>
     )
 })
 
-export default StatsIndexPage
+export default LandsIndexPage

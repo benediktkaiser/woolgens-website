@@ -1,7 +1,6 @@
 import {Menu, Transition} from '@headlessui/react'
 import React, {FC, Fragment} from 'react'
 import {BsChevronDown} from "react-icons/bs"
-import {BaseButton} from "../BaseButton";
 
 declare interface DropdownProps extends React.HTMLAttributes<HTMLButtonElement>{
     children?: React.ReactNode,
@@ -13,12 +12,12 @@ const Dropdown: FC<DropdownProps> = ({title, children, ...HTMLElements}) => {
         <Menu as="div" className="inline-block relative text-left">
             <div>
                 <Menu.Button {...HTMLElements}>
-                    <BaseButton type="dark-active">
-                        <div className="inline-flex items-center w-full font-medium">
+                    <div className="py-3 px-5 text-white bg-gray-700 disabled:hover:bg-dark-light rounded-lg focus:ring-2 focus:ring-dark-light focus:ring-opacity-75 shadow-md cursor-pointer focus:outline-none">
+                        <div className="inline-flex items-center w-full text-lg">
                             <span>{title}</span>
                             <BsChevronDown className="ml-1.5" />
                         </div>
-                    </BaseButton>
+                    </div>
                 </Menu.Button>
             </div>
             <Transition

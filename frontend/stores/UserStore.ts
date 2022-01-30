@@ -41,16 +41,22 @@ class UserStore {
     }
 
     async getAllUserNames() {
-        if (!this.usernames) {
-            const usernames = await getUserNames();
-            runInAction(() => {
-                this.usernames = usernames
-            })
+        if (this.usernames) {
+            return this.usernames
         }
+        const usernames = await getUserNames();
+        runInAction(() => {
+            this.usernames = usernames
+        })
+        return usernames
+    }
+
+    async getAllFormattedUserNames() {
+        const usernames = await this.getAllUserNames()
 
         const results = []
         let num = 0
-        Object.keys(this.usernames).map((result) => {
+        Object.keys(usernames).map((result) => {
             results.push({
                 id: num,
                 name: result,

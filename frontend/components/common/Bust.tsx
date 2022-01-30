@@ -9,17 +9,17 @@ declare interface BustProps {
 
 const Bust: FC<BustProps> = ({uuid, size, facing= "right"}) => {
     if (facing === "forward") {
-        return <Image height={size} width={size} className="rounded" src={`https://visage.surgeplay.com/front/${size}/${uuid}`} alt="" />
+        return <Image height={size} width={size} className="rounded png-shadow" src={`https://visage.surgeplay.com/front/${size}/${uuid}`} alt="" />
     }
     if (facing === "left") {
         return (
             <div style={{transform: "scaleX(-1)"}} >
-                <Image height={size} width={size} className="rounded" src={`https://visage.surgeplay.com/bust/${size}/${uuid}`} alt="" />
+                <Image height={size} width={size} className="rounded png-shadow" src={`https://visage.surgeplay.com/bust/${size}/${uuid}`} alt="" />
             </div>
         )
     }
 
-    return <Image height={size} width={size} className="rounded" src={`https://visage.surgeplay.com/bust/${size}/${uuid}`} alt="" />
+    return <Image height={size} width={size} className="rounded png-shadow" src={`https://visage.surgeplay.com/bust/${size}/${uuid}`} alt="" />
 }
 
 export default Bust
