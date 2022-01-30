@@ -12,6 +12,7 @@ import TopListRow from "../../components/stats/TopListRow";
 import LoadingTopList from "../../components/stats/LoadingTopList";
 import {getLatestSeasonStats} from "../../core/minecraftUser";
 import userStore from "../../stores/UserStore";
+import landStore from "../../stores/LandStore";
 
 const StatsIndexPage = observer(() => {
     const [levelTopList, setLevelTopList] = useState(undefined)
@@ -22,17 +23,16 @@ const StatsIndexPage = observer(() => {
 
     useEffect(() => {
         userStore.getAllUserNames().then((result) => {
-            const results = []
-            let num = 0
-            Object.keys(result).map((result) => {
-                results.push({
-                    id: num,
-                    name: result,
-                    type: "player"
-                })
-                num++
+            let list = [
+                ...result
+            ];
+            landStore.getAllLandNames().then(result => {
+                list = [
+                    ...list,
+                    ...result
+                ]
+                setAutocompleteList(list)
             })
-            setAutocompleteList(results)
         })
 
         topListStore.getSimpleTopList("level", `seasons.${seasonNumber}.level`).then((result) => {

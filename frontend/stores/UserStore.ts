@@ -40,15 +40,25 @@ class UserStore {
         throw new Error(`Could not find a uuid for ${username}`)
     }
 
-    async getAllUserNames(): Promise<Record<string, string>> {
-        if (this.usernames) {
-            return this.usernames
+    async getAllUserNames() {
+        if (!this.usernames) {
+            const usernames = await getUserNames();
+            runInAction(() => {
+                this.usernames = usernames
+            })
         }
-        const usernames = await getUserNames();
-        runInAction(() => {
-            this.usernames = usernames
+
+        const results = []
+        let num = 0
+        Object.keys(this.usernames).map((result) => {
+            results.push({
+                id: num,
+                name: result,
+                type: "player"
+            })
+            num++
         })
-        return usernames
+        return results
     }
 }
 

@@ -36,6 +36,24 @@ export async function getLandByName(name: string): Promise<Land> {
     }
 }
 
+export async function getLandNames(): Promise<Record<string, string>> {
+    try {
+        const data = await landAPI.get(`/lands?small=true`)
+
+        const map = {}
+
+        data.data.forEach((result) => {
+            map[result.name] = result.name
+        })
+
+        return map
+    }
+    catch (error) {
+        throwError(`Issue retrieved all lands" - ${error}`)
+        return;
+    }
+}
+
 function getSortedUserList(land: Land): LandMember[] {
     const landRoles = land.roles
     const members: LandMember[] = []

@@ -1,9 +1,10 @@
 import {makeAutoObservable, runInAction} from "mobx";
-import {getLandByName} from "../core/land";
+import {getLandByName, getLandNames} from "../core/land";
 
 class LandStore {
 
     lands: Record<string, Land> = {}
+    landNames: Record<string, string> = undefined
 
     constructor() {
         makeAutoObservable(this, {}, {autoBind: true});
@@ -20,6 +21,25 @@ class LandStore {
             this.lands[name] = land
         })
         return land
+    }
+
+    async getAllLandNames() {
+        if (!this.landNames) {
+            const landNames = await getLandNames();
+            runInAction(() => {
+                this.landNames = landNames
+            })
+        }
+
+        const results = []
+        Object.keys(this.landNames).map((name, index) => {
+            results.push({
+                id: -index,
+                name: name,
+                type: "land"
+            })
+        })
+        return results
     }
 }
 
