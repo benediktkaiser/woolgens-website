@@ -6,6 +6,7 @@ import ProfileUserBox from "../../components/profile/ProfileUserBox";
 import ProfileToolBar from "../../components/profile/ProfileToolBar";
 import ProfileSkills from "../../components/profile/ProfileSkills";
 import ProfileGeneralStats from "../../components/profile/ProfileGeneralStats";
+import ProfilePostsSection from "../../components/profile/posts/ProfilePostsSection";
 
 const ProfilePage = () => {
     const router = useRouter()
@@ -35,6 +36,7 @@ const ProfilePage = () => {
                     <section className="grid grid-cols-1 lg:grid-cols-3 2xl:grid-cols-4 lg:gap-x-4 gap-y-4">
                         <main className="flex flex-col col-span-3 gap-4">
                             <ProfileSkills selectedSeason={selectedSeason} user={user}/>
+                            <ProfilePostsSection user={user} />
                         </main>
                         <aside>
                             <ProfileGeneralStats selectedSeason={selectedSeason} user={user}/>
