@@ -22,7 +22,6 @@ If you want to learn more about NextJS, please visit its website: https://nextjs
 ### Server Data
 ```
 - NEXT_PUBLIC_DISCORD_SERVER_ID
-- NEXT_PUBLIC_DISCORD_INVITE_LINK
 - NEXT_PUBLIC_CURRENT_SEASON
 - NEXT_PUBLIC_MINECRAFT_IP
 ```

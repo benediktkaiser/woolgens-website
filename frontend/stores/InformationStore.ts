@@ -4,6 +4,7 @@ import {getDiscordWidget, getMinecraftServerData} from "../core/information";
 class InformationStore {
 
     onlineDiscord = 0
+    discordInviteLink = ""
     onlineMinecraft = 0
     onlineUsers: Record<string, string> = {}
 
@@ -20,6 +21,7 @@ class InformationStore {
 
         runInAction(() => {
             this.onlineDiscord = discordWidget.presence_count
+            this.discordInviteLink = discordWidget.instant_invite
             this.onlineMinecraft = minecraftData ? minecraftData.data.players.online : 0
             this.onlineUsers = minecraftData ? minecraftData.data.players.uuid : {}
         })

@@ -1,8 +1,9 @@
 import React, {FC} from "react";
-import {RiHomeHeartLine, RiMedalLine, RiSettings2Line} from "react-icons/ri";
+import {RiSettings2Line, RiProfileLine, RiNotification3Line} from "react-icons/ri";
 import DropdownItem from "../../DropdownItem";
 import {Transition} from "@headlessui/react"
 import {MdArrowBackIos} from "react-icons/md"
+import Link from "next/link"
 
 declare interface UserDropdownStartPageProps {
     selectedPage: string,
@@ -13,19 +14,27 @@ const UserDropdownAccountPage: FC<UserDropdownStartPageProps> = ({selectedPage, 
     return (
         <Transition
             show={selectedPage === "account"}
-            enter="transition-opacity duration-200"
+            enter="transition-opacity duration-200 delay-300"
             enterFrom="opacity-0"
             enterTo="opacity-100"
-            leave="transform transition duration-300"
-            leaveFrom="translate-x-0 opacity-100"
-            leaveTo="-translate-x-20 opacity-0">
+            leave=""
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+            className="w-full shrink-0"
+        >
 
-            <DropdownItem onClick={() => changePage("start")} title="Back" icon={<MdArrowBackIos className="opacity-50" size="1.3rem"/>} withIconBackground={false}/>
+            <DropdownItem onClick={() => changePage("start")} title="Back" icon={<MdArrowBackIos className="opacity-50" size="1rem"/>} />
             <hr className="my-2 border-gray-700"/>
 
-            <DropdownItem title="Land" icon={<RiHomeHeartLine size="1.5rem"/>}/>
-            <DropdownItem title="Stats" icon={<RiMedalLine size="1.5rem"/>} />
-            <DropdownItem title="Settings" icon={<RiSettings2Line size="1.5rem"/>} />
+            <Link href="/settings" passHref={true}>
+                <DropdownItem title="Settings" icon={<RiSettings2Line size="1.5rem"/>} />
+            </Link>
+            <Link href="/settings/preferences" passHref={true}>
+                <DropdownItem title="Preferences" icon={<RiProfileLine size="1.5rem"/>} />
+            </Link>
+            <Link href="/settings/notifications" passHref={true}>
+                <DropdownItem title="Notifications" icon={<RiNotification3Line size="1.5rem"/>} />
+            </Link>
         </Transition>
     )
 }

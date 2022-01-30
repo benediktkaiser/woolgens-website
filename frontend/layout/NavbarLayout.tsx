@@ -17,8 +17,12 @@ const NavbarLayout: FC<NavbarLayoutProps> = observer(({children}) => {
 
     return (
         <div className={`${mobileNavBarOpen ? "h-screen overflow-hidden": "min-h-screen"} text-gray-200 bg-dark-dark font-poppins`}>
-            <Userbar webUser={authStore.webUser} />
-            <Header onlineDiscord={informationStore.onlineDiscord} onlineMinecraft={informationStore.onlineMinecraft} />
+            <Userbar webUser={authStore.webUser} minecraftUser={authStore.minecraftUser} />
+            <Header
+                onlineDiscord={informationStore.onlineDiscord}
+                onlineMinecraft={informationStore.onlineMinecraft}
+                discordInviteLink={informationStore.discordInviteLink}
+            />
             <Navbar toggleMobileNavbar={() => setMobileNavBarOpen(!mobileNavBarOpen)} />
             <main className="container mx-auto mt-5 min-h-[51.8vh]">
                 {children}
