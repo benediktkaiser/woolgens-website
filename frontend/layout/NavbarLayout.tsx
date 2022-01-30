@@ -6,6 +6,7 @@ import Footer from "../components/common/footer/Footer";
 import authStore from "../stores/AuthStore";
 import {observer} from "mobx-react-lite";
 import MobileNavbar from "../components/common/mobileNavbar/MobileNavbar";
+import informationStore from "../stores/InformationStore";
 
 interface NavbarLayoutProps {
     children: React.ReactNode
@@ -17,7 +18,7 @@ const NavbarLayout: FC<NavbarLayoutProps> = observer(({children}) => {
     return (
         <div className={`${mobileNavBarOpen ? "h-screen overflow-hidden": "min-h-screen"} text-gray-200 bg-dark-dark font-poppins`}>
             <Userbar webUser={authStore.webUser} />
-            <Header />
+            <Header onlineDiscord={informationStore.onlineDiscord} onlineMinecraft={informationStore.onlineMinecraft} />
             <Navbar toggleMobileNavbar={() => setMobileNavBarOpen(!mobileNavBarOpen)} />
             <main className="container mx-auto mt-5 min-h-[51.8vh]">
                 {children}
