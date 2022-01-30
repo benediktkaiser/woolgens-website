@@ -5,6 +5,7 @@ class InformationStore {
 
     onlineDiscord = 0
     onlineMinecraft = 0
+    onlineUsers: Record<string, string> = {}
 
     constructor() {
         makeAutoObservable(this)
@@ -20,7 +21,12 @@ class InformationStore {
         runInAction(() => {
             this.onlineDiscord = discordWidget.presence_count
             this.onlineMinecraft = minecraftData ? minecraftData.data.players.online : 0
+            this.onlineUsers = minecraftData ? minecraftData.data.players.uuid : {}
         })
+    }
+
+    isUserOnline(username: string): boolean {
+        return !!this.onlineUsers[username]
     }
 }
 

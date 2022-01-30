@@ -22,7 +22,7 @@ const StatsIndexPage = observer(() => {
     const seasonNumber = process.env.NEXT_PUBLIC_CURRENT_SEASON || "1"
 
     useEffect(() => {
-        userStore.getAllUserNames().then((result) => {
+        userStore.getAllFormattedUserNames().then((result) => {
             let list = [
                 ...result
             ];
