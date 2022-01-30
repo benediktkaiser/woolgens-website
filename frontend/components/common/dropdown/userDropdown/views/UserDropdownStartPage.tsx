@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import {RiUser3Line, RiLifebuoyLine, RiLogoutBoxRLine} from "react-icons/ri"
+import {RiUser3Line, RiLogoutBoxRLine, RiHomeHeartLine} from "react-icons/ri"
 import Avatar from "../../../Avatar";
 import DropdownItem from "../../DropdownItem";
 import {Transition} from "@headlessui/react"
@@ -16,12 +16,14 @@ const UserDropdownStartPage: FC<UserDropdownStartPageProps> = ({ selectedPage, c
     return (
         <Transition
             show={selectedPage === "start"}
-            enter="transition-opacity duration-200"
+            enter="transition-opacity duration-500"
             enterFrom="opacity-0"
             enterTo="opacity-100"
             leave="transform transition duration-300"
             leaveFrom="translate-x-0 opacity-100"
-            leaveTo="-translate-x-20 opacity-0">
+            leaveTo="-translate-x-20 opacity-0"
+            className="w-full shrink-0"
+        >
 
             <Link href={`/profile/${webUser.name}`} passHref={true}>
                 <a className="flex items-center p-3 mb-2 hover:bg-dark rounded-lg cursor-pointer">
@@ -39,9 +41,9 @@ const UserDropdownStartPage: FC<UserDropdownStartPageProps> = ({ selectedPage, c
 
             <hr className="my-2 border-gray-700"/>
 
-            <DropdownItem onClick={() => changePage("account")} title="Account" icon={<RiUser3Line size="1.5rem" />} withArrow={true}/>
-            <DropdownItem onClick={() => changePage("support")} title="Support" icon={<RiLifebuoyLine size="1.5rem" />} withArrow={true}/>
-            <DropdownItem onClick={() => authStore.logout()} title="Logout" icon={<RiLogoutBoxRLine size="1.5rem" />}/>
+            <DropdownItem onClick={() => changePage("account")} title="Account" icon={<RiUser3Line size="1.3rem" />} withArrow={true}/>
+            <DropdownItem onClick={() => changePage("land")} title="Land" icon={<RiHomeHeartLine size="1.3rem" />} withArrow={true}/>
+            <DropdownItem onClick={() => authStore.logout()} title="Logout" icon={<RiLogoutBoxRLine size="1.3rem" />}/>
         </Transition>
     )
 }

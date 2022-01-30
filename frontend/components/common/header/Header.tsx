@@ -11,9 +11,10 @@ const copyIP = () => {
 declare interface HeaderProps {
     onlineDiscord: number,
     onlineMinecraft: number
+    discordInviteLink: string
 }
 
-const Header: FC<HeaderProps> = ({onlineDiscord, onlineMinecraft}) => {
+const Header: FC<HeaderProps> = ({onlineDiscord, onlineMinecraft, discordInviteLink}) => {
     return (
         <header className="relative bg-center bg-cover h-[285px]" style={{backgroundImage: "url('/background/mine_day.png')"}}>
             <div className="absolute top-0 w-full h-full bg-gradient-to-b from-dark/80 to-accent/50" />
@@ -29,7 +30,7 @@ const Header: FC<HeaderProps> = ({onlineDiscord, onlineMinecraft}) => {
                 <div className="mx-auto">
                     <Logo animated={true} />
                 </div>
-                <a href={process.env.NEXT_PUBLIC_DISCORD_INVITE_LINK} target="_blank" rel="noreferrer">
+                <a href={discordInviteLink} target="_blank" rel="noreferrer">
                     <HeaderSideBox
                         title="WoolGens Discord"
                         subtitle="Click to join!"

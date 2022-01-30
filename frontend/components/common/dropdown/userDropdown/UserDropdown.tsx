@@ -4,20 +4,18 @@ import {BsChevronDown} from "react-icons/bs";
 import Avatar from "../../../common/Avatar";
 import UserDropdownStartPage from "./views/UserDropdownStartPage";
 import UserDropdownAccountPage from "./views/UserDropdownAccountPage";
-import UserDropdownSupportPage from "./views/UserDropdownSupportPage";
+import UserDropdownLandPage from "./views/UserDropdownLandPage";
 
 declare interface UserDropdownProps {
     webUser: WebUser;
+    minecraftUser: MinecraftUser
 }
 
-const UserDropdown: FC<UserDropdownProps> = ({webUser}) => {
+const UserDropdown: FC<UserDropdownProps> = ({webUser, minecraftUser}) => {
     const [page, setPage] = useState("start")
 
     const changePage = (page) => {
-        setPage("loading")
-        setTimeout(() => {
-            setPage(page)
-        }, 310)
+        setPage(page)
     }
 
     return (
@@ -38,10 +36,10 @@ const UserDropdown: FC<UserDropdownProps> = ({webUser}) => {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
             >
-                <Menu.Items className="overflow-hidden absolute right-0 z-10 p-3 mt-3 w-80 bg-dark-light rounded-md ring-1 ring-black ring-opacity-5 shadow-lg origin-top-right focus:outline-none">
+                <Menu.Items className="flex overflow-hidden absolute right-0 z-10 p-3 mt-3 bg-dark-light rounded-md ring-1 ring-black ring-opacity-5 shadow-lg origin-top-right focus:outline-none w-[300px]">
                     <UserDropdownStartPage selectedPage={page} changePage={changePage}  webUser={webUser}/>
                     <UserDropdownAccountPage selectedPage={page} changePage={changePage} />
-                    <UserDropdownSupportPage selectedPage={page} changePage={changePage} />
+                    <UserDropdownLandPage selectedPage={page} changePage={changePage} minecraftUser={minecraftUser} />
                 </Menu.Items>
             </Transition>
         </Menu>

@@ -16,7 +16,7 @@ const LandTopBox: FC<LandTopBoxProps> = ({land, place}) => {
 
     return (
         <Link href={`/stats/lands/${land.id}`} passHref={true}>
-            <a className={`${place === 1 && styles.Place1} ${place === 2 && styles.Place2} ${place === 3 && styles.Place3} group cursor-pointer overflow-hidden px-5 pt-5 h-44 bg-dark-light rounded-2xl hover:scale-105 transition duration-150`}>
+            <a className={`${place === 1 && styles.Place1} ${place === 2 && styles.Place2} ${place === 3 && styles.Place3} group cursor-pointer overflow-hidden px-5 pt-5 h-44 bg-dark-light/50 rounded-2xl hover:scale-105 transition duration-150`}>
                 <div className="flex justify-between items-start">
                     <div className="flex items-center">
                         <div className={`${styles.glow} transition duration-150 mt-1.5`}>

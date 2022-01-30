@@ -25,7 +25,7 @@ const NotificationDropdown: FC<NotificationDropDownProps> = ({ notifications }) 
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
             >
-                <Menu.Items className="overflow-hidden absolute right-0 z-10 p-3 mt-3 w-80 bg-dark rounded-md ring-1 ring-black ring-opacity-5 shadow-lg origin-top-right focus:outline-none">
+                <Menu.Items className="overflow-hidden absolute right-0 z-10 p-3 mt-3 w-80 bg-dark-light rounded-md ring-1 ring-black ring-opacity-5 shadow-lg origin-top-right focus:outline-none">
                     {notifications.length > 0 ? (
                         <div className="overflow-auto max-h-[300px]">
                             {notifications.map((notification, index) =>
