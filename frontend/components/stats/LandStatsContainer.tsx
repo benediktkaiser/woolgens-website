@@ -20,7 +20,7 @@ const LandStatsContainer = () => {
 
     return (
         <div className="my-4">
-            <div className="grid grid-cols-3 gap-6 my-4">
+            <div className="hidden xl:grid grid-cols-3 gap-6 my-4">
                 <LandTopBox land={topLands[0]} place={1} />
                 <LandTopBox land={topLands[1]} place={2} />
                 <LandTopBox land={topLands[3]} place={3} />

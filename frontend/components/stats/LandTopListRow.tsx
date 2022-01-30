@@ -14,7 +14,7 @@ const LandTopListRow: FC<LandTopListRowProps> = ({land, place}) => {
             <Link href={`/stats/lands/${land.id}`} passHref={true}>
                 <a className="flex justify-between items-center p-3 hover:bg-dark rounded-xl cursor-pointer">
                     <div className="flex overflow-hidden items-center max-w-[65%]">
-                        <div className="mr-3 text-2xl font-semibold text-gray-400">
+                        <div className="hidden md:block mr-3 text-2xl font-semibold text-gray-400">
                             # {place}
                         </div>
                         <div className="flex-none">
