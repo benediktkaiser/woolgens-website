@@ -22,8 +22,8 @@ class InformationStore {
         runInAction(() => {
             this.onlineDiscord = discordWidget.presence_count
             this.discordInviteLink = discordWidget.instant_invite
-            this.onlineMinecraft = minecraftData ? minecraftData.data.players.online : 0
-            this.onlineUsers = minecraftData ? minecraftData.data.players.uuid : {}
+            this.onlineMinecraft = minecraftData.data.players.online || 0
+            this.onlineUsers = minecraftData.data.players.uuid || {}
         })
     }
 
