@@ -12,7 +12,7 @@ const NewsContainer: FC<NewsContainerProps> = ({changelog}) => {
 
     return (
         <div className="group relative w-full transition ease-in-out hover:scale-101">
-            <div className="absolute top-8 left-0 z-0 h-full transition ease-in-out group-hover:-translate-x-full">
+            <div className="hidden xl:block absolute top-8 left-0 z-0 h-full transition ease-in-out group-hover:-translate-x-full">
                 <div
                     className="py-4 pr-1 pl-2 leading-none text-center bg-red-600 rounded-l-lg border-b-4 border-red-800">
                     <h1 className="text-2xl font-bold">

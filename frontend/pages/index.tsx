@@ -16,7 +16,7 @@ const IndexPage = observer(() => {
 
     return (
         <NavbarLayout>
-            <section className="grid grid-cols-4 gap-4 mt-5">
+            <section className="flex xl:grid flex-col grid-cols-3 xl:grid-cols-4 gap-4 mt-5">
                 <main className="flex flex-col col-span-3 gap-4">
                     {changeLogs ? 
                         changeLogs.map((changelog, index) => <NewsContainer key={index} changelog={changelog} />): (
