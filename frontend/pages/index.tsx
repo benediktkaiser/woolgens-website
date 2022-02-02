@@ -10,7 +10,7 @@ const IndexPage = observer(() => {
 
     useEffect(() => {
         changeLogStore.getChangeLogs().then(result => {
-            setChangeLogs(result.reverse())
+            setChangeLogs(result)
         })
     }, [])
 
@@ -18,11 +18,11 @@ const IndexPage = observer(() => {
         <NavbarLayout>
             <section className="flex xl:grid flex-col grid-cols-3 xl:grid-cols-4 gap-4 mt-5">
                 <main className="flex flex-col col-span-3 gap-4">
-                    {changeLogs ? 
-                        changeLogs.map((changelog, index) => <NewsContainer key={index} changelog={changelog} />): (
+                    {changeLogs ?
+                        changeLogs.map((changelog, index) => <NewsContainer key={index} changelog={changelog}/>) : (
                             <div className="flex flex-col gap-4">
-                                <div className="bg-dark-light rounded-lg animate-pulse h-[200px]" />
-                                <div className="bg-dark-light rounded-lg animate-pulse h-[200px]" />
+                                <div className="bg-dark-light rounded-lg animate-pulse h-[200px]"/>
+                                <div className="bg-dark-light rounded-lg animate-pulse h-[200px]"/>
                             </div>
                         )}
                 </main>

@@ -1,11 +1,13 @@
+![Screenshot of the main page](./screenshot.png)
+
 # Woolgens Websites
 
 The is a "mono-repo" containing all website from `Woolgens.net`. 
 
-- [ ] Homepage
+- [X] Homepage
 - [ ] Store
 - [ ] Forum
-- [ ] Stats
+- [X] Stats
 - [ ] Staff
 
 You can find the different pages under `/frontend/pages`. Please make Pull requests for all features, as without it we will easily enter merge hell! Thanks :D

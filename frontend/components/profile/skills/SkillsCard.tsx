@@ -50,7 +50,7 @@ const SkillsCard: FC<SkillsCardProps> = ({skill, level}) => {
                 {title}
             </h1>
             <h2 className="text-sm">
-                Level {level}
+                Level {level ? level : 1}
             </h2>
         </div>
     )

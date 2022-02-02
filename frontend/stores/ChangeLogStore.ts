@@ -16,9 +16,9 @@ class ChangeLogStore {
 
         const changelogs = await getChangeLogs()
         runInAction(() => {
-            this.changeLogs = changelogs
+            this.changeLogs = changelogs.reverse()
         })
-        return changelogs
+        return this.changeLogs
     }
 }
 
