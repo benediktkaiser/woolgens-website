@@ -17,15 +17,9 @@ const StatsIndexPage = observer(() => {
 
     useEffect(() => {
         userStore.getAllFormattedUserNames().then((result) => {
-            let list = [
-                ...result
-            ];
+            const list = [...result];
             landStore.getAllLandNames().then(result => {
-                list = [
-                    ...list,
-                    ...result
-                ]
-                setAutocompleteList(list)
+                setAutocompleteList([...list, ...result])
             })
         })
     }, [seasonNumber])
