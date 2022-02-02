@@ -7,7 +7,7 @@ declare interface InitialUser {
     name: string,
 }
 
-declare interface User extends InitialUser{
+declare interface User extends InitialUser {
     webUser?: WebUser,
     minecraftUser: MinecraftUser
 }
