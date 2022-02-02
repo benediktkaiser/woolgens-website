@@ -3,7 +3,7 @@ import CardWithHeader from "../common/cards/CardWithHeader";
 import {FC} from "react";
 
 declare interface ProfileGeneralStatsProps {
-    user?: FullUser
+    user?: User
     selectedSeason: string
 }
 

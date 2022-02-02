@@ -2,7 +2,7 @@ import SkillsCard from "./skills/SkillsCard";
 import {FC} from "react";
 
 declare interface SkillsCardProps {
-    user?: FullUser
+    user?: User
     selectedSeason: string,
 }
 

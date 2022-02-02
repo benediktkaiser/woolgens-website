@@ -9,7 +9,7 @@ import informationStore from "../../stores/InformationStore";
 import OnlinePing from "./OnlinePing";
 
 declare interface ProfileUserBoxProps {
-    user: FullUser
+    user: User
     seasonNumber: string
 }
 
