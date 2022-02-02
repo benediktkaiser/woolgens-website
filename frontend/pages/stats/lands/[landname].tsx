@@ -1,5 +1,5 @@
 import NavbarLayout from "../../../layout/NavbarLayout";
-import {useEffect, useState} from "react";
+import {FC} from "react";
 import landStore from "../../../stores/LandStore";
 import {useRouter} from "next/router";
 import LandHeaderBar from "../../../components/stats/land/LandHeaderBar";
@@ -8,23 +8,21 @@ import LandGeneralStats from "../../../components/stats/land/LandGeneralStats";
 import BreadCrumbs from "../../../components/common/BreadCrumbs";
 import BasicCard from "../../../components/common/cards/BasicCard";
 
-const LandProfile = () => {
+interface LandProfileProps {
+    land: Land
+}
+
+const LandProfile: FC<LandProfileProps> = ({land}) => {
     const router = useRouter()
-    const {landname} = router.query
 
-    const [land, setLand] = useState<Land | undefined>(undefined)
-
-    useEffect(() => {
-        if (landname) {
-            landStore.getLand(landname).then((result: Land) => {
-                setLand(result)
-            })
-        }
-    }, [landname])
-
+    const seo = {
+        title: `${land.name}`,
+        description: "Welcome to the WoolGens homepage! Here you can find stats, news and communicate with other community members!",
+        imageSRC: `https://cravatar.eu/helmavatar/${land.owner.name}/128`
+    }
 
     return (
-        <NavbarLayout>
+        <NavbarLayout seo={seo}>
             <BasicCard>
                 <BreadCrumbs pathName={router ? router.asPath : ""}/>
             </BasicCard>
@@ -39,6 +37,13 @@ const LandProfile = () => {
             </div>
         </NavbarLayout>
     )
+}
+
+// This gets called on every request
+export async function getServerSideProps(context) {
+    const {landname} = context.query
+    const land = await landStore.getLand(landname);
+    return {props: {land}}
 }
 
 export default LandProfile

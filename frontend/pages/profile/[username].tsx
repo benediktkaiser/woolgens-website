@@ -23,8 +23,14 @@ const ProfilePage = () => {
         }
     }, [username])
 
+    const seo = {
+        title: `${username}`,
+        description: "Welcome to the WoolGens homepage! Here you can find stats, news and communicate with other community members!",
+        imageSRC: `https://cravatar.eu/helmavatar/${username}/128`
+    }
+
     return (
-        <NavbarLayout>
+        <NavbarLayout seo={seo}>
             <section className="flex flex-col gap-3">
                 <ProfileToolBar
                     selectedSeason={selectedSeason}

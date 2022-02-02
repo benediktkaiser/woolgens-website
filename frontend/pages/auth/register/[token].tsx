@@ -22,8 +22,13 @@ const RegisterPage = () => {
         }
     }
 
+    const seo = {
+        title: "Register",
+        description: "Welcome to the WoolGens homepage! Here you can find stats, news and communicate with other community members!"
+    }
+
     return (
-        <NavbarLayout>
+        <NavbarLayout seo={seo}>
             <BasicCard>
                 <div className="container flex flex-col gap-5 my-4 mx-auto">
                     <h1 className="py-5 text-3xl text-center text-gray-200 border-t-2 border-b-2 border-dark-light">
