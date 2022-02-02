@@ -8,6 +8,11 @@ import changeLogStore from "../stores/ChangeLogStore";
 const IndexPage = observer(() => {
     const [changeLogs, setChangeLogs] = useState<ChangeLog[] | undefined>(undefined)
 
+    const seo = {
+        title: "News",
+        description: "Welcome to the WoolGens homepage! Here you can find stats, news and communicate with other community members!"
+    }
+
     useEffect(() => {
         changeLogStore.getChangeLogs().then(result => {
             setChangeLogs(result)
@@ -15,7 +20,7 @@ const IndexPage = observer(() => {
     }, [])
 
     return (
-        <NavbarLayout>
+        <NavbarLayout seo={seo}>
             <section className="flex xl:grid flex-col grid-cols-3 xl:grid-cols-4 gap-4 mt-5">
                 <main className="flex flex-col col-span-3 gap-4">
                     {changeLogs ?

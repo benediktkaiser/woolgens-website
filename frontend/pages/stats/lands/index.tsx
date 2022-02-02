@@ -30,8 +30,13 @@ const LandsIndexPage = observer(() => {
         })
     }, [seasonNumber])
 
+    const seo = {
+        title: "Land Stats",
+        description: "Compare yourself to other lands of the Woolgens community and rise to the top of the leaderboard!"
+    }
+
     return (
-        <NavbarLayout>
+        <NavbarLayout seo={seo}>
             <div className="my-8 text-center">
                 <div className="py-4">
                     <h1 className="text-4xl font-bold">

@@ -15,6 +15,11 @@ const RegisterPage = observer(() => {
     const [error, setError] = useState(undefined)
     const router = useRouter()
 
+    const seo = {
+        title: "Login",
+        description: "Welcome to the WoolGens homepage! Here you can find stats, news and communicate with other community members!"
+    }
+
     useEffect(() => {
         if (authStore.user) {
             router.push("/").then(() => {
@@ -43,7 +48,7 @@ const RegisterPage = observer(() => {
     }
 
     return (
-        <NavbarLayout>
+        <NavbarLayout seo={seo}>
             <div className="mx-auto max-w-lg">
                 <CardWithImageHeader top={<div className="p-4 w-full h-full text-3xl font-bold text-center bg-gradient-to-l from-accent-600 to-accent-500 rounded-t-lg">Login</div>}>
                     <div className="flex flex-col gap-5 my-4">

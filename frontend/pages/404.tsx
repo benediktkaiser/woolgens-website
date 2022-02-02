@@ -5,9 +5,12 @@ import Link from "next/link"
 
 const NotFound = () => {
     const router = useRouter()
+    const seo = {
+        title: "Not found",
+    }
 
     return (
-        <NavbarLayout>
+        <NavbarLayout seo={seo}>
             <div className="flex justify-center items-center text-center">
                 <div>
                     <h1 className="mt-20 text-5xl md:text-7xl lg:text-9xl font-bold">
