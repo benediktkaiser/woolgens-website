@@ -32,9 +32,9 @@ const MobileNavbar: FC<MobileNavbarProps> = ({isOpen, toggleMobileNavbar}) => {
                         </h1>
                         <ul className="grid grid-cols-2 gap-4">
                             <MobileNavbarLink title="Home" link="/" />
-                            <MobileNavbarLink title="News" link="/changelogs" />
                             <MobileNavbarLink title="Stats" link="/stats" />
                             <MobileNavbarLink title="Vote" link="/vote" />
+                            <MobileNavbarLink title="Login" link="/auth/login" />
                         </ul>
                     </div>
                 </div>
