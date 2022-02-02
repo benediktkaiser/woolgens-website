@@ -1,4 +1,4 @@
-import React, {FC, useState} from "react";
+import React, {FC, useEffect, useState} from "react";
 import Userbar from "../components/common/userbar/Userbar";
 import Header from "../components/common/header/Header"
 import Navbar from "../components/common/navbar/Navbar";
@@ -14,6 +14,10 @@ interface NavbarLayoutProps {
 
 const NavbarLayout: FC<NavbarLayoutProps> = observer(({children}) => {
     const [mobileNavBarOpen, setMobileNavBarOpen] = useState(false)
+
+    useEffect(() => {
+        informationStore.updateData().catch(error => console.error(error))
+    })
 
     return (
         <div className={`${mobileNavBarOpen ? "h-screen overflow-hidden": "min-h-screen"} text-gray-200 bg-dark-dark font-poppins`}>
