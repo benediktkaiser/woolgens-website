@@ -7,8 +7,13 @@ import React from "react";
 
 const VoteIndexPage = observer(() => {
 
+    const seo = {
+        title: "Vote",
+        description: "Vote for our server to gain exclusive rewards, while simultaneously supporting us!"
+    }
+
     return (
-        <NavbarLayout>
+        <NavbarLayout seo={seo}>
             <Announcement
                 icon={<FiBell />}
                 text="Welcome to the new Website! We hope you enjoy it."
