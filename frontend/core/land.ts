@@ -1,72 +1,7 @@
 import {landAPI} from "./api";
 import {throwError} from "./error";
 
-export async function getAllLands(): Promise<Land[]> {
-    try {
-        const allLands = await landAPI.get('/lands')
-        return allLands.data;
-    }
-    catch (error) {
-        throwError(`Issue retrieving lands." - ${error}`)
-        return;
-    }
-}
-
-export async function getLandsSorted(sorted: string, pageIndex: number, pageSize: number): Promise<Land[]> {
-    try {
-        const data = await landAPI.get(`/lands?sorted=${sorted}&pageindex=${pageIndex}&pagesize=${pageSize}`)
-
-        return data.data
-    }
-    catch (error) {
-        throwError(`Issue retrieved lands sorted by "${sorted}" from page ${pageIndex} with ${pageSize} entries" - ${error}`)
-        return;
-    }
-}
-
-export async function getLandByName(name: string): Promise<Land> {
-    try {
-        const loweredName = name.toLowerCase();
-        const land = await landAPI.get(`/lands/${loweredName}`)
-        const orderedMembers = getSortedUserList(land.data)
-        return {
-            ...land.data,
-            owner: {
-                ...land.data.owner,
-                landRole: {
-                    name: "Owner",
-                    priority: -1,
-                    color: "#AA0000",
-                }
-            },
-            orderedMembers
-        };
-    }
-    catch (error) {
-        throwError(`Issue retrieving the land "${name}" - ${error}`)
-        return;
-    }
-}
-
-export async function getLandNames(): Promise<Record<string, string>> {
-    try {
-        const data = await landAPI.get(`/lands?small=true`)
-
-        const map = {}
-
-        data.data.forEach((result) => {
-            map[result.name] = result.name
-        })
-
-        return map
-    }
-    catch (error) {
-        throwError(`Issue retrieved all lands" - ${error}`)
-        return;
-    }
-}
-
-function getSortedUserList(land: Land): LandMember[] {
+function enrichLandWithRoles(land: InitialLand): Land {
     const landRoles = land.roles
     const members: LandMember[] = []
 
@@ -90,5 +25,54 @@ function getSortedUserList(land: Land): LandMember[] {
         })
     })
 
-    return members
+    return {
+        ...land,
+        owner: {
+            ...land.owner,
+            landRole: {
+                name: "Owner",
+                priority: -1,
+                color: "#AA0000",
+            }
+        },
+        members
+    }
+}
+
+export async function getLandByName(name: string): Promise<Land> {
+    try {
+        const loweredName = name.toLowerCase();
+        const land = await landAPI.get(`/lands/${loweredName}`)
+        return enrichLandWithRoles(land.data)
+    }
+    catch (error) {
+        throwError(`Issue retrieving the land "${name}" - ${error}`)
+        return;
+    }
+}
+
+export async function getLandNames(): Promise<Record<string, string>> {
+    try {
+        const data = await landAPI.get(`/lands?small=true`)
+        const map = {}
+        data.data.forEach((result) => {
+            map[result.name] = result.name
+        })
+        return map
+    }
+    catch (error) {
+        throwError(`Issue retrieved all lands" - ${error}`)
+        return;
+    }
+}
+
+export async function getLandsSorted(sorted: string, pageIndex: number, pageSize: number): Promise<Land[]> {
+    try {
+        const data = await landAPI.get(`/lands?sorted=${sorted}&pageindex=${pageIndex}&pagesize=${pageSize}`)
+        return data.data
+    }
+    catch (error) {
+        throwError(`Issue retrieved lands sorted by "${sorted}" from page ${pageIndex} with ${pageSize} entries" - ${error}`)
+        return;
+    }
 }

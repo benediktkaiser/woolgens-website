@@ -1,41 +1,39 @@
 import {makeAutoObservable, runInAction} from "mobx";
-import {getMinecraftUser, getUserNames} from "../core/minecraftUser";
+import {getUserNames} from "../core/minecraftUser";
+import {getUserByUUID} from "../core/user";
 
 class UserStore {
 
-    users: Record<string, FullUser> = {}
+    users: Record<string, User> = {}
     usernames: Record<string, string> = undefined
 
     constructor() {
         makeAutoObservable(this, {}, {autoBind: true});
     }
 
-    async getUser(username) {
+    async getUser(username): Promise<User> {
         if (this.users[username]) {
             return this.users[username];
         }
 
         const uuid = await this.getUUIDFromUserName(username)
-        const minecraftUser = await getMinecraftUser(uuid)
-        //const webUser = await getWebUser(username)
+        const user = await getUserByUUID(uuid);
 
         runInAction(() => {
-            this.users[username] = {
-                webUser: undefined,
-                minecraftUser
-            }
+            this.users[username] = user
         })
-        return {
-            webUser: undefined,
-            minecraftUser,
-        }
+        return user
     }
 
     async getUUIDFromUserName(username): Promise<string> {
-        const usernames = await this.getAllUserNames()
+        if (!this.usernames) {
+            await runInAction(async () => {
+                this.usernames = await this.getAllUserNames()
+            })
+        }
 
-        if (usernames[username]) {
-            return usernames[username]
+        if (this.usernames[username]) {
+            return this.usernames[username]
         }
         throw new Error(`Could not find a uuid for ${username}`)
     }
@@ -52,11 +50,15 @@ class UserStore {
     }
 
     async getAllFormattedUserNames() {
-        const usernames = await this.getAllUserNames()
+        if (!this.usernames) {
+            await runInAction(async () => {
+                this.usernames = await this.getAllUserNames()
+            })
+        }
 
         const results = []
         let num = 0
-        Object.keys(usernames).map((result) => {
+        Object.keys(this.usernames).map((result) => {
             results.push({
                 id: num,
                 name: result,

@@ -12,7 +12,7 @@ const ProfilePage = () => {
     const router = useRouter()
     const {username} = router.query
     const [selectedSeason, setSelectedSeason] = useState("0")
-    const [user, setUser] = useState<FullUser | undefined>(undefined)
+    const [user, setUser] = useState<User | undefined>(undefined)
 
     useEffect(() => {
         if (username) {

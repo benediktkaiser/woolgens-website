@@ -1,29 +1,33 @@
 // This is for global types we need in the project
 // You can create types and access them in the entire project
 
-/* User Types */
-declare interface User {
+/* Users */
+declare interface InitialUser {
     uuid: string,
     name: string,
 }
 
-declare interface WebUser extends User {
+declare interface User extends InitialUser{
+    webUser?: WebUser,
+    minecraftUser: MinecraftUser
+}
+
+declare interface WebUser extends InitialUser {
     group: Group | string,
     joined: number, // is a timestamp
     notifications: WebNotification[],
 }
 
-declare interface MinecraftUser extends User {
-    joined: number, // is a timestamp
-    stats: Record<string, number>,
-    land?: Land,
-    seasons: Record<string, MinecraftUserSeason>,
+declare interface MinecraftInitialUser extends InitialUser {
+    joined: number
+    stats: Record<string, number>
+    land: string
+    seasons: Record<string, MinecraftUserSeason>
     booster: Record<FarmingSkills, number>
 }
 
-declare interface FullUser {
-    webUser: WebUser,
-    minecraftUser: MinecraftUser
+declare interface MinecraftUser extends MinecraftInitialUser {
+    land?: Land,
 }
 
 declare interface MinecraftUserSeason {
@@ -42,6 +46,13 @@ declare interface Group {
     permissions: string[]
 }
 
+declare interface WebNotification {
+    title: string,
+    message: string,
+    link: string,
+    type: "success" | "warning" | "danger" | "info",
+}
+
 /* Skills */
 declare interface Skills {
     basePoints: number,
@@ -53,28 +64,26 @@ declare interface Skills {
 declare type BaseSkills = "DEFENSE" | "ATTACK"
 declare type FarmingSkills = "MINING" | "AGRICULTURE" | "FISHING" | "LUMBERJACK"
 
-/* Land Types */
-declare interface Land {
-    name: string,
-    id: string,
-    registered: number, // is a timestamp
-    owner: LandMember,
+/* Lands */
+declare interface InitialLand {
+    name: string
+    id: string
+    registered: number // is a timestamp
+    owner: InitialUser
     bank: LandBank
     upgrades: Record<string, number>
     members: Record<string, LandMember>
     invites: string[]
     roles: Record<string, LandRole>
-    chunks: LandChunk[]
-    orderedMembers?: LandMember[]
 }
 
-declare interface LandChunk {
-    x: number,
-    z: number,
+declare interface Land extends  InitialLand {
+    owner: LandMember
+    members: LandMember[]
 }
 
-declare interface LandMember extends User {
-    role: string,
+declare interface LandMember extends InitialUser {
+    role?: string,
     landRole: LandRole,
 }
 
@@ -96,13 +105,6 @@ declare interface LandTransaction {
     issuer: string,
     timestamp: number,
     type: 'DEPOSIT' | 'WITHDRAW' | 'BUY_UPGRADE',
-}
-
-declare interface WebNotification {
-    title: string,
-    message: string,
-    link: string,
-    type: "success" | "warning" | "danger" | "info",
 }
 
 declare interface ChangeLog {

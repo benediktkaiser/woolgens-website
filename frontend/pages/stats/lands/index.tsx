@@ -47,12 +47,14 @@ const LandsIndexPage = observer(() => {
                         text="You are currently viewing the lands Top Lists! Check out our player Top Lists!"
                         rightComponent={
                             <Link href="/stats" passHref={true}>
-                                <BaseButton type="success">
+                                <a>
+                                    <BaseButton type="success">
                                     <span className="flex items-center">
                                         To the Player Top list
                                         <AiOutlineArrowRight className="ml-2"/>
                                     </span>
-                                </BaseButton>
+                                    </BaseButton>
+                                </a>
                             </Link>
                         }
                         iconStyles="bg-green-500 text-white"
