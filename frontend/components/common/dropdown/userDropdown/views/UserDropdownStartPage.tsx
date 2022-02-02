@@ -9,10 +9,10 @@ import authStore from "../../../../../stores/AuthStore";
 declare interface UserDropdownStartPageProps {
     selectedPage: string,
     changePage: (page: string) => void,
-    webUser: WebUser;
+    user: User
 }
 
-const UserDropdownStartPage: FC<UserDropdownStartPageProps> = ({ selectedPage, changePage, webUser }) => {
+const UserDropdownStartPage: FC<UserDropdownStartPageProps> = ({ selectedPage, changePage, user }) => {
     return (
         <Transition
             show={selectedPage === "start"}
@@ -25,12 +25,12 @@ const UserDropdownStartPage: FC<UserDropdownStartPageProps> = ({ selectedPage, c
             className="w-full shrink-0"
         >
 
-            <Link href={`/profile/${webUser.name}`} passHref={true}>
+            <Link href={`/profile/${user.name}`} passHref={true}>
                 <a className="flex items-center p-3 mb-2 hover:bg-dark rounded-lg cursor-pointer">
-                    <Avatar player={webUser.uuid} size={50} />
+                    <Avatar player={user.uuid} size={50} />
                     <span className="ml-3 font-avenir">
                     <h1 className="text-xl">
-                        {webUser.name}
+                        {user.name}
                     </h1>
                     <h3 className="text-sm opacity-50">
                         View your profile

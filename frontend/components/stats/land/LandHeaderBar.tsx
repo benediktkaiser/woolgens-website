@@ -29,24 +29,24 @@ const LandHeaderBar: FC<LandHeaderBarProps>= ({land}) => {
                 </div>
                 <div className="flex absolute -bottom-2 left-0 gap-2 justify-center items-baseline px-8 w-full">
                     <div className="w-[175px]">
-                        {land.orderedMembers[2] && (
-                            <Bust uuid={land.orderedMembers[2].uuid} size={175} />
+                        {land.members[2] && (
+                            <Bust uuid={land.members[2].uuid} size={175} />
                         )}
                     </div>
                     <div className="w-[190px]">
-                        {land.orderedMembers[0] && (
-                            <Bust uuid={land.orderedMembers[0].uuid} size={190} />
+                        {land.members[0] && (
+                            <Bust uuid={land.members[0].uuid} size={190} />
                         )}
                     </div>
                     <Bust uuid={land.owner.uuid} size={200} facing="forward" />
                     <div className="w-[190px]">
-                        {land.orderedMembers[1] && (
-                            <Bust uuid={land.orderedMembers[1].uuid} size={190} facing="left" />
+                        {land.members[1] && (
+                            <Bust uuid={land.members[1].uuid} size={190} facing="left" />
                         )}
                     </div>
                     <div className="w-[175px]">
-                        {land.orderedMembers[3] && (
-                            <Bust uuid={land.orderedMembers[3].uuid} size={175} facing="left" />
+                        {land.members[3] && (
+                            <Bust uuid={land.members[3].uuid} size={175} facing="left" />
                         )}
                     </div>
                 </div>

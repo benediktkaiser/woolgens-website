@@ -15,7 +15,7 @@ const LandGeneralStats: FC<LandGeneralStatsProps> = ({land}) => {
         <CardWithHeader title="General Stats">
             <div className="flex flex-col gap-4">
                 <StatsCard title="Balance" value={land.bank.balance} label="$" />
-                <StatsCard title="Members" value={land.orderedMembers.length + 1} label="Members" />
+                <StatsCard title="Members" value={land.members.length + 1} label="Members" />
                 <StatsCard title="Created" value={new Date(land.registered).toDateString()} />
 
             </div>
