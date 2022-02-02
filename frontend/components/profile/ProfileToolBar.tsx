@@ -6,7 +6,7 @@ import {FiArchive} from "react-icons/fi"
 
 declare interface ProfileToolBarProps {
     selectedSeason: string,
-    user?: FullUser,
+    user?: User,
     setSelectedSeason: (season: string) => void,
 }
 

@@ -7,11 +7,10 @@ import UserDropdownAccountPage from "./views/UserDropdownAccountPage";
 import UserDropdownLandPage from "./views/UserDropdownLandPage";
 
 declare interface UserDropdownProps {
-    webUser: WebUser;
-    minecraftUser: MinecraftUser
+    user: User
 }
 
-const UserDropdown: FC<UserDropdownProps> = ({webUser, minecraftUser}) => {
+const UserDropdown: FC<UserDropdownProps> = ({user}) => {
     const [page, setPage] = useState("start")
 
     const changePage = (page) => {
@@ -22,8 +21,8 @@ const UserDropdown: FC<UserDropdownProps> = ({webUser, minecraftUser}) => {
         <Menu as="div" className="inline-block relative text-left tex">
              <Menu.Button className="py-2 px-3 hover:bg-dark rounded-lg">
                 <div className="inline-flex items-center w-full">
-                    <span className="pr-3 text-sm">{webUser.name}</span>
-                    <Avatar player={webUser.uuid} size={25} />
+                    <span className="pr-3 text-sm">{user.name}</span>
+                    <Avatar player={user.uuid} size={25} />
                     <BsChevronDown size="0.75rem" className="ml-2"/>
                 </div>
             </Menu.Button>
@@ -37,9 +36,9 @@ const UserDropdown: FC<UserDropdownProps> = ({webUser, minecraftUser}) => {
                 leaveTo="transform opacity-0 scale-95"
             >
                 <Menu.Items className="flex overflow-hidden absolute right-0 z-10 p-3 mt-3 bg-dark-light rounded-md ring-1 ring-black ring-opacity-5 shadow-lg origin-top-right focus:outline-none w-[300px]">
-                    <UserDropdownStartPage selectedPage={page} changePage={changePage}  webUser={webUser}/>
+                    <UserDropdownStartPage selectedPage={page} changePage={changePage}  user={user} />
                     <UserDropdownAccountPage selectedPage={page} changePage={changePage} />
-                    <UserDropdownLandPage selectedPage={page} changePage={changePage} minecraftUser={minecraftUser} />
+                    <UserDropdownLandPage selectedPage={page} changePage={changePage} user={user} />
                 </Menu.Items>
             </Transition>
         </Menu>

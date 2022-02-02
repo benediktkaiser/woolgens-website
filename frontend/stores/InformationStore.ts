@@ -10,18 +10,15 @@ class InformationStore {
 
     constructor() {
         makeAutoObservable(this)
-        this.updateData().then(() => {
-            return null
-        })
     }
 
     async updateData() {
-        const discordWidget = await getDiscordWidget()
+        const discordWidget = await getDiscordWidget(process.env.NEXT_PUBLIC_DISCORD_SERVER_ID)
         const minecraftData = await getMinecraftServerData(process.env.NEXT_PUBLIC_MINECRAFT_IP)
 
         runInAction(() => {
-            this.onlineDiscord = discordWidget.presence_count
-            this.discordInviteLink = discordWidget.instant_invite
+            this.onlineDiscord = discordWidget.data.presence_count
+            this.discordInviteLink = discordWidget.data.instant_invite
             this.onlineMinecraft = minecraftData.data.players.online || 0
             this.onlineUsers = minecraftData.data.players.uuid || {}
         })

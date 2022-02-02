@@ -16,12 +16,12 @@ const RegisterPage = observer(() => {
     const router = useRouter()
 
     useEffect(() => {
-        if (authStore.webUser) {
+        if (authStore.user) {
             router.push("/").then(() => {
                 return;
             })
         }
-    }, [authStore.webUser])
+    }, [authStore.user]) // eslint-disable-line
 
     const login = (username, password) => {
         setError(undefined)

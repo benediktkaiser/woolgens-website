@@ -15,7 +15,7 @@ const LandMembersList: FC<LandMembersListProps> = ({land}) => {
         <CardWithHeader title="Members">
             <ul className="flex overflow-auto flex-col max-h-[400px]">
                 <LandMemberRow member={land.owner} />
-                {land.orderedMembers.map((member, index) =>
+                {land.members.map((member, index) =>
                     <LandMemberRow key={index} member={member} />
                 )}
             </ul>

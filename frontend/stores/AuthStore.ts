@@ -7,8 +7,7 @@ import {basicAuth, tokenAuth} from "../core/auth";
 class AuthStore {
 
     token = "";
-    webUser: WebUser | undefined = undefined;
-    minecraftUser: MinecraftUser | undefined = undefined;
+    user: User = undefined;
 
     constructor() {
         makeAutoObservable(this, {}, {autoBind: true});
@@ -34,13 +33,11 @@ class AuthStore {
             })
             return;
         }
-
         const minecraftUser = await getMinecraftUser(webUser.uuid)
+
+        // Set new Data
+        this.setUser(minecraftUser, webUser)
         changeAPIToken(token)
-        runInAction(() => {
-            this.webUser = webUser;
-            this.minecraftUser = minecraftUser
-        })
     }
 
     async basicAuth(username, password): Promise<boolean> {
@@ -53,17 +50,26 @@ class AuthStore {
         changeAPIToken(data.token)
         runInAction(() => {
             this.token = data.token;
-            this.webUser = data.user;
-            this.minecraftUser = minecraftUser
         })
+        this.setUser(minecraftUser, data.user)
         return true;
+    }
+
+    setUser(minecraftUser: MinecraftUser, webUser: WebUser) {
+        runInAction(() => {
+            this.user = {
+                name: minecraftUser.name,
+                uuid: minecraftUser.uuid,
+                minecraftUser: minecraftUser,
+                webUser: webUser
+            }
+        })
     }
 
     logout() {
         runInAction(() => {
             this.token = "";
-            this.webUser = undefined;
-            this.minecraftUser = undefined;
+            this.user = undefined;
         })
     }
 }

@@ -6,12 +6,12 @@ import {MdArrowBackIos} from "react-icons/md"
 import Link from "next/link"
 
 declare interface UserDropdownLandPageProps {
-    minecraftUser: MinecraftUser
     selectedPage: string,
     changePage: (page: string) => void,
+    user: User
 }
 
-const UserDropdownLandPage: FC<UserDropdownLandPageProps> = ({selectedPage, changePage, minecraftUser}) => {
+const UserDropdownLandPage: FC<UserDropdownLandPageProps> = ({selectedPage, changePage, user}) => {
     return (
         <Transition
             show={selectedPage === "land"}
@@ -28,7 +28,7 @@ const UserDropdownLandPage: FC<UserDropdownLandPageProps> = ({selectedPage, chan
                           icon={<MdArrowBackIos className="opacity-50" size="1rem"/>}/>
             <hr className="my-2 border-gray-700"/>
 
-            <Link href={`/stats/lands/${minecraftUser.land.id}`} passHref={true}>
+            <Link href={`/stats/lands/${user.minecraftUser.land.id}`} passHref={true}>
                 <DropdownItem title="Land Profile" icon={<RiHome2Line size="1.5rem"/>}/>
             </Link>
             <DropdownItem title="Settings" icon={<RiSettings2Line size="1.5rem"/>} />
