@@ -5,9 +5,10 @@ declare interface ModalProps {
     isOpen: boolean
     toggleModal: () => void
     children: React.ReactNode
+    maxWidth: string
 }
 
-const Modal: FC<ModalProps> = ({isOpen, toggleModal, children}) => {
+const Modal: FC<ModalProps> = ({isOpen, toggleModal, maxWidth = "max-w-lg", children}) => {
 
     const toggle = () => {
         toggleModal()
@@ -43,7 +44,7 @@ const Modal: FC<ModalProps> = ({isOpen, toggleModal, children}) => {
                         leave="ease-in duration-200"
                         leaveFrom="opacity-100 scale-100"
                         leaveTo="opacity-0 scale-95" >
-                        <div className="inline-block overflow-hidden w-full text-left align-middle shadow-2xl transition-all transform">
+                        <div className={`${maxWidth} mx-auto inline-block overflow-hidden w-full text-left align-middle shadow-2xl transition-all transform`}>
                             { children }
                         </div>
                     </Transition.Child>
