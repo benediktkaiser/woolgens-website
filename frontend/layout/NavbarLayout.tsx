@@ -26,7 +26,7 @@ const NavbarLayout: FC<NavbarLayoutProps> = observer(({seo, children}) => {
     })
 
     return (
-        <div className={`${mobileNavBarOpen ? "h-screen overflow-hidden": "min-h-screen"} text-gray-200 bg-dark-dark font-poppins`}>
+        <div className={`min-h-screen text-gray-200 bg-dark-dark font-poppins`}>
             <HeadSEO seo={seo} />
             <Userbar user={authStore.user} />
             <Header
