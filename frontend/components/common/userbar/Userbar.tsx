@@ -3,6 +3,7 @@ import UserDropdown from "../dropdown/userDropdown/UserDropdown";
 import NotificationDropdown from "../dropdown/notificationDropdown/NotificationDropdown";
 import UserbarLink from "./UserbarLink";
 import {RiDashboard3Line, RiNotificationLine, RiLoginBoxLine, RiUserAddLine} from "react-icons/ri"
+import authStore from "../../../stores/AuthStore";
 
 declare interface UserbarProps {
     user: User
@@ -26,9 +27,11 @@ const Userbar: FC<UserbarProps> = ({ user }) => {
                         <UserDropdown user={user} />
                     </div>
                 ) : (
-                    <div className="flex items-center md:space-x-4">
+                    <div className="flex items-center md:space-x-2">
                         <UserbarLink title="Register" to="/auth/register" icon={<RiUserAddLine />} />
-                        <UserbarLink title="Login" to="/auth/login" icon={<RiLoginBoxLine />} />
+                        <div onClick={authStore.toggleLoginModal}>
+                            <UserbarLink title="Login" icon={<RiLoginBoxLine />} />
+                        </div>
                     </div>
                 )}
             </div>

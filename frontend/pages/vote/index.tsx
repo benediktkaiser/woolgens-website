@@ -8,12 +8,14 @@ import React from "react";
 const VoteIndexPage: NextPageWithLayout = observer(() => {
 
     return (
-        <Announcement
-            icon={<FiBell/>}
-            text="Welcome to the new Website! We hope you enjoy it."
-            rightComponent={<BaseButton type="primary">Create account</BaseButton>}
-            iconStyles="bg-blue-500 text-white"
-        />
+        <div>
+            <Announcement
+                icon={<FiBell/>}
+                text="Welcome to the new Website! We hope you enjoy it."
+                rightComponent={<BaseButton type="primary">Create account</BaseButton>}
+                iconStyles="bg-blue-500 text-white"
+            />
+        </div>
     )
 })
 
