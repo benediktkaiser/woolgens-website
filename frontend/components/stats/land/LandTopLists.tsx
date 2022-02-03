@@ -1,17 +1,12 @@
-import LandTopBox from "./land/LandTopBox";
-import {useEffect, useState} from "react";
-import topListStore from "../../stores/TopListStore";
+import LandTopBox from "./LandTopBox";
 import LandTopListRow from "./LandTopListRow";
+import {FC} from "react";
 
-const LandStatsContainer = () => {
-    const [topLands, setTopLands] = useState<Land[]>(undefined)
+declare interface LandTopListsProps {
+    topLands: Land[]
+}
 
-    useEffect(() => {
-        topListStore.getSimpleLandsTopList().then(result => {
-            setTopLands(result)
-        })
-    }, [])
-
+const LandTopLists: FC<LandTopListsProps> = ({topLands}) => {
     if (!topLands) {
         return (
             <div className="my-4">
@@ -39,4 +34,4 @@ const LandStatsContainer = () => {
     )
 }
 
-export default LandStatsContainer
+export default LandTopLists
