@@ -13,8 +13,8 @@ const MobileNavbar: FC<MobileNavbarProps> = ({isOpen, toggleMobileNavbar}) => {
         return <div/>
     }
     return (
-        <Modal isOpen={isOpen} toggleModal={toggleMobileNavbar}>
-            <div className="container flex flex-col justify-center items-center mx-auto h-full">
+        <Modal isOpen={isOpen} toggleModal={toggleMobileNavbar} maxWidth="container">
+            <div className="flex flex-col justify-center items-center mx-auto h-full">
                 <div className="relative z-20 p-4 w-full bg-dark rounded-2xl">
                     <h1 className="flex justify-center items-center my-5 text-2xl">
                         <GiCompass size="2rem" className="mr-3"/>
