@@ -1,8 +1,8 @@
 import {FC} from "react";
-import Avatar from "../common/Avatar";
+import Avatar from "../../common/Avatar";
 import {IoMdTrophy} from "react-icons/io"
 import Link from "next/link"
-import {formatMoney} from "../../core/formatters";
+import {formatMoney} from "../../../core/formatters";
 
 declare interface LandTopListRowProps {
     land: Land,

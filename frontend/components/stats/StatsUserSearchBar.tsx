@@ -2,10 +2,10 @@ import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 import { useRouter } from 'next/router'
 import {FC} from "react";
 import {observer} from "mobx-react-lite";
-import landStore from "../../../stores/LandStore";
-import Avatar from "../../common/Avatar";
+import landStore from "../../stores/LandStore";
+import Avatar from "../common/Avatar";
 import Image from "next/image"
-import grassBlock from "../../../public/icons/grass.jpeg"
+import grassBlock from "../../public/icons/grass.jpeg"
 
 const styles = {
     zIndex: 2,

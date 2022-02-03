@@ -10,7 +10,7 @@ declare interface UserStatsContainerProps {
     seasonNumber: string
 }
 
-const UserStatsContainer: FC<UserStatsContainerProps> = ({seasonNumber}) => {
+const TopLists: FC<UserStatsContainerProps> = ({seasonNumber}) => {
     const [levelTopList, setLevelTopList] = useState(undefined)
     const [balanceTopList, setBalanceTopList] = useState(undefined)
     const [playTimeTopList, setPlayTimeTopList] = useState(undefined)
@@ -79,4 +79,4 @@ const UserStatsContainer: FC<UserStatsContainerProps> = ({seasonNumber}) => {
     )
 }
 
-export default UserStatsContainer
+export default TopLists

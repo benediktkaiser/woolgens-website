@@ -1,12 +1,11 @@
 import {FC} from "react";
 import Image from "next/image"
-
 import background from "../../public/background/mine_day.png"
 import Bust from "../common/Bust";
 import SkillsBadge from "./skills/SkillsBadge";
 import {getHighestSkill, getLevelProgressPercentage, SKILL_TITLES} from "../../core/skills";
 import informationStore from "../../stores/InformationStore";
-import OnlinePing from "./OnlinePing";
+import OnlinePing from "../common/OnlinePing";
 
 declare interface ProfileUserBoxProps {
     user: User
