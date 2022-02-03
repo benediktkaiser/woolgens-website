@@ -11,7 +11,7 @@ import {AiOutlineArrowRight} from "react-icons/ai";
 import LandStatsContainer from "../../../components/stats/LandStatsContainer";
 import Link from "next/link"
 
-const LandsIndexPage = observer(() => {
+const LandsIndexPage: NextPageWithLayout = observer(() => {
     const [autocompleteList, setAutocompleteList] = useState(undefined)
     const seasonNumber = process.env.NEXT_PUBLIC_CURRENT_SEASON || "1"
 
@@ -30,13 +30,8 @@ const LandsIndexPage = observer(() => {
         })
     }, [seasonNumber])
 
-    const seo = {
-        title: "Land Stats",
-        description: "Compare yourself to other lands of the Woolgens community and rise to the top of the leaderboard!"
-    }
-
     return (
-        <NavbarLayout seo={seo}>
+        <div>
             <div className="my-8 text-center">
                 <div className="py-4">
                     <h1 className="text-4xl font-bold">
@@ -67,8 +62,21 @@ const LandsIndexPage = observer(() => {
                 </div>
                 <LandStatsContainer/>
             </div>
-        </NavbarLayout>
+        </div>
     )
 })
+
+LandsIndexPage.getLayout = function getLayout(page) {
+    const seo = {
+        title: "Land Stats",
+        description: "Compare yourself to other lands of the Woolgens community and rise to the top of the leaderboard!"
+    }
+
+    return (
+        <NavbarLayout seo={seo}>
+            {page}
+        </NavbarLayout>
+    )
+}
 
 export default LandsIndexPage

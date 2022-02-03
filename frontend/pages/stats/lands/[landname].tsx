@@ -1,5 +1,5 @@
 import NavbarLayout from "../../../layout/NavbarLayout";
-import {FC} from "react";
+import React, {useEffect, useState} from "react";
 import landStore from "../../../stores/LandStore";
 import {useRouter} from "next/router";
 import LandHeaderBar from "../../../components/stats/land/LandHeaderBar";
@@ -8,21 +8,17 @@ import LandGeneralStats from "../../../components/stats/land/LandGeneralStats";
 import BreadCrumbs from "../../../components/common/BreadCrumbs";
 import BasicCard from "../../../components/common/cards/BasicCard";
 
-interface LandProfileProps {
-    land: Land
-}
-
-const LandProfile: FC<LandProfileProps> = ({land}) => {
+const LandProfile: NextPageWithLayout = () => {
     const router = useRouter()
+    const {landname} = router.query
+    const [land, setLand] = useState(undefined)
 
-    const seo = {
-        title: `${land.name}`,
-        description: "Welcome to the WoolGens homepage! Here you can find stats, news and communicate with other community members!",
-        imageSRC: `https://cravatar.eu/helmavatar/${land.owner.name}/128`
-    }
+    useEffect(() => {
+        landStore.getLand(landname).then(result => setLand(result))
+    })
 
     return (
-        <NavbarLayout seo={seo}>
+        <div>
             <BasicCard>
                 <BreadCrumbs pathName={router ? router.asPath : ""}/>
             </BasicCard>
@@ -35,15 +31,21 @@ const LandProfile: FC<LandProfileProps> = ({land}) => {
                     </div>
                 </main>
             </div>
-        </NavbarLayout>
+        </div>
     )
 }
 
-// This gets called on every request
-export async function getServerSideProps(context) {
-    const {landname} = context.query
-    const land = await landStore.getLand(landname);
-    return {props: {land}}
+LandProfile.getLayout = function getLayout(page) {
+    const seo = {
+        title: "Land Stats",
+        description: "Compare yourself to other lands of the Woolgens community and rise to the top of the leaderboard!"
+    }
+
+    return (
+        <NavbarLayout seo={seo}>
+            {page}
+        </NavbarLayout>
+    )
 }
 
 export default LandProfile

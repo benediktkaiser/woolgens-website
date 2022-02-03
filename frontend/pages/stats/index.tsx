@@ -11,7 +11,7 @@ import {BaseButton} from "../../components/common/BaseButton";
 import {AiOutlineArrowRight} from "react-icons/ai";
 import Link from "next/link"
 
-const StatsIndexPage = observer(() => {
+const StatsIndexPage: NextPageWithLayout = observer(() => {
     const [autocompleteList, setAutocompleteList] = useState(undefined)
     const seasonNumber = process.env.NEXT_PUBLIC_CURRENT_SEASON || "1"
 
@@ -24,13 +24,8 @@ const StatsIndexPage = observer(() => {
         })
     }, [seasonNumber])
 
-    const seo = {
-        title: "Stats",
-        description: "Compare yourself to other members of the Woolgens community and rise to the top of the leaderboard!"
-    }
-
     return (
-        <NavbarLayout seo={seo}>
+        <div>
             <div className="my-8 text-center">
                 <div className="py-4">
                     <h1 className="text-4xl font-bold">
@@ -61,8 +56,21 @@ const StatsIndexPage = observer(() => {
                 </div>
                 <UserStatsContainer seasonNumber={seasonNumber}/>
             </div>
-        </NavbarLayout>
+        </div>
     )
 })
+
+StatsIndexPage.getLayout = function getLayout(page) {
+    const seo = {
+        title: "Stats",
+        description: "Compare yourself to other members of the Woolgens community and rise to the top of the leaderboard!"
+    }
+
+    return (
+        <NavbarLayout seo={seo}>
+            {page}
+        </NavbarLayout>
+    )
+}
 
 export default StatsIndexPage

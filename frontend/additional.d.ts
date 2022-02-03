@@ -114,3 +114,11 @@ declare interface ChangeLog {
     timestamp: number,
     lines: string[],
 }
+
+type NextPageWithLayout = import("NextPage").NextPage & {
+    getLayout?: (page: import("react").ReactElement) => import("react").ReactNode
+}
+
+type AppPropsWithLayout = import("next/app").AppProps & {
+    Component: NextPageWithLayout
+}
