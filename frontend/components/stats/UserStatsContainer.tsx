@@ -4,6 +4,7 @@ import {getLatestSeasonStats} from "../../core/minecraftUser";
 import LoadingTopList from "./LoadingTopList";
 import React, {FC, useEffect, useState} from "react";
 import topListStore from "../../stores/TopListStore";
+import {formatMillisecondsToTime, formatMoney} from "../../core/formatters";
 
 declare interface UserStatsContainerProps {
     seasonNumber: string
@@ -50,7 +51,7 @@ const UserStatsContainer: FC<UserStatsContainerProps> = ({seasonNumber}) => {
                                 <TopListRow
                                     key={index}
                                     minecraftUser={user}
-                                    value={getLatestSeasonStats(user).balance}
+                                    value={formatMoney(getLatestSeasonStats(user).balance)}
                                     label="$"
                                     place={index + 1}
                                 />
@@ -65,7 +66,7 @@ const UserStatsContainer: FC<UserStatsContainerProps> = ({seasonNumber}) => {
                                 <TopListRow
                                     key={index}
                                     minecraftUser={user}
-                                    value={(user.stats.playtime / 1000 / 60 / 60).toFixed(1)}
+                                    value={formatMillisecondsToTime(user.stats.playtime)}
                                     label="Hours"
                                     place={index + 1}
                                 />

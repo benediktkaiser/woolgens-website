@@ -2,6 +2,7 @@ import {FC} from "react";
 import Avatar from "../common/Avatar";
 import {IoMdTrophy} from "react-icons/io"
 import Link from "next/link"
+import {formatMoney} from "../../core/formatters";
 
 declare interface LandTopListRowProps {
     land: Land,
@@ -38,7 +39,7 @@ const LandTopListRow: FC<LandTopListRowProps> = ({land, place}) => {
                     <div className="grow"/>
                     <div className="flex items-center text-xl">
                         <span>
-                            {land.bank.balance} $
+                            {formatMoney(land.bank.balance)} $
                         </span>
                     </div>
                 </a>

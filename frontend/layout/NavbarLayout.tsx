@@ -22,7 +22,7 @@ const NavbarLayout: FC<NavbarLayoutProps> = observer(({seo, children}) => {
     const [mobileNavBarOpen, setMobileNavBarOpen] = useState(false)
 
     useEffect(() => {
-        informationStore.updateData().catch(error => console.error(error))
+        //informationStore.updateData().catch(error => console.error(error))
     })
 
     return (
