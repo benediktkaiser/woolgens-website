@@ -2,6 +2,7 @@ import Bust from "../../common/Bust";
 import styles from "../../../styles/modules/landsTop.module.css"
 import {FC} from "react";
 import Link from "next/link"
+import {formatMoney} from "../../../core/formatters";
 
 declare interface LandTopBoxProps {
     land: Land
@@ -27,7 +28,7 @@ const LandTopBox: FC<LandTopBoxProps> = ({land, place}) => {
                                 {land.name}
                             </h1>
                             <h2>
-                                {land.bank.balance} $
+                                {formatMoney(land.bank.balance)} $
                             </h2>
                         </div>
                     </div>
