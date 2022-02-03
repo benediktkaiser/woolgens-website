@@ -21,41 +21,42 @@ Router.events.on("routeChangeStart", progress.start);
 Router.events.on("routeChangeComplete", progress.finish);
 Router.events.on("routeChangeError", progress.finish);
 
-function App ({ Component, pageProps }) {
-  const [loading, setLoading] = useState(true)
+export default function App({ Component, pageProps }: AppPropsWithLayout) {
+    const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    if (authStore.token) {
-      authStore.tokenAuth(authStore.token).then(() => {
-        setLoading(false)
-      })
-    } else {
-      setLoading(false)
-    }
+    useEffect(() => {
+        if (authStore.token) {
+            authStore.tokenAuth(authStore.token).then(() => {
+                setLoading(false)
+            })
+        } else {
+            setLoading(false)
+        }
     }, [])
 
-  if (loading) {
-    return (
-        <div className="flex flex-col justify-center items-center mx-auto w-full h-screen">
-          <AiOutlineLoading3Quarters size="4rem" className="animate-spin" />
-          <div className="mt-8 text-center">
-            <h1 className="w-full text-4xl font-bold">
-              Preparing site
-            </h1>
-            <h2 className="text-gray-300">
-              This should not take too long!
-            </h2>
-          </div>
+    if (loading) {
+        return (
+            <div className="flex flex-col justify-center items-center mx-auto w-full h-screen">
+                <AiOutlineLoading3Quarters size="4rem" className="animate-spin" />
+                <div className="mt-8 text-center">
+                    <h1 className="w-full text-4xl font-bold">
+                        Preparing site
+                    </h1>
+                    <h2 className="text-gray-300">
+                        This should not take too long!
+                    </h2>
+                </div>
+            </div>
+        )
+    }
+
+    // Use the layout defined at the page level, if available
+    const getLayout = Component.getLayout ?? ((page) => page)
+
+    return getLayout(
+        <div>
+            <Component {...pageProps} />
+            <Toast />
         </div>
     )
-  }
-
-  return (
-      <div>
-          <Component {...pageProps} />
-          <Toast />
-      </div>
-  )
 }
-
-export default App

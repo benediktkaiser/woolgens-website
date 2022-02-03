@@ -5,8 +5,19 @@ import {FiBell} from "react-icons/fi"
 import {BaseButton} from "../../components/common/BaseButton";
 import React from "react";
 
-const VoteIndexPage = observer(() => {
+const VoteIndexPage: NextPageWithLayout = observer(() => {
 
+    return (
+        <Announcement
+            icon={<FiBell/>}
+            text="Welcome to the new Website! We hope you enjoy it."
+            rightComponent={<BaseButton type="primary">Create account</BaseButton>}
+            iconStyles="bg-blue-500 text-white"
+        />
+    )
+})
+
+VoteIndexPage.getLayout = function getLayout(page) {
     const seo = {
         title: "Vote",
         description: "Vote for our server to gain exclusive rewards, while simultaneously supporting us!"
@@ -14,14 +25,9 @@ const VoteIndexPage = observer(() => {
 
     return (
         <NavbarLayout seo={seo}>
-            <Announcement
-                icon={<FiBell />}
-                text="Welcome to the new Website! We hope you enjoy it."
-                rightComponent={<BaseButton type="primary">Create account</BaseButton>}
-                iconStyles="bg-blue-500 text-white"
-            />
+            {page}
         </NavbarLayout>
     )
-})
+}
 
 export default VoteIndexPage
