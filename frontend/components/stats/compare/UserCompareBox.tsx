@@ -3,6 +3,7 @@ import UserCompareSearch from "./UserCompareSearch";
 import {FiX} from "react-icons/fi"
 import Link from "next/link"
 import Avatar from "../../common/Avatar";
+import UserCompareStats from "./UserCompareStats";
 
 declare interface Item {
     id: number,
@@ -20,7 +21,7 @@ const UserCompareBox: FC<UserCompareBoxProps> = ({user, setUser, usernames}) => 
 
     if (!user) {
         return (
-            <div>
+            <div className="h-full">
                 <div className="w-full rounded-lg">
                     <div className="my-2 h-24">
                         <h1 className="mb-2 text-2xl text-center">
@@ -29,7 +30,6 @@ const UserCompareBox: FC<UserCompareBoxProps> = ({user, setUser, usernames}) => 
                         <UserCompareSearch setUser={setUser} usernames={usernames} />
                     </div>
                 </div>
-                <div className="bg-dark-light rounded-lg min-h-[500px]" />
             </div>
         )
     }
@@ -49,8 +49,8 @@ const UserCompareBox: FC<UserCompareBoxProps> = ({user, setUser, usernames}) => 
                     </div>
                 </div>
             </div>
-            <div className="bg-dark-light rounded-lg h-[500px]">
-
+            <div className="p-6 bg-dark-light rounded-lg">
+                <UserCompareStats user={user} />
             </div>
         </div>
     )

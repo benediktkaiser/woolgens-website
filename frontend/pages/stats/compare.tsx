@@ -13,6 +13,7 @@ const ComparePage: NextPageWithLayout = observer(() => {
     const [userOne, setUserOne] = useState(undefined);
     const [userTwo, setUserTwo] = useState(undefined)
     const [autocompleteList, setAutocompleteList] = useState(undefined)
+    const [season, setSeason] = useState(process.env.NEXT_PUBLIC_CURRENT_SEASON)
 
     useEffect(() => {
         userStore.getAllFormattedUserNames().then((result) => {
