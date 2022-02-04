@@ -6,7 +6,6 @@ import ProfileUserBox from "../components/profile/ProfileUserBox";
 import ProfileSkills from "../components/profile/ProfileSkills";
 import ProfilePostsSection from "../components/profile/posts/ProfilePostsSection";
 import ProfileGeneralStats from "../components/profile/ProfileGeneralStats";
-import UserCompareModal from "../components/profile/comparemodal/UserCompareModal";
 
 const UserProfileContainer = () => {
     const router = useRouter()
@@ -42,7 +41,6 @@ const UserProfileContainer = () => {
                     </aside>
                 </section>
             </div>
-            <UserCompareModal />
         </section>
     )
 }
