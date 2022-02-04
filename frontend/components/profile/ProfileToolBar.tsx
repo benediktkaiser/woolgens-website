@@ -42,11 +42,13 @@ const ProfileToolBar: FC<ProfileToolBarProps> = ({selectedSeason, user, setSelec
                     )}
                 </div>
                 <div className="flex gap-3 items-center">
-                    <Link href={`/stats/compare?1=${user.name}`} passHref={true}>
-                        <BaseButton type="dark" className="py-3 px-4">
-                            <BiGitCompare size="1.6rem" className="text-blue-400" />
-                        </BaseButton>
-                    </Link>
+                    <div className="hidden lg:block">
+                        <Link href={`/stats/compare?1=${user.name}`} passHref={true}>
+                            <BaseButton type="dark" className="py-3 px-4">
+                                <BiGitCompare size="1.6rem" className="text-blue-400" />
+                            </BaseButton>
+                        </Link>
+                    </div>
                     <Dropdown title={`Season ${selectedSeason}`}>
                         <div className="flex overflow-auto flex-col gap-2 p-2 bg-dark-light max-h-[300px]">
                             {Object.keys(user.minecraftUser.seasons).reverse().map((value, index) => (

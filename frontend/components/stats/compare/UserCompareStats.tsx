@@ -6,10 +6,10 @@ import {formatMillisecondsToTime} from "../../../core/formatters";
 
 interface UserCompareStatsProps {
     user: User
+    season: string
 }
 
-const UserCompareStats: FC<UserCompareStatsProps> = ({user}) => {
-    const season = "2"
+const UserCompareStats: FC<UserCompareStatsProps> = ({user, season}) => {
 
     return (
         <div className="flex flex-col gap-4">

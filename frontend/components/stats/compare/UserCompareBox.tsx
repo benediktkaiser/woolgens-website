@@ -15,9 +15,10 @@ interface UserCompareBoxProps {
     user?: User
     setUser: (userName) => void;
     usernames: Array<Item>
+    season: string
 }
 
-const UserCompareBox: FC<UserCompareBoxProps> = ({user, setUser, usernames}) => {
+const UserCompareBox: FC<UserCompareBoxProps> = ({user, setUser, usernames, season}) => {
 
     if (!user) {
         return (
@@ -50,7 +51,7 @@ const UserCompareBox: FC<UserCompareBoxProps> = ({user, setUser, usernames}) => 
                 </div>
             </div>
             <div className="p-6 bg-dark-light rounded-lg">
-                <UserCompareStats user={user} />
+                <UserCompareStats user={user} season={season} />
             </div>
         </div>
     )

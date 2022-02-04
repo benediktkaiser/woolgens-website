@@ -4,6 +4,9 @@ import React, {useEffect, useState} from "react";
 import {useRouter} from "next/router";
 import userStore from "../../stores/UserStore";
 import UserCompareBox from "../../components/stats/compare/UserCompareBox";
+import UserCompareArrows from "../../components/stats/compare/UserCompareArrows";
+import {BiGitCompare} from "react-icons/bi";
+import Announcement from "../../components/common/Announcement";
 
 const ComparePage: NextPageWithLayout = observer(() => {
     const router = useRouter();
@@ -13,7 +16,7 @@ const ComparePage: NextPageWithLayout = observer(() => {
     const [userOne, setUserOne] = useState(undefined);
     const [userTwo, setUserTwo] = useState(undefined)
     const [autocompleteList, setAutocompleteList] = useState(undefined)
-    const [season, setSeason] = useState(process.env.NEXT_PUBLIC_CURRENT_SEASON)
+    const [season] = useState(process.env.NEXT_PUBLIC_CURRENT_SEASON)
 
     useEffect(() => {
         userStore.getAllFormattedUserNames().then((result) => {
@@ -51,12 +54,18 @@ const ComparePage: NextPageWithLayout = observer(() => {
 
     return (
         <div>
-            <div className="grid grid-cols-9 gap-9 justify-between items-start">
+            <Announcement
+                icon={<BiGitCompare/>}
+                text="Welcome to our stats comparison! Here you can pit two users against each other and see who comes out on top!"
+                iconStyles="bg-red-500 text-white"
+            />
+            <div className="grid grid-cols-9 gap-9 justify-between items-start p-4 pt-5 mt-5 rounded-lg bg-dark-light/50">
                 <div className="col-span-4">
                     <UserCompareBox
                         user={userOne}
                         setUser={(userName) => setUser(userName, userNameTwo)}
                         usernames={autocompleteList}
+                        season={season}
                     />
                 </div>
                 <div className="flex flex-col h-full">
@@ -65,15 +74,18 @@ const ComparePage: NextPageWithLayout = observer(() => {
                             VS.
                         </h1>
                     </div>
-                    <div className="h-full">
-
-                    </div>
+                    {(userOne || userTwo) && (
+                        <div className="h-full">
+                            <UserCompareArrows user1={userOne} user2={userTwo} season={season} />
+                        </div>
+                    )}
                 </div>
                 <div className="col-span-4">
                     <UserCompareBox
                         user={userTwo}
                         setUser={(userName) => setUser(userNameOne, userName)}
                         usernames={autocompleteList}
+                        season={season}
                     />
                 </div>
             </div>
@@ -83,7 +95,7 @@ const ComparePage: NextPageWithLayout = observer(() => {
 
 ComparePage.getLayout = function getLayout(page) {
     const seo = {
-        title: "Stats",
+        title: "Compare",
         description: "Compare yourself to other members of the Woolgens community and rise to the top of the leaderboard!"
     }
 
