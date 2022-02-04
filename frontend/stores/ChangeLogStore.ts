@@ -9,16 +9,13 @@ class ChangeLogStore {
         makeAutoObservable(this)
     }
 
-    async getChangeLogs(): Promise<ChangeLog[]> {
-        if (this.changeLogs) {
-            return this.changeLogs
-        }
+    async fetchChangeLogs() {
+        if (this.changeLogs) return;
 
         const changelogs = await getChangeLogs()
         runInAction(() => {
             this.changeLogs = changelogs.reverse()
         })
-        return this.changeLogs
     }
 }
 

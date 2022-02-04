@@ -3,6 +3,9 @@ import DropdownItem from "../common/dropdown/DropdownItem";
 import BasicCard from "../common/cards/BasicCard";
 import React, {FC} from "react";
 import {FiArchive} from "react-icons/fi"
+import {BaseButton} from "../common/BaseButton";
+import {BiGitCompare} from "react-icons/bi"
+import Link from "next/link"
 
 declare interface ProfileToolBarProps {
     selectedSeason: string,
@@ -39,6 +42,13 @@ const ProfileToolBar: FC<ProfileToolBarProps> = ({selectedSeason, user, setSelec
                     )}
                 </div>
                 <div className="flex gap-3 items-center">
+                    <div className="hidden lg:block">
+                        <Link href={`/stats/compare?1=${user.name}`} passHref={true}>
+                            <BaseButton type="dark" className="py-3 px-4">
+                                <BiGitCompare size="1.6rem" className="text-blue-400" />
+                            </BaseButton>
+                        </Link>
+                    </div>
                     <Dropdown title={`Season ${selectedSeason}`}>
                         <div className="flex overflow-auto flex-col gap-2 p-2 bg-dark-light max-h-[300px]">
                             {Object.keys(user.minecraftUser.seasons).reverse().map((value, index) => (

@@ -50,7 +50,7 @@ const ProfileUserBox: FC<ProfileUserBoxProps> = ({user, seasonNumber}) => {
                         <div className="overflow-hidden relative mt-2 w-full sm:w-80 rounded-full bg-dark-light/50">
                             <div className="absolute py-0.5 pl-4 w-full h-full text-sm leading-none text-gray-100 bg-green-500 rounded-l-full"
                                 style={{width: `${getLevelProgressPercentage(user.minecraftUser.seasons[seasonNumber].level, user.minecraftUser.seasons[seasonNumber].exp)}%`}} />
-                            <p className="relative z-20 pt-1 pb-0.5 ml-2 leading-none">
+                            <p className="relative z-10 pt-1 pb-0.5 ml-2 leading-none">
                                 Level {user.minecraftUser.seasons[seasonNumber].level}
                             </p>
                         </div>
