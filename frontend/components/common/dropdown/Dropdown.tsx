@@ -12,7 +12,7 @@ const Dropdown: FC<DropdownProps> = ({title, children, ...HTMLElements}) => {
         <Menu as="div" className="inline-block relative text-left">
             <div>
                 <Menu.Button {...HTMLElements}>
-                    <div className="py-3 px-5 text-white bg-gray-700 disabled:hover:bg-dark-light rounded-lg focus:ring-2 focus:ring-dark-light focus:ring-opacity-75 shadow-md cursor-pointer focus:outline-none">
+                    <div className="py-3 px-5 text-white bg-shark-400 hover:bg-shark-300 disabled:hover:bg-dark-light rounded-lg focus:ring-2 focus:ring-dark-light focus:ring-opacity-75 shadow-md cursor-pointer focus:outline-none">
                         <div className="inline-flex items-center w-full text-lg">
                             <span>{title}</span>
                             <BsChevronDown className="ml-1.5" />

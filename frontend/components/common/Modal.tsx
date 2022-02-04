@@ -10,16 +10,12 @@ declare interface ModalProps {
 
 const Modal: FC<ModalProps> = ({isOpen, toggleModal, maxWidth = "max-w-lg", children}) => {
 
-    const toggle = () => {
-        toggleModal()
-    }
-
     return (
         <Transition appear show={isOpen} as={Fragment}>
             <Dialog
                 as="div"
                 className="fixed inset-0 z-10"
-                onClose={toggle}
+                onClose={toggleModal}
             >
                 <div className="min-h-screen text-center">
                     <Transition.Child
