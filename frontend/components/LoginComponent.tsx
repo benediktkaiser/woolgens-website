@@ -54,7 +54,13 @@ const LoginComponent = () => {
                     </p>
                 )}
                 <div className="flex flex-col gap-4 justify-end m-2">
-                    <BaseButton type="dark-active" onClick={() => authStore.getPersistedData()}>
+                    <BaseButton type="dark-active" onClick={() => {
+                        authStore.toggleLoginModal()
+
+                        setTimeout(() => {
+                            authStore.toggleRegisterModal()
+                        }, 500)
+                    }}>
                         Register
                     </BaseButton>
                     <BaseButton onClick={() => login(username, password)} type="success">

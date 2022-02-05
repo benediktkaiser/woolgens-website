@@ -32,7 +32,9 @@ const Userbar: FC<UserbarProps> = ({ user }) => {
                     </div>
                 ) : (
                     <div className="flex items-center md:space-x-2">
-                        <UserbarLink title="Register" to="/auth/register" icon={<RiUserAddLine />} />
+                        <div onClick={authStore.toggleRegisterModal}>
+                            <UserbarLink title="Register" icon={<RiUserAddLine />} />
+                        </div>
                         <div onClick={authStore.toggleLoginModal}>
                             <UserbarLink title="Login" icon={<RiLoginBoxLine />} />
                         </div>
