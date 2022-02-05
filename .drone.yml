@@ -53,8 +53,10 @@ steps:
       password:
         from_secret: SERVER_PASSWORD
       script:
+        - cd /home/web/website
         - docker-compose down
-        - rm -R /home/web/website
+        - cd ..
+        - rm -R website/
 
   - name: deploy
     depends_on: [ delete ]
