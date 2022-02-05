@@ -17,7 +17,7 @@ const StatsCard: FC<StatsCardProps> = ({title, value, label, link}) => {
                 </h1>
                 {link ? (
                     <Link href={link} passHref={true}>
-                        <a className="text-gray-400 hover:text-accent-300">
+                        <a className="text-gray-400 hover:text-green-600">
                             {value} {label}
                         </a>
                     </Link>
