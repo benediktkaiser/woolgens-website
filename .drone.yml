@@ -42,7 +42,6 @@ trigger:
 
 steps:
   - name: deploy
-    depends_on: [install]
     image: appleboy/drone-scp
     settings:
       host:
