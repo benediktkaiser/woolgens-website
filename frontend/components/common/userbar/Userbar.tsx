@@ -2,8 +2,9 @@ import {FC} from "react";
 import UserDropdown from "../dropdown/userDropdown/UserDropdown";
 import NotificationDropdown from "../dropdown/notificationDropdown/NotificationDropdown";
 import UserbarLink from "./UserbarLink";
-import {RiDashboard3Line, RiNotificationLine, RiLoginBoxLine, RiUserAddLine} from "react-icons/ri"
+import {RiNotificationLine, RiLoginBoxLine, RiUserAddLine} from "react-icons/ri"
 import authStore from "../../../stores/AuthStore";
+import {GiPartyPopper} from "react-icons/gi"
 
 declare interface UserbarProps {
     user: User
@@ -14,7 +15,10 @@ const Userbar: FC<UserbarProps> = ({ user }) => {
         <div className="py-1 w-full bg-dark-light shadow">
             <div className="container flex justify-between mx-auto">
                 <div className="flex items-center md:space-x-3">
-                    <UserbarLink title="Staff Dashboard" to="/staff" icon={<RiDashboard3Line />} />
+                    <span className="flex items-center text-sm">
+                        <GiPartyPopper className="mr-2"/>
+                        Welcome to the new WoolGens homepage!
+                    </span>
                 </div>
                 {user ? (
                     <div className="flex items-center">

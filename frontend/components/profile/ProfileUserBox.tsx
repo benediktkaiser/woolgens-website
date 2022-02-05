@@ -1,6 +1,6 @@
 import {FC} from "react";
 import Image from "next/image"
-import background from "../../public/background/mine_day.png"
+import background from "../../public/background/tree.jpeg"
 import Bust from "../common/Bust";
 import SkillsBadge from "./skills/SkillsBadge";
 import {getHighestSkill, getLevelProgressPercentage, SKILL_TITLES} from "../../core/skills";
@@ -28,7 +28,7 @@ const ProfileUserBox: FC<ProfileUserBoxProps> = ({user, seasonNumber}) => {
         <div className="p-4 w-full bg-dark-light rounded-lg">
             <div className="overflow-hidden relative rounded-lg h-[200px]">
                 <Image className="invisible lg:visible" src={background} alt="profile background" />
-                <div className="absolute top-0 w-full h-full bg-gradient-to-r to-accent-200/70 from-accent-500/90" />
+                <div className="absolute top-0 w-full h-full bg-gradient-to-r to-accent-200/60 from-accent-500/90" />
                 <div className="absolute top-1/2 right-1 md:right-10 mt-1 -translate-y-1/2">
                     <SkillsBadge skill={highestSkill} />
                 </div>

@@ -35,7 +35,7 @@ const NavbarLayout: FC<NavbarLayoutProps> = observer(({seo, children}) => {
                 discordInviteLink={informationStore.discordInviteLink}
             />
             <Navbar toggleMobileNavbar={() => setMobileNavBarOpen(!mobileNavBarOpen)} />
-            <main className="container mx-auto mt-5 min-h-[51.8vh]">
+            <main className="container mx-auto mt-5 min-h-[52.26vh]">
                 {children}
             </main>
             <Footer />

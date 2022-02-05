@@ -13,8 +13,10 @@ const LandProfileContainer = () => {
     const [land, setLand] = useState(undefined)
 
     useEffect(() => {
-        landStore.getLand(landname).then(result => setLand(result))
-    })
+        if (landname) {
+            landStore.getLand(landname).then(result => setLand(result))
+        }
+    }, [landname])
 
     return (
         <div>

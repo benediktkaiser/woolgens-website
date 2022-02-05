@@ -5,6 +5,7 @@ import LoadingTopList from "./LoadingTopList";
 import React, {FC, useEffect, useState} from "react";
 import topListStore from "../../stores/TopListStore";
 import {formatMillisecondsToTime, formatMoney} from "../../core/formatters";
+import AnimatedFade from "../common/animations/AnimatedFade";
 
 declare interface UserStatsContainerProps {
     seasonNumber: string
@@ -32,7 +33,7 @@ const TopLists: FC<UserStatsContainerProps> = ({seasonNumber}) => {
             <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-4 my-6">
                 <TopList title="Level" background={"bg-gradient-to-r from-green-500/80 to-green-900/80"}>
                     {levelTopList ? (
-                        <div>
+                        <AnimatedFade>
                             {levelTopList.map((user, index) =>
                                 <TopListRow
                                     key={index}
@@ -41,12 +42,12 @@ const TopLists: FC<UserStatsContainerProps> = ({seasonNumber}) => {
                                     place={index + 1}
                                 />
                             )}
-                        </div>
+                        </AnimatedFade>
                     ) : <LoadingTopList />}
                 </TopList>
                 <TopList title="Money" background={"bg-gradient-to-l from-amber-400/80 to-yellow-700/80"}>
                     {balanceTopList ? (
-                        <div>
+                        <AnimatedFade>
                             {balanceTopList.map((user, index) =>
                                 <TopListRow
                                     key={index}
@@ -56,12 +57,12 @@ const TopLists: FC<UserStatsContainerProps> = ({seasonNumber}) => {
                                     place={index + 1}
                                 />
                             )}
-                        </div>
+                        </AnimatedFade>
                     ) : <LoadingTopList />}
                 </TopList>
                 <TopList title="Playtime" background={"bg-gradient-to-l from-purple-400/80 to-purple-700/80"}>
                     {playTimeTopList ? (
-                        <div>
+                        <AnimatedFade>
                             {playTimeTopList.map((user: MinecraftUser, index) =>
                                 <TopListRow
                                     key={index}
@@ -71,7 +72,7 @@ const TopLists: FC<UserStatsContainerProps> = ({seasonNumber}) => {
                                     place={index + 1}
                                 />
                             )}
-                        </div>
+                        </AnimatedFade>
                     ) : <LoadingTopList />}
                 </TopList>
             </div>
