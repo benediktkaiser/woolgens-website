@@ -10,6 +10,7 @@ import Toast from "../plugins/toast.plugin";
 
 import {AiOutlineLoading3Quarters} from "react-icons/ai"
 import LoginModal from "../components/LoginModal";
+import RegisterModal from "../components/RegisterModal";
 
 const progress = new ProgressBar({
   size: 2,
@@ -59,6 +60,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
             <Component {...pageProps} />
             <Toast />
             <LoginModal />
+            <RegisterModal />
         </div>
     )
 }

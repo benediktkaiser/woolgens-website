@@ -1,9 +1,10 @@
-import {FC} from "react";
+import React, {FC} from "react";
 import UserCompareSearch from "./UserCompareSearch";
 import {FiX} from "react-icons/fi"
 import Link from "next/link"
 import Avatar from "../../common/Avatar";
 import UserCompareStats from "./UserCompareStats";
+import {AiOutlineLoading3Quarters} from "react-icons/ai"
 
 declare interface Item {
     id: number,
@@ -16,20 +17,33 @@ interface UserCompareBoxProps {
     setUser: (userName) => void;
     usernames: Array<Item>
     season: string
+    isLoading: boolean
 }
 
-const UserCompareBox: FC<UserCompareBoxProps> = ({user, setUser, usernames, season}) => {
+const UserCompareBox: FC<UserCompareBoxProps> = ({user, setUser, usernames, season, isLoading}) => {
 
     if (!user) {
         return (
             <div className="h-full">
-                <div className="w-full rounded-lg">
+                <div className="relative w-full rounded-lg">
                     <div className="my-2 h-24">
                         <h1 className="mb-2 text-2xl text-center">
                             Select a user to compare
                         </h1>
                         <UserCompareSearch setUser={setUser} usernames={usernames} />
                     </div>
+                </div>
+                <div className="relative p-6 bg-dark-light rounded-lg h-[914px]">
+                    {isLoading ? (
+                        <div className="flex absolute top-0 left-0 flex-col justify-center w-full h-full text-center rounded-lg">
+                            <AiOutlineLoading3Quarters size="2rem" className="mx-auto animate-spin" />
+                            <h1 className="my-2 text-xl">Loading...</h1>
+                        </div>
+                    ): (
+                        <div className="flex absolute top-0 left-0 flex-col justify-center w-full h-full text-center rounded-lg">
+                            <h1 className="my-2 text-2xl">Please select a user!</h1>
+                        </div>
+                    )}
                 </div>
             </div>
         )
@@ -50,7 +64,7 @@ const UserCompareBox: FC<UserCompareBoxProps> = ({user, setUser, usernames, seas
                     </div>
                 </div>
             </div>
-            <div className="p-6 bg-dark-light rounded-lg">
+            <div className="overflow-hidden p-6 bg-dark-light rounded-lg h-[914px]">
                 <UserCompareStats user={user} season={season} />
             </div>
         </div>

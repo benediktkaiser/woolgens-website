@@ -24,6 +24,7 @@ const HeadSEO: FC<HeadSEOProps> = ({seo}) => {
             <meta name="description" content={seo.description}/>
             <meta name="robots" content="index, follow"/>
             <meta name="theme-color" content="#CB3737"/>
+            <link rel="icon" href="/favicon.ico" />
 
             {/* Open graph meta tags */}
             <meta property="og:type" content="website"/>

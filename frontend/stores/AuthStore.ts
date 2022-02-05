@@ -9,6 +9,7 @@ class AuthStore {
     token = "";
     user: User = undefined;
     loginModalOpen = false;
+    registerModalOpen = false;
 
     constructor() {
         makeAutoObservable(this, {}, {autoBind: true});
@@ -77,6 +78,12 @@ class AuthStore {
     toggleLoginModal() {
         runInAction(() => {
             this.loginModalOpen = !this.loginModalOpen;
+        })
+    }
+
+    toggleRegisterModal() {
+        runInAction(() => {
+            this.registerModalOpen = !this.registerModalOpen;
         })
     }
 
