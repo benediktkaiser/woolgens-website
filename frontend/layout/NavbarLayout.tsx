@@ -26,19 +26,23 @@ const NavbarLayout: FC<NavbarLayoutProps> = observer(({seo, children}) => {
     })
 
     return (
-        <div className={`min-h-screen text-gray-200 bg-dark-dark font-poppins`}>
+        <div className={`text-gray-200 bg-dark-dark font-poppins`}>
             <HeadSEO seo={seo} />
-            <Userbar user={authStore.user} />
-            <Header
-                onlineDiscord={informationStore.onlineDiscord}
-                onlineMinecraft={informationStore.onlineMinecraft}
-                discordInviteLink={informationStore.discordInviteLink}
-            />
-            <Navbar toggleMobileNavbar={() => setMobileNavBarOpen(!mobileNavBarOpen)} />
-            <main className="container mx-auto mt-5 min-h-[52.26vh]">
-                {children}
-            </main>
-            <Footer />
+            <div className="flex flex-col justify-between min-h-screen">
+                <div>
+                    <Userbar user={authStore.user} />
+                    <Header
+                        onlineDiscord={informationStore.onlineDiscord}
+                        onlineMinecraft={informationStore.onlineMinecraft}
+                        discordInviteLink={informationStore.discordInviteLink}
+                    />
+                    <Navbar toggleMobileNavbar={() => setMobileNavBarOpen(!mobileNavBarOpen)} />
+                    <main className="container mx-auto mt-5">
+                        {children}
+                    </main>
+                </div>
+                <Footer />
+            </div>
             <MobileNavbar isOpen={mobileNavBarOpen} toggleMobileNavbar={() => setMobileNavBarOpen(!mobileNavBarOpen)} />
         </div>
     )
