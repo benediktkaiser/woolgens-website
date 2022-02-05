@@ -53,7 +53,7 @@ steps:
       password:
         from_secret: SERVER_PASSWORD
       target: /home/web/website
-      source: *
+      source: ./*
       strip_components: 0
 
   - name: start
