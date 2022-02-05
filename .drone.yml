@@ -31,32 +31,45 @@ steps:
 
 ---
 kind: pipeline
-name: build-publish-deploy
+name: deploy-start
 type: docker
 
 trigger:
   event:
-    - push
+    - pull_request
   branch:
     - master
 
 steps:
-  - name: install
-    image: node:16.9.1
-    commands:
-      - cd frontend
-      - yarn install
-
-  - name: lint
-    image: node:16.9.1
+  - name: deploy
     depends_on: [install]
-    commands:
-      - cd frontend
-      - yarn lint
+    image: appleboy/drone-scp
+    settings:
+      host:
+        from_secret: SERVER_HOST
+      port:
+        from_secret: SERVER_PORT
+      username:
+        from_secret: SERVER_USER
+      password:
+        from_secret: SERVER_PASSWORD
+      target: /home/web/website
+      source: *
+      strip_components: 0
 
-  - name: build-and-typescript-check
-    image: node:16.9.1
-    depends_on: [install]
-    commands:
-      - cd frontend
-      - yarn build
+  - name: start
+    depends_on: [deploy]
+    image: appleboy/drone-ssh
+    settings:
+      host:
+        from_secret: SERVER_HOST
+      port:
+        from_secret: SERVER_PORT
+      username:
+        from_secret: SERVER_USER
+      password:
+        from_secret: SERVER_PASSWORD
+      script:
+        - cd /home/web/website
+        - docker-compose down
+        - docker-compose up -d --build
