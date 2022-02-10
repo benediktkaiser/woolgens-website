@@ -29,7 +29,7 @@ const Dropdown: FC<DropdownProps> = ({title, children, ...HTMLElements}) => {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
             >
-                <Menu.Items className="overflow-hidden absolute right-0 z-40 mt-2 w-56 rounded-md divide-y divide-gray-100 ring-1 ring-black ring-opacity-5 shadow-lg origin-top-right focus:outline-none">
+                <Menu.Items className="overflow-hidden absolute right-0 z-40 mt-2 rounded-md divide-y divide-gray-100 ring-1 ring-black ring-opacity-5 shadow-lg origin-top-right focus:outline-none min-w-[225px]">
                     {children}
                 </Menu.Items>
             </Transition>

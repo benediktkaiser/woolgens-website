@@ -1,6 +1,7 @@
 import LandTopBox from "./LandTopBox";
 import LandTopListRow from "./LandTopListRow";
 import {FC} from "react";
+import BasicCard from "../../common/cards/BasicCard";
 
 declare interface LandTopListsProps {
     topLands: Land[]
@@ -16,6 +17,18 @@ const LandTopLists: FC<LandTopListsProps> = ({topLands}) => {
                     <div className="h-44 rounded-2xl animate-pulse bg-dark-light/50" />
                 </div>
                 <div className="bg-dark-light rounded-2xl animate-pulse h-[150px]" />
+            </div>
+        )
+    }
+
+    if (topLands.length === 0) {
+        return (
+            <div className="my-4">
+                <BasicCard>
+                    <span>
+                        There are no lands registered yet!
+                    </span>
+                </BasicCard>
             </div>
         )
     }

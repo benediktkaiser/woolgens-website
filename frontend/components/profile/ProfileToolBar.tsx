@@ -49,11 +49,11 @@ const ProfileToolBar: FC<ProfileToolBarProps> = ({selectedSeason, user, setSelec
                             </BaseButton>
                         </Link>
                     </div>
-                    <Dropdown title={`Season ${selectedSeason}`}>
+                    <Dropdown title={selectedSeason}>
                         <div className="flex overflow-auto flex-col gap-2 p-2 bg-dark-light max-h-[300px]">
                             {Object.keys(user.minecraftUser.seasons).reverse().map((value, index) => (
                                 <div key={index} onClick={() => setSelectedSeason(value)}>
-                                    <DropdownItem title={`Season ${value}`}/>
+                                    <DropdownItem title={value}/>
                                 </div>
                             ))}
                         </div>

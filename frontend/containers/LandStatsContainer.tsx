@@ -53,10 +53,10 @@ const LandStatsContainer = observer(() => {
                             <Link href="/stats" passHref={true}>
                                 <a>
                                     <BaseButton type="success">
-                                    <span className="flex items-center">
-                                        To the Player Top list
-                                        <AiOutlineArrowRight className="ml-2"/>
-                                    </span>
+                                        <span className="flex items-center">
+                                            To the Player Top list
+                                            <AiOutlineArrowRight className="ml-2"/>
+                                        </span>
                                     </BaseButton>
                                 </a>
                             </Link>
