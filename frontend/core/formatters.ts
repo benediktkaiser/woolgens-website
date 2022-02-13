@@ -13,3 +13,7 @@ export function formatMoney(number: number): string {
     const formattedMoney = (number).toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,')
     return formattedMoney.substring(0, formattedMoney.length - 2);
 }
+
+export function formatSeasonName(name: string): string {
+    return name.replace(/_/g, ' ');
+}
