@@ -7,12 +7,8 @@ const Error = () => {
 }
 
 Error.getLayout = function getLayout(page) {
-    const seo = {
-        title: "Error",
-    }
-
     return (
-        <NavbarLayout seo={seo}>
+        <NavbarLayout>
             {page}
         </NavbarLayout>
     )

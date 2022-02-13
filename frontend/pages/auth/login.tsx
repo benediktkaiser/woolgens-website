@@ -20,13 +20,8 @@ const LoginPage: NextPageWithLayout = observer(() => {
 })
 
 LoginPage.getLayout = function getLayout(page) {
-    const seo = {
-        title: "Login",
-        description: "Welcome to the WoolGens homepage! Here you can find stats, news and communicate with other community members!"
-    }
-
     return (
-        <NavbarLayout seo={seo}>
+        <NavbarLayout>
             {page}
         </NavbarLayout>
     )
