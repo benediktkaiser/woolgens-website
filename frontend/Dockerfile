@@ -1,6 +1,6 @@
 FROM node:12
 
-# Install needed addons for Chromium
+# Install needed addons for chromium
 RUN  apt-get update \
      && apt-get install -y wget gnupg ca-certificates \
      && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
@@ -14,7 +14,7 @@ RUN  apt-get update \
      && apt-get install -y google-chrome-stable \
      && rm -rf /var/lib/apt/lists/* \
      && wget --quiet https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh -O /usr/sbin/wait-for-it.sh \
-     && chmod +x /usr/sbin/wait-for-it.sh
+     && chmod +x /usr/sbin/wait-for-it.sh \
 
 ENV PORT 3000
 
@@ -29,6 +29,7 @@ RUN yarn install
 # Copying source files
 COPY . /usr/src/app
 
+# Give correct permissions to access the local chromium build
 RUN chmod -R o+rwx node_modules/puppeteer/.local-chromium
 
 # Building app
