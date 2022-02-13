@@ -5,6 +5,7 @@ import {getMinecraftUser} from "../../../../core/minecraftUser";
 
 export default async function generateUserImage(req, res) {
     const userName = req.query.username.replace('.jpg', '');
+    const CURRENT_SEASON = process.env.NEXT_PUBLIC_CURRENT_SEASON;
 
     // Get the WoolGens Logo
     const logo = fs.readFileSync('./public/logo.png');
@@ -36,7 +37,7 @@ export default async function generateUserImage(req, res) {
                         Joined: ${new Date(user.joined).toDateString()}
                     </h2>
                     <h2>
-                        Level: ${user.seasons['Closed_Beta'].level}
+                        Level: ${user.seasons[CURRENT_SEASON]?.level}
                     </h2>
                     <div class="social-image-footer">
                         <div class="social-image-footer-left">
