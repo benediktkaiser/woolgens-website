@@ -36,7 +36,7 @@ type: docker
 
 trigger:
   event:
-    - push
+    - pull_request
   branch:
     - master
 
