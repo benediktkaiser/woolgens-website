@@ -29,105 +29,80 @@ export default async function generateUserImage(req, res) {
     await page.setViewport({width: 1128, height: 600});
     await page.setContent(`<html lang="en">
             <body>
-                <div class="social-image-content">
-                    <h1>
-                        ${userName}
-                    </h1>
-                    <h2>
-                        Joined: ${new Date(user.joined).toDateString()}
-                    </h2>
-                    <h2>
-                        Level: ${user.seasons[CURRENT_SEASON]?.level}
-                    </h2>
-                    <div class="social-image-footer">
-                        <div class="social-image-footer-left">
-                            <img src="${base64LogoURL}" alt="preview" />
-                            <span>WoolGens</span>
-                        </div>
-                        <div class="social-image-footer-right">
-                            View User Profile!
+                <div class="userCard">
+                    <div style="width: 100%; display: flex; align-items: center">
+                        <img style="border-radius: 5px" height="125px" width="125px" src=${`https://cravatar.eu/helmavatar/${userName}/150`} alt="User Bust" />
+                        <div style="margin-left: 20px;">
+                            <h1 style="font-size: 50px">
+                                ${userName}
+                            </h1>
                         </div>
                     </div>
+                    <div>
+                        <h2>Global Stats:</h2>
+                        <ul>
+                            <li>
+                                <b>Joined</b>: ${new Date(user.joined).toDateString()}
+                            </li>
+                            <li>
+                                <b>Playtime</b>: ${new Date(user.joined).toDateString()}
+                            </li>
+                            <li>
+                                <b>Land</b>: ${user.land || "No land"}
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2>Season Stats:</h2>
+                        <ul>
+                            <li>
+                                <b>Level</b>: ${user.seasons[CURRENT_SEASON]?.level}
+                            </li>
+                            <li>
+                                <b>Balance</b>: ${user.seasons[CURRENT_SEASON]?.balance}
+                            </li>
+                        </ul>
+                    </div>
+                    <img height="50px" width="50px" class="absolute top-1 right-1" src="${base64LogoURL}" alt="preview"/>
                 </div>
             </body>
             <style>
                 html, body {
-                    height : 100%;
-                }
-                body {
-                    align-items : center;
-                    display : flex;
-                    height : 600px;
-                    justify-content : center;
-                    margin: 0;
-                    width : 1128px;
-                    background-color: #e2e2e2;
-                }
-                .social-image-content {
-                    border : 2px solid black;
-                    border-radius : 5px;
-                    box-sizing: border-box;
-                    display : flex;
-                    flex-direction : column;
-                    height : calc(100% - 80px);
-                    margin : 40px;
-                    padding : 20px;
-                    width : calc(100% - 80px);
-                    position: relative;
-                    background-color: white;
-                }
-                .social-image-content::after {
-                    content: ' ';
-                    position: absolute;
-                    top: 7px;
-                    left: 7px;
-                    width: 100%;
-                    background-color: black;
                     height: 100%;
-                    z-index: -1;
+                    background-color: #16181C;
+                }
+            
+                body {
+                    align-items: center;
+                    display: flex;
+                    height: 600px;
+                    justify-content: center;
+                    margin: 0;
+                    width: 1128px;
+                    background-color: #16181C;
+                }
+            
+                .userCard {
                     border-radius: 5px;
-                }
-                .social-image-content h1 {
-                    font-size: 72px;
-                    margin-top: 90px;
-                }
-                .social-image-footer {
-                    display : flex;
-                    flex-direction : row;
-                    margin-top : auto;
-                }
-                .social-image-footer-left {
-                    align-items: center;
+                    box-sizing: border-box;
                     display: flex;
-                    flex-direction: row;
-                    font-size : 28px;
-                    font-weight : 600;
-                    justify-content: center;
-                    line-height: 40px;
-                }
-                .social-image-footer-left img {
-                    border : 2px solid black;
-                    border-radius : 50%;
-                    height : 40px;
-                    margin-right : 10px;
-                    width : 40px;
-                }
-                .social-image-footer-right {
-                    align-items: center;
-                    display: flex;
-                    flex-direction: row;
-                    height : 40px;
-                    justify-content: center;
-                    margin-left : auto;
-                    font-size : 28px;
+                    flex-direction: column;
+                    height: calc(100% - 80px);
+                    margin: 40px;
+                    padding: 30px;
+                    width: calc(100% - 80px);
+                    position: relative;
+                    background-color: #363944;
                 }
                 * {
                     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
                     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-                    font-weight : 600;
+                    font-weight: 600;
+                    color: #cbcbcb;
                 }
             </style>
         </html>`);
+
     const screenShotBuffer = await page.screenshot();
     res.writeHead(200, {
         "Content-Type": "image/png",
