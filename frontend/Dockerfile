@@ -26,11 +26,11 @@ WORKDIR /usr/src/app
 COPY package*.json /usr/src/app/
 RUN yarn install
 
-# Copying source files
-COPY . /usr/src/app
-
 # Give correct permissions to access the local chromium build
 RUN chmod -R o+rwx node_modules/puppeteer/.local-chromium
+
+# Copying source files
+COPY . /usr/src/app
 
 # Building app
 RUN yarn build

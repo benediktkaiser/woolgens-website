@@ -27,13 +27,19 @@ const UserDropdownAccountPage: FC<UserDropdownStartPageProps> = ({selectedPage, 
             <hr className="my-2 border-gray-700"/>
 
             <Link href="/settings" passHref={true}>
-                <DropdownItem title="Settings" icon={<RiSettings2Line size="1.5rem"/>} />
+                <a>
+                    <DropdownItem title="Settings" icon={<RiSettings2Line size="1.5rem"/>} />
+                </a>
             </Link>
             <Link href="/settings/preferences" passHref={true}>
-                <DropdownItem title="Preferences" icon={<RiProfileLine size="1.5rem"/>} />
+                <a>
+                    <DropdownItem title="Preferences" icon={<RiProfileLine size="1.5rem"/>} />
+                </a>
             </Link>
             <Link href="/settings/notifications" passHref={true}>
-                <DropdownItem title="Notifications" icon={<RiNotification3Line size="1.5rem"/>} />
+                <a>
+                    <DropdownItem title="Notifications" icon={<RiNotification3Line size="1.5rem"/>} />
+                </a>
             </Link>
         </Transition>
     )

@@ -2,7 +2,6 @@ import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 import { useRouter } from 'next/router'
 import {FC} from "react";
 import {observer} from "mobx-react-lite";
-import landStore from "../../stores/LandStore";
 import Avatar from "../common/Avatar";
 import Image from "next/image"
 import grassBlock from "../../public/icons/grass.jpeg"
@@ -24,42 +23,42 @@ const styles = {
     cursor: "pointer",
 }
 
-declare interface Item {
+declare interface AutoCompleteItem {
     id: number,
     name: string,
     type: string,
 }
 
 declare interface StatsUserSearchBarProps {
-    items: Array<Item>
+    autoCompleteItems: Array<AutoCompleteItem>
 }
 
-const StatsUserSearchBar: FC<StatsUserSearchBarProps> = observer(({items}) => {
+const StatsUserSearchBar: FC<StatsUserSearchBarProps> = observer(({autoCompleteItems}) => {
     const router = useRouter()
 
     const formatResult = (item) => {
-        if (!!landStore.landNames[item]) {
+        if (item.type === "land") {
             return (
-                <div key={item} className="flex items-center py-1 space-x-3 w-full cursor-pointer">
+                <div key={item.id} className="flex items-center py-1 space-x-3 w-full cursor-pointer">
                     <Image src={grassBlock} className="rounded" height={35} width={35} alt="Land" />
                     <p className="text-green-400">
-                        {item}
+                        {item.name}
                     </p>
                 </div>
             )
         }
 
         return (
-            <div key={item} className="flex items-center py-1 space-x-3 w-full cursor-pointer">
-                <Avatar player={item} size={35} />
+            <div key={item.id} className="flex items-center py-1 space-x-3 w-full cursor-pointer">
+                <Avatar player={item.name} size={35} />
                 <p className="text-blue-400">
-                    {item}
+                    {item.name}
                 </p>
             </div>
         );
     }
 
-    const handleOnSelect = (item: Item) => {
+    const handleOnSelect = (item: AutoCompleteItem) => {
         if (item.type === "player") {
             router.push(`/profile/${item.name}`).then(() => {
                 return null;
@@ -74,7 +73,7 @@ const StatsUserSearchBar: FC<StatsUserSearchBarProps> = observer(({items}) => {
     return (
         <div className="mx-auto w-11/12 md:w-8/12 xl:w-1/2">
             <ReactSearchAutocomplete
-                items={items}
+                items={autoCompleteItems}
                 formatResult={formatResult}
                 onSelect={handleOnSelect}
                 styling={styles}
