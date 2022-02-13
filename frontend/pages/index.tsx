@@ -21,16 +21,7 @@ const IndexPage: NextPageWithLayout = observer(() => {
                             height: 600,
                             alt: 'Og Image Alt',
                             type: 'image/jpeg',
-                        },
-                        {
-                            url: 'https://i.imgur.com/jwsb0dY.jpg',
-                            width: 900,
-                            height: 800,
-                            alt: 'Og Image Alt Second',
-                            type: 'image/jpeg',
-                        },
-                        { url: 'https://i.imgur.com/jwsb0dY.jpg' },
-                        { url: 'https://i.imgur.com/jwsb0dY.jpg' },
+                        }
                     ],
                     site_name: 'WoolGens',
                 }}
