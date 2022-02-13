@@ -76,7 +76,6 @@ const StatsUserSearchBar: FC<StatsUserSearchBarProps> = observer(({items}) => {
             <ReactSearchAutocomplete
                 items={items}
                 formatResult={formatResult}
-                useCaching={true}
                 onSelect={handleOnSelect}
                 styling={styles}
                 showIcon={true}
