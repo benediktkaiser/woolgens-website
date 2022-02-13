@@ -20,7 +20,7 @@ const TopLists: FC<UserStatsContainerProps> = ({seasonNumber}) => {
         topListStore.getSimpleTopList("level", `seasons.${seasonNumber}.level`).then((result) => {
             setLevelTopList(result)
         })
-        topListStore.getSimpleTopList("balance", `seasons.2.balance`).then((result) => {
+        topListStore.getSimpleTopList("balance", `seasons.${seasonNumber}.balance`).then((result) => {
             setBalanceTopList(result)
         })
         topListStore.getSimpleTopList("playTime", `stats.playtime`).then((result) => {

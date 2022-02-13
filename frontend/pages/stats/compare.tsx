@@ -9,6 +9,7 @@ import {BiGitCompare} from "react-icons/bi";
 import Dropdown from "../../components/common/dropdown/Dropdown";
 import DropdownItem from "../../components/common/dropdown/DropdownItem";
 import BasicCard from "../../components/common/cards/BasicCard";
+import {formatSeasonName} from "../../core/formatters";
 
 const ComparePage: NextPageWithLayout = observer(() => {
     const router = useRouter();
@@ -75,7 +76,7 @@ const ComparePage: NextPageWithLayout = observer(() => {
                         </div>
                         <div className="ml-3">
                             <h1 className="text-xl">
-                                Comparing stats from Season {season}!
+                                Comparing stats from Season {formatSeasonName(season)}!
                             </h1>
                             <h2>
                                 After selecting two users you can change the season!
@@ -83,11 +84,11 @@ const ComparePage: NextPageWithLayout = observer(() => {
                         </div>
                     </div>
                     {userOne ? (
-                        <Dropdown title={season}>
+                        <Dropdown title={formatSeasonName(season)}>
                             <div className="flex overflow-auto flex-col gap-2 p-2 bg-dark-light max-h-[300px]">
                                 {Object.keys(userOne.minecraftUser.seasons).reverse().map((value, index) => (
                                     <div key={index} onClick={() => setSelectedSeason(value)}>
-                                        <DropdownItem title={value}/>
+                                        <DropdownItem title={formatSeasonName(value)}/>
                                     </div>
                                 ))}
                             </div>
