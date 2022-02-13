@@ -50,7 +50,6 @@ const UserCompareSearch: FC<UserCompareSearchProps> = ({usernames, setUser}) => 
     return <ReactSearchAutocomplete
         items={usernames}
         formatResult={formatResult}
-        useCaching={true}
         onSelect={handleOnSelect}
         styling={styles}
         showIcon={true}
