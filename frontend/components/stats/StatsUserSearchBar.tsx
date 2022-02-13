@@ -24,17 +24,17 @@ const styles = {
     cursor: "pointer",
 }
 
-declare interface Item {
+declare interface AutoCompleteItem {
     id: number,
     name: string,
     type: string,
 }
 
 declare interface StatsUserSearchBarProps {
-    items: Array<Item>
+    autoCompleteItem: Array<AutoCompleteItem>
 }
 
-const StatsUserSearchBar: FC<StatsUserSearchBarProps> = observer(({items}) => {
+const StatsUserSearchBar: FC<StatsUserSearchBarProps> = observer(({autoCompleteItem}) => {
     const router = useRouter()
 
     const formatResult = (item) => {
@@ -59,7 +59,7 @@ const StatsUserSearchBar: FC<StatsUserSearchBarProps> = observer(({items}) => {
         );
     }
 
-    const handleOnSelect = (item: Item) => {
+    const handleOnSelect = (item: AutoCompleteItem) => {
         if (item.type === "player") {
             router.push(`/profile/${item.name}`).then(() => {
                 return null;
@@ -74,8 +74,7 @@ const StatsUserSearchBar: FC<StatsUserSearchBarProps> = observer(({items}) => {
     return (
         <div className="mx-auto w-11/12 md:w-8/12 xl:w-1/2">
             <ReactSearchAutocomplete
-                items={items}
-                formatResult={formatResult}
+                items={autoCompleteItem}
                 useCaching={true}
                 onSelect={handleOnSelect}
                 styling={styles}
