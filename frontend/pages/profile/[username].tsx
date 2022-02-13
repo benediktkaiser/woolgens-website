@@ -9,7 +9,7 @@ const ProfilePage: NextPageWithLayout = () => {
             <SEO seo={{
                 title: "News",
                 description: "Test",
-                imageSRC: `/api/previews/user/ReaperMaga.jpg`
+                imageSRC: `https://i.imgur.com/jwsb0dY.jpg`
             }} />
             <UserProfileContainer />
         </div>
