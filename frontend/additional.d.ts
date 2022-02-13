@@ -12,10 +12,14 @@ declare interface User extends InitialUser {
     minecraftUser: MinecraftUser
 }
 
-declare interface WebUser extends InitialUser {
-    group: Group | string,
+declare interface WebInitialUser extends  InitialUser {
+    group: string,
     joined: number, // is a timestamp
     notifications: WebNotification[],
+}
+
+declare interface WebUser extends WebInitialUser {
+    group?: Group,
 }
 
 declare interface MinecraftInitialUser extends InitialUser {
@@ -42,7 +46,7 @@ declare interface MinecraftUserSeason {
 declare interface Group {
     name: string,
     color: string, // is a hex color code
-    priority: number,
+    role: string,
     permissions: string[]
 }
 
@@ -121,4 +125,11 @@ type NextPageWithLayout = import("NextPage").NextPage & {
 
 type AppPropsWithLayout = import("next/app").AppProps & {
     Component: NextPageWithLayout
+}
+
+declare interface TemporaryToken {
+    id: string,
+    type: "register",
+    ttl: number,
+    data: Record<string, string>
 }

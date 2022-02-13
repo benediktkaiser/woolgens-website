@@ -1,5 +1,5 @@
 import {makeAutoObservable, runInAction} from "mobx";
-import {makePersistable, getPersistedStore,} from "mobx-persist-store";
+import {makePersistable} from "mobx-persist-store";
 import {getMinecraftUser} from "../core/minecraftUser";
 import {changeAPIToken} from "../core/api";
 import {basicAuth, tokenAuth} from "../core/auth";
@@ -20,11 +20,6 @@ class AuthStore {
         }).then(() => {
             return;
         });
-    }
-
-    async getPersistedData(): Promise<void> {
-        const data = await getPersistedStore(this);
-        console.info(JSON.stringify(data));
     }
 
     async tokenAuth(token) {

@@ -1,4 +1,14 @@
 import {authAPI} from "./api";
+import groupStore from "../stores/GroupStore";
+
+async function enrichWebUserWithGroup(webUser: WebInitialUser): Promise<WebUser> {
+    const group = await groupStore.getGroup(webUser.group)
+
+    return {
+        ...webUser,
+        group: group || undefined
+    }
+}
 
 export async function basicAuth(userName: string, password: string): Promise<{ token: string, user: WebUser } | undefined> {
     try {
@@ -7,7 +17,12 @@ export async function basicAuth(userName: string, password: string): Promise<{ t
             password,
             tokenLifeTime: "DAY" // DAY, WEEK OR MONTH
         })
-        return data.data;
+
+        const user = await enrichWebUserWithGroup(data.data.user)
+        return {
+            token: data.data.token,
+            user
+        };
     }
     catch (error) {
         return undefined;
@@ -19,7 +34,7 @@ export async function tokenAuth(token: string): Promise<WebUser | undefined> {
         const data = await authAPI.post('/login/token', {
             token
         })
-        return data.data.user;
+        return await enrichWebUserWithGroup(data.data.user);
     }
     catch (error) {
         return undefined;
@@ -29,9 +44,40 @@ export async function tokenAuth(token: string): Promise<WebUser | undefined> {
 export async function getWebUser(uuid: string): Promise<WebUser | undefined> {
     try {
         const data = await authAPI.get(`/users/${uuid}`)
+        return await enrichWebUserWithGroup(data.data)
+    }
+    catch (error) {
+        return undefined
+    }
+}
+
+export async function getGroup(id: string): Promise<Group> {
+    try {
+        const data = await authAPI.get(`/groups/${id}`)
         return data.data
     }
     catch (error) {
         return undefined
+    }
+}
+
+export async function getTemporaryToken(token: string): Promise<TemporaryToken> {
+    try {
+        const data = await authAPI.get(`/tokens/${token}`);
+        return data.data
+    }
+    catch (error) {
+        return undefined
+    }
+}
+
+export async function registerUserWithToken(token: TemporaryToken, password: string): Promise<boolean> {
+    try {
+        token.data["password"] = password
+        await authAPI.post(`/register`, token);
+        return true;
+    } catch (error) {
+        console.error(error)
+        return false
     }
 }
