@@ -38,17 +38,6 @@ const StatsUserSearchBar: FC<StatsUserSearchBarProps> = observer(({autoCompleteI
     const router = useRouter()
 
     const formatResult = (item) => {
-        if (!!landStore.landNames[item]) {
-            return (
-                <div key={item} className="flex items-center py-1 space-x-3 w-full cursor-pointer">
-                    <Image src={grassBlock} className="rounded" height={35} width={35} alt="Land" />
-                    <p className="text-green-400">
-                        {item}
-                    </p>
-                </div>
-            )
-        }
-
         return (
             <div key={item} className="flex items-center py-1 space-x-3 w-full cursor-pointer">
                 <Avatar player={item} size={35} />
@@ -76,6 +65,7 @@ const StatsUserSearchBar: FC<StatsUserSearchBarProps> = observer(({autoCompleteI
             <ReactSearchAutocomplete
                 items={autoCompleteItems}
                 onSelect={handleOnSelect}
+                formatResult={formatResult}
                 styling={styles}
                 showIcon={true}
                 placeholder="Search for a player or a land..."
