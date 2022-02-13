@@ -30,7 +30,7 @@ const StatsContainer = () => {
                         Player and Land Stats
                     </h1>
                 </div>
-                <StatsUserSearchBar items={autocompleteList}/>
+                <StatsUserSearchBar autoCompleteItem={autocompleteList}/>
             </div>
             <div>
                 <div className="hidden lg:block">

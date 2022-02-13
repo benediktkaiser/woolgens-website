@@ -75,7 +75,6 @@ const StatsUserSearchBar: FC<StatsUserSearchBarProps> = observer(({autoCompleteI
         <div className="mx-auto w-11/12 md:w-8/12 xl:w-1/2">
             <ReactSearchAutocomplete
                 items={autoCompleteItem}
-                useCaching={true}
                 onSelect={handleOnSelect}
                 styling={styles}
                 showIcon={true}
