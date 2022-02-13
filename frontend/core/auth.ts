@@ -26,13 +26,12 @@ export async function tokenAuth(token: string): Promise<WebUser | undefined> {
     }
 }
 
-export async function getWebUser(uuid: string): Promise<WebUser> {
+export async function getWebUser(uuid: string): Promise<WebUser | undefined> {
     try {
         const data = await authAPI.get(`/users/${uuid}`)
         return data.data
     }
     catch (error) {
-        console.error(error)
-        throw new Error(`Issue retrieving uuid "${uuid}"`)
+        return undefined
     }
 }
