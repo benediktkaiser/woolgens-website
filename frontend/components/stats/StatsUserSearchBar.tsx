@@ -31,10 +31,10 @@ declare interface AutoCompleteItem {
 }
 
 declare interface StatsUserSearchBarProps {
-    autoCompleteItem: Array<AutoCompleteItem>
+    autoCompleteItems: Array<AutoCompleteItem>
 }
 
-const StatsUserSearchBar: FC<StatsUserSearchBarProps> = observer(({autoCompleteItem}) => {
+const StatsUserSearchBar: FC<StatsUserSearchBarProps> = observer(({autoCompleteItems}) => {
     const router = useRouter()
 
     const formatResult = (item) => {
@@ -74,7 +74,7 @@ const StatsUserSearchBar: FC<StatsUserSearchBarProps> = observer(({autoCompleteI
     return (
         <div className="mx-auto w-11/12 md:w-8/12 xl:w-1/2">
             <ReactSearchAutocomplete
-                items={autoCompleteItem}
+                items={autoCompleteItems}
                 onSelect={handleOnSelect}
                 styling={styles}
                 showIcon={true}
