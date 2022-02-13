@@ -1,5 +1,5 @@
 import React, {FC} from "react";
-import {RiCoinsLine, RiHome2Line, RiSettings2Line} from "react-icons/ri";
+import {RiCoinsLine, RiHome2Line, RiSettings2Line, RiAddCircleLine} from "react-icons/ri";
 import DropdownItem from "../../DropdownItem";
 import {Transition} from "@headlessui/react"
 import {MdArrowBackIos} from "react-icons/md"
@@ -27,12 +27,22 @@ const UserDropdownLandPage: FC<UserDropdownLandPageProps> = ({selectedPage, chan
             <DropdownItem onClick={() => changePage("start")} title="Back"
                           icon={<MdArrowBackIos className="opacity-50" size="1rem"/>}/>
             <hr className="my-2 border-gray-700"/>
-
-            <Link href={`/stats/lands/${user.minecraftUser.land.id}`} passHref={true}>
-                <DropdownItem title="Land Profile" icon={<RiHome2Line size="1.5rem"/>}/>
-            </Link>
-            <DropdownItem title="Settings" icon={<RiSettings2Line size="1.5rem"/>} />
-            <DropdownItem title="Transactions" icon={<RiCoinsLine size="1.5rem"/>}/>
+            {user.minecraftUser.land ? (
+                <>
+                    <Link href={`/stats/lands/${user.minecraftUser.land.id}`} passHref={true}>
+                        <DropdownItem title="Land Profile" icon={<RiHome2Line size="1.5rem"/>}/>
+                    </Link>
+                    <DropdownItem title="Settings" icon={<RiSettings2Line size="1.5rem"/>} />
+                    <DropdownItem title="Transactions" icon={<RiCoinsLine size="1.5rem"/>}/>
+                </>
+            ): (
+                <>
+                    <Link href={`/stats/lands/`} passHref={true}>
+                        <DropdownItem title="Top lands" icon={<RiHome2Line size="1.5rem"/>}/>
+                    </Link>
+                    <DropdownItem title="Create Land" icon={<RiAddCircleLine size="1.5rem"/>} />
+                </>
+            )}
         </Transition>
     )
 }
