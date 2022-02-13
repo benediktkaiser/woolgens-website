@@ -9,7 +9,7 @@ declare interface LogoProps {
     animated?: boolean,
 }
 
-const Logo: FC<LogoProps> = ({width = "275px", height = "275px", animated = false}) => {
+const Logo: FC<LogoProps> = ({width = "250px", height = "250px", animated = false}) => {
     return (
         <div className={`${animated && 'animate-grow'}`}>
             <Link href="/" passHref={true}>
