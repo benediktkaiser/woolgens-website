@@ -32,7 +32,6 @@ export async function getWebUser(uuid: string): Promise<WebUser | undefined> {
         return data.data
     }
     catch (error) {
-        console.error(`No Webuser was found for "${uuid}"`)
         return undefined
     }
 }

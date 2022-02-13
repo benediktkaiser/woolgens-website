@@ -14,7 +14,7 @@ const Logo: FC<LogoProps> = ({width = "250px", height = "250px", animated = fals
         <div className={`${animated && 'animate-grow'}`}>
             <Link href="/" passHref={true}>
                 <a>
-                    <Image width={width} height={height} src={logo} alt="WoolGens"/>
+                    <Image width={width} height={height} src={logo} alt="WoolGens" className="png-shadow" />
                 </a>
             </Link>
         </div>
