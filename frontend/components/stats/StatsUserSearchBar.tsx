@@ -74,8 +74,8 @@ const StatsUserSearchBar: FC<StatsUserSearchBarProps> = observer(({autoCompleteI
         <div className="mx-auto w-11/12 md:w-8/12 xl:w-1/2">
             <ReactSearchAutocomplete
                 items={autoCompleteItems}
-                onSelect={handleOnSelect}
                 formatResult={formatResult}
+                onSelect={handleOnSelect}
                 styling={styles}
                 showIcon={true}
                 placeholder="Search for a player or a land..."
