@@ -18,7 +18,7 @@ declare interface WebInitialUser extends  InitialUser {
     notifications: WebNotification[],
 }
 
-declare interface WebUser extends InitialUser {
+declare interface WebUser extends WebInitialUser {
     group?: Group,
 }
 
