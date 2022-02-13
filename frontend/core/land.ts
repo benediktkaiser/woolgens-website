@@ -39,15 +39,15 @@ function enrichLandMembersWithRoles(land: InitialLand): Land {
     }
 }
 
-export async function getLandByName(name: string): Promise<Land> {
+export async function getLandByName(name: string): Promise<Land | undefined> {
     try {
         const loweredName = name.toLowerCase();
         const land = await landAPI.get(`/lands/${loweredName}`)
         return enrichLandMembersWithRoles(land.data)
     }
     catch (error) {
-        throwError(`Issue retrieving the land "${name}" - ${error}`)
-        return;
+        console.error(`Issue retrieving the land "${name}" - ${error}`);
+        return undefined;
     }
 }
 

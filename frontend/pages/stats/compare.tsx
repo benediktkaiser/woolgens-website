@@ -133,13 +133,8 @@ const ComparePage: NextPageWithLayout = observer(() => {
 })
 
 ComparePage.getLayout = function getLayout(page) {
-    const seo = {
-        title: "Compare",
-        description: "Compare yourself to other members of the Woolgens community and rise to the top of the leaderboard!"
-    }
-
     return (
-        <NavbarLayout seo={seo}>
+        <NavbarLayout>
             {page}
         </NavbarLayout>
     )

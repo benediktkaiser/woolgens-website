@@ -64,13 +64,8 @@ const VoteIndexPage: NextPageWithLayout = observer(() => {
 })
 
 VoteIndexPage.getLayout = function getLayout(page) {
-    const seo = {
-        title: "Vote",
-        description: "Vote for our server to gain exclusive rewards, while simultaneously supporting us!"
-    }
-
     return (
-        <NavbarLayout seo={seo}>
+        <NavbarLayout>
             {page}
         </NavbarLayout>
     )

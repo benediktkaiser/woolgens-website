@@ -8,13 +8,8 @@ const StatsIndexPage: NextPageWithLayout = observer(() => {
 })
 
 StatsIndexPage.getLayout = function getLayout(page) {
-    const seo = {
-        title: "Stats",
-        description: "Compare yourself to other members of the Woolgens community and rise to the top of the leaderboard!"
-    }
-
     return (
-        <NavbarLayout seo={seo}>
+        <NavbarLayout>
             {page}
         </NavbarLayout>
     )

@@ -7,18 +7,12 @@ import authStore from "../stores/AuthStore";
 import {observer} from "mobx-react-lite";
 import MobileNavbar from "../components/common/mobileNavbar/MobileNavbar";
 import informationStore from "../stores/InformationStore";
-import HeadSEO from "../components/common/HeadSEO";
 
 interface NavbarLayoutProps {
     children: React.ReactNode
-    seo: {
-        title: string,
-        description?: string,
-        imageSRC?: string
-    }
 }
 
-const NavbarLayout: FC<NavbarLayoutProps> = observer(({seo, children}) => {
+const NavbarLayout: FC<NavbarLayoutProps> = observer(({children}) => {
     const [mobileNavBarOpen, setMobileNavBarOpen] = useState(false)
 
     useEffect(() => {
@@ -27,7 +21,6 @@ const NavbarLayout: FC<NavbarLayoutProps> = observer(({seo, children}) => {
 
     return (
         <div className={`text-gray-200 bg-dark-dark font-poppins`}>
-            <HeadSEO seo={seo} />
             <div className="flex flex-col justify-between min-h-screen">
                 <div>
                     <Userbar user={authStore.user} />

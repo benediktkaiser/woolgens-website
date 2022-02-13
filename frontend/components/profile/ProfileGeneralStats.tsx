@@ -21,7 +21,7 @@ const ProfileGeneralStats: FC<ProfileGeneralStatsProps> = ({ user, selectedSeaso
             <div className="flex flex-col gap-4">
                 <StatsCard title="Playtime" value={formatMillisecondsToTime(user.minecraftUser.stats.playtime, true)} />
                 <StatsCard title="Joined" value={new Date(user.minecraftUser.joined).toDateString()} />
-                {user.minecraftUser.land && (
+                {user.minecraftUser.land?.name && (
                     <StatsCard title="Land" value={user.minecraftUser.land.name} link={`/stats/lands/${user.minecraftUser.land.name}`} />
                 )}
                 <StatsCard title="Balance" value={formatMoney(user.minecraftUser.seasons[selectedSeason].balance)} label="$" />
