@@ -2,7 +2,6 @@ import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 import { useRouter } from 'next/router'
 import {FC} from "react";
 import {observer} from "mobx-react-lite";
-import landStore from "../../stores/LandStore";
 import Avatar from "../common/Avatar";
 import Image from "next/image"
 import grassBlock from "../../public/icons/grass.jpeg"
@@ -38,11 +37,22 @@ const StatsUserSearchBar: FC<StatsUserSearchBarProps> = observer(({autoCompleteI
     const router = useRouter()
 
     const formatResult = (item) => {
+        if (item.type === "land") {
+            return (
+                <div key={item.id} className="flex items-center py-1 space-x-3 w-full cursor-pointer">
+                    <Image src={grassBlock} className="rounded" height={35} width={35} alt="Land" />
+                    <p className="text-green-400">
+                        {item.name}
+                    </p>
+                </div>
+            )
+        }
+
         return (
-            <div key={item} className="flex items-center py-1 space-x-3 w-full cursor-pointer">
-                <Avatar player={item} size={35} />
+            <div key={item.id} className="flex items-center py-1 space-x-3 w-full cursor-pointer">
+                <Avatar player={item.name} size={35} />
                 <p className="text-blue-400">
-                    {item}
+                    {item.name}
                 </p>
             </div>
         );
