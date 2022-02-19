@@ -1,6 +1,7 @@
 import NavbarLayout from "../../../layout/NavbarLayout";
 import LandProfileContainer from "../../../containers/LandProfileContainer";
 import SEO from "../../../components/SEO";
+import {GetServerSideProps} from "next";
 
 const LandProfile: NextPageWithLayout = ({ landname }) => {
     return (
@@ -22,12 +23,11 @@ LandProfile.getLayout = function getLayout(page) {
     )
 }
 
-export async function getServerSideProps(context) {
+export const getServerSideProps: GetServerSideProps = async (context) => {
     const landname = context.params['landname']
 
     // Pass data to the page via props
     return { props: { landname: landname } }
 }
-
 
 export default LandProfile
