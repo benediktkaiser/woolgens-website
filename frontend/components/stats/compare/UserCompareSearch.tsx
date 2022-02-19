@@ -34,10 +34,10 @@ const UserCompareSearch: FC<UserCompareSearchProps> = ({usernames, setUser}) => 
 
     const formatResult = (item) => {
         return (
-            <div key={item} className="flex items-center py-1 space-x-3 w-full cursor-pointer">
-                <Avatar player={item} size={35} />
+            <div key={item.id} className="flex items-center py-1 space-x-3 w-full cursor-pointer">
+                <Avatar player={item.name} size={35} />
                 <p className="text-blue-400">
-                    {item}
+                    {item.name}
                 </p>
             </div>
         );

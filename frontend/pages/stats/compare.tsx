@@ -10,8 +10,9 @@ import Dropdown from "../../components/common/dropdown/Dropdown";
 import DropdownItem from "../../components/common/dropdown/DropdownItem";
 import BasicCard from "../../components/common/cards/BasicCard";
 import {formatSeasonName} from "../../core/formatters";
+import {GetServerSideProps} from "next";
 
-const ComparePage: NextPageWithLayout = observer(() => {
+const ComparePage: NextPageWithLayout = observer(({autoCompleteList, currentSeason}) => {
     const router = useRouter();
     const userNameOne = router.query["1"] || undefined
     const userNameTwo = router.query["2"] || undefined
@@ -21,14 +22,9 @@ const ComparePage: NextPageWithLayout = observer(() => {
     const [userOneLoading, setUserOneLoading] = useState(false)
     const [userTwoLoading, setUserTwoLoading] = useState(false)
 
-    const [autocompleteList, setAutocompleteList] = useState(undefined)
-    const [season, setSelectedSeason] = useState(process.env.NEXT_PUBLIC_CURRENT_SEASON)
+    const [season, setSelectedSeason] = useState(currentSeason)
 
     useEffect(() => {
-        userStore.getAllFormattedUserNames().then((result) => {
-            setAutocompleteList([...result])
-        })
-
         if (userNameOne) {
             setUserOneLoading(true)
             userStore.getUser(userNameOne).then(result => {
@@ -104,7 +100,7 @@ const ComparePage: NextPageWithLayout = observer(() => {
                     <UserCompareBox
                         user={userOne}
                         setUser={(userName) => setUser(userName, userNameTwo)}
-                        usernames={autocompleteList}
+                        usernames={autoCompleteList}
                         season={season}
                         isLoading={userOneLoading}
                     />
@@ -123,7 +119,7 @@ const ComparePage: NextPageWithLayout = observer(() => {
                     <UserCompareBox
                         user={userTwo}
                         setUser={(userName) => setUser(userNameOne, userName)}
-                        usernames={autocompleteList}
+                        usernames={autoCompleteList}
                         season={season}
                         isLoading={userTwoLoading}
                     />
@@ -132,6 +128,17 @@ const ComparePage: NextPageWithLayout = observer(() => {
         </div>
     )
 })
+
+export const getServerSideProps: GetServerSideProps = async () => {
+    const userList = [...await userStore.getAllFormattedUserNames()]
+
+    return {
+        props: {
+            currentSeason: process.env.NEXT_PUBLIC_CURRENT_SEASON || "1",
+            autoCompleteList: userList || []
+        },
+    }
+}
 
 ComparePage.getLayout = function getLayout(page) {
     return (

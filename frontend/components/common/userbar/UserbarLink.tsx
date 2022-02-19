@@ -5,10 +5,11 @@ declare interface UserbarLinkProps {
     title: string,
     to?: string,
     icon?: React.ReactNode,
+    iconRight?: React.ReactNode,
     ping?: boolean,
 }
 
-const UserbarLink: FC<UserbarLinkProps> = ({ title, to = "#", ping = false, icon }) => {
+const UserbarLink: FC<UserbarLinkProps> = ({ title, to = "#", ping = false, icon, iconRight }) => {
     return (
         <Link href={to} passHref={true}>
             <span className="flex items-center py-2 px-3 hover:bg-dark rounded-lg cursor-pointer">
@@ -26,6 +27,11 @@ const UserbarLink: FC<UserbarLinkProps> = ({ title, to = "#", ping = false, icon
                         </span>
                     )}
                 </span>
+                {iconRight && (
+                    <span className="md:ml-2">
+                        {iconRight}
+                    </span>
+                )}
             </span>
         </Link>
     )

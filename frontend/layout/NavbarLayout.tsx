@@ -23,7 +23,7 @@ const NavbarLayout: FC<NavbarLayoutProps> = observer(({children}) => {
         <div className={`text-gray-200 bg-dark-dark font-poppins`}>
             <div className="flex flex-col justify-between min-h-screen">
                 <div>
-                    <Userbar user={authStore.user} />
+                    <Userbar user={authStore.user} loading={authStore.loading} />
                     <Header
                         onlineDiscord={informationStore.onlineDiscord}
                         onlineMinecraft={informationStore.onlineMinecraft}

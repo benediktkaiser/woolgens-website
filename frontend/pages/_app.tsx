@@ -1,6 +1,6 @@
 import '../styles/global.css'
+import '../styles/toast.css'
 import '../plugins/persistent-store.plugin'
-import 'react-toastify/dist/ReactToastify.css';
 
 import ProgressBar from "@badrap/bar-of-progress";
 import Router from "next/router";
@@ -12,8 +12,8 @@ import LoginModal from "../components/LoginModal";
 import RegisterModal from "../components/RegisterModal";
 
 const progress = new ProgressBar({
-  size: 2,
-  color: "#7c3aed",
+  size: 3,
+  color: "#F05454",
   className: "bar-of-progress",
   delay: 100,
 });
