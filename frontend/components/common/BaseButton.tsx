@@ -2,7 +2,7 @@ import React, {FC} from "react";
 
 interface BaseButtonProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
     children?: React.ReactNode,
-    type: "primary" | "secondary" | "success" | "danger" | "dark" | "dark-active",
+    type: "primary" | "secondary" | "success" | "danger" | "dark" | "dark-active" | "dark-light",
 }
 
 export const BaseButton: FC<BaseButtonProps> = ({ type, children, ...HTMLAttributes}) => {
@@ -13,6 +13,7 @@ export const BaseButton: FC<BaseButtonProps> = ({ type, children, ...HTMLAttribu
         "success": "text-white bg-green-500 hover:bg-green-700 focus:ring-green-400 disabled:hover:bg-green-500",
         "danger": "text-white bg-red-500 hover:bg-red-700 focus:ring-red-400 disabled:hover:bg-red-500",
         "dark": "text-white bg-shark-400 hover:bg-shark-300 focus:ring-dark-light disabled:hover:bg-dark-light",
+        "dark-light": "text-white bg-shark-200 hover:bg-shark-100 focus:ring-dark-light disabled:hover:bg-dark-light",
         "dark-active": "text-white bg-gray-700 hover:bg-gray-600 focus:ring-dark-light disabled:hover:bg-dark-light"
     }
 
