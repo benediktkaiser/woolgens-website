@@ -5,12 +5,13 @@
 The is a "mono-repo" containing all website from `Woolgens.net`. 
 
 - [X] Homepage
+- [X] Stats
+- [X] Vote
 - [ ] Store
 - [ ] Forum
-- [X] Stats
 - [ ] Staff
 
-You can find the different pages under `/frontend/pages`. Please make Pull requests for all features, as without it we will easily enter merge hell! Thanks :D
+You can find the different pages under `/frontend/pages`. Please make Pull requests for all features.
 
 ## Usage
 
