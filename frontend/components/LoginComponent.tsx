@@ -9,28 +9,24 @@ import {AiOutlineLoading3Quarters} from "react-icons/ai"
 const LoginComponent = () => {
     const [username, setUsername] = useState(undefined)
     const [password, setPassword] = useState(undefined)
-    const [error, setError] = useState(undefined)
     const [loading, setLoading] = useState(false)
 
     const login = (username, password) => {
         setLoading(true)
-        setError(undefined)
         if (!username || !password) {
-            setError("Please enter a username and password.")
-            toast("Please enter a username and password.")
+            toast.error("Please enter a username and password.")
             setLoading(false)
             return;
         }
         authStore.basicAuth(username, password).then(result => {
             if (!result) {
-                toast("The username or password were incorrect. Please try again.")
+                toast.error("The username or password were incorrect. Please try again.")
                 setLoading(false)
-                setError("The password or username is incorrect! Please try again.")
                 return;
             }
             setLoading(false)
             authStore.closeLoginModal()
-            toast("You were logged in!")
+            toast.success("You were successfully logged in!")
         })
     }
 
@@ -48,11 +44,6 @@ const LoginComponent = () => {
                     label="Password"
                     onChange={(event) => setPassword(event.target.value)}
                 />
-                {error && (
-                    <p className="text-center text-red-300">
-                        {error}
-                    </p>
-                )}
                 <div className="flex flex-col gap-4 justify-end m-2">
                     <BaseButton type="dark-active" onClick={() => {
                         authStore.toggleLoginModal()

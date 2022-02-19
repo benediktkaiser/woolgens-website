@@ -10,6 +10,7 @@ class AuthStore {
     user: User = undefined;
     loginModalOpen = false;
     registerModalOpen = false;
+    loading = false;
 
     constructor() {
         makeAutoObservable(this, {}, {autoBind: true});
@@ -23,6 +24,9 @@ class AuthStore {
     }
 
     async tokenAuth(token) {
+        runInAction(() => {
+            this.loading = true;
+        })
         const webUser = await tokenAuth(token);
         if (!webUser) {
             runInAction(() => {
@@ -60,6 +64,7 @@ class AuthStore {
                 minecraftUser: minecraftUser,
                 webUser: webUser
             }
+            this.loading = false
         })
     }
 

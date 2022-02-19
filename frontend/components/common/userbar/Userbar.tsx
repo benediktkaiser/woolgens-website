@@ -5,12 +5,14 @@ import UserbarLink from "./UserbarLink";
 import {RiNotificationLine, RiLoginBoxLine, RiUserAddLine} from "react-icons/ri"
 import authStore from "../../../stores/AuthStore";
 import {GiPartyPopper} from "react-icons/gi"
+import {AiOutlineLoading3Quarters} from "react-icons/ai"
 
 declare interface UserbarProps {
-    user: User
+    user: User,
+    loading?: boolean,
 }
 
-const Userbar: FC<UserbarProps> = ({ user }) => {
+const Userbar: FC<UserbarProps> = ({ user, loading = false }) => {
     return (
         <div className="py-1 w-full bg-dark-light shadow">
             <div className="container flex justify-between mx-auto">
@@ -20,24 +22,32 @@ const Userbar: FC<UserbarProps> = ({ user }) => {
                         Welcome to the new WoolGens homepage!
                     </span>
                 </div>
-                {user ? (
-                    <div className="flex items-center">
-                        <div className="hidden sm:flex items-center md:space-x-4">
-                            <NotificationDropdown notifications={user.webUser.notifications} />
-                        </div>
-                        <div className="flex sm:hidden items-center">
-                            <UserbarLink title="Notifications" to="/notifications" icon={<RiNotificationLine />} />
-                        </div>
-                        <UserDropdown user={user} />
-                    </div>
-                ) : (
+                {loading ? (
                     <div className="flex items-center md:space-x-2">
-                        <div onClick={authStore.toggleRegisterModal}>
-                            <UserbarLink title="Register" icon={<RiUserAddLine />} />
-                        </div>
-                        <div onClick={authStore.toggleLoginModal}>
-                            <UserbarLink title="Login" icon={<RiLoginBoxLine />} />
-                        </div>
+                        <UserbarLink title="Logging in..." iconRight={<AiOutlineLoading3Quarters className="animate-spin" />} />
+                    </div>
+                ): (
+                    <div>
+                        {user ? (
+                            <div className="flex items-center">
+                                <div className="hidden sm:flex items-center md:space-x-4">
+                                    <NotificationDropdown notifications={user.webUser.notifications} />
+                                </div>
+                                <div className="flex sm:hidden items-center">
+                                    <UserbarLink title="Notifications" to="/notifications" icon={<RiNotificationLine />} />
+                                </div>
+                                <UserDropdown user={user} />
+                            </div>
+                        ) : (
+                            <div className="flex items-center md:space-x-2">
+                                <div onClick={authStore.toggleRegisterModal}>
+                                    <UserbarLink title="Register" icon={<RiUserAddLine />} />
+                                </div>
+                                <div onClick={authStore.toggleLoginModal}>
+                                    <UserbarLink title="Login" icon={<RiLoginBoxLine />} />
+                                </div>
+                            </div>
+                        )}
                     </div>
                 )}
             </div>
