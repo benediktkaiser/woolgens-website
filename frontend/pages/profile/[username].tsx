@@ -2,12 +2,12 @@ import NavbarLayout from "../../layout/NavbarLayout";
 import React, {useState} from "react";
 import SEO from "../../components/SEO";
 import {GetServerSideProps} from "next";
-import userStore from "../../stores/UserStore";
 import ProfileToolBar from "../../components/profile/ProfileToolBar";
 import ProfileUserBox from "../../components/profile/ProfileUserBox";
 import ProfileSkills from "../../components/profile/ProfileSkills";
 import ProfilePostsSection from "../../components/profile/posts/ProfilePostsSection";
 import ProfileGeneralStats from "../../components/profile/ProfileGeneralStats";
+import {getUserByUsername} from "../../core/user";
 
 const ProfilePage: NextPageWithLayout = ({ username, user }) => {
     const [selectedSeason, setSelectedSeason] = useState(Object.keys(user.minecraftUser.seasons).reverse()[0])
@@ -45,7 +45,7 @@ const ProfilePage: NextPageWithLayout = ({ username, user }) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const username = context.params['username']
     try {
-        const user = await userStore.getUser(username)
+        const user = await getUserByUsername(username);
         return {
             props: {
                 username: username,

@@ -133,3 +133,9 @@ declare interface TemporaryToken {
     ttl: number,
     data: Record<string, string>
 }
+
+declare interface AutoCompleteListItem {
+    id: number,
+    name: string,
+    type: "PLAYER" | "LAND"
+}

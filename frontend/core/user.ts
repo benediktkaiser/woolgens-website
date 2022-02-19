@@ -1,4 +1,4 @@
-import {getMinecraftUser} from "./minecraftUser";
+import {getMinecraftUser, getUserNames} from "./minecraftUser";
 import {getWebUser} from "./auth";
 
 export async function getUserByUUID(uuid: string): Promise<User> {
@@ -11,4 +11,17 @@ export async function getUserByUUID(uuid: string): Promise<User> {
         minecraftUser,
         webUser
     }
+}
+
+export async function getUserByUsername(username): Promise<User> {
+    const usernames = await getUserNames()
+    const uuid = usernames[username]
+    return await getUserByUUID(uuid);
+}
+
+export function isUserInLand(landName: string, user?: User): boolean {
+    if (!user) return false;
+    if (!user.minecraftUser.land) return false;
+
+    return user.minecraftUser.land.name.toLowerCase() === landName.toLowerCase();
 }

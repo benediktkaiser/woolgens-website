@@ -7,11 +7,11 @@ import LandHeaderBar from "../../../../components/stats/land/LandHeaderBar";
 import LandGeneralStats from "../../../../components/stats/land/LandGeneralStats";
 import LandMembersList from "../../../../components/stats/land/LandMembersList";
 import {useRouter} from "next/router";
-import landStore from "../../../../stores/LandStore";
 import Tab from "../../../../components/common/Tab";
 import {observer} from "mobx-react-lite";
-import userStore from "../../../../stores/UserStore";
 import authStore from "../../../../stores/AuthStore";
+import {isUserInLand} from "../../../../core/user";
+import {getLandByName} from "../../../../core/land";
 
 const LandProfile: NextPageWithLayout = observer(({ landname, land }) => {
     const router = useRouter()
@@ -34,7 +34,7 @@ const LandProfile: NextPageWithLayout = observer(({ landname, land }) => {
                             <ul className="flex flex-wrap">
                                 <Tab title="Members" active={true} />
                                 <Tab title="Transactions" link={`/stats/lands/${landname}/transactions`} />
-                                {userStore.isUserInLand(landname, authStore.user) && <Tab title="Settings" disabled={true} />}
+                                {isUserInLand(landname, authStore.user) && <Tab title="Settings" disabled={true} />}
                             </ul>
                             <LandMembersList land={land}/>
                         </div>
@@ -47,7 +47,7 @@ const LandProfile: NextPageWithLayout = observer(({ landname, land }) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const landname = context.params['landname']
-    const land = await landStore.getLand(landname);
+    const land = await getLandByName(landname as string)
 
     return {
         props: {
