@@ -35,6 +35,10 @@ function enrichLandMembersWithRoles(land: InitialLand): Land {
                 color: "#AA0000",
             }
         },
+        bank: {
+            ...land.bank,
+            transactions: land.bank.transactions.reverse()
+        },
         members
     }
 }

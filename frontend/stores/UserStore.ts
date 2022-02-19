@@ -68,6 +68,13 @@ class UserStore {
         })
         return results
     }
+
+    isUserInLand(landName: string, user?: User): boolean {
+        if (!user) return false;
+        if (!user.minecraftUser.land) return false;
+
+        return user.minecraftUser.land.name.toLowerCase() === landName.toLowerCase();
+    }
 }
 
 const userStore = new UserStore()

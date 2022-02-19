@@ -32,8 +32,10 @@ const UserDropdownLandPage: FC<UserDropdownLandPageProps> = ({selectedPage, chan
                     <Link href={`/stats/lands/${user.minecraftUser.land.id}`} passHref={true}>
                         <DropdownItem title="Land Profile" icon={<RiHome2Line size="1.5rem"/>}/>
                     </Link>
-                    <DropdownItem title="Settings" icon={<RiSettings2Line size="1.5rem"/>} />
-                    <DropdownItem title="Transactions" icon={<RiCoinsLine size="1.5rem"/>}/>
+                    <DropdownItem title="Settings" icon={<RiSettings2Line size="1.5rem"/>} disabled={true} />
+                    <Link href={`/stats/lands/${user.minecraftUser.land.id}/transactions`} passHref={true}>
+                        <DropdownItem title="Transactions" icon={<RiCoinsLine size="1.5rem"/>}/>
+                    </Link>
                 </>
             ): (
                 <>
