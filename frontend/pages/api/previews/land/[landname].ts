@@ -1,12 +1,12 @@
 // NodeJS Core
 import chromium from 'chrome-aws-lambda';
-import landStore from "../../../../stores/LandStore";
 import fs from "fs";
+import {getLandByName} from "../../../../core/land";
 
 export default async function generateUserImage(req, res) {
     const landName = req.query.landname.replace('.jpg', '');
 
-    const land = await landStore.getLand(landName);
+    const land = await getLandByName(landName)
 
     // Get the Background Image
     const background = fs.readFileSync('./public/background/mine_night.jpeg');

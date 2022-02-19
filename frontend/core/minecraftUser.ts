@@ -1,12 +1,12 @@
 import {minecraftUserAPI} from "./api";
-import landStore from "../stores/LandStore";
 import {throwError} from "./error";
+import {getLandByName} from "./land";
 
 async function enrichMinecraftUserWithLand(minecraftUser: MinecraftInitialUser): Promise<MinecraftUser> {
-    let landData = undefined
+    let landData = null
     if (minecraftUser.land !== "") {
         landData = {
-            ...await landStore.getLand(minecraftUser.land)
+            ...await getLandByName(minecraftUser.land)
         }
     }
     return {

@@ -23,23 +23,17 @@ const styles = {
     cursor: "pointer",
 }
 
-declare interface AutoCompleteItem {
-    id: number,
-    name: string,
-    type: string,
-}
-
 declare interface StatsUserSearchBarProps {
-    autoCompleteItems: Array<AutoCompleteItem>
+    autoCompleteItems: AutoCompleteListItem[]
 }
 
 const StatsUserSearchBar: FC<StatsUserSearchBarProps> = observer(({autoCompleteItems}) => {
     const router = useRouter()
 
-    const formatResult = (item) => {
-        if (item.type === "land") {
+    const formatResult = (item: AutoCompleteListItem) => {
+        if (item.type === "LAND") {
             return (
-                <div key={item.id} className="flex items-center py-1 space-x-3 w-full cursor-pointer">
+                <div key={item.id + "LAND"} className="flex items-center py-1 space-x-3 w-full cursor-pointer">
                     <Image src={grassBlock} className="rounded" height={35} width={35} alt="Land" />
                     <p className="text-green-400">
                         {item.name}
@@ -49,7 +43,7 @@ const StatsUserSearchBar: FC<StatsUserSearchBarProps> = observer(({autoCompleteI
         }
 
         return (
-            <div key={item.id} className="flex items-center py-1 space-x-3 w-full cursor-pointer">
+            <div key={item.id + "PLAYER"} className="flex items-center py-1 space-x-3 w-full cursor-pointer">
                 <Avatar player={item.name} size={35} />
                 <p className="text-blue-400">
                     {item.name}
@@ -58,12 +52,12 @@ const StatsUserSearchBar: FC<StatsUserSearchBarProps> = observer(({autoCompleteI
         );
     }
 
-    const handleOnSelect = (item: AutoCompleteItem) => {
-        if (item.type === "player") {
+    const handleOnSelect = (item: AutoCompleteListItem) => {
+        if (item.type === "PLAYER") {
             router.push(`/profile/${item.name}`).then(() => {
                 return null;
             })
-        } else if (item.type === "land") {
+        } else if (item.type === "LAND") {
             router.push(`/stats/lands/${item.name}`).then(() => {
                 return null;
             })

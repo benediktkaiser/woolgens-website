@@ -19,20 +19,14 @@ const styles = {
     cursor: "pointer",
 }
 
-declare interface Item {
-    id: number,
-    name: string,
-    type: string,
-}
-
 interface UserCompareSearchProps {
     setUser: (userName) => void;
-    usernames: Array<Item>
+    usernames: AutoCompleteListItem[]
 }
 
 const UserCompareSearch: FC<UserCompareSearchProps> = ({usernames, setUser}) => {
 
-    const formatResult = (item) => {
+    const formatResult = (item: AutoCompleteListItem) => {
         return (
             <div key={item.id} className="flex items-center py-1 space-x-3 w-full cursor-pointer">
                 <Avatar player={item.name} size={35} />
@@ -43,7 +37,7 @@ const UserCompareSearch: FC<UserCompareSearchProps> = ({usernames, setUser}) => 
         );
     }
 
-    const handleOnSelect = (item: Item) => {
+    const handleOnSelect = (item: AutoCompleteListItem) => {
         setUser(item.name)
     }
 

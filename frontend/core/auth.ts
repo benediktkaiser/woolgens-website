@@ -47,7 +47,7 @@ export async function getWebUser(uuid: string): Promise<WebUser | undefined> {
         return await enrichWebUserWithGroup(data.data)
     }
     catch (error) {
-        return undefined
+        return null
     }
 }
 

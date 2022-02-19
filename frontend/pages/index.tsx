@@ -3,11 +3,11 @@ import NavbarLayout from "../layout/NavbarLayout";
 import React from "react";
 import SEO from "../components/SEO"
 import {GetServerSideProps} from "next";
-import changeLogStore from "../stores/ChangeLogStore";
 import NewsCard from "../components/NewsCard";
 import CardWithHeader from "../components/common/cards/CardWithHeader";
 import McText from 'mctext-react'
 import {toast} from "react-toastify";
+import {getChangeLogs} from "../core/changelog";
 
 const IndexPage: NextPageWithLayout = observer(({changeLogs}) => {
     return (
@@ -42,7 +42,7 @@ const IndexPage: NextPageWithLayout = observer(({changeLogs}) => {
 })
 
 export const getServerSideProps: GetServerSideProps = async () => {
-    const changeLogs = await changeLogStore.fetchChangeLogs()
+    const changeLogs = await getChangeLogs()
 
     return {
         props: {

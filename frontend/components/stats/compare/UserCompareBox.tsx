@@ -6,16 +6,10 @@ import Avatar from "../../common/Avatar";
 import UserCompareStats from "./UserCompareStats";
 import {AiOutlineLoading3Quarters} from "react-icons/ai"
 
-declare interface Item {
-    id: number,
-    name: string,
-    type: string,
-}
-
 interface UserCompareBoxProps {
     user?: User
     setUser: (userName) => void;
-    usernames: Array<Item>
+    usernames: Array<AutoCompleteListItem>
     season: string
     isLoading: boolean
 }

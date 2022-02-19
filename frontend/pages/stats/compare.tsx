@@ -2,7 +2,6 @@ import {observer} from "mobx-react-lite";
 import NavbarLayout from "../../layout/NavbarLayout";
 import React, {useEffect, useState} from "react";
 import {useRouter} from "next/router";
-import userStore from "../../stores/UserStore";
 import UserCompareBox from "../../components/stats/compare/UserCompareBox";
 import UserCompareArrows from "../../components/stats/compare/UserCompareArrows";
 import {BiGitCompare} from "react-icons/bi";
@@ -11,8 +10,10 @@ import DropdownItem from "../../components/common/dropdown/DropdownItem";
 import BasicCard from "../../components/common/cards/BasicCard";
 import {formatSeasonName} from "../../core/formatters";
 import {GetServerSideProps} from "next";
+import {getUserByUsername} from "../../core/user";
+import autoCompleteStore from "../../stores/AutoCompleteStore";
 
-const ComparePage: NextPageWithLayout = observer(({autoCompleteList, currentSeason}) => {
+const ComparePage: NextPageWithLayout = observer(({currentSeason}) => {
     const router = useRouter();
     const userNameOne = router.query["1"] || undefined
     const userNameTwo = router.query["2"] || undefined
@@ -25,9 +26,10 @@ const ComparePage: NextPageWithLayout = observer(({autoCompleteList, currentSeas
     const [season, setSelectedSeason] = useState(currentSeason)
 
     useEffect(() => {
+        autoCompleteStore.fetchUserList().catch(error => console.error(error))
         if (userNameOne) {
             setUserOneLoading(true)
-            userStore.getUser(userNameOne).then(result => {
+            getUserByUsername(userNameOne).then(result => {
                 setUserOne(result)
                 setUserOneLoading(false);
             })
@@ -36,7 +38,7 @@ const ComparePage: NextPageWithLayout = observer(({autoCompleteList, currentSeas
         }
         if (userNameTwo) {
             setUserTwoLoading(true)
-            userStore.getUser(userNameTwo).then(result => {
+            getUserByUsername(userNameTwo).then(result => {
                 setUserTwo(result)
                 setUserTwoLoading(false)
             })
@@ -100,7 +102,7 @@ const ComparePage: NextPageWithLayout = observer(({autoCompleteList, currentSeas
                     <UserCompareBox
                         user={userOne}
                         setUser={(userName) => setUser(userName, userNameTwo)}
-                        usernames={autoCompleteList}
+                        usernames={autoCompleteStore.userList}
                         season={season}
                         isLoading={userOneLoading}
                     />
@@ -119,7 +121,7 @@ const ComparePage: NextPageWithLayout = observer(({autoCompleteList, currentSeas
                     <UserCompareBox
                         user={userTwo}
                         setUser={(userName) => setUser(userNameOne, userName)}
-                        usernames={autoCompleteList}
+                        usernames={autoCompleteStore.userList}
                         season={season}
                         isLoading={userTwoLoading}
                     />
@@ -130,12 +132,9 @@ const ComparePage: NextPageWithLayout = observer(({autoCompleteList, currentSeas
 })
 
 export const getServerSideProps: GetServerSideProps = async () => {
-    const userList = [...await userStore.getAllFormattedUserNames()]
-
     return {
         props: {
             currentSeason: process.env.NEXT_PUBLIC_CURRENT_SEASON || "1",
-            autoCompleteList: userList || []
         },
     }
 }

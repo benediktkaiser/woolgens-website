@@ -1,9 +1,7 @@
 import {observer} from "mobx-react-lite";
 import NavbarLayout from "../../../layout/NavbarLayout";
-import React from "react";
+import React, {useEffect} from "react";
 import {GetServerSideProps} from "next";
-import userStore from "../../../stores/UserStore";
-import landStore from "../../../stores/LandStore";
 import StatsUserSearchBar from "../../../components/stats/StatsUserSearchBar";
 import Announcement from "../../../components/common/Announcement";
 import {FiBox} from "react-icons/fi";
@@ -11,9 +9,16 @@ import Link from "next/link";
 import {BaseButton} from "../../../components/common/BaseButton";
 import {AiOutlineArrowRight} from "react-icons/ai";
 import LandTopLists from "../../../components/stats/land/LandTopLists";
-import topListStore from "../../../stores/TopListStore";
+import autoCompleteStore from "../../../stores/AutoCompleteStore";
+import {getLandsSorted} from "../../../core/land";
 
-const LandsIndexPage: NextPageWithLayout = observer(({ autoCompleteList, topLands }) => {
+const LandsIndexPage: NextPageWithLayout = observer(({ topLands }) => {
+
+    useEffect(() => {
+        autoCompleteStore.fetchUserList().catch(error => console.error(error))
+        autoCompleteStore.fetchLandList().catch(error => console.error(error))
+    })
+
     return (
         <div>
             <div className="my-8 text-center">
@@ -22,7 +27,7 @@ const LandsIndexPage: NextPageWithLayout = observer(({ autoCompleteList, topLand
                         Player and Land Stats
                     </h1>
                 </div>
-                <StatsUserSearchBar autoCompleteItems={autoCompleteList}/>
+                <StatsUserSearchBar autoCompleteItems={[...autoCompleteStore.userList, ...autoCompleteStore.landList]}/>
             </div>
             <div>
                 <div className="hidden lg:block">
@@ -59,15 +64,11 @@ LandsIndexPage.getLayout = function getLayout(page) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-    const userList = [...await userStore.getAllFormattedUserNames()]
-    const landsList = [...userList, ...await landStore.getAllLandNames()]
-
-    const topLands = await topListStore.getSimpleLandsTopList()
+    const topLands = await getLandsSorted('bank.balance', 0, 10);
 
     return {
         props: {
             topLands: topLands || [],
-            autoCompleteList: landsList || []
         },
     }
 }
