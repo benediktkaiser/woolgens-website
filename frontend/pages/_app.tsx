@@ -7,6 +7,7 @@ import Router from "next/router";
 import {useEffect} from "react";
 import authStore from "../stores/AuthStore";
 import Toast from "../plugins/toast.plugin";
+import Script from 'next/script'
 
 import LoginModal from "../components/LoginModal";
 import RegisterModal from "../components/RegisterModal";
@@ -35,6 +36,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
 
     return getLayout(
         <div>
+            <Script src="https://plausible.woolgens.net/js/plausible.js" data-domain="staging.woolgens.net" />
             <Component {...pageProps} />
             <Toast />
             <LoginModal />

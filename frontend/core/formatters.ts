@@ -3,7 +3,7 @@ export function formatMillisecondsToTime(duration: number, long = false): string
     const hours = Math.floor((duration / (1000 * 60 * 60)));
 
     if (long) {
-        return hours + " Hours " + minutes + " Minutes";
+        return `${hours ? (hours + " Hours"): ""} ${minutes ? (minutes + " Minutes"): ""}`;
     }
 
     return hours;
@@ -16,6 +16,12 @@ export function formatMoney(number: number): string {
 
 export function formatSeasonName(name: string): string {
     return name.replace(/_/g, ' ');
+}
+
+export function getPassedTime(date: Date): string | number {
+    const now = new Date()
+    const dif = Math.abs(now.getTime() - date.getTime())
+    return formatMillisecondsToTime(dif, true)
 }
 
 export const colorCodes = {

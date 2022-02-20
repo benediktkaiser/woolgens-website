@@ -1,6 +1,25 @@
-import React from "react";
+import React, {FC} from "react";
 
-const UserAbout = () => {
+interface UserAboutProps {
+    user: User
+}
+
+const UserAbout: FC<UserAboutProps> = ({user}) => {
+    if (!user.webUser) {
+        return (
+            <div className="mt-2">
+                <div className="leading-10 text-center">
+                    <h1 className="text-xl">
+                        This account has not been verified yet.
+                    </h1>
+                    <h2 className="text-gray-400">
+                        If this is your account claim it by executing <span className="py-1 px-2 bg-dark-dark rounded">/register</span> on woolgens.net!
+                    </h2>
+                </div>
+            </div>
+        )
+    }
+
     return (
         <div>
             <h1 className="mb-2 text-xl text-gray-300">

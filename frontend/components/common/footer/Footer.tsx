@@ -9,9 +9,9 @@ const Footer = () => {
                     <h4 className="text-sm text-gray-400">Design by tsuukii</h4>
                 </div>
                 <ul className="flex justify-center items-center">
-                    <FooterLink text="Imprint" link="/imprint" />
-                    <FooterLink text="Terms and conditions" link="/terms" />
-                    <FooterLink text="Contact" link="/support" />
+                    <FooterLink text="Imprint" link="/legal" />
+                    <FooterLink text="Terms and conditions" link="/legal/terms" />
+                    <FooterLink text="Contact" link="mailto:admin@woolgens.net?subject=Contact Inquiry" />
                 </ul>
             </div>
         </footer>

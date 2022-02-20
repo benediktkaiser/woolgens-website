@@ -1,8 +1,7 @@
 import {authAPI} from "./api";
-import groupStore from "../stores/GroupStore";
 
 async function enrichWebUserWithGroup(webUser: WebInitialUser): Promise<WebUser> {
-    const group = await groupStore.getGroup(webUser.group)
+    const group = await getGroup(webUser.group)
 
     return {
         ...webUser,
@@ -54,7 +53,10 @@ export async function getWebUser(uuid: string): Promise<WebUser | undefined> {
 export async function getGroup(id: string): Promise<Group> {
     try {
         const data = await authAPI.get(`/groups/${id}`)
-        return data.data
+        return {
+            ...data.data,
+            isStaff: data.data.role === "Admin" || data.data.role === "Moderator"
+        }
     }
     catch (error) {
         return undefined
