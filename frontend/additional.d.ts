@@ -28,6 +28,7 @@ declare interface MinecraftInitialUser extends InitialUser {
     land: string
     seasons: Record<string, MinecraftUserSeason>
     booster: Record<FarmingSkills, number>
+    badges: Badge[]
 }
 
 declare interface MinecraftUser extends MinecraftInitialUser {
@@ -41,7 +42,18 @@ declare interface MinecraftUserSeason {
     stats: Record<string, number>,
     crates: Record<string, number>,
     skills: Skills
+    quests: {
+        finished: Record<string, string>,
+        selected: Record<string, string>
+    }
 }
+
+declare interface Badge {
+    color: MinecraftColorCode,
+    title: "string",
+}
+
+declare type MinecraftColorCode = "&1" | "&2" | "&3" | "&4" | "&5" | "&6" | "&7" | "&8" | "&9" | "&a" | "&b" | "&c" | "&d" | "&e" | "&f"
 
 declare interface Group {
     name: string,

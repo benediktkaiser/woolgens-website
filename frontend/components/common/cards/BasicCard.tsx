@@ -9,7 +9,7 @@ declare interface BasicCardProps {
 const BasicCard: FC<BasicCardProps> = ({padding = "p-4", withTabs, children}) => {
     if (withTabs) {
         return (
-            <div className={`${padding} bg-dark-light/50 rounded-b-md shadow`}>
+            <div className={`${padding} bg-dark-light/50 rounded-b-md rounded-tr-md shadow`}>
                 {children}
             </div>
         )

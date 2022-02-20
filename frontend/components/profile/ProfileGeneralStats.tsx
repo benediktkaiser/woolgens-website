@@ -1,14 +1,13 @@
 import StatsCard from "../stats/StatsCard";
 import CardWithHeader from "../common/cards/CardWithHeader";
 import {FC} from "react";
-import {formatMillisecondsToTime, formatMoney} from "../../core/formatters";
+import {formatMillisecondsToTime} from "../../core/formatters";
 
 declare interface ProfileGeneralStatsProps {
     user?: User
-    selectedSeason: string
 }
 
-const ProfileGeneralStats: FC<ProfileGeneralStatsProps> = ({ user, selectedSeason }) => {
+const ProfileGeneralStats: FC<ProfileGeneralStatsProps> = ({ user }) => {
 
     if (!user) {
         return (
@@ -24,7 +23,7 @@ const ProfileGeneralStats: FC<ProfileGeneralStatsProps> = ({ user, selectedSeaso
                 {user.minecraftUser.land && (
                     <StatsCard title="Land" value={user.minecraftUser.land.name} link={`/stats/lands/${user.minecraftUser.land.name}`} />
                 )}
-                <StatsCard title="Balance" value={formatMoney(user.minecraftUser.seasons[selectedSeason].balance)} label="$" />
+                <StatsCard title="Played Seasons" value={Object.keys(user.minecraftUser.seasons).length} />
             </div>
         </CardWithHeader>
     )
