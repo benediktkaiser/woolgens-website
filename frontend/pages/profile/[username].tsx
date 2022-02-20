@@ -50,7 +50,7 @@ const ProfilePage: NextPageWithLayout = ({username, user}) => {
                                 {page == "profilePosts" && <ProfilePostsSection user={user}/>}
                                 {page == "about" && (
                                     <div className="px-2">
-                                        <UserAbout />
+                                        <UserAbout user={user} />
                                         {user.minecraftUser.badges?.length > 0 && (
                                             <div className="mt-4">
                                                 <hr className="border-dark-light" />
@@ -61,7 +61,7 @@ const ProfilePage: NextPageWithLayout = ({username, user}) => {
                                 )}
                             </BasicCard>
                         </main>
-                        <aside>
+                        <aside className="2xl:mt-11">
                             <ProfileGeneralStats user={user}/>
                         </aside>
                     </section>

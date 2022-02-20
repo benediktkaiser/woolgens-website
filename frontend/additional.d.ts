@@ -24,6 +24,7 @@ declare interface WebUser extends WebInitialUser {
 
 declare interface MinecraftInitialUser extends InitialUser {
     joined: number
+    lastJoined: number
     stats: Record<string, number>
     land: string
     seasons: Record<string, MinecraftUserSeason>
@@ -59,6 +60,7 @@ declare interface Group {
     name: string,
     color: string, // is a hex color code
     role: string,
+    isStaff?: boolean,
     permissions: string[]
 }
 

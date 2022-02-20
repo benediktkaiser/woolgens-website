@@ -4,8 +4,8 @@ import background from "../../public/background/mine_inside.jpeg"
 import Bust from "../common/Bust";
 import SkillsBadge from "./skills/SkillsBadge";
 import {getHighestSkill, getLevelProgressPercentage, SKILL_TITLES} from "../../core/skills";
-import informationStore from "../../stores/InformationStore";
-import OnlinePing from "../common/OnlinePing";
+import {BsPatchCheckFill} from "react-icons/bs"
+import Tooltip from "react-simple-tooltip"
 
 declare interface ProfileUserBoxProps {
     user: User
@@ -39,12 +39,23 @@ const ProfileUserBox: FC<ProfileUserBoxProps> = ({user, seasonNumber}) => {
                     </div>
                     <div className="w-full">
                         <span className="text-md">
-                            {SKILL_TITLES[highestSkill]}
+                            {user.webUser?.group.name || SKILL_TITLES[highestSkill]}
                         </span>
-                        <h1 className="flex items-start text-3xl sm:text-5xl font-bold">
+                        <h1 className="flex items-center text-3xl sm:text-5xl font-bold">
                             {user.minecraftUser.name}
-                            {informationStore.isUserOnline(user.minecraftUser.name) && (
-                                <OnlinePing />
+                            {user.webUser?.group.isStaff  && (
+                                <span className="ml-3 text-sm font-light text-green-600">
+                                    <Tooltip
+                                        content="Staff"
+                                        radius="7"
+                                        padding="8"
+                                        background="#24262d"
+                                        border="#24262d"
+                                    >
+                                        <span className="absolute top-1/3 left-1/3 w-2 h-2 bg-white" />
+                                        <BsPatchCheckFill className="relative text-2xl" />
+                                    </Tooltip>
+                                </span>
                             )}
                         </h1>
                         <div className="overflow-hidden relative mt-2 w-full sm:w-80 rounded-full bg-dark-light/50">
