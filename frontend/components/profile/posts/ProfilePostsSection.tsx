@@ -1,5 +1,4 @@
 import {FC} from "react";
-import CardWithHeader from "../../common/cards/CardWithHeader";
 
 declare interface ProfilePostsSection {
     user: User
@@ -12,9 +11,9 @@ const ProfilePostsSection: FC<ProfilePostsSection> = ({user}) => {
     }
 
     return (
-        <CardWithHeader title="Profile posts">
+        <div className="p-4">
             No one has posted anything yet! Be the first to say hello to {user.name}
-        </CardWithHeader>
+        </div>
     )
 }
 
