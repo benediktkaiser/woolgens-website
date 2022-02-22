@@ -4,10 +4,10 @@ export function formatMillisecondsToTime(duration: number, text = false, long = 
 
     if (text) {
         if (!long) {
-            return `${hours ? (hours + "hrs") : ""} ${minutes ? (minutes + "min"): ""}`
+            return `${hours ? (hours + " hrs") : ""} ${minutes ? (minutes + " min"): ""}`
         }
-        const hoursText = `${hours} Hour${hours !== 1 && "s"}`
-        const minutesText = `${minutes} Minute${hours !== 1 && "s"}`
+        const hoursText = `${hours} Hour${hours !== 1 ? "s": ""}`
+        const minutesText = `${minutes} Minute${minutes !== 1 ? "s" : ""}`
         return `${hours ? hoursText : ""} ${minutes ? minutesText: ""}`
     }
 
