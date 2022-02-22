@@ -36,7 +36,7 @@ const LandProfile: NextPageWithLayout = observer(({ landname, land }) => {
                                 <Tab title="Transactions" active={true} />
                                 {isUserInLand(landname, authStore.user) && <Tab title="Settings" disabled={true} />}
                             </ul>
-                            <LandTransactions transactions={land.bank.transactions} />
+                            <LandTransactions transactions={land.bank.transactions} isUserAuth={isUserInLand(landname, authStore.user)} />
                         </div>
                     </main>
                 </div>
