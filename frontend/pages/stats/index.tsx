@@ -10,6 +10,7 @@ import {BaseButton} from "../../components/common/BaseButton";
 import {AiOutlineArrowRight} from "react-icons/ai";
 import TopLists from "../../components/stats/TopLists";
 import autoCompleteStore from "../../stores/AutoCompleteStore";
+import SEO from "../../components/SEO";
 
 const StatsIndexPage: NextPageWithLayout = observer(({currentSeason }) => {
 
@@ -20,6 +21,11 @@ const StatsIndexPage: NextPageWithLayout = observer(({currentSeason }) => {
 
     return (
         <div>
+            <SEO seo={{
+                title: "Stats",
+                description: "On our stats page you can see the top players and lands on our server. Interact with awesome top lists to see the rise of new legends and maybe even yourself!",
+                imageSRC: "/seo/Stats.jpg"
+            }} />
             <div className="my-8 text-center">
                 <div className="py-4">
                     <h1 className="text-4xl font-bold">

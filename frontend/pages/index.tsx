@@ -14,8 +14,8 @@ const IndexPage: NextPageWithLayout = observer(({changeLogs}) => {
         <div>
             <SEO seo={{
                 title: "News",
-                description: "Test",
-                imageSRC: "https://i.imgur.com/jwsb0dY.jpg"
+                description: "Welcome to the official Woolgens homepage! Here you can find news, statistics, interact with other users and learn more about our network.",
+                imageSRC: "/seo/News.jpg"
             }} />
             <section className="flex xl:grid flex-col grid-cols-10 gap-4 mt-5">
                 <main className="flex flex-col col-span-7 gap-4">

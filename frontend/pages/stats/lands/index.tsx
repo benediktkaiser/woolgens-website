@@ -11,6 +11,7 @@ import {AiOutlineArrowRight} from "react-icons/ai";
 import LandTopLists from "../../../components/stats/land/LandTopLists";
 import autoCompleteStore from "../../../stores/AutoCompleteStore";
 import {getLandsSorted} from "../../../core/land";
+import SEO from "../../../components/SEO";
 
 const LandsIndexPage: NextPageWithLayout = observer(({ topLands }) => {
 
@@ -21,6 +22,11 @@ const LandsIndexPage: NextPageWithLayout = observer(({ topLands }) => {
 
     return (
         <div>
+            <SEO seo={{
+                title: "Lands",
+                description: "On our lands portal you can view the top lands of the server. These are the best groups of players and ultimately, those most likely to win the season!",
+                imageSRC: "/seo/Lands.jpg"
+            }} />
             <div className="my-8 text-center">
                 <div className="py-4">
                     <h1 className="text-4xl font-bold">

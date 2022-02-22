@@ -8,6 +8,7 @@ import authStore from "../../../stores/AuthStore";
 import FullPageLayout from "../../../layout/FullPageLayout";
 import Logo from "../../../components/common/Logo";
 import Bust from "../../../components/common/Bust";
+import SEO from "../../../components/SEO";
 
 const RegisterPage: NextPageWithLayout = () => {
     const router = useRouter()
@@ -55,6 +56,11 @@ const RegisterPage: NextPageWithLayout = () => {
     if (!token) {
         return (
             <div className="text-center">
+                <SEO seo={{
+                    title: "Register",
+                    description: "Welcome to the Woolgens community! Here you can easily login and access your website account.",
+                    imageSRC: "/seo/Login.jpg",
+                }} />
                 <h1 className="text-3xl">
                     This token was not found.
                 </h1>
@@ -67,6 +73,11 @@ const RegisterPage: NextPageWithLayout = () => {
 
     return (
         <div className="w-full">
+            <SEO seo={{
+                title: "Register",
+                description: "Welcome to the Woolgens community! Here you can easily login and access your website account.",
+                imageSRC: "/seo/Login.jpg",
+            }} />
             <div className="flex flex-col mx-auto w-[700px]">
                 <div className="mx-auto mb-2">
                     <Logo animated={true} height="200px" width="200px" />

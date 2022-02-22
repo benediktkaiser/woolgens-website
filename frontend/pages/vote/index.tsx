@@ -7,11 +7,17 @@ import {BaseButton} from "../../components/common/BaseButton";
 import React from "react";
 import authStore from "../../stores/AuthStore";
 import TopList from "../../components/stats/TopList";
+import SEO from "../../components/SEO";
 
 const VoteIndexPage: NextPageWithLayout = observer(() => {
 
     return (
         <div>
+            <SEO seo={{
+                title: "Vote",
+                description: "By voting for our server you support our search for new players. In order to that you for your help you will receive small in game rewards you can claim daily. ",
+                imageSRC: "/seo/Vote.jpg"
+            }} />
             <Announcement
                 icon={<MdOutlineHowToVote/>}
                 text="Voting helps us and gives you a small reward! Login to track your vote progress!"
