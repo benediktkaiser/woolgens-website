@@ -29,30 +29,18 @@ const UserAbout: FC<UserAboutProps> = ({user}) => {
             <div className="flex justify-between w-full">
                 <div className="text-lg leading-10 text-gray-500">
                     <h1>
-                        Birthday:
+                        Rank:
                     </h1>
                     <h1>
-                        Age:
-                    </h1>
-                    <h1>
-                        Pronouns:
-                    </h1>
-                    <h1>
-                        Discord:
+                        Collected Badges:
                     </h1>
                 </div>
                 <div className="text-lg leading-10 text-right text-gray-400">
                     <h1>
-                        22 September 2001
+                        {user.webUser.group.name}
                     </h1>
                     <h1>
-                        20 years old
-                    </h1>
-                    <h1>
-                        All pronouns
-                    </h1>
-                    <h1>
-                        tsuuki#6991
+                        {user.minecraftUser.badges.length}
                     </h1>
                 </div>
             </div>

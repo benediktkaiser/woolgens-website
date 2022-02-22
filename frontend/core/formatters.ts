@@ -1,9 +1,14 @@
-export function formatMillisecondsToTime(duration: number, long = false): string | number {
+export function formatMillisecondsToTime(duration: number, text = false, long = false): string | number {
     const minutes = Math.floor((duration / (1000 * 60)) % 60)
     const hours = Math.floor((duration / (1000 * 60 * 60)));
 
-    if (long) {
-        return `${hours ? (hours + " Hours"): ""} ${minutes ? (minutes + " Minutes"): ""}`;
+    if (text) {
+        if (!long) {
+            return `${hours ? (hours + "hrs") : ""} ${minutes ? (minutes + "min"): ""}`
+        }
+        const hoursText = `${hours} Hour${hours !== 1 && "s"}`
+        const minutesText = `${minutes} Minute${hours !== 1 && "s"}`
+        return `${hours ? hoursText : ""} ${minutes ? minutesText: ""}`
     }
 
     return hours;
@@ -21,13 +26,13 @@ export function formatSeasonName(name: string): string {
 export function getPassedTime(date: Date): string | number {
     const now = new Date()
     const dif = Math.abs(now.getTime() - date.getTime())
-    return formatMillisecondsToTime(dif, true)
+    return formatMillisecondsToTime(dif, true, false)
 }
 
 export const colorCodes = {
     "&0": "#000000",
     "&1": "#4169E1",
-    "&2": "#6B8E23",
+    "&2": "#88b52d",
     "&3": "#00AAAA",
     "&4": "#AA0000",
     "&5": "#AA00AA",

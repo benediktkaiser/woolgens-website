@@ -8,7 +8,7 @@ interface ProfileStatsCardProps {
 
 const ProfileStatsCard: FC<ProfileStatsCardProps> = ({icon, title, value}) => {
     return (
-        <div className="group p-3 w-full leading-3 text-center rounded-xl hover:scale-105">
+        <div className="group p-3 w-full leading-3 text-center rounded-xl hover:scale-105 cursor-pointer">
             <div className="pt-2 mx-auto w-min text-gray-200">
                 {icon}
             </div>
