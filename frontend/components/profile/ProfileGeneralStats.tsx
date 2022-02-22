@@ -19,7 +19,7 @@ const ProfileGeneralStats: FC<ProfileGeneralStatsProps> = ({ user }) => {
     return (
         <CardWithHeader title="General Stats">
             <div className="flex flex-col gap-4">
-                <StatsCard title="Playtime" value={formatMillisecondsToTime(user.minecraftUser.stats.playtime, true)} />
+                <StatsCard title="Playtime" value={formatMillisecondsToTime(user.minecraftUser.stats.playtime, true, true)} />
                 <StatsCard title="Joined" value={new Date(user.minecraftUser.joined).toDateString()} />
                 {user.minecraftUser.lastJoined !== 0 && (
                     <StatsCard title="Last joined" value={getPassedTime(new Date(user.minecraftUser.lastJoined))} label=" ago"/>

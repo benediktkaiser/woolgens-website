@@ -42,7 +42,7 @@ const SkillsCard: FC<SkillsCardProps> = ({skill, level}) => {
     }
 
     return (
-        <div className="group py-4 px-3 w-full leading-3 text-center hover:bg-dark-light rounded-xl hover:scale-105 bg-dark-light/50">
+        <div className="group py-4 px-3 w-full leading-3 text-center hover:bg-dark-light rounded-xl hover:scale-105 cursor-pointer bg-dark-light/50">
             <span className="text-gray-400 group-hover:text-gray-100">
                  {icon}
             </span>

@@ -13,7 +13,7 @@ import {
     GiWarPick,
     GiWheat
 } from "react-icons/gi";
-import {formatMillisecondsToTime} from "../../../core/formatters";
+import {formatMillisecondsToTime, formatMoney, formatSeasonName} from "../../../core/formatters";
 import AnimatedFadeDown from "../../common/animations/AnimatedFadeDown";
 
 interface UserCompareStatsProps {
@@ -32,7 +32,7 @@ const UserCompareStats: FC<UserCompareStatsProps> = ({user, season}) => {
                 <UserCompareStatRow
                     title="Playtime"
                     icon={<GiStopwatch/>}
-                    value={user.minecraftUser.stats?.playtime ? formatMillisecondsToTime(user.minecraftUser.stats?.playtime, true) : 0}
+                    value={user.minecraftUser.stats?.playtime ? formatMillisecondsToTime(user.minecraftUser.stats?.playtime, true, true) : 0}
                 />
                 <UserCompareStatRow
                     title="Join date"
@@ -43,10 +43,10 @@ const UserCompareStats: FC<UserCompareStatsProps> = ({user, season}) => {
                     title="Participated in"
                     icon={<GiStarMedal/>}
                     value={Object.keys(user.minecraftUser.seasons).length}
-                    label="Seasons"
+                    label="Season(s)"
                 />
                 <h1 className="mt-4 text-2xl">
-                    Season {season} Stats:
+                    {formatSeasonName(season)} Stats:
                 </h1>
                 <UserCompareStatRow
                     title="Level"
@@ -56,7 +56,7 @@ const UserCompareStats: FC<UserCompareStatsProps> = ({user, season}) => {
                 <UserCompareStatRow
                     title="Balance"
                     icon={<GiTwoCoins/>}
-                    value={user.minecraftUser.seasons[season]?.balance}
+                    value={`${formatMoney(user.minecraftUser.seasons[season]?.balance)}$`}
                 />
                 <UserCompareStatRow
                     title="Attack Skill points"

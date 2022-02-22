@@ -15,12 +15,12 @@ const TopListRow: FC<TopListRowProps> = ({minecraftUser, value, label, place}) =
         <div className="p-1">
             <Link href={`/profile/${minecraftUser.name}`} passHref={true}>
                 <a className="flex justify-between items-center p-3 hover:bg-dark rounded-xl cursor-pointer">
-                    <div className="flex overflow-hidden items-center max-w-[65%]">
+                    <div className="flex overflow-hidden flex-grow items-center">
                         <div className="flex-none">
-                            <Avatar player={minecraftUser.uuid} size={55}/>
+                            <Avatar player={minecraftUser.uuid} size={50}/>
                         </div>
-                        <div className="ml-4">
-                            <h1 className="flex items-center mb-px text-2xl">
+                        <div className="ml-3">
+                            <h1 className="flex items-center mb-px text-xl">
                                 {place === 1 && (
                                     <IoMdTrophy className="mr-1 text-amber-400"/>
                                 )}
@@ -34,7 +34,6 @@ const TopListRow: FC<TopListRowProps> = ({minecraftUser, value, label, place}) =
                             </h1>
                         </div>
                     </div>
-                    <div className="grow"/>
                     <div className="flex items-center text-xl">
                     <span>
                         {value}

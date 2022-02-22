@@ -51,7 +51,9 @@ declare interface MinecraftUserSeason {
 
 declare interface Badge {
     color: MinecraftColorCode,
-    title: "string",
+    title: string,
+    description: string
+    received: number
 }
 
 declare type MinecraftColorCode = "&1" | "&2" | "&3" | "&4" | "&5" | "&6" | "&7" | "&8" | "&9" | "&a" | "&b" | "&c" | "&d" | "&e" | "&f"

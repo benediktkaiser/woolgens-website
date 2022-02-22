@@ -23,10 +23,10 @@ const MobileNavbar: FC<MobileNavbarProps> = ({isOpen, toggleMobileNavbar}) => {
                         </span>
                     </h1>
                     <ul className="grid grid-cols-2 gap-4">
-                        <MobileNavbarLink title="Home" link="/"/>
-                        <MobileNavbarLink title="Stats" link="/stats"/>
-                        <MobileNavbarLink title="Lands" link="/stats/lands"/>
-                        <MobileNavbarLink title="Vote" link="/vote"/>
+                        <MobileNavbarLink title="Home" link="/" toggleModal={toggleMobileNavbar} />
+                        <MobileNavbarLink title="Stats" link="/stats" toggleModal={toggleMobileNavbar} />
+                        <MobileNavbarLink title="Lands" link="/stats/lands" toggleModal={toggleMobileNavbar} />
+                        <MobileNavbarLink title="Vote" link="/vote" toggleModal={toggleMobileNavbar} />
                     </ul>
                 </div>
             </div>

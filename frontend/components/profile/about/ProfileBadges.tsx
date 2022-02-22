@@ -16,7 +16,7 @@ const ProfileBadges: FC<ProfileBadgesProps> = ({user}) => {
                     Collected Badges:
                 </h1>
                 <h2 className="text-xs text-gray-500">
-                    Badges are exclusive token players can collect by participating in special events or winning seasons!
+                    Badges are exclusive rewards players can obtain by participating in special events or winning seasons!
                 </h2>
             </div>
             <div className="flex flex-wrap gap-6 items-center">

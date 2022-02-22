@@ -4,13 +4,14 @@ export const getDiscordWidget = async (serverID: string) => {
     try {
         return axios.get(`https://discord.com/api/guilds/${serverID}/widget.json`)
     } catch (error) {
-        throw error
+        console.error(error)
+        return undefined
     }
 }
 
 export const getMinecraftServerData = async (serverIP: string) => {
     try {
-        const data = await axios.post(`https://api.mcsrvstat.us/2/revamp.woolgens.net`)
+        const data = await axios.post(`https://api.mcsrvstat.us/2/${serverIP}`)
 
         if (data.data.online) {
             return data.data
@@ -18,6 +19,7 @@ export const getMinecraftServerData = async (serverIP: string) => {
             return undefined;
         }
     } catch (error) {
-        throw new Error(`Error retrieving data for "${serverIP}": ${error}`);
+        console.error(error)
+        return undefined
     }
 }

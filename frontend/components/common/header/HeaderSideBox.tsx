@@ -1,4 +1,5 @@
 import React, {FC} from "react";
+import {AiOutlineLoading3Quarters} from "react-icons/ai"
 
 declare interface HeaderSideBoxProps {
     icon: React.ReactNode,
@@ -21,8 +22,16 @@ const HeaderSideBox: FC<HeaderSideBoxProps> = ({ title, subtitle, color, count, 
                 </div>
             </div>
             <span className="hidden xl:block absolute -top-3 -right-5">
-                <span className={`inline-flex absolute w-full h-full rounded-full opacity-75 animate-ping opacity-50 ${color}`} />
-                <span className={`inline-flex relative px-3 pt-0.5 rounded-lg ${color}`}>{count} online</span>
+                <span className={`inline-flex absolute w-full h-full rounded-full animate-ping opacity-25 ${color}`} />
+                <span className={`inline-flex relative px-3 pt-0.5 rounded-lg ${color}`}>
+                    {count !== undefined ? (
+                        <span>{count} online</span>
+                    ): (
+                        <span className="flex gap-2 items-center">
+                            <AiOutlineLoading3Quarters size="0.9rem" className="animate-spin" /> online
+                        </span>
+                    )}
+                </span>
             </span>
         </div>
     )

@@ -3,9 +3,9 @@ import {getDiscordWidget, getMinecraftServerData} from "../core/information";
 
 class InformationStore {
 
-    onlineDiscord = 0
+    onlineDiscord = undefined
     discordInviteLink = ""
-    onlineMinecraft = 0
+    onlineMinecraft = undefined
     onlineUsers: Record<string, string> = {}
 
     constructor() {
@@ -17,10 +17,10 @@ class InformationStore {
         const minecraftData = await getMinecraftServerData(process.env.NEXT_PUBLIC_MINECRAFT_IP)
 
         runInAction(() => {
-            this.onlineDiscord = discordWidget.data.presence_count
-            this.discordInviteLink = discordWidget.data.instant_invite
-            this.onlineMinecraft = minecraftData.data.players.online || 0
-            this.onlineUsers = minecraftData.data.players.uuid || {}
+            this.onlineDiscord = discordWidget.data.presence_count || 0
+            this.discordInviteLink = discordWidget.data.instant_invite || "#"
+            this.onlineMinecraft = minecraftData?.data.players.online || 0
+            this.onlineUsers = minecraftData?.data.players.uuid || {}
         })
     }
 
