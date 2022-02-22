@@ -28,9 +28,9 @@ const Legal: NextPageWithLayout = () => {
 Legal.getLayout = function getLayout(page) {
     return (
         <NavbarLayout>
-            <div className="flex gap-4 items-start w-full">
-                <BasicCard>
-                    <div className="flex flex-col gap-2 w-80">
+            <div className="flex flex-col lg:flex-row gap-4 items-start w-full">
+                <BasicCard width="w-full lg:w-80">
+                    <div className="flex flex-col gap-2 w-full">
                         <Link href="/legal" passHref={true}>
                             <a>
                                 <div className="p-4 w-full bg-dark-light rounded-xl">
