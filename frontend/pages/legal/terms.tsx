@@ -9,7 +9,8 @@ const Legal: NextPageWithLayout = () => {
         <article className="mx-auto prose prose-invert max-w-[100%]">
             <SEO seo={{
                 title: "Legal",
-                description: "Woolgens legal documents about our website and shop."
+                description: "Here you can find all of WoolGens legal documents. If you have any questions concerning them, please contact our support team or email us at admin@woolgens.net. We take all legal matters very seriously, so please be aware of our Terms of Service and other policies before using our services.",
+                imageSRC: "/seo/Legal.jpg",
             }} />
             <h1>Terms and Conditions</h1>
             <p>Last updated: February 20, 2022</p>

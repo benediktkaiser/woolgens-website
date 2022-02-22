@@ -19,9 +19,9 @@ const LandProfile: NextPageWithLayout = observer(({ landname, land }) => {
     return (
         <div>
             <SEO seo={{
-                title: `${landname}`,
-                description: "Land",
-                imageSRC: `/api/previews/land/${landname}.jpg`}} />
+                title: `${land.name}`,
+                description: `${land.name}, a strong band of ${land.members.length === 0 ? "1 player" : ((land.members.length + 1) + " players")}, working together to overcome all challenges thrown at them. Find out more about them here!`,
+                imageSRC: `/api/previews/land/${land.name}.jpg`}} />
             <div>
                 <BasicCard>
                     <BreadCrumbs pathName={router ? router.asPath : ""}/>

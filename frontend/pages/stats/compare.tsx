@@ -12,6 +12,7 @@ import {formatSeasonName} from "../../core/formatters";
 import {GetServerSideProps} from "next";
 import {getUserByUsername} from "../../core/user";
 import autoCompleteStore from "../../stores/AutoCompleteStore";
+import SEO from "../../components/SEO";
 
 const ComparePage: NextPageWithLayout = observer(({currentSeason}) => {
     const router = useRouter();
@@ -66,6 +67,11 @@ const ComparePage: NextPageWithLayout = observer(({currentSeason}) => {
 
     return (
         <div>
+            <SEO seo={{
+                title: "Compare",
+                description: "Do you want to know how you measure up against another player? This is the page for you! Select two players and see who has the better stats.",
+                imageSRC: "/seo/Compare.jpg"
+            }} />
             <BasicCard>
                 <div className="flex justify-between items-center h-[50px]">
                     <div className="flex items-center">

@@ -13,17 +13,18 @@ import ProfileSeasonStats from "../../components/profile/ProfileSeasonStats";
 import BasicCard from "../../components/common/cards/BasicCard";
 import ProfileBadges from "../../components/profile/about/ProfileBadges";
 import UserAbout from "../../components/profile/about/UserAbout";
+import {formatMillisecondsToTime} from "../../core/formatters";
 
-const ProfilePage: NextPageWithLayout = ({username, user}) => {
+const ProfilePage: NextPageWithLayout = ({user}) => {
     const [selectedSeason, setSelectedSeason] = useState(Object.keys(user.minecraftUser.seasons).reverse()[0])
     const [page, setPage] = useState("stats")
 
     return (
         <div>
             <SEO seo={{
-                title: username,
-                description: "Test",
-                imageSRC: `https://i.imgur.com/jwsb0dY.jpg`
+                title: user.name,
+                description: `${user.name} is a player on Woolgens! They have played a total of ${formatMillisecondsToTime(user.minecraftUser.stats.playtime, true, true)}. That's impressive! View their profile if you want to find out more about them or in case you want to connect with them!`,
+                imageSRC: "/seo/Stats.jpg"
             }}/>
             <section className="flex flex-col gap-3">
                 <ProfileToolBar
@@ -77,7 +78,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         const user = await getUserByUsername(username);
         return {
             props: {
-                username: username,
                 user: user || null,
             },
             notFound: !user
