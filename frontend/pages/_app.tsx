@@ -10,6 +10,7 @@ import Toast from "../plugins/toast.plugin";
 
 import LoginModal from "../components/LoginModal";
 import RegisterModal from "../components/RegisterModal";
+import informationStore from "../stores/InformationStore";
 
 const progress = new ProgressBar({
   size: 3,
@@ -28,6 +29,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         if (authStore.token) {
             authStore.tokenAuth(authStore.token).catch(error => console.error(error))
         }
+        informationStore.updateData().catch(error => console.error(error))
     }, [])
 
     // Use the layout defined at the page level, if available
