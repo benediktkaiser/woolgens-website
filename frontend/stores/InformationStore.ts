@@ -17,10 +17,10 @@ class InformationStore {
         const minecraftData = await getMinecraftServerData(process.env.NEXT_PUBLIC_MINECRAFT_IP)
 
         runInAction(() => {
-            this.onlineDiscord = discordWidget.data.presence_count || 0
-            this.discordInviteLink = discordWidget.data.instant_invite || "#"
-            this.onlineMinecraft = minecraftData?.data.players.online || 0
-            this.onlineUsers = minecraftData?.data.players.uuid || {}
+            this.onlineDiscord = discordWidget.presence_count || 0
+            this.discordInviteLink = discordWidget.instant_invite || "#"
+            this.onlineMinecraft = minecraftData?.players.online || 0
+            this.onlineUsers = minecraftData?.players.uuid || {}
         })
     }
 
