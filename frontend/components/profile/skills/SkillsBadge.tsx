@@ -14,13 +14,13 @@ declare interface SkillsBadgeProps {
 }
 
 const SKILLS_ICONS = {
-    "AGRICULTURE": <GiWheat size="8rem" className="svg-shadow" />,
-    "DEFENSE": <GiBorderedShield size="8rem" className="svg-shadow" />,
-    "ATTACK": <GiBroadsword size="8rem" className="svg-shadow" />,
-    "FISHING": <GiFishingHook size="8rem" className="svg-shadow" />,
-    "MINING": <GiWarPick size="8rem" className="svg-shadow" />,
-    "LUMBERJACK": <GiAxeInStump size="8rem" className="svg-shadow" />,
-    "NEWBIE": <GiSprout size="8rem" className="svg-shadow" />,
+    "AGRICULTURE": <GiWheat size="7.5rem" className="svg-shadow" />,
+    "DEFENSE": <GiBorderedShield size="7.5rem" className="svg-shadow" />,
+    "ATTACK": <GiBroadsword size="7.5rem" className="svg-shadow" />,
+    "FISHING": <GiFishingHook size="7.5rem" className="svg-shadow" />,
+    "MINING": <GiWarPick size="7.5rem" className="svg-shadow" />,
+    "LUMBERJACK": <GiAxeInStump size="7.5rem" className="svg-shadow" />,
+    "NEWBIE": <GiSprout size="7.5rem" className="svg-shadow" />,
 }
 
 const SkillsBadge: FC<SkillsBadgeProps> = ({skill}) => {

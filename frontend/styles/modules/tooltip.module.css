@@ -1,0 +1,86 @@
+.ToolTip {
+    position: relative;
+    display: inline-block;
+}
+
+.ToolTip .ToolTipContent {
+    visibility: hidden;
+    width: max-content;
+    min-width: 100px;
+    max-width: 220px;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px 10px;
+    position: absolute;
+    z-index: 1;
+}
+
+.ToolTip:hover .ToolTipContent {
+    visibility: visible;
+}
+
+.Top .ToolTipContent {
+    bottom: 150%;
+    left: 50%;
+    transform:translateX(-50%);
+}
+
+.Top .ToolTipContent::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: currentColor transparent transparent transparent;
+}
+
+.Bottom .ToolTipContent {
+    top: 150%;
+    left: 50%;
+    transform:translateX(-50%);
+}
+
+.Bottom .ToolTipContent::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent currentColor transparent;
+}
+
+.Right .ToolTipContent {
+    top: -5px;
+    left: 135%;
+}
+
+.Right .ToolTipContent::after {
+    content: "";
+    position: absolute;
+    top: 20px;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent currentColor transparent transparent;
+}
+
+.Left .ToolTipContent {
+    top: -5px;
+    right: 135%;
+}
+
+.Left .ToolTipContent::after {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent currentColor;
+}

@@ -4,8 +4,7 @@ import background from "../../public/background/mine_inside.jpeg"
 import Bust from "../common/Bust";
 import SkillsBadge from "./skills/SkillsBadge";
 import {getHighestSkill, getLevelProgressPercentage, SKILL_TITLES} from "../../core/skills";
-import {BsPatchCheckFill} from "react-icons/bs"
-import Tooltip from "react-simple-tooltip"
+import OnlinePing from "../common/OnlinePing";
 
 declare interface ProfileUserBoxProps {
     user: User
@@ -29,7 +28,7 @@ const ProfileUserBox: FC<ProfileUserBoxProps> = ({user, seasonNumber}) => {
             <div className="overflow-hidden relative rounded-lg h-[200px]">
                 <Image className="invisible lg:visible" src={background} alt="profile background" />
                 <div className="absolute top-0 w-full h-full bg-gradient-to-l to-gray-500/60 from-green-900/50" />
-                <div className="absolute top-1/2 right-1 md:right-10 mt-1 -translate-y-1/2">
+                <div className="absolute top-1/2 right-2 md:right-10 mt-1 -translate-y-1/2">
                     <SkillsBadge skill={highestSkill} />
                 </div>
                 <div className="md:hidden absolute top-0 w-full h-full bg-gradient-to-r to-accent-200/70 from-accent-500/50" />
@@ -43,29 +42,18 @@ const ProfileUserBox: FC<ProfileUserBoxProps> = ({user, seasonNumber}) => {
                         </span>
                         <h1 className="flex items-center text-3xl sm:text-5xl font-bold">
                             {user.minecraftUser.name}
-                            {user.webUser?.group.isStaff  && (
-                                <span className="ml-3 text-sm font-light text-green-600">
-                                    <Tooltip
-                                        content="Staff"
-                                        radius="7"
-                                        padding="8"
-                                        background="#24262d"
-                                        border="#24262d"
-                                    >
-                                        <span className="absolute top-1/3 left-1/3 w-2 h-2 bg-white" />
-                                        <BsPatchCheckFill className="relative text-2xl" />
-                                    </Tooltip>
-                                </span>
-                            )}
                         </h1>
                         <div className="overflow-hidden relative mt-2 w-full sm:w-80 rounded-full bg-dark-light/50">
-                            <div className="absolute py-0.5 pl-4 w-full h-full text-sm leading-none text-gray-100 bg-green-500 rounded-l-full"
+                            <div className="absolute py-0.5 pl-4 w-full h-full text-sm leading-3 text-gray-100 bg-green-700 rounded-l-full"
                                 style={{width: `${getLevelProgressPercentage(user.minecraftUser.seasons[seasonNumber].level, user.minecraftUser.seasons[seasonNumber].exp)}%`}} />
-                            <p className="relative z-10 pt-1 pb-0.5 ml-2 leading-none">
-                                Level {user.minecraftUser.seasons[seasonNumber].level}
+                            <p className="relative z-10 py-1 ml-3 font-sans leading-none">
+                                Lvl. {user.minecraftUser.seasons[seasonNumber].level}
                             </p>
                         </div>
                     </div>
+                </div>
+                <div className="flex absolute right-2 bottom-1.5">
+                    <OnlinePing status="offline" />
                 </div>
             </div>
         </div>
