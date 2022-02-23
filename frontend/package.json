@@ -13,7 +13,6 @@
   "dependencies": {
     "@badrap/bar-of-progress": "^0.1.2",
     "@headlessui/react": "^1.4.1",
-    "add": "^2.0.6",
     "chrome-aws-lambda": "^10.1.0",
     "faker": "^5.5.3",
     "mctext-react": "^1.1.0",
@@ -26,10 +25,8 @@
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
     "react-search-autocomplete": "^6.0.0",
-    "react-simple-tooltip": "^2.6.3",
     "react-toastify": "^8.2.0",
-    "sharp": "^0.30.0",
-    "yarn": "^1.22.17"
+    "sharp": "^0.30.0"
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",
