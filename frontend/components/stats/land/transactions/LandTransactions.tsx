@@ -9,7 +9,7 @@ interface LandTransactionsProps {
     transactions: LandTransaction[],
 }
 
-const pagination = new Pagination({itemsPerPage: 5, showPagerNumbers: true, itemName: "transactions"})
+const pagination = new Pagination({itemsPerPage: 2, showPagerNumbers: true, itemName: "transactions"})
 
 const LandTransactions: FC<LandTransactionsProps> = ({transactions}) => {
     const [items, setItems] = useState<LandTransaction[]>(undefined)

@@ -78,7 +78,7 @@ const PaginationWrapper: FC<PaginationProps> = ({title, pagination, loading, chi
                                             ...
                                         </div>
                                     )}
-                                    <BaseButton type="dark" onClick={() => pagination.setPage(1)}>
+                                    <BaseButton type="dark" onClick={() => pagination.setPage(pagination.maxPages)}>
                                         {pagination.maxPages}
                                     </BaseButton>
                                 </>

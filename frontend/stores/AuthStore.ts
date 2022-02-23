@@ -92,6 +92,12 @@ class AuthStore {
             this.loginModalOpen = false
         })
     }
+
+    hasPermission(permission: string): boolean {
+        if (!this.user.webUser) return false;
+        if (this.user.webUser.group.permissions.includes('web.*')) return true;
+        return this.user.webUser.group.permissions.includes(permission);
+    }
 }
 
 const authStore = new AuthStore()
