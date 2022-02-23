@@ -1,6 +1,6 @@
 .Toastify__toast-container {
     min-width: 250px;
-    max-width: 350px;
+    max-width: 550px;
     z-index: 9999;
     -webkit-transform: translate3d(0, 0, 9999px);
     position: fixed;

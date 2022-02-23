@@ -10,7 +10,7 @@ interface TimeLineElement {
 
 const TimeLineElement: FC<TimeLineElement> = ({transaction}) => {
     return (
-        <li className="mb-10 ml-6">
+        <li className="mb-10 ml-7">
             {transaction.type == "DEPOSIT" && (
                 <span className="flex absolute -left-3 justify-center items-center w-6 h-6 bg-green-600 rounded-full ring-4 ring-green-900/40">
                     <AiOutlinePlus />
@@ -26,13 +26,13 @@ const TimeLineElement: FC<TimeLineElement> = ({transaction}) => {
                     <AiOutlineArrowUp />
                 </span>
             )}
-            <div className="flex gap-2 items-center">
+            <div className="flex gap-3 items-center">
                 <Avatar player={transaction.issuer} size={30} />
                 <Link href={`/profile/${transaction.issuer}`} passHref={true}>
                     <a className="text-2xl font-semibold text-gray-100 hover:text-accent-200">{transaction.issuer}</a>
                 </Link>
             </div>
-            <div className="mt-1">
+            <div className="mt-1.5">
                 <time className="block mb-2 text-sm font-normal text-gray-500">
                     {transaction.type == "DEPOSIT" && "Deposited"}
                     {transaction.type == "WITHDRAW" && "Withdrew"}

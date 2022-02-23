@@ -11,8 +11,7 @@ declare type PageEvent<Type> = (entity: Type) => void
 class Pagination {
 
     config: PaginationProperties
-    isLoading = true
-    items: Array<unknown> = []
+    items: Array<unknown> = undefined
     currentPage = 1
     maxPages = 1
     updateEvent: PageEvent<Array<unknown>>
@@ -25,7 +24,6 @@ class Pagination {
         this.items = items;
         this.maxPages = Math.ceil(items.length / this.config.itemsPerPage)
         this.updateEvent = callback
-        this.isLoading = false
         this.updateEntries()
     }
 
@@ -33,6 +31,17 @@ class Pagination {
         this.config = config
         this.maxPages = Math.ceil(this.items.length / this.config.itemsPerPage)
         this.updateEntries()
+    }
+
+    setPage(page) {
+        if (this.canPage(page)) {
+            this.currentPage = page
+            this.updateEntries()
+        }
+    }
+
+    canPage(page) {
+        return page <= this.maxPages;
     }
 
     nextPage() {
@@ -66,7 +75,6 @@ class Pagination {
                 this.loadEntries(((this.currentPage - 1) * this.config.itemsPerPage), this.currentPage * this.config.itemsPerPage)
 
             this.updateEvent(loadedEntries)
-            this.isLoading = false
         }, 200)
     }
 
