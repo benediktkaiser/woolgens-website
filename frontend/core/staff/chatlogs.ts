@@ -41,7 +41,7 @@ function enrichChatLogWithParticipants(chatLog: InitialChatLog): ChatLog {
     }
 }
 
-export async function fetchChatLogFromID(id: string): Promise<InitialChatLog | undefined> {
+export async function fetchChatLogFromID(id: string): Promise<ChatLog | undefined> {
     try {
         const data = await chatLogAPI.get(`/chatlogs/${id}`)
         return enrichChatLogWithParticipants(data.data)
