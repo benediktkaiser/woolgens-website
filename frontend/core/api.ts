@@ -4,14 +4,17 @@ const DEFAULT_API = {
     timeout: 3000,
     headers: {
         'Content-Type': 'application/json',
-        'Authorization': "Bearer " + process.env.NEXT_PUBLIC_DEV_TOKEN
+        'Authorization': `Bearer ${process.env.NEXT_PUBLIC_DEV_TOKEN || ''}`
     }
 }
 
 export function changeAPIToken(token: string) {
-    axios.defaults.headers.common = {
-        'Authorization': "Bearer " + token
-    }
+    const bearer = `Bearer ${token}`;
+
+    chatLogAPI.defaults.headers['Authorization'] = bearer;
+    landAPI.defaults.headers['Authorization'] = bearer;
+    authAPI.defaults.headers['Authorization'] = bearer;
+    minecraftUserAPI.defaults.headers['Authorization'] = bearer;
 }
 
 export const authAPI = axios.create({

@@ -9,10 +9,11 @@ import {GetServerSideProps} from "next";
 import chatLogStore from "../../../stores/ChatLogStore";
 import CheckBox from "../../../components/common/forms/CheckBox";
 import {useRouter} from "next/router";
+import authStore from "../../../stores/AuthStore";
 
 const StaffPage: NextPageWithLayout = observer(({chatLogID}) => {
     const [chatLog, setChatLog] = useState<ChatLog | undefined>(undefined)
-    const [showTypes, setShowTypes] = useState(["MESSAGE", "COMMAND"])
+    const [showTypes, setShowTypes] = useState(["MESSAGE"])
     const router = useRouter()
 
     const handleToggleType = (type: string, checked: boolean) => {
@@ -24,9 +25,11 @@ const StaffPage: NextPageWithLayout = observer(({chatLogID}) => {
     }
 
     useEffect(() => {
-        chatLogStore.getChatLogFromID(chatLogID).then(chatLog => {
-            setChatLog(chatLog)
-        })
+        if (!!authStore.user) {
+            chatLogStore.getChatLogFromID(chatLogID).then(chatLog => {
+                setChatLog(chatLog)
+            })
+        }
     }, [chatLogID])
 
     if (!chatLog) {
