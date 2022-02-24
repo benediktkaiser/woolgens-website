@@ -41,18 +41,24 @@ const StaffPage: NextPageWithLayout = observer(({chatLogID}) => {
                 <Link href="/staff/chatlogs" passHref={true}>
                     <a>
                         <BaseButton type="dark">
-                            <HiArrowLeft/> Back
+                            <div className="flex gap-1 items-center">
+                                <HiArrowLeft/> Back
+                            </div>
                         </BaseButton>
                     </a>
                 </Link>
                 <div className="flex gap-3 items-center">
                     <BaseButton type="danger">
-                        <HiOutlineTrash/>
-                        Delete
+                        <div className="flex gap-1 items-center">
+                            <HiOutlineTrash/>
+                            Delete
+                        </div>
                     </BaseButton>
                     <BaseButton type="primary">
-                        <HiOutlineLink/>
-                        Share
+                        <div className="flex gap-1 items-center">
+                            <HiOutlineLink/>
+                            Share
+                        </div>
                     </BaseButton>
                 </div>
             </div>
