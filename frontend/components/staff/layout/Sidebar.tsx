@@ -1,5 +1,5 @@
 import SidebarLink from "./SidebarLink";
-import {HiHome, HiDatabase, HiX, HiUserGroup, HiCloud, HiBan, HiCalendar} from "react-icons/hi"
+import {HiHome, HiChatAlt, HiX} from "react-icons/hi"
 import React, {FC} from "react";
 
 declare interface SidebarProps {
@@ -31,34 +31,10 @@ const Sidebar: FC<SidebarProps> = ({extended = false, pathName = "", toggleSideb
                         link="/staff"
                     />
                     <SidebarLink
-                        icon={<HiCalendar size="1.2rem"/>}
-                        title="Timetable"
+                        icon={<HiChatAlt size="1.2rem"/>}
+                        title="ChatLogs"
                         pathName={pathName}
-                        link="/staff/time-table"
-                    />
-                    <SidebarLink
-                        icon={<HiBan size="1.2rem"/>}
-                        title="Punishments"
-                        pathName={pathName}
-                        link="/staff/punishments"
-                    />
-                    <SidebarLink
-                        icon={<HiDatabase size="1.2rem"/>}
-                        title="Services"
-                        pathName={pathName}
-                        link="/staff/services"
-                    />
-                    <SidebarLink
-                        icon={<HiCloud size="1.2rem"/>}
-                        title="Cloud"
-                        pathName={pathName}
-                        link="/staff/cloud"
-                    />
-                    <SidebarLink
-                        icon={<HiUserGroup size="1.2rem"/>}
-                        title="Team"
-                        pathName={pathName}
-                        link="/staff/team"
+                        link="/staff/chatlogs"
                     />
                 </ul>
             </div>

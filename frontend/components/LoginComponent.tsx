@@ -45,7 +45,10 @@ const LoginComponent = () => {
                     onChange={(event) => setPassword(event.target.value)}
                 />
                 <div className="flex flex-col gap-4 justify-end m-2">
-                    <BaseButton type="dark-active" onClick={() => {
+                    <BaseButton onClick={() => login(username, password)} type="success">
+                        Login
+                    </BaseButton>
+                    <BaseButton type="dark" onClick={() => {
                         authStore.toggleLoginModal()
 
                         setTimeout(() => {
@@ -53,9 +56,6 @@ const LoginComponent = () => {
                         }, 500)
                     }}>
                         Register
-                    </BaseButton>
-                    <BaseButton onClick={() => login(username, password)} type="success">
-                        Login
                     </BaseButton>
                 </div>
                 {loading && (

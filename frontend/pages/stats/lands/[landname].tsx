@@ -1,20 +1,23 @@
-import NavbarLayout from "../../../../layout/NavbarLayout";
-import SEO from "../../../../components/SEO";
+import NavbarLayout from "../../../layout/NavbarLayout";
+import SEO from "../../../components/SEO";
 import {GetServerSideProps} from "next";
-import BasicCard from "../../../../components/common/cards/BasicCard";
-import BreadCrumbs from "../../../../components/common/BreadCrumbs";
-import LandHeaderBar from "../../../../components/stats/land/LandHeaderBar";
-import LandGeneralStats from "../../../../components/stats/land/LandGeneralStats";
+import BasicCard from "../../../components/common/cards/BasicCard";
+import BreadCrumbs from "../../../components/common/BreadCrumbs";
+import LandHeaderBar from "../../../components/stats/land/LandHeaderBar";
+import LandGeneralStats from "../../../components/stats/land/LandGeneralStats";
+import LandMembersList from "../../../components/stats/land/LandMembersList";
 import {useRouter} from "next/router";
-import Tab from "../../../../components/common/Tab";
-import LandTransactions from "../../../../components/stats/land/transactions/LandTransactions";
-import authStore from "../../../../stores/AuthStore";
+import Tab from "../../../components/common/Tab";
 import {observer} from "mobx-react-lite";
-import {isUserInLand} from "../../../../core/user";
-import {getLandByName} from "../../../../core/land";
+import authStore from "../../../stores/AuthStore";
+import {isUserInLand} from "../../../core/user";
+import {getLandByName} from "../../../core/land";
+import {useState} from "react";
+import LandTransactions from "../../../components/stats/land/transactions/LandTransactions";
 
 const LandProfile: NextPageWithLayout = observer(({ landname, land }) => {
     const router = useRouter()
+    const [page, setPage] = useState("members")
 
     return (
         <div>
@@ -32,11 +35,12 @@ const LandProfile: NextPageWithLayout = observer(({ landname, land }) => {
                         <LandGeneralStats land={land}/>
                         <div className="col-span-3">
                             <ul className="flex flex-wrap">
-                                <Tab title="Members" link={`/stats/lands/${landname}`} />
-                                <Tab title="Transactions" active={true} />
+                                <Tab title="Members" active={page === "members"} onClick={() => setPage("members")} />
+                                <Tab title="Transactions" active={page === "transactions"} onClick={() => setPage("transactions")} />
                                 {isUserInLand(landname, authStore.user) && <Tab title="Settings" disabled={true} />}
                             </ul>
-                            <LandTransactions transactions={land.bank.transactions} isUserAuth={isUserInLand(landname, authStore.user)} />
+                            {page === "members" && <LandMembersList land={land}/>}
+                            {page === "transactions" && <LandTransactions transactions={land.bank.transactions} />}
                         </div>
                     </main>
                 </div>

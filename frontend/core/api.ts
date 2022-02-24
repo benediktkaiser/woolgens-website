@@ -33,3 +33,8 @@ export const changeLogAPI = axios.create({
     baseURL: process.env.NEXT_PUBLIC_CHANGELOG_ENDPOINT,
     ...DEFAULT_API
 });
+
+export const chatLogAPI = axios.create({
+    baseURL: process.env.NEXT_PUBLIC_CHATLOG_ENDPOINT,
+    ...DEFAULT_API
+});

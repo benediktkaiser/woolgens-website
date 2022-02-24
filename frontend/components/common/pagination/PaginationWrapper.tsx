@@ -7,18 +7,19 @@ import {AiOutlineLoading3Quarters} from "react-icons/ai"
 declare interface PaginationProps {
     title?: string,
     pagination: Pagination
+    loading?: boolean,
     children?: React.ReactNode,
 }
 
-const PaginationWrapper: FC<PaginationProps> = ({title, pagination, children}) => {
+const PaginationWrapper: FC<PaginationProps> = ({title, pagination, loading, children}) => {
 
-    if (pagination.isLoading) {
+    if (pagination.items === undefined || loading) {
         return (
             <div className="flex justify-center items-center h-48">
-                <div className="flex flex-col items-center space-y-2">
+                <div className="flex flex-col items-center space-y-3">
                     <AiOutlineLoading3Quarters size="2rem" className="animate-spin" />
-                    <span className="text-2xl font-bold">
-                    Loading data
+                    <span className="text-xl font-bold capitalize">
+                    Loading {pagination.config.itemName}
                 </span>
                 </div>
             </div>
@@ -45,6 +46,18 @@ const PaginationWrapper: FC<PaginationProps> = ({title, pagination, children}) =
                     </BaseButton>
                     {pagination.config.showPagerNumbers && (
                         <>
+                            {pagination.currentPage > 2 && (
+                                <>
+                                    <BaseButton type="dark" onClick={() => pagination.setPage(1)}>
+                                        1
+                                    </BaseButton>
+                                    {pagination.currentPage > 3 && (
+                                        <div className="flex flex-col justify-end text-xl tracking-wider">
+                                            ...
+                                        </div>
+                                    )}
+                                </>
+                            )}
                             {pagination.canPrevPage() && (
                                 <BaseButton type="dark" onClick={() => pagination.prevPage()}>
                                     {pagination.currentPage - 1}
@@ -57,6 +70,18 @@ const PaginationWrapper: FC<PaginationProps> = ({title, pagination, children}) =
                                 <BaseButton type="dark" onClick={() => pagination.nextPage()}>
                                     {pagination.currentPage + 1}
                                 </BaseButton>
+                            )}
+                            {pagination.currentPage < (pagination.maxPages - 1) && (
+                                <>
+                                    {pagination.currentPage < (pagination.maxPages -2) && (
+                                        <div className="flex flex-col justify-end text-xl tracking-wider">
+                                            ...
+                                        </div>
+                                    )}
+                                    <BaseButton type="dark" onClick={() => pagination.setPage(pagination.maxPages)}>
+                                        {pagination.maxPages}
+                                    </BaseButton>
+                                </>
                             )}
                         </>
                     )}

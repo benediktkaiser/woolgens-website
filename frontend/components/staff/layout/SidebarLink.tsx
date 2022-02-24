@@ -9,8 +9,8 @@ declare interface SidebarLinkProps {
 }
 
 const isLinkActive = (pathName: string, link: string) => {
-    if (link === "/") {
-        return pathName === "/";
+    if (link === "/staff") {
+        return pathName === "/staff";
     }
     return pathName.startsWith(link)
 }

@@ -10,7 +10,7 @@ class AuthStore {
     user: User = undefined;
     loginModalOpen = false;
     registerModalOpen = false;
-    loading = false;
+    loading = true;
 
     constructor() {
         makeAutoObservable(this, {}, {autoBind: true});
@@ -68,6 +68,12 @@ class AuthStore {
         })
     }
 
+    setLoading(value: boolean) {
+        runInAction(() => {
+            this.loading = value
+        })
+    }
+
     logout() {
         runInAction(() => {
             this.token = "";
@@ -91,6 +97,12 @@ class AuthStore {
         runInAction(() => {
             this.loginModalOpen = false
         })
+    }
+
+    hasPermission(permission: string): boolean {
+        if (!this.user) return false;
+        if (this.user.webUser.group.permissions.includes('web.*')) return true;
+        return this.user.webUser.group.permissions.includes(permission);
     }
 }
 
