@@ -8,6 +8,7 @@ import staffStore from "../stores/StaffStore";
 import authStore from "../stores/AuthStore";
 import BreadCrumbs from "../components/common/BreadCrumbs";
 import ErrorPage from "../components/ErrorPage";
+import {AiOutlineLoading3Quarters} from "react-icons/ai"
 
 declare interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
     permission?: string
@@ -20,15 +21,20 @@ const SidebarLayout: React.FC<SidebarProps> = observer(({permission, withBreadCr
 
     if (authStore.loading) {
         return (
-            <div>
-                Loading...
+            <div className="flex flex-col justify-center items-center mx-auto w-full h-screen">
+                <AiOutlineLoading3Quarters size="4rem" className="animate-spin" />
+                <div className="mt-8 text-center">
+                    <h1 className="w-full text-4xl font-bold">
+                        Logging you in
+                    </h1>
+                    <h2 className="text-gray-300">
+                        This should not take too long!
+                    </h2>
+                </div>
             </div>
         )
     }
 
-    if (!authStore.hasPermission(permission)) {
-        return <ErrorPage title="No permissions" subtitle="You do not have access to this page!" />
-    }
     return (
         <main className="flex overflow-hidden h-screen text-gray-200 font-poppins">
             <Sidebar extended={staffStore.sidebarExtended} pathName={router ? router.pathname : ""} toggleSidebar={() => staffStore.toggleSidebar()} />
@@ -43,7 +49,9 @@ const SidebarLayout: React.FC<SidebarProps> = observer(({permission, withBreadCr
                         </div>
                     )}
                     <div {...HTMLElements} className={`h-full flex-grow ${HTMLElements.className || ""}`}>
-                        {children}
+                        {authStore.hasPermission(permission) ? children : (
+                            <ErrorPage title="403" subtitle="You do not have access to this page!" />
+                        )}
                     </div>
                 </div>
             </main>

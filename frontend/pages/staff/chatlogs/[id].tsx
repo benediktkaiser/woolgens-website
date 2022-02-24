@@ -13,6 +13,7 @@ import authStore from "../../../stores/AuthStore";
 import ChatLogUserClick from "../../../components/staff/chatlogs/ChatLogUserClick";
 import {RiFilterOffLine} from "react-icons/ri"
 import Tooltip from "../../../components/common/ToolTip";
+import ErrorPage from "../../../components/ErrorPage";
 
 const StaffPage: NextPageWithLayout = observer(({chatLogID}) => {
     const [chatLog, setChatLog] = useState<ChatLog | undefined>(undefined)
@@ -50,7 +51,7 @@ const StaffPage: NextPageWithLayout = observer(({chatLogID}) => {
 
     if (!chatLog) {
         return (
-            <div className="test">Not found!</div>
+            <ErrorPage title="Not found" subtitle={`We could not find Chatlog#${chatLogID}`} />
         )
     }
 
