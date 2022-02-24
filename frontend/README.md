@@ -13,6 +13,11 @@ The is a "mono-repo" containing all website from `Woolgens.net`.
 - NEXT_PUBLIC_CHANGELOG_ENDPOINT
 ```
 
+### Staff API EndPoints
+```
+- NEXT_PUBLIC_CHATLOG_ENDPOINT
+```
+
 ### Tokens
 ```
 - NEXT_PUBLIC_DEV_TOKEN (used to auth a development enviorment)

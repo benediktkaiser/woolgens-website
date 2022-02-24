@@ -19,7 +19,7 @@ export const BaseButton: FC<BaseButtonProps> = ({ type, children, ...HTMLAttribu
 
     const classList = [
         colors[type],
-        "py-2 px-4 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-opacity-75 " +
+        "flex items-center gap-1 py-2 px-4 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-opacity-75 " +
         "cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed",
         HTMLAttributes.className,
     ];

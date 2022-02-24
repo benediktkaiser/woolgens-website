@@ -28,6 +28,8 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
     useEffect(() => {
         if (authStore.token) {
             authStore.tokenAuth(authStore.token).catch(error => console.error(error))
+        } else {
+            authStore.setLoading(false)
         }
         informationStore.updateData().catch(error => console.error(error))
     }, [])
@@ -36,11 +38,11 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
     const getLayout = Component.getLayout ?? ((page) => page)
 
     return getLayout(
-        <div>
+        <>
             <Component {...pageProps} />
             <Toast />
             <LoginModal />
             <RegisterModal />
-        </div>
+        </>
     )
 }

@@ -14,7 +14,7 @@ export async function basicAuth(userName: string, password: string): Promise<{ t
         const data = await authAPI.post('/login/basic', {
             userName,
             password,
-            tokenLifeTime: "DAY" // DAY, WEEK OR MONTH
+            tokenLifeTime: "WEEK" // DAY, WEEK OR MONTH
         })
 
         const user = await enrichWebUserWithGroup(data.data.user)

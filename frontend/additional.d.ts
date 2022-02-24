@@ -155,3 +155,24 @@ declare interface AutoCompleteListItem {
     name: string,
     type: "PLAYER" | "LAND"
 }
+
+declare interface ChatLog {
+    id: string,
+    registered: number,
+    target: ChatLogPlayer,
+    issuer: ChatLogPlayer,
+    entries: ChatLogEntry[],
+}
+
+declare interface ChatLogPlayer {
+    uuid: string,
+    name: string,
+    group: string | Group,
+}
+
+declare interface ChatLogEntry {
+    executor: ChatLogPlayer,
+    executed: number,
+    type: "COMMAND" | "MESSAGE",
+    value: string,
+}
