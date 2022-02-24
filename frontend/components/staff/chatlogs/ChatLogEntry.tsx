@@ -1,15 +1,19 @@
 import {FC} from "react";
 import Link from "next/link"
+import {formatDateToTime} from "../../../core/formatters";
 
 interface ChatLogEntryProps {
     entry: ChatLogEntry,
     index: number,
     types: string[],
+    users: string[],
     selectedLine?: number
 }
 
-const ChatLogEntry: FC<ChatLogEntryProps> = ({entry, index, types, selectedLine}) => {
-    const date = new Date(entry.executed)
+const ChatLogEntry: FC<ChatLogEntryProps> = ({entry, index, types, selectedLine, users}) => {
+    if (!users.includes(entry.executor.name) && !(users.length === 0)) {
+        return <></>
+    }
 
     if (!types.includes(entry.type)) {
         return <></>
@@ -36,7 +40,7 @@ const ChatLogEntry: FC<ChatLogEntryProps> = ({entry, index, types, selectedLine}
                 </div>
             )}
             <span className="font-mono text-shark-200">
-                {date.getHours()}:{date.getUTCMinutes()}:{date.getSeconds()}
+                {formatDateToTime(new Date(entry.executed), true)}
             </span>
         </div>
     )

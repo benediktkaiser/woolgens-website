@@ -47,3 +47,18 @@ export const colorCodes = {
     "&e": "#FFFF55",
     "&f": "#FFFFFF",
 }
+
+export function formatDateToTime(date: Date, withSeconds = false): string {
+    const hours = date.getHours().toString()
+    const minutes = date.getUTCMinutes().toString()
+    const seconds = date.getSeconds().toString()
+
+    const formattedHours = `${hours.length === 1 ? '0' : ''}${hours}`
+    const formattedMinutes = `${minutes.length === 1 ? '0' : ''}${minutes}`
+    const formattedSeconds = `${seconds.length === 1 ? '0' : ''}${seconds}`
+
+    if (!withSeconds) {
+        return `${formattedHours}:${formattedMinutes}`
+    }
+    return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`
+}

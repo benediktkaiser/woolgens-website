@@ -156,12 +156,16 @@ declare interface AutoCompleteListItem {
     type: "PLAYER" | "LAND"
 }
 
-declare interface ChatLog {
+declare interface InitialChatLog {
     id: string,
     registered: number,
     target: ChatLogPlayer,
     issuer: ChatLogPlayer,
     entries: ChatLogEntry[],
+}
+
+declare interface ChatLog extends InitialChatLog {
+    participants: ChatLogPlayer[],
 }
 
 declare interface ChatLogPlayer {
