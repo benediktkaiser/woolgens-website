@@ -9,7 +9,12 @@ declare interface InitialUser {
 
 declare interface User extends InitialUser {
     webUser?: WebUser,
+    liveUser?: LiveUser,
     minecraftUser: MinecraftUser
+}
+
+declare interface LiveUser extends InitialUser {
+    health: number
 }
 
 declare interface WebInitialUser extends  InitialUser {
