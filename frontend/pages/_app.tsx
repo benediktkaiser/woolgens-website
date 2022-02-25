@@ -13,7 +13,7 @@ import RegisterModal from "../components/RegisterModal";
 import informationStore from "../stores/InformationStore";
 
 const progress = new ProgressBar({
-  size: 3,
+  size: 2,
   color: "#F05454",
   className: "bar-of-progress",
   delay: 100,

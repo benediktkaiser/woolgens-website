@@ -7,7 +7,7 @@ import NewsCard from "../components/NewsCard";
 import CardWithHeader from "../components/common/cards/CardWithHeader";
 import McText from 'mctext-react'
 import {toast} from "react-toastify";
-import {getChangeLogs} from "../core/changelog";
+import {fetchChangeLogs} from "../core/changelog";
 
 const IndexPage: NextPageWithLayout = observer(({changeLogs}) => {
     return (
@@ -42,7 +42,7 @@ const IndexPage: NextPageWithLayout = observer(({changeLogs}) => {
 })
 
 export const getServerSideProps: GetServerSideProps = async () => {
-    const changeLogs = await getChangeLogs()
+    const changeLogs = await fetchChangeLogs()
 
     return {
         props: {

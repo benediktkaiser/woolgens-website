@@ -29,25 +29,6 @@ export function getPassedTime(date: Date): string | number {
     return formatMillisecondsToTime(dif, true, false)
 }
 
-export const colorCodes = {
-    "&0": "#000000",
-    "&1": "#4169E1",
-    "&2": "#88b52d",
-    "&3": "#00AAAA",
-    "&4": "#AA0000",
-    "&5": "#AA00AA",
-    "&6": "#FFAA00",
-    "&7": "#AAAAAA",
-    "&8": "#555555",
-    "&9": "#5555FF",
-    "&a": "#55FF55",
-    "&b": "#55FFFF",
-    "&c": "#FF5555",
-    "&d": "#FF55FF",
-    "&e": "#FFFF55",
-    "&f": "#FFFFFF",
-}
-
 export function formatDateToTime(date: Date, withSeconds = false): string {
     const hours = date.getHours().toString()
     const minutes = date.getUTCMinutes().toString()

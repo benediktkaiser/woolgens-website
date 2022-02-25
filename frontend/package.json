@@ -16,6 +16,7 @@
     "chrome-aws-lambda": "^10.1.0",
     "faker": "^5.5.3",
     "mctext-react": "^1.1.0",
+    "memoizee": "^0.4.15",
     "mobx": "^6.3.5",
     "mobx-persist-store": "^1.0.4",
     "mobx-react-lite": "^3.2.1",

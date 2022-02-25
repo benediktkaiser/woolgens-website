@@ -3,10 +3,9 @@ import {getDiscordWidget, getMinecraftServerData} from "../core/information";
 
 class InformationStore {
 
-    onlineDiscord = undefined
     discordInviteLink = ""
+    onlineDiscord = undefined
     onlineMinecraft = undefined
-    onlineUsers: Record<string, string> = {}
 
     constructor() {
         makeAutoObservable(this)
@@ -20,12 +19,7 @@ class InformationStore {
             this.onlineDiscord = discordWidget.presence_count || 0
             this.discordInviteLink = discordWidget.instant_invite || "#"
             this.onlineMinecraft = minecraftData?.players.online || 0
-            this.onlineUsers = minecraftData?.players.uuid || {}
         })
-    }
-
-    isUserOnline(username: string): boolean {
-        return !!this.onlineUsers[username]
     }
 }
 

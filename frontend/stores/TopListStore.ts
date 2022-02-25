@@ -1,5 +1,5 @@
 import {makeAutoObservable, runInAction} from "mobx";
-import {getUsersSorted} from "../core/minecraftUser";
+import {fetchUsersSorted} from "../core/user/minecraftUser";
 
 class TopListStore {
 
@@ -14,7 +14,7 @@ class TopListStore {
             return this.simpleTopLists[key]
         }
 
-        const topList = await getUsersSorted(sorted, 0, 5)
+        const topList = await fetchUsersSorted(sorted, 0, 5)
         runInAction(() => {
             this.simpleTopLists[key] = topList
         })

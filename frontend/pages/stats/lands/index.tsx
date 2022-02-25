@@ -10,8 +10,8 @@ import {BaseButton} from "../../../components/common/BaseButton";
 import {AiOutlineArrowRight} from "react-icons/ai";
 import LandTopLists from "../../../components/stats/land/LandTopLists";
 import autoCompleteStore from "../../../stores/AutoCompleteStore";
-import {getLandsSorted} from "../../../core/land";
 import SEO from "../../../components/SEO";
+import {fetchLandsSorted} from "../../../core/land";
 
 const LandsIndexPage: NextPageWithLayout = observer(({ topLands }) => {
 
@@ -70,7 +70,7 @@ LandsIndexPage.getLayout = function getLayout(page) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-    const topLands = await getLandsSorted('bank.balance', 0, 10);
+    const topLands = await fetchLandsSorted('bank.balance', 0, 10);
 
     return {
         props: {

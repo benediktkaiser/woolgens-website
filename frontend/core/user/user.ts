@@ -1,11 +1,11 @@
-import {getMinecraftUser, getUserNames} from "./minecraftUser";
-import {getWebUser} from "./auth";
-import {fetchLiveUser} from "./liveUser";
+import {getMinecraftUser, fetchUserNames} from "./minecraftUser";
+import {getWebUser} from "./webUser";
+import {getLiveUser} from "./liveUser";
 
 export async function getUserByUUID(uuid: string): Promise<User> {
     const minecraftUser = await getMinecraftUser(uuid);
     const webUser = await getWebUser(uuid);
-    const liveUser = await fetchLiveUser(uuid);
+    const liveUser = await getLiveUser(uuid);
 
     return {
         name: minecraftUser.name,
@@ -17,7 +17,7 @@ export async function getUserByUUID(uuid: string): Promise<User> {
 }
 
 export async function getUserByUsername(username): Promise<User> {
-    const usernames = await getUserNames()
+    const usernames = await fetchUserNames()
     const uuid = usernames[username]
     return await getUserByUUID(uuid);
 }

@@ -10,9 +10,10 @@ import DropdownItem from "../../components/common/dropdown/DropdownItem";
 import BasicCard from "../../components/common/cards/BasicCard";
 import {formatSeasonName} from "../../core/formatters";
 import {GetServerSideProps} from "next";
-import {getUserByUsername} from "../../core/user";
 import autoCompleteStore from "../../stores/AutoCompleteStore";
 import SEO from "../../components/SEO";
+import {getUserByUsername} from "../../core/user/user";
+import {CURRENT_SEASON} from "../../core/constants";
 
 const ComparePage: NextPageWithLayout = observer(({currentSeason}) => {
     const router = useRouter();
@@ -140,7 +141,7 @@ const ComparePage: NextPageWithLayout = observer(({currentSeason}) => {
 export const getServerSideProps: GetServerSideProps = async () => {
     return {
         props: {
-            currentSeason: process.env.NEXT_PUBLIC_CURRENT_SEASON || "1",
+            currentSeason: CURRENT_SEASON,
         },
     }
 }

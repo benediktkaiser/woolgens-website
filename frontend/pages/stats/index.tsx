@@ -11,6 +11,7 @@ import {AiOutlineArrowRight} from "react-icons/ai";
 import TopLists from "../../components/stats/TopLists";
 import autoCompleteStore from "../../stores/AutoCompleteStore";
 import SEO from "../../components/SEO";
+import {CURRENT_SEASON} from "../../core/constants";
 
 const StatsIndexPage: NextPageWithLayout = observer(({currentSeason }) => {
 
@@ -63,7 +64,7 @@ const StatsIndexPage: NextPageWithLayout = observer(({currentSeason }) => {
 export const getServerSideProps: GetServerSideProps = async () => {
     return {
         props: {
-            currentSeason: process.env.NEXT_PUBLIC_CURRENT_SEASON || "1",
+            currentSeason: CURRENT_SEASON
         },
     }
 }

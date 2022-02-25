@@ -55,7 +55,7 @@ export async function getLandByName(name: string): Promise<Land | undefined> {
     }
 }
 
-export async function getLandNames(): Promise<Record<string, string>> {
+export async function fetchLandNames(): Promise<Record<string, string>> {
     try {
         const data = await landAPI.get(`/lands?small=true`)
         const map = {}
@@ -70,7 +70,7 @@ export async function getLandNames(): Promise<Record<string, string>> {
     }
 }
 
-export async function getLandsSorted(sorted: string, pageIndex: number, pageSize: number): Promise<Land[]> {
+export async function fetchLandsSorted(sorted: string, pageIndex: number, pageSize: number): Promise<Land[]> {
     try {
         const data = await landAPI.get(`/lands?sorted=${sorted}&pageindex=${pageIndex}&pagesize=${pageSize}`)
         return data.data

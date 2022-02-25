@@ -5,7 +5,7 @@ import DropdownItem from "../../DropdownItem";
 import {Transition} from "@headlessui/react"
 import Link from "next/link"
 import authStore from "../../../../../stores/AuthStore";
-import {colorCodes} from "../../../../../core/formatters";
+import {COLOR_CODES} from "../../../../../core/constants";
 
 declare interface UserDropdownStartPageProps {
     selectedPage: string,
@@ -33,7 +33,7 @@ const UserDropdownStartPage: FC<UserDropdownStartPageProps> = ({ selectedPage, c
                         <h1 className="text-xl">
                             {user.name}
                         </h1>
-                        <h3 className="text-sm font-light" style={{color: colorCodes[user.webUser.group.color]}}>
+                        <h3 className="text-sm font-light" style={{color: COLOR_CODES[user.webUser.group.color]}}>
                             {user.webUser.group.name}
                         </h3>
                     </div>

@@ -1,11 +1,11 @@
 import TopList from "./TopList";
 import TopListRow from "./TopListRow";
-import {getLatestSeasonStats} from "../../core/minecraftUser";
 import LoadingTopList from "./LoadingTopList";
 import React, {FC, useEffect, useState} from "react";
 import topListStore from "../../stores/TopListStore";
 import {formatMillisecondsToTime, formatMoney} from "../../core/formatters";
 import AnimatedFade from "../common/animations/AnimatedFade";
+import {getLatestSeasonStats} from "../../core/user/minecraftUser";
 
 declare interface UserStatsContainerProps {
     seasonNumber: string
