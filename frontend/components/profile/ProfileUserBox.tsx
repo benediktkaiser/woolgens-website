@@ -5,6 +5,7 @@ import Bust from "../common/Bust";
 import SkillsBadge from "./skills/SkillsBadge";
 import {getHighestSkill, getLevelProgressPercentage, SKILL_TITLES} from "../../core/skills";
 import OnlinePing from "../common/OnlinePing";
+import {COLOR_CODES} from "../../core/constants";
 
 declare interface ProfileUserBoxProps {
     user: User
@@ -37,7 +38,7 @@ const ProfileUserBox: FC<ProfileUserBoxProps> = ({user, seasonNumber}) => {
                         <Bust uuid={user.minecraftUser.uuid} size={225} />
                     </div>
                     <div className="w-full">
-                        <span className="text-md">
+                        <span className="text-md" style={{color: COLOR_CODES[user.webUser?.group.color]}}>
                             {user.webUser?.group.name || SKILL_TITLES[highestSkill]}
                         </span>
                         <h1 className="flex items-center text-3xl sm:text-5xl font-bold">

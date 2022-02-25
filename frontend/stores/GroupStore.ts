@@ -1,5 +1,5 @@
 import {makeAutoObservable, runInAction} from "mobx";
-import {getAllGroups} from "../core/auth";
+import {fetchAllGroups} from "../core/user/group";
 
 class GroupStore {
 
@@ -21,7 +21,7 @@ class GroupStore {
     }
 
     async fetchGroups(): Promise<Record<string, Group>> {
-        const groups = await getAllGroups()
+        const groups = await fetchAllGroups()
         runInAction(() => {
             this.groups = groups
         })

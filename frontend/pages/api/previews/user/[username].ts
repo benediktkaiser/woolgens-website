@@ -1,7 +1,7 @@
 // NodeJS Core
 import fs from 'fs';
 import chromium from 'chrome-aws-lambda';
-import {getMinecraftUser} from "../../../../core/minecraftUser";
+import {getMinecraftUser} from "../../../../core/user/minecraftUser";
 
 export default async function generateUserImage(req, res) {
     const userName = req.query.username.replace('.jpg', '');

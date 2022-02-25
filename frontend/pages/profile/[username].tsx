@@ -6,7 +6,6 @@ import ProfileToolBar from "../../components/profile/ProfileToolBar";
 import ProfileUserBox from "../../components/profile/ProfileUserBox";
 import ProfileSkills from "../../components/profile/ProfileSkills";
 import ProfileGeneralStats from "../../components/profile/ProfileGeneralStats";
-import {getUserByUsername} from "../../core/user";
 import Tab from "../../components/common/Tab";
 import ProfilePostsSection from "../../components/profile/posts/ProfilePostsSection";
 import ProfileSeasonStats from "../../components/profile/ProfileSeasonStats";
@@ -14,6 +13,7 @@ import BasicCard from "../../components/common/cards/BasicCard";
 import ProfileBadges from "../../components/profile/about/ProfileBadges";
 import UserAbout from "../../components/profile/about/UserAbout";
 import {formatMillisecondsToTime} from "../../core/formatters";
+import {getUserByUsername} from "../../core/user/user";
 
 const ProfilePage: NextPageWithLayout = ({user}) => {
     const [selectedSeason, setSelectedSeason] = useState(Object.keys(user.minecraftUser.seasons)[0])

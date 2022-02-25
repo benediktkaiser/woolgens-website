@@ -1,6 +1,6 @@
-import {liveAPI} from "./api";
+import {liveAPI} from "../api";
 
-export async function fetchLiveUser(uuid: string): Promise<LiveUser | null> {
+export async function getLiveUser(uuid: string): Promise<LiveUser | null> {
     try {
         const data = await liveAPI.get(`/global/player/${uuid}`)
         return data.data

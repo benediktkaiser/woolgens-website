@@ -1,6 +1,15 @@
-import {minecraftUserAPI} from "./api";
-import {throwError} from "./error";
-import {getLandByName} from "./land";
+import memoizee from "memoizee"
+import {minecraftUserAPI} from "../api";
+import {throwError} from "../error";
+import {getLandByName} from "../land";
+
+const USERS_SORTED_CACHE = 30 * 1000
+const USER_NAMES_CACHE = 5 * 60 * 1000
+
+export function getLatestSeasonStats(user: MinecraftUser): MinecraftUserSeason {
+    const latestSeason = Object.keys(user.seasons).reverse()[0]
+    return user.seasons[latestSeason]
+}
 
 async function enrichMinecraftUserWithLand(minecraftUser: MinecraftInitialUser): Promise<MinecraftUser> {
     let landData = null
@@ -28,7 +37,7 @@ export async function getMinecraftUser(uuid: string): Promise<MinecraftUser> {
     }
 }
 
-export async function getUsersSorted(sorted: string, pageIndex: number, pageSize: number): Promise<MinecraftUser[]> {
+async function _fetchUsersSorted(sorted: string, pageIndex: number, pageSize: number): Promise<MinecraftUser[]> {
     try {
         const data = await minecraftUserAPI.get(`/users?sorted=${sorted}&pageindex=${pageIndex}&pagesize=${pageSize}`)
         return data.data
@@ -38,7 +47,13 @@ export async function getUsersSorted(sorted: string, pageIndex: number, pageSize
     }
 }
 
-export async function getUserNames() {
+export const fetchUsersSorted = memoizee(_fetchUsersSorted, {
+    maxAge: USERS_SORTED_CACHE,
+    promise: true,
+    length: 3,
+});
+
+async function _fetchUserNames() {
     try {
         const data = await minecraftUserAPI.get(`/users?small=true`)
         return data.data
@@ -48,7 +63,7 @@ export async function getUserNames() {
     }
 }
 
-export function getLatestSeasonStats(user: MinecraftUser): MinecraftUserSeason {
-    const latestSeason = Object.keys(user.seasons).reverse()[0]
-    return user.seasons[latestSeason]
-}
+export const fetchUserNames = memoizee(_fetchUserNames, {
+    maxAge: USER_NAMES_CACHE,
+    promise: true,
+});

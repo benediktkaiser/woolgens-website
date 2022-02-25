@@ -16,6 +16,7 @@ export function changeAPIToken(token: string) {
         landAPI.defaults.headers['Authorization'] = bearer;
         authAPI.defaults.headers['Authorization'] = bearer;
         minecraftUserAPI.defaults.headers['Authorization'] = bearer;
+        liveAPI.defaults.headers['Authorization'] = bearer;
         resolve(true)
     })
 }

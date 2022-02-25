@@ -1,15 +1,7 @@
 import {authAPI} from "./api";
+import {enrichWebUserWithGroup} from "./user/webUser";
 
-async function enrichWebUserWithGroup(webUser: WebInitialUser): Promise<WebUser> {
-    const group = await getGroup(webUser.group)
-
-    return {
-        ...webUser,
-        group: group || undefined
-    }
-}
-
-export async function basicAuth(userName: string, password: string): Promise<{ token: string, user: WebUser } | undefined> {
+export async function authenticateWithUserNameAndPassword(userName: string, password: string): Promise<{ token: string, user: WebUser } | undefined> {
     try {
         const data = await authAPI.post('/login/basic', {
             userName,
@@ -28,7 +20,7 @@ export async function basicAuth(userName: string, password: string): Promise<{ t
     }
 }
 
-export async function tokenAuth(token: string): Promise<WebUser | undefined> {
+export async function authenticateWithToken(token: string): Promise<WebUser | undefined> {
     try {
         const data = await authAPI.post('/login/token', {
             token
@@ -37,47 +29,6 @@ export async function tokenAuth(token: string): Promise<WebUser | undefined> {
     }
     catch (error) {
         return undefined;
-    }
-}
-
-export async function getWebUser(uuid: string): Promise<WebUser | undefined> {
-    try {
-        const data = await authAPI.get(`/users/${uuid}`)
-        return await enrichWebUserWithGroup(data.data)
-    }
-    catch (error) {
-        return null
-    }
-}
-
-export async function getGroup(id: string): Promise<Group> {
-    try {
-        const data = await authAPI.get(`/groups/${id}`)
-        return {
-            ...data.data,
-            isStaff: data.data.role === "Admin" || data.data.role === "Moderator"
-        }
-    }
-    catch (error) {
-        return undefined
-    }
-}
-
-export async function getAllGroups(): Promise<Record<string, Group>> {
-    try {
-        const data = await authAPI.get(`/groups`)
-        const groups: Record<string, Group> = {}
-
-        data.data.map((group) => {
-            groups[group.id] = {
-                ...group,
-                isStaff: group.role === "Admin" || group.role === "Moderator"
-            }
-        })
-        return groups
-    }
-    catch (error) {
-        return {}
     }
 }
 

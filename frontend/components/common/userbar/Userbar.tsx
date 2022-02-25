@@ -6,6 +6,7 @@ import {RiNotificationLine, RiLoginBoxLine, RiUserAddLine} from "react-icons/ri"
 import authStore from "../../../stores/AuthStore";
 import {GiPartyPopper} from "react-icons/gi"
 import {AiOutlineLoading3Quarters, AiOutlineDashboard} from "react-icons/ai"
+import Link from "next/link"
 
 declare interface UserbarProps {
     user: User,
@@ -14,7 +15,7 @@ declare interface UserbarProps {
 
 const Userbar: FC<UserbarProps> = ({ user, loading = false }) => {
     return (
-        <div className="py-1 w-full bg-dark-light shadow">
+        <div className="py-1 w-full shadow bg-dark-light/40">
             <div className="container flex justify-between mx-auto">
                 <div className="flex items-center md:space-x-3">
                     {(loading || !user || !user?.webUser.group.isStaff) ? (
@@ -22,7 +23,7 @@ const Userbar: FC<UserbarProps> = ({ user, loading = false }) => {
                             <GiPartyPopper className="mr-2"/>
                             Welcome to the new WoolGens homepage!
                         </span>
-                    ) : <UserbarLink title="Staff Panel" to="/staff" icon={<AiOutlineDashboard />} />}
+                    ) : <Link href="/staff" passHref={true}><a><UserbarLink title="Staff Panel" icon={<AiOutlineDashboard />} /></a></Link>}
                 </div>
                 {loading ? (
                     <div className="flex items-center md:space-x-2">
@@ -36,7 +37,11 @@ const Userbar: FC<UserbarProps> = ({ user, loading = false }) => {
                                     <NotificationDropdown notifications={user.webUser.notifications} />
                                 </div>
                                 <div className="flex sm:hidden items-center">
-                                    <UserbarLink title="Notifications" to="/notifications" icon={<RiNotificationLine />} />
+                                    <Link href="/notifications" passHref={true}>
+                                        <a>
+                                            <UserbarLink title="Notifications" icon={<RiNotificationLine />} />
+                                        </a>
+                                    </Link>
                                 </div>
                                 <UserDropdown user={user} />
                             </div>

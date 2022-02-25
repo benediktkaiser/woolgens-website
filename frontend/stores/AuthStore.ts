@@ -1,8 +1,8 @@
 import {makeAutoObservable, runInAction} from "mobx";
 import {makePersistable} from "mobx-persist-store";
-import {getMinecraftUser} from "../core/minecraftUser";
 import {changeAPIToken} from "../core/api";
-import {basicAuth, tokenAuth} from "../core/auth";
+import {authenticateWithToken, authenticateWithUserNameAndPassword} from "../core/auth";
+import {getMinecraftUser} from "../core/user/minecraftUser";
 
 class AuthStore {
 
@@ -27,7 +27,7 @@ class AuthStore {
         runInAction(() => {
             this.loading = true;
         })
-        const webUser = await tokenAuth(token);
+        const webUser = await authenticateWithToken(token);
         if (!webUser) {
             runInAction(() => {
                 this.token = ""
@@ -42,13 +42,13 @@ class AuthStore {
     }
 
     async basicAuth(username, password): Promise<boolean> {
-        const data = await basicAuth(username, password)
+        const data = await authenticateWithUserNameAndPassword(username, password)
         if (!data) {
             return false;
         }
 
         const minecraftUser = await getMinecraftUser(data.user.uuid)
-        changeAPIToken(data.token)
+        await changeAPIToken(data.token)
         runInAction(() => {
             this.token = data.token;
         })

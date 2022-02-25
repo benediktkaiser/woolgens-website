@@ -1,7 +1,8 @@
 import React, {FC} from "react";
 import Link from "next/link"
-import {colorCodes, formatDateToTime} from "../../../core/formatters";
+import {formatDateToTime} from "../../../core/formatters";
 import {MdArrowRight} from "react-icons/md"
+import {COLOR_CODES} from "../../../core/constants";
 
 interface ChatLogEntryProps {
     entry: ChatLogEntry,
@@ -32,7 +33,7 @@ const ChatLogEntry: FC<ChatLogEntryProps> = ({entry, index, types, selectedLine,
             </td>
             {entry.type === "MESSAGE" ? (
                 <>
-                    <td className="flex space-x-1 select-none" style={{color: colorCodes[entry.executor.group.color ||"&7"]}}>
+                    <td className="flex space-x-1 select-none" style={{color: COLOR_CODES[entry.executor.group.color ||"&7"]}}>
                         <span className="hidden xl:block capitalize">
                             [{entry.executor.group?.name}]
                         </span>

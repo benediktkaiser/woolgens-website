@@ -10,10 +10,10 @@ import {useRouter} from "next/router";
 import Tab from "../../../components/common/Tab";
 import {observer} from "mobx-react-lite";
 import authStore from "../../../stores/AuthStore";
-import {isUserInLand} from "../../../core/user";
 import {getLandByName} from "../../../core/land";
 import {useState} from "react";
 import LandTransactions from "../../../components/stats/land/transactions/LandTransactions";
+import {isUserInLand} from "../../../core/user/user";
 
 const LandProfile: NextPageWithLayout = observer(({ landname, land }) => {
     const router = useRouter()

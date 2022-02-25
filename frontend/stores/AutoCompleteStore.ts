@@ -1,6 +1,6 @@
 import {makeAutoObservable, runInAction} from "mobx";
-import {getUserNames} from "../core/minecraftUser";
-import {getLandNames} from "../core/land";
+import {fetchUserNames} from "../core/user/minecraftUser";
+import {fetchLandNames} from "../core/land";
 
 class AutoCompleteStore {
 
@@ -14,7 +14,7 @@ class AutoCompleteStore {
     async fetchUserList() {
         if (this.userList.length > 0) return;
 
-        const usernames = await getUserNames()
+        const usernames = await fetchUserNames()
         const results: AutoCompleteListItem[] = []
         let num = 0
         Object.keys(usernames).map((result) => {
@@ -33,7 +33,7 @@ class AutoCompleteStore {
     async fetchLandList() {
         if (this.landList.length > 0) return;
 
-        const landNames = await getLandNames()
+        const landNames = await fetchLandNames()
         const results: AutoCompleteListItem[] = []
         let num = 0
         Object.keys(landNames).map((result) => {

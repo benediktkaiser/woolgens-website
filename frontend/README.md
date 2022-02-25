@@ -4,7 +4,7 @@ The is a "mono-repo" containing all website from `Woolgens.net`.
 
 ## Environment Variables
 
-### API EndPoints
+#### API EndPoints
 ```
 - NEXT_PUBLIC_AUTH_ENDPOINT
 - NEXT_PUBLIC_MINECRAFT_USER_ENDPOINT
@@ -14,18 +14,19 @@ The is a "mono-repo" containing all website from `Woolgens.net`.
 - NEXT_PUBLIC_LIVE_ENDPOINT
 ```
 
-### Staff API EndPoints
+#### Staff API EndPoints
 ```
 - NEXT_PUBLIC_CHATLOG_ENDPOINT
 ```
 
-### Tokens
+#### Tokens
 ```
 - NEXT_PUBLIC_DEV_TOKEN (used to auth a development enviorment)
 ```
 
-### Server Data
+#### Information
 ```
+- NEXT_PUBLIC_BASE_URL
 - NEXT_PUBLIC_DISCORD_SERVER_ID
 - NEXT_PUBLIC_CURRENT_SEASON
 - NEXT_PUBLIC_MINECRAFT_IP
