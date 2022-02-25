@@ -71,6 +71,14 @@ export async function fetchChatLogFromID(id: string): Promise<ChatLog | undefine
     }
 }
 
+export async function deleteChatLogFromID(id: string) {
+    try {
+        await chatLogAPI.delete(`/chatlogs/${id}`)
+    } catch (error) {
+        console.error(error)
+    }
+}
+
 export async function fetchAllChatLogs(): Promise<InitialChatLog[]> {
     try {
         const data = await chatLogAPI.get(`/chatlogs`)

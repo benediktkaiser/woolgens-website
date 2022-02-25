@@ -15,23 +15,36 @@ const LoginComponent: FC<LoginComponentProps> = ({showRegisterButton = true}) =>
     const [password, setPassword] = useState(undefined)
     const [loading, setLoading] = useState(false)
 
-    const login = (username, password) => {
-        setLoading(true)
-        if (!username || !password) {
-            toast.error("Please enter a username and password.")
+    const _login = (username, password): Promise<boolean> => {
+        return new Promise(async (resolve, reject) => {
+            setLoading(true)
+            const result = await authStore.basicAuth(username, password)
             setLoading(false)
-            return;
-        }
-        authStore.basicAuth(username, password).then(result => {
-            if (!result) {
-                toast.error("The username or password were incorrect. Please try again.")
-                setLoading(false)
-                return;
+            if (!username || !password) {
+                reject("Please enter a username and a password.")
             }
-            setLoading(false)
-            authStore.closeLoginModal()
-            toast.success("You were successfully logged in!")
+            if (!result) {
+                reject("Your username or password was incorrect.")
+            } else {
+                authStore.closeLoginModal()
+                resolve(true)
+            }
         })
+    }
+
+    const login = (username, password) => {
+        toast.promise(
+            _login(username, password),
+            {
+                pending: `Attempting to log you in. Please wait a moment`,
+                success: `You were successfully logged in. Welcome back!`,
+                error: {
+                    render({data}){
+                        return data
+                    }
+                }
+            }
+        ).catch(error => console.error(error))
     }
 
     return (

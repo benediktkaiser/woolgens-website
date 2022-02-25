@@ -15,6 +15,14 @@ import Tooltip from "../../../components/common/ToolTip";
 import ErrorPage from "../../../components/ErrorPage";
 import authStore from "../../../stores/AuthStore";
 import {AiOutlineLoading3Quarters} from "react-icons/ai";
+import {confirmAlert} from 'react-confirm-alert';
+import ConfirmModal from "../../../components/common/ConfirmModal";
+import {toast} from "react-toastify";
+import {BASE_URL} from "../../../core/constants";
+
+const copyLink = (id: string) => {
+    navigator.clipboard.writeText(`${BASE_URL}/staff/chatlogs/${id}`).then(() => toast.success(`The link to chat log #${id} was copied to your clipboard!`))
+}
 
 const StaffPage: NextPageWithLayout = observer(({chatLogID}) => {
     const [chatLog, setChatLog] = useState<ChatLog | undefined>(null)
@@ -42,13 +50,36 @@ const StaffPage: NextPageWithLayout = observer(({chatLogID}) => {
         }
     }
 
+    const deleteChatLog = () => {
+        toast.promise(
+            chatLogStore.deleteChatLogFromID(chatLogID),
+            {
+                pending: `ChatLog #${chatLogID} is being deleted. Please wait a moment.`,
+                success: `ChatLog #${chatLogID} was successfully deleted.`,
+                error: `ChatLog #${chatLogID} could not be deleted.`
+            }
+        ).then(() => router.push("/staff/chatlogs"))
+    }
+
+    const openDeleteModal = () => {
+        confirmAlert({
+            customUI: ({onClose}) => {
+                return <ConfirmModal
+                    text={`Are you sure you want to delete ChatLog#${chatLogID}? This action is irreversible and cannot be undone.`}
+                    close={onClose}
+                    confirm={deleteChatLog}
+                />
+            }
+        });
+    }
+
     useEffect(() => {
         if (!authStore.loading) {
             chatLogStore.getChatLogFromID(chatLogID).then(chatLog => {
                 setChatLog(chatLog)
                 if (document !== undefined) {
                     const element = document.getElementById(router ? router.asPath.split("#L")[1] : "0")
-                    if (element) element.scrollIntoView({ behavior: 'smooth' })
+                    if (element) element.scrollIntoView({behavior: 'smooth'})
                 }
             })
         }
@@ -89,18 +120,20 @@ const StaffPage: NextPageWithLayout = observer(({chatLogID}) => {
                     </a>
                 </Link>
                 <div className="hidden lg:flex gap-3 items-center">
-                    <BaseButton type="danger">
-                        <div className="flex gap-1 items-center">
-                            <HiOutlineTrash/>
-                            Delete
-                        </div>
-                    </BaseButton>
-                    <BaseButton type="primary">
+                    <BaseButton type="primary" onClick={() => copyLink(chatLogID)}>
                         <div className="flex gap-1 items-center">
                             <HiOutlineLink/>
                             Share
                         </div>
                     </BaseButton>
+                    {authStore.hasPermission("web.chatlogs.delete") && (
+                        <BaseButton type="danger" onClick={openDeleteModal}>
+                            <div className="flex gap-1 items-center">
+                                <HiOutlineTrash/>
+                                Delete
+                            </div>
+                        </BaseButton>
+                    )}
                 </div>
             </div>
             <div className="flex gap-2 justify-center lg:justify-between items-end w-full">
@@ -137,16 +170,16 @@ const StaffPage: NextPageWithLayout = observer(({chatLogID}) => {
                 <div className="overflow-auto py-5 pr-5 pl-2 w-full h-full bg-shark-900 rounded-lg">
                     <table className="w-full table-fixed">
                         <tbody className="w-full">
-                            {chatLog.entries.map((entry, index) => (
-                                <ChatLogEntry
-                                    key={index}
-                                    entry={entry}
-                                    index={index + 1}
-                                    types={showTypes}
-                                    users={showUsers}
-                                    selectedLine={parseInt(router ? router.asPath.split("#L")[1] : "0")}
-                                />
-                            ))}
+                        {chatLog.entries.map((entry, index) => (
+                            <ChatLogEntry
+                                key={index}
+                                entry={entry}
+                                index={index + 1}
+                                types={showTypes}
+                                users={showUsers}
+                                selectedLine={parseInt(router ? router.asPath.split("#L")[1] : "0")}
+                            />
+                        ))}
                         </tbody>
                     </table>
                 </div>
