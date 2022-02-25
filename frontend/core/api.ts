@@ -9,12 +9,15 @@ const DEFAULT_API = {
 }
 
 export function changeAPIToken(token: string) {
-    const bearer = `Bearer ${token}`;
+    return new Promise((resolve) => {
+        const bearer = `Bearer ${token}`;
 
-    chatLogAPI.defaults.headers['Authorization'] = bearer;
-    landAPI.defaults.headers['Authorization'] = bearer;
-    authAPI.defaults.headers['Authorization'] = bearer;
-    minecraftUserAPI.defaults.headers['Authorization'] = bearer;
+        chatLogAPI.defaults.headers['Authorization'] = bearer;
+        landAPI.defaults.headers['Authorization'] = bearer;
+        authAPI.defaults.headers['Authorization'] = bearer;
+        minecraftUserAPI.defaults.headers['Authorization'] = bearer;
+        resolve(true)
+    })
 }
 
 export const authAPI = axios.create({

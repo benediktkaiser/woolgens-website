@@ -9,11 +9,11 @@ import {GetServerSideProps} from "next";
 import chatLogStore from "../../../stores/ChatLogStore";
 import CheckBox from "../../../components/common/forms/CheckBox";
 import {useRouter} from "next/router";
-import authStore from "../../../stores/AuthStore";
 import ChatLogUserClick from "../../../components/staff/chatlogs/ChatLogUserClick";
 import {RiFilterOffLine} from "react-icons/ri"
 import Tooltip from "../../../components/common/ToolTip";
 import ErrorPage from "../../../components/ErrorPage";
+import authStore from "../../../stores/AuthStore";
 
 const StaffPage: NextPageWithLayout = observer(({chatLogID}) => {
     const [chatLog, setChatLog] = useState<ChatLog | undefined>(undefined)
@@ -42,7 +42,7 @@ const StaffPage: NextPageWithLayout = observer(({chatLogID}) => {
     }
 
     useEffect(() => {
-        if (!!authStore.user) {
+        if (!authStore.loading) {
             chatLogStore.getChatLogFromID(chatLogID).then(chatLog => {
                 setChatLog(chatLog)
             })
@@ -51,7 +51,7 @@ const StaffPage: NextPageWithLayout = observer(({chatLogID}) => {
 
     if (!chatLog) {
         return (
-            <ErrorPage title="Not found" subtitle={`We could not find Chatlog#${chatLogID}`} />
+            <ErrorPage title="Not found" subtitle={`We could not find Chatlog#${chatLogID}`}/>
         )
     }
 
@@ -101,12 +101,14 @@ const StaffPage: NextPageWithLayout = observer(({chatLogID}) => {
             <div className="flex items-stretch h-[70vh]">
                 <div className="flex flex-col gap-5 items-center mt-1 h-full w-[80px]">
                     {chatLog.participants.map((participant, index) => (
-                        <ChatLogUserClick key={index} participant={participant} toggle={handleToggleUser} selectedUsers={showUsers} />
+                        <ChatLogUserClick key={index} participant={participant} toggle={handleToggleUser}
+                                          selectedUsers={showUsers}/>
                     ))}
                     {!(showUsers.length === 0) && (
                         <Tooltip text="Reset User filter" position="right">
-                            <div onClick={() => handleToggleUser("ALL")} className="hover:bg-dark-light rounded border-2 border-red-500 hover:border-red-400 cursor-pointer w-[50px] h-[50px]">
-                                <RiFilterOffLine className="p-2 w-full h-full text-red-500" />
+                            <div onClick={() => handleToggleUser("ALL")}
+                                 className="hover:bg-dark-light rounded border-2 border-red-500 hover:border-red-400 cursor-pointer w-[50px] h-[50px]">
+                                <RiFilterOffLine className="p-2 w-full h-full text-red-500"/>
                             </div>
                         </Tooltip>
                     )}

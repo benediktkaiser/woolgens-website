@@ -30,17 +30,23 @@ const UserDropdownLandPage: FC<UserDropdownLandPageProps> = ({selectedPage, chan
             {user.minecraftUser.land ? (
                 <>
                     <Link href={`/stats/lands/${user.minecraftUser.land.id}`} passHref={true}>
-                        <DropdownItem title="Land Profile" icon={<RiHome2Line size="1.5rem"/>}/>
+                        <a>
+                            <DropdownItem title="Land Profile" icon={<RiHome2Line size="1.5rem"/>}/>
+                        </a>
                     </Link>
                     <DropdownItem title="Settings" icon={<RiSettings2Line size="1.5rem"/>} disabled={true} />
                     <Link href={`/stats/lands/${user.minecraftUser.land.id}/transactions`} passHref={true}>
-                        <DropdownItem title="Transactions" icon={<RiCoinsLine size="1.5rem"/>}/>
+                        <a>
+                            <DropdownItem title="Transactions" icon={<RiCoinsLine size="1.5rem"/>}/>
+                        </a>
                     </Link>
                 </>
             ): (
                 <>
                     <Link href={`/stats/lands/`} passHref={true}>
-                        <DropdownItem title="Top lands" icon={<RiHome2Line size="1.5rem"/>}/>
+                        <a>
+                            <DropdownItem title="Top lands" icon={<RiHome2Line size="1.5rem"/>}/>
+                        </a>
                     </Link>
                     <DropdownItem title="Create Land" icon={<RiAddCircleLine size="1.5rem"/>} />
                 </>

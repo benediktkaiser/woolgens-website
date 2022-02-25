@@ -37,8 +37,8 @@ class AuthStore {
         const minecraftUser = await getMinecraftUser(webUser.uuid)
 
         // Set new Data
+        await changeAPIToken(token)
         this.setUser(minecraftUser, webUser)
-        changeAPIToken(token)
     }
 
     async basicAuth(username, password): Promise<boolean> {
