@@ -6,7 +6,7 @@ declare interface CardWithHeaderProps {
     children?: React.ReactNode
 }
 
-const CardWithHeader: FC<CardWithHeaderProps> = ({top, children}) => {
+const CardWithImageHeader: FC<CardWithHeaderProps> = ({top, children}) => {
     return (
         <BasicCard padding="p-0 border-b-8 border-dark-light">
             {top}
@@ -17,4 +17,4 @@ const CardWithHeader: FC<CardWithHeaderProps> = ({top, children}) => {
     )
 }
 
-export default CardWithHeader
+export default CardWithImageHeader

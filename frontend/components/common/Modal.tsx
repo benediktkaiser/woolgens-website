@@ -3,7 +3,7 @@ import React, {FC, Fragment} from 'react'
 
 declare interface ModalProps {
     isOpen: boolean
-    toggleModal: () => void
+    toggleModal?: () => void
     children: React.ReactNode
     maxWidth: string
 }
@@ -14,8 +14,8 @@ const Modal: FC<ModalProps> = ({isOpen, toggleModal, maxWidth = "max-w-lg", chil
         <Transition appear show={isOpen} as={Fragment}>
             <Dialog
                 as="div"
-                className="fixed inset-0 z-10"
-                onClose={toggleModal}
+                className="fixed inset-0 z-50"
+                onClose={toggleModal || (() => {return;})}
             >
                 <div className="min-h-screen text-center">
                     <Transition.Child

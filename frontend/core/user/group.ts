@@ -2,7 +2,7 @@ import memoizee from "memoizee"
 import {authAPI} from "../api";
 import {STAFF_ROLES} from "../constants";
 
-const GROUP_CACHE = 30 * 1000
+const GROUP_CACHE = 60 * 60 * 1000
 
 function enrichGroupWithStaff(group: Group): Group {
     return {

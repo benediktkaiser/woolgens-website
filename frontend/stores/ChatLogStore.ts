@@ -1,5 +1,5 @@
 import {makeAutoObservable, runInAction} from "mobx";
-import {fetchAllChatLogs, fetchChatLogFromID} from "../core/staff/chatlogs";
+import {deleteChatLogFromID, fetchAllChatLogs, fetchChatLogFromID} from "../core/staff/chatlogs";
 
 class ChatLogStore {
 
@@ -10,8 +10,8 @@ class ChatLogStore {
         makeAutoObservable(this)
     }
 
-    async fetchAllChatLogs() {
-        if (this.allChatLogs.length > 0) {
+    async fetchAllChatLogs(refetch = false) {
+        if (this.allChatLogs.length > 0 && !refetch) {
             return this.allChatLogs
         }
         const allChatLogs = await fetchAllChatLogs()
@@ -32,6 +32,12 @@ class ChatLogStore {
             })
         }
         return chatLog
+    }
+
+    async deleteChatLogFromID(id: string) {
+        await deleteChatLogFromID(id)
+        await this.fetchAllChatLogs(true)
+        return true;
     }
 }
 
