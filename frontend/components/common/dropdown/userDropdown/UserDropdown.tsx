@@ -20,11 +20,11 @@ const UserDropdown: FC<UserDropdownProps> = ({user}) => {
     return (
         <Menu as="div" className="inline-block relative text-left tex">
              <Menu.Button className="py-2 px-3 hover:bg-dark rounded-lg">
-                <div className="inline-flex items-center w-full">
-                    <span className="pr-3 text-sm">{user.name}</span>
-                    <Avatar player={user.uuid} size={25} />
-                    <BsChevronDown size="0.75rem" className="ml-2"/>
-                </div>
+                 <div className="inline-flex items-center w-full">
+                     <span className="pr-3 text-sm">{user.name}</span>
+                     <Avatar player={user.uuid} size={25} />
+                     <BsChevronDown size="0.75rem" className="ml-2"/>
+                 </div>
             </Menu.Button>
             <Transition
                 as={Fragment}

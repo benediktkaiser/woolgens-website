@@ -25,9 +25,11 @@ const ErrorPage: FC<ErrorPageProps> = ({title, subtitle}) => {
                         One page Back
                     </BaseButton>
                     <Link href="/" passHref={true}>
-                        <BaseButton type="primary">
-                            Back to home
-                        </BaseButton>
+                        <a>
+                            <BaseButton type="primary">
+                                Back to home
+                            </BaseButton>
+                        </a>
                     </Link>
                 </div>
             </div>

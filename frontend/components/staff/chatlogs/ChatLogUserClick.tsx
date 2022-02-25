@@ -3,7 +3,7 @@ import ToolTip from "../../common/ToolTip";
 import React, {FC} from "react";
 
 interface ChatLogUserClickProps {
-    participant: ChatLogPlayer,
+    participant: InitialChatLogPlayer,
     toggle: (username: string) => void,
     selectedUsers: string[]
 }

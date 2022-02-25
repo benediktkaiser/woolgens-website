@@ -9,7 +9,7 @@ declare interface NotificationDropDownProps {
     notifications?: WebNotification[]
 }
 
-const NotificationDropdown: FC<NotificationDropDownProps> = ({ notifications }) => {
+const NotificationDropdown: FC<NotificationDropDownProps> = ({ notifications}) => {
 
     return (
         <Menu as="div" className="inline-block relative text-left">

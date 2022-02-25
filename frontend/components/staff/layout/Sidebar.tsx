@@ -1,6 +1,7 @@
 import SidebarLink from "./SidebarLink";
 import {HiHome, HiChatAlt, HiX} from "react-icons/hi"
 import React, {FC} from "react";
+import Logo from "../../common/Logo";
 
 declare interface SidebarProps {
     extended: boolean,
@@ -14,10 +15,18 @@ const Sidebar: FC<SidebarProps> = ({extended = false, pathName = "", toggleSideb
         <div
             className={`fixed flex flex-col lg:static z-40 h-screen w-72 bg-dark transition-transform lg:transition-none ease-in-out duration-700 transform lg:transform-none ${!extended ? "-translate-x-80" : "translate-x-0"}`}>
             <div className="flex-grow">
-                <div className="flex items-center px-6 h-20">
-                    <a className="flex-grow text-2xl font-bold font-poppins">
-                        Woolgens
-                    </a>
+                <div className="flex items-center px-6 h-28">
+                    <div className="flex flex-grow gap-2 items-center">
+                        <Logo height="60px" width="60px" />
+                        <div className="leading-none">
+                            <h1 className="text-xl font-bold">
+                                WoolGens
+                            </h1>
+                            <p className="text-sm text-gray-400">
+                                Staff Panel
+                            </p>
+                        </div>
+                    </div>
                     <div className="lg:hidden">
                         <HiX onClick={toggleSidebar} size="2rem"/>
                     </div>

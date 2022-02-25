@@ -5,8 +5,11 @@ import {getLandByName} from "./land";
 async function enrichMinecraftUserWithLand(minecraftUser: MinecraftInitialUser): Promise<MinecraftUser> {
     let landData = null
     if (minecraftUser.land !== "") {
-        landData = {
-            ...await getLandByName(minecraftUser.land)
+        const land = await getLandByName(minecraftUser.land)
+        if (land !== undefined) {
+            landData = {
+                ...await getLandByName(minecraftUser.land)
+            }
         }
     }
     return {

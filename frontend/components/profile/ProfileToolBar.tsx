@@ -33,7 +33,7 @@ const ProfileToolBar: FC<ProfileToolBarProps> = ({selectedSeason, user, setSelec
                             </div>
                             <div className="ml-3">
                                 <h1 className="font-bold">
-                                    You are currently viewing the archives from Season {formatSeasonName(selectedSeason)}!
+                                    You are currently viewing the archives from {formatSeasonName(selectedSeason)}!
                                 </h1>
                                 <h2 className="text-sm">
                                     This data is not up to date anymore.
@@ -54,7 +54,7 @@ const ProfileToolBar: FC<ProfileToolBarProps> = ({selectedSeason, user, setSelec
                     </div>
                     <Dropdown title={formatSeasonName(selectedSeason)}>
                         <div className="flex overflow-auto flex-col gap-2 p-2 bg-dark-light max-h-[300px]">
-                            {Object.keys(user.minecraftUser.seasons).reverse().map((value, index) => (
+                            {Object.keys(user.minecraftUser.seasons).map((value, index) => (
                                 <div key={index} onClick={() => setSelectedSeason(value)}>
                                     <DropdownItem title={formatSeasonName(value)}/>
                                 </div>

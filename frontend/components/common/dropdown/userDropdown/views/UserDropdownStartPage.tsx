@@ -1,10 +1,11 @@
 import React, {FC} from "react";
-import {RiUser3Line, RiLogoutBoxRLine, RiHomeHeartLine} from "react-icons/ri"
+import {RiUser3Line, RiLogoutBoxRLine, RiHomeHeartLine, RiDashboard3Line} from "react-icons/ri"
 import Avatar from "../../../Avatar";
 import DropdownItem from "../../DropdownItem";
 import {Transition} from "@headlessui/react"
 import Link from "next/link"
 import authStore from "../../../../../stores/AuthStore";
+import {colorCodes} from "../../../../../core/formatters";
 
 declare interface UserDropdownStartPageProps {
     selectedPage: string,
@@ -28,14 +29,14 @@ const UserDropdownStartPage: FC<UserDropdownStartPageProps> = ({ selectedPage, c
             <Link href={`/profile/${user.name}`} passHref={true}>
                 <a className="flex items-center p-3 mb-2 hover:bg-dark rounded-lg cursor-pointer">
                     <Avatar player={user.uuid} size={50} />
-                    <span className="ml-3 font-avenir">
-                    <h1 className="text-xl">
-                        {user.name}
-                    </h1>
-                    <h3 className="text-sm opacity-50">
-                        View your profile
-                    </h3>
-                </span>
+                    <div className="ml-3 font-avenir">
+                        <h1 className="text-xl">
+                            {user.name}
+                        </h1>
+                        <h3 className="text-sm font-light" style={{color: colorCodes[user.webUser.group.color]}}>
+                            {user.webUser.group.name}
+                        </h3>
+                    </div>
                 </a>
             </Link>
 
@@ -43,6 +44,13 @@ const UserDropdownStartPage: FC<UserDropdownStartPageProps> = ({ selectedPage, c
 
             <DropdownItem onClick={() => changePage("account")} title="Account" icon={<RiUser3Line size="1.3rem" />} withArrow={true}/>
             <DropdownItem onClick={() => changePage("land")} title="Land" icon={<RiHomeHeartLine size="1.3rem" />} withArrow={true}/>
+            {user.webUser.group.isStaff && (
+                <Link href="/staff" passHref={true}>
+                    <a>
+                        <DropdownItem title="Staff Panel" icon={<RiDashboard3Line size="1.3rem" />} />
+                    </a>
+                </Link>
+            )}
             <DropdownItem onClick={() => authStore.logout()} title="Logout" icon={<RiLogoutBoxRLine size="1.3rem" />}/>
         </Transition>
     )

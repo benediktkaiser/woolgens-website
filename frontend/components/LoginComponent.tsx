@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {FC, useState} from "react";
 import authStore from "../stores/AuthStore";
 import {toast} from "react-toastify";
 import BaseInputWithLabel from "./common/forms/BaseInputWithLabel";
@@ -6,7 +6,11 @@ import PasswordInput from "./common/forms/PasswordInput";
 import {BaseButton} from "./common/BaseButton";
 import {AiOutlineLoading3Quarters} from "react-icons/ai"
 
-const LoginComponent = () => {
+interface LoginComponentProps {
+    showRegisterButton?: boolean
+}
+
+const LoginComponent: FC<LoginComponentProps> = ({showRegisterButton = true}) => {
     const [username, setUsername] = useState(undefined)
     const [password, setPassword] = useState(undefined)
     const [loading, setLoading] = useState(false)
@@ -48,15 +52,17 @@ const LoginComponent = () => {
                     <BaseButton onClick={() => login(username, password)} type="success">
                         Login
                     </BaseButton>
-                    <BaseButton type="dark" onClick={() => {
-                        authStore.toggleLoginModal()
+                    {showRegisterButton && (
+                        <BaseButton type="dark" onClick={() => {
+                            authStore.toggleLoginModal()
 
-                        setTimeout(() => {
-                            authStore.toggleRegisterModal()
-                        }, 500)
-                    }}>
-                        Register
-                    </BaseButton>
+                            setTimeout(() => {
+                                authStore.toggleRegisterModal()
+                            }, 500)
+                        }}>
+                            Register
+                        </BaseButton>
+                    )}
                 </div>
                 {loading && (
                     <div className="flex absolute top-0 left-0 flex-col justify-center w-full h-full text-center bg-dark/70">

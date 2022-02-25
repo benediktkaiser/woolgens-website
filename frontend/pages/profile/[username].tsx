@@ -16,7 +16,7 @@ import UserAbout from "../../components/profile/about/UserAbout";
 import {formatMillisecondsToTime} from "../../core/formatters";
 
 const ProfilePage: NextPageWithLayout = ({user}) => {
-    const [selectedSeason, setSelectedSeason] = useState(Object.keys(user.minecraftUser.seasons).reverse()[0])
+    const [selectedSeason, setSelectedSeason] = useState(Object.keys(user.minecraftUser.seasons)[0])
     const [page, setPage] = useState("stats")
 
     return (

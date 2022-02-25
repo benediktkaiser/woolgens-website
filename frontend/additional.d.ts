@@ -161,22 +161,31 @@ declare interface InitialChatLog {
     registered: number,
     target: ChatLogPlayer,
     issuer: ChatLogPlayer,
-    entries: ChatLogEntry[],
+    entries: InitialChatLogEntry[],
 }
 
 declare interface ChatLog extends InitialChatLog {
-    participants: ChatLogPlayer[],
+    participants: InitialChatLogPlayer[],
+    entries: ChatLogEntry[]
 }
 
-declare interface ChatLogPlayer {
+declare interface InitialChatLogPlayer {
     uuid: string,
     name: string,
-    group: string | Group,
+    group: string,
 }
 
-declare interface ChatLogEntry {
-    executor: ChatLogPlayer,
+declare interface ChatLogPlayer extends InitialChatLogPlayer {
+    group: Group,
+}
+
+declare interface InitialChatLogEntry {
+    executor: InitialChatLogPlayer,
     executed: number,
     type: "COMMAND" | "MESSAGE",
     value: string,
+}
+
+declare interface ChatLogEntry extends InitialChatLogEntry{
+    executor: ChatLogPlayer,
 }
