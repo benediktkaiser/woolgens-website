@@ -3,10 +3,11 @@ import {makePersistable} from "mobx-persist-store";
 import {changeAPIToken} from "../core/api";
 import {authenticateWithToken, authenticateWithUserNameAndPassword} from "../core/auth";
 import {getMinecraftUser} from "../core/user/minecraftUser";
+import {toast} from "react-toastify";
 
 class AuthStore {
 
-    token = "";
+    token = undefined;
     user: User = undefined;
     loginModalOpen = false;
     registerModalOpen = false;
@@ -23,22 +24,24 @@ class AuthStore {
         });
     }
 
-    async tokenAuth(token) {
+    async tokenAuth(token): Promise<boolean> {
         runInAction(() => {
             this.loading = true;
         })
         const webUser = await authenticateWithToken(token);
         if (!webUser) {
             runInAction(() => {
-                this.token = ""
+                this.token = undefined
+                this.loading = false
             })
-            return;
+            throw new Error("Your Token was expired!")
         }
         const minecraftUser = await getMinecraftUser(webUser.uuid)
 
         // Set new Data
         await changeAPIToken(token)
         this.setUser(minecraftUser, webUser)
+        return true;
     }
 
     async basicAuth(username, password): Promise<boolean> {
@@ -79,6 +82,7 @@ class AuthStore {
             this.token = "";
             this.user = undefined;
         })
+        toast.error("You were logged out. You can now close the browser session.")
     }
 
     toggleLoginModal() {

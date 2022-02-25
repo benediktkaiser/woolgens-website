@@ -6,7 +6,6 @@ import {GetServerSideProps} from "next";
 import NewsCard from "../components/NewsCard";
 import CardWithHeader from "../components/common/cards/CardWithHeader";
 import McText from 'mctext-react'
-import {toast} from "react-toastify";
 import {fetchChangeLogs} from "../core/changelog";
 
 const IndexPage: NextPageWithLayout = observer(({changeLogs}) => {
@@ -27,7 +26,7 @@ const IndexPage: NextPageWithLayout = observer(({changeLogs}) => {
                             </div>
                         )}
                 </main>
-                <aside className="col-span-3" onClick={() => toast("TEst")}>
+                <aside className="col-span-3">
                     <CardWithHeader title="How to play">
                         <div className="text-xl">
                             <McText prefix="&" style={{fontFamily: "poppins"}}>
