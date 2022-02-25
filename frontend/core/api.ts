@@ -44,3 +44,8 @@ export const chatLogAPI = axios.create({
     baseURL: process.env.NEXT_PUBLIC_CHATLOG_ENDPOINT,
     ...DEFAULT_API
 });
+
+export const liveAPI = axios.create({
+    baseURL: process.env.NEXT_PUBLIC_LIVE_ENDPOINT,
+    ...DEFAULT_API
+});

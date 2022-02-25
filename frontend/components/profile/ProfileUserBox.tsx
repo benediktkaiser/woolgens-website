@@ -52,8 +52,8 @@ const ProfileUserBox: FC<ProfileUserBoxProps> = ({user, seasonNumber}) => {
                         </div>
                     </div>
                 </div>
-                <div className="flex absolute right-2 bottom-1.5">
-                    <OnlinePing status="offline" />
+                <div className="flex absolute bottom-1.5 left-2">
+                    <OnlinePing status={`${user.liveUser ? 'online' : 'offline'}`} />
                 </div>
             </div>
         </div>

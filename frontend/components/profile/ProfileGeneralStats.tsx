@@ -22,7 +22,7 @@ const ProfileGeneralStats: FC<ProfileGeneralStatsProps> = ({ user }) => {
                 <StatsCard title="Playtime" value={formatMillisecondsToTime(user.minecraftUser.stats.playtime, true, true)} />
                 <StatsCard title="Joined" value={new Date(user.minecraftUser.joined).toDateString()} />
                 {user.minecraftUser.lastJoined !== 0 && (
-                    <StatsCard title="Last joined" value={getPassedTime(new Date(user.minecraftUser.lastJoined))} label=" ago"/>
+                    <StatsCard title="Last Seen" value={user.liveUser ? "Now" : getPassedTime(new Date(user.minecraftUser.lastJoined))} label={!user.liveUser && ' ago'} />
                 )}
                 {user.minecraftUser.land && (
                     <StatsCard title="Land" value={user.minecraftUser.land.name} link={`/stats/lands/${user.minecraftUser.land.name}`} />
