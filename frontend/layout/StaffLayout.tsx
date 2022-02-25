@@ -50,7 +50,7 @@ const SidebarLayout: React.FC<SidebarProps> = observer(({permission, children, .
                  className={`${!staffStore.sidebarExtended && "hidden"} lg:hidden absolute z-30 w-full h-screen bg-black opacity-80`}/>
             <main className="flex overflow-auto flex-col w-full min-h-screen bg-dark-dark">
                 <Header toggleSidebar={() => staffStore.toggleSidebar()} user={authStore.user} pathName={router ? router.asPath : ""}/>
-                <div className="flex-grow my-5 mx-10">
+                <div className="flex-grow my-5 mx-4 lg:mx-10">
                     <div {...HTMLElements} className={`h-full flex-grow ${HTMLElements.className || ""}`}>
                         {authStore.hasPermission(permission) ? children : (
                             <ErrorPage title="403" subtitle="You do not have access to this page!"/>

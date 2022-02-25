@@ -1,12 +1,23 @@
 import {makeAutoObservable, runInAction} from "mobx";
-import {fetchChatLogFromID} from "../core/staff/chatlogs";
+import {fetchAllChatLogs, fetchChatLogFromID} from "../core/staff/chatlogs";
 
 class ChatLogStore {
 
     chatLogs: Record<string, ChatLog> = {}
+    allChatLogs: InitialChatLog[] = []
 
     constructor() {
         makeAutoObservable(this)
+    }
+
+    async fetchAllChatLogs() {
+        if (this.allChatLogs.length > 0) {
+            return this.allChatLogs
+        }
+        const allChatLogs = await fetchAllChatLogs()
+        runInAction(() => {
+            this.allChatLogs = allChatLogs
+        })
     }
 
     async getChatLogFromID(id: string): Promise<ChatLog | undefined> {

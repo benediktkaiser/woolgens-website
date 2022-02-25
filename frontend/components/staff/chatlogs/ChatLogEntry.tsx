@@ -1,6 +1,7 @@
-import {FC} from "react";
+import React, {FC} from "react";
 import Link from "next/link"
-import {formatDateToTime} from "../../../core/formatters";
+import {colorCodes, formatDateToTime} from "../../../core/formatters";
+import {MdArrowRight} from "react-icons/md"
 
 interface ChatLogEntryProps {
     entry: ChatLogEntry,
@@ -20,29 +21,50 @@ const ChatLogEntry: FC<ChatLogEntryProps> = ({entry, index, types, selectedLine,
     }
 
     return (
-        <div id={`${index}`} className={`flex gap-4 items-center mb-1 rounded px-3 py-1 ${selectedLine === index && 'bg-shark-500'}`}>
-            <Link href={`#L${index}`} passHref={true}>
-                <a className="font-mono text-shark-200 hover:text-gray-200 cursor-pointer">
-                    {index}
-                </a>
-            </Link>
+        <tr id={`${index}`}
+            className={`flex space-x-1 items-start pt-1 pb-0.5 rounded hover:bg-shark-700 ${selectedLine === index && 'bg-shark-600 hover:bg-shark-600'} max-w-full`}>
+            <td className="hidden lg:block w-8 text-right select-none">
+                <Link href={`#L${index}`} passHref={true}>
+                    <a className="font-mono text-shark-200 hover:text-gray-200 cursor-pointer">
+                        {index}
+                    </a>
+                </Link>
+            </td>
             {entry.type === "MESSAGE" ? (
-                <div className="flex flex-grow items-center space-x-1 text-gray-300">
-                    <span className="text-blue-400 capitalize">[{entry.executor.group}] </span>
-                    <span className="text-blue-400">{entry.executor.name} -</span>
-                    <span>{entry.value}</span>
-                </div>
+                <>
+                    <td className="flex space-x-1 select-none" style={{color: colorCodes[entry.executor.group.color ||"&7"]}}>
+                        <span className="hidden xl:block capitalize">
+                            [{entry.executor.group?.name}]
+                        </span>
+                        <span>
+                        {entry.executor.name}
+                        </span>
+                    </td>
+                    <td className="hidden lg:block mt-1"><MdArrowRight/></td>
+                    <td className="overflow-x-hidden flex-1 text-ellipsis">
+                        {entry.value}
+                    </td>
+                </>
             ) : (
-                <div className="flex flex-grow items-center space-x-1 text-shark-300">
-                    <span className="capitalize">[{entry.executor.group}] </span>
-                    <span>{entry.executor.name} -</span>
-                    <span className="italic">{entry.value}</span>
-                </div>
+                <>
+                    <td className="flex space-x-1 text-gray-600 select-none">
+                        <span className="hidden xl:block capitalize">
+                            [{entry.executor.group?.name}]
+                        </span>
+                        <span>
+                        {entry.executor.name}
+                        </span>
+                    </td>
+                    <td className="hidden lg:block mt-1"><MdArrowRight className="text-gray-600" /></td>
+                    <td className="overflow-x-hidden flex-1 italic text-gray-600 text-ellipsis">
+                        {entry.value}
+                    </td>
+                </>
             )}
-            <span className="font-mono text-shark-200">
+            <td className="hidden lg:block font-mono text-shark-200">
                 {formatDateToTime(new Date(entry.executed), true)}
-            </span>
-        </div>
+            </td>
+        </tr>
     )
 }
 

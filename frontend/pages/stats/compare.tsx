@@ -90,7 +90,7 @@ const ComparePage: NextPageWithLayout = observer(({currentSeason}) => {
                     {userOne ? (
                         <Dropdown title={formatSeasonName(season)}>
                             <div className="flex overflow-auto flex-col gap-2 p-2 bg-dark-light max-h-[300px]">
-                                {Object.keys(userOne.minecraftUser.seasons).reverse().map((value, index) => (
+                                {Object.keys(userOne.minecraftUser.seasons).map((value, index) => (
                                     <div key={index} onClick={() => setSelectedSeason(value)}>
                                         <DropdownItem title={formatSeasonName(value)}/>
                                     </div>

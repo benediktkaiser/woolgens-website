@@ -1,7 +1,8 @@
 import {chatLogAPI} from "../api";
+import groupStore from "../../stores/GroupStore";
 
-function enrichChatLogWithParticipants(chatLog: InitialChatLog): ChatLog {
-    const participants: Record<string, { player: ChatLogPlayer, messageAmount: number }> = {}
+function enrichChatLogWithParticipants(chatLog: InitialChatLog): InitialChatLogPlayer[] {
+    const participants: Record<string, { player: InitialChatLogPlayer, messageAmount: number }> = {}
     chatLog.entries.map((entry) => {
         if (!participants[entry.executor.name]) {
             participants[entry.executor.name] = {
@@ -29,24 +30,53 @@ function enrichChatLogWithParticipants(chatLog: InitialChatLog): ChatLog {
         return 0
     })
 
-    const participantsArray: ChatLogPlayer[] = []
+    const participantsArray: InitialChatLogPlayer[] = []
     sortedParticipants.map((result) => {
         const player = result[1].player
         participantsArray.push(player)
     })
 
+    return participantsArray
+}
+
+async function enrichChatLogWithGroups(chatLog: InitialChatLog, participants: InitialChatLogPlayer[]): Promise<ChatLog> {
+    const groups = await groupStore.fetchGroups()
+    const entries: ChatLogEntry[] = []
+
+    chatLog.entries.map((entry) => {
+        entries.push({
+            ...entry,
+            executor: {
+                ...entry.executor,
+                group: groups[entry.executor.group]
+            },
+        })
+    })
+
     return {
         ...chatLog,
-        participants: participantsArray
+        entries,
+        participants
     }
 }
 
 export async function fetchChatLogFromID(id: string): Promise<ChatLog | undefined> {
     try {
         const data = await chatLogAPI.get(`/chatlogs/${id}`)
-        return enrichChatLogWithParticipants(data.data)
+        const participants = enrichChatLogWithParticipants(data.data)
+        return await enrichChatLogWithGroups(data.data, participants);
     } catch (error) {
         console.error(error)
         return undefined;
+    }
+}
+
+export async function fetchAllChatLogs(): Promise<InitialChatLog[]> {
+    try {
+        const data = await chatLogAPI.get(`/chatlogs`)
+        return data.data
+    } catch (error) {
+        console.error(error)
+        return [];
     }
 }

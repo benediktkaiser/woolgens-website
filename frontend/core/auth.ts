@@ -63,6 +63,24 @@ export async function getGroup(id: string): Promise<Group> {
     }
 }
 
+export async function getAllGroups(): Promise<Record<string, Group>> {
+    try {
+        const data = await authAPI.get(`/groups`)
+        const groups: Record<string, Group> = {}
+
+        data.data.map((group) => {
+            groups[group.id] = {
+                ...group,
+                isStaff: group.role === "Admin" || group.role === "Moderator"
+            }
+        })
+        return groups
+    }
+    catch (error) {
+        return {}
+    }
+}
+
 export async function getTemporaryToken(token: string): Promise<TemporaryToken> {
     try {
         const data = await authAPI.get(`/tokens/${token}`);

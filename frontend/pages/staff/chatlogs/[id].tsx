@@ -14,9 +14,10 @@ import {RiFilterOffLine} from "react-icons/ri"
 import Tooltip from "../../../components/common/ToolTip";
 import ErrorPage from "../../../components/ErrorPage";
 import authStore from "../../../stores/AuthStore";
+import {AiOutlineLoading3Quarters} from "react-icons/ai";
 
 const StaffPage: NextPageWithLayout = observer(({chatLogID}) => {
-    const [chatLog, setChatLog] = useState<ChatLog | undefined>(undefined)
+    const [chatLog, setChatLog] = useState<ChatLog | undefined>(null)
     const [showTypes, setShowTypes] = useState(["MESSAGE", "COMMAND"])
     const [showUsers, setShowUsers] = useState([])
     const router = useRouter()
@@ -45,9 +46,29 @@ const StaffPage: NextPageWithLayout = observer(({chatLogID}) => {
         if (!authStore.loading) {
             chatLogStore.getChatLogFromID(chatLogID).then(chatLog => {
                 setChatLog(chatLog)
+                if (document !== undefined) {
+                    const element = document.getElementById(router ? router.asPath.split("#L")[1] : "0")
+                    if (element) element.scrollIntoView({ behavior: 'smooth' })
+                }
             })
         }
-    }, [chatLogID])
+    }, [chatLogID, router])
+
+    if (chatLog === null) {
+        return (
+            <div className="flex flex-col items-center mx-auto mt-10 w-full">
+                <AiOutlineLoading3Quarters size="2rem" className="animate-spin"/>
+                <div className="mt-8 text-center">
+                    <h1 className="w-full text-3xl font-bold">
+                        Retrieving ChatLog...
+                    </h1>
+                    <h2 className="text-gray-300">
+                        Please wait a moment
+                    </h2>
+                </div>
+            </div>
+        )
+    }
 
     if (!chatLog) {
         return (
@@ -67,7 +88,7 @@ const StaffPage: NextPageWithLayout = observer(({chatLogID}) => {
                         </BaseButton>
                     </a>
                 </Link>
-                <div className="flex gap-3 items-center">
+                <div className="hidden lg:flex gap-3 items-center">
                     <BaseButton type="danger">
                         <div className="flex gap-1 items-center">
                             <HiOutlineTrash/>
@@ -82,8 +103,8 @@ const StaffPage: NextPageWithLayout = observer(({chatLogID}) => {
                     </BaseButton>
                 </div>
             </div>
-            <div className="flex gap-2 justify-between items-end w-full">
-                <div className="ml-3">
+            <div className="flex gap-2 justify-center lg:justify-between items-end w-full">
+                <div className="hidden lg:block ml-3">
                     <h1 className="text-2xl font-bold">
                         Chat-Log <span className="uppercase">#{chatLog.id}</span>
                     </h1>
@@ -98,8 +119,8 @@ const StaffPage: NextPageWithLayout = observer(({chatLogID}) => {
                               onChange={(event) => handleToggleType("MESSAGE", event.target.checked)}/>
                 </div>
             </div>
-            <div className="flex items-stretch h-[70vh]">
-                <div className="flex flex-col gap-5 items-center mt-1 h-full w-[80px]">
+            <div className="flex items-stretch max-h-[70vh]">
+                <div className="hidden lg:flex flex-col gap-5 items-center mt-1 h-full w-[80px]">
                     {chatLog.participants.map((participant, index) => (
                         <ChatLogUserClick key={index} participant={participant} toggle={handleToggleUser}
                                           selectedUsers={showUsers}/>
@@ -113,17 +134,21 @@ const StaffPage: NextPageWithLayout = observer(({chatLogID}) => {
                         </Tooltip>
                     )}
                 </div>
-                <div className="overflow-auto py-5 px-3 w-full h-full bg-shark-900 rounded-lg">
-                    {chatLog.entries.map((entry, index) => (
-                        <ChatLogEntry
-                            key={index}
-                            entry={entry}
-                            index={index + 1}
-                            types={showTypes}
-                            users={showUsers}
-                            selectedLine={parseInt(router ? router.asPath.split("#L")[1] : "0")}
-                        />
-                    ))}
+                <div className="overflow-auto py-5 pr-5 pl-2 w-full h-full bg-shark-900 rounded-lg">
+                    <table className="w-full table-fixed">
+                        <tbody className="w-full">
+                            {chatLog.entries.map((entry, index) => (
+                                <ChatLogEntry
+                                    key={index}
+                                    entry={entry}
+                                    index={index + 1}
+                                    types={showTypes}
+                                    users={showUsers}
+                                    selectedLine={parseInt(router ? router.asPath.split("#L")[1] : "0")}
+                                />
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

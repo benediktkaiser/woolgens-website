@@ -1,5 +1,5 @@
 import {makeAutoObservable, runInAction} from "mobx";
-import {getGroup} from "../core/auth";
+import {getAllGroups} from "../core/auth";
 
 class GroupStore {
 
@@ -10,15 +10,22 @@ class GroupStore {
     }
 
     async getGroup(groupName: string) {
+        if (Object.keys(this.groups).length === 0) {
+            await this.fetchGroups()
+        }
+
         if (this.groups[groupName]) {
             return this.groups[groupName]
         }
+        return undefined
+    }
 
-        const group = await getGroup(groupName);
+    async fetchGroups(): Promise<Record<string, Group>> {
+        const groups = await getAllGroups()
         runInAction(() => {
-            this.groups[groupName] = group
+            this.groups = groups
         })
-        return group
+        return groups
     }
 }
 
