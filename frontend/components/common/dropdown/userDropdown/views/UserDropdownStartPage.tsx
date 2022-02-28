@@ -13,7 +13,7 @@ declare interface UserDropdownStartPageProps {
     user: User
 }
 
-const UserDropdownStartPage: FC<UserDropdownStartPageProps> = ({ selectedPage, changePage, user }) => {
+const UserDropdownStartPage: FC<UserDropdownStartPageProps> = ({selectedPage, changePage, user}) => {
     return (
         <Transition
             show={selectedPage === "start"}
@@ -28,7 +28,7 @@ const UserDropdownStartPage: FC<UserDropdownStartPageProps> = ({ selectedPage, c
 
             <Link href={`/profile/${user.name}`} passHref={true}>
                 <a className="flex items-center p-3 mb-2 hover:bg-dark rounded-lg cursor-pointer">
-                    <Avatar player={user.uuid} size={50} />
+                    <Avatar player={user.uuid} size={50}/>
                     <div className="ml-3 font-avenir">
                         <h1 className="text-xl">
                             {user.name}
@@ -42,16 +42,14 @@ const UserDropdownStartPage: FC<UserDropdownStartPageProps> = ({ selectedPage, c
 
             <hr className="my-2 border-gray-700"/>
 
-            <DropdownItem onClick={() => changePage("account")} title="Account" icon={<RiUser3Line size="1.3rem" />} withArrow={true}/>
-            <DropdownItem onClick={() => changePage("land")} title="Land" icon={<RiHomeHeartLine size="1.3rem" />} withArrow={true}/>
+            <DropdownItem onClick={() => changePage("account")} title="Account" icon={<RiUser3Line size="1.3rem"/>}
+                          withArrow={true}/>
+            <DropdownItem onClick={() => changePage("land")} title="Land" icon={<RiHomeHeartLine size="1.3rem"/>}
+                          withArrow={true}/>
             {user.webUser.group.isStaff && (
-                <Link href="/staff" passHref={true}>
-                    <a>
-                        <DropdownItem title="Staff Panel" icon={<RiDashboard3Line size="1.3rem" />} />
-                    </a>
-                </Link>
+                <DropdownItem onClick={() => changePage("staff")} title="Staff Tools" icon={<RiDashboard3Line size="1.3rem"/>} withArrow={true}/>
             )}
-            <DropdownItem onClick={() => authStore.logout()} title="Logout" icon={<RiLogoutBoxRLine size="1.3rem" />}/>
+            <DropdownItem onClick={() => authStore.logout()} title="Logout" icon={<RiLogoutBoxRLine size="1.3rem"/>}/>
         </Transition>
     )
 }
