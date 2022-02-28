@@ -3,6 +3,7 @@ import Link from "next/link"
 import {formatDateToTime} from "../../../core/formatters";
 import {MdArrowRight} from "react-icons/md"
 import {COLOR_CODES} from "../../../core/constants";
+import McText from 'mctext-react'
 
 interface ChatLogEntryProps {
     entry: ChatLogEntry,
@@ -43,7 +44,9 @@ const ChatLogEntry: FC<ChatLogEntryProps> = ({entry, index, types, selectedLine,
                     </td>
                     <td className="hidden lg:block mt-1"><MdArrowRight/></td>
                     <td className="overflow-x-hidden flex-1 text-ellipsis">
-                        {entry.value}
+                        <McText style={{fontFamily: "poppins"}}>
+                            {entry.value}
+                        </McText>
                     </td>
                 </>
             ) : (
