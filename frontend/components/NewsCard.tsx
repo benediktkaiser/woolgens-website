@@ -23,15 +23,20 @@ const NewsCard: FC<NewsContainerProps> = ({changelog}) => {
                     </h2>
                 </div>
             </div>
-            <div className="relative z-10 p-4 w-full bg-dark-light rounded-lg shadow-xl min-h-[200px]">
+            <div className="relative z-10 p-4 w-full bg-shark-600 rounded-lg shadow-xl min-h-[200px]">
                 <div className="flex justify-between items-center">
-                    <h1 className="flex-grow mr-5 text-3xl font-bold">
-                        {changelog.title ? changelog.title : `Version ${changelog.id}`}
-                        <hr className="mt-4 border-gray-700"/>
-                    </h1>
+                    <div className="flex-grow mr-5">
+                        <h1 className="text-3xl font-bold">
+                            {changelog.title ? changelog.title : `Version ${changelog.id}`}
+                        </h1>
+                        <h3 className="text-sm text-gray-500">
+                            Written by {changelog.author}
+                        </h3>
+                        <hr className="mt-2 border-gray-700"/>
+                    </div>
                     <Link href={`/profile/${changelog.author}`} passHref={true}>
                         <a className="cursor-pointer">
-                            <Avatar player={changelog.author} size={70}/>
+                            <Avatar player={changelog.author} size={60}/>
                         </a>
                     </Link>
                 </div>

@@ -10,7 +10,7 @@ export async function enrichWebUserWithGroup(webUser: WebInitialUser): Promise<W
     }
 }
 
-export async function getWebUser(uuid: string): Promise<WebUser | undefined> {
+export async function getWebUser(uuid: string): Promise<WebUser | null> {
     try {
         const data = await authAPI.get(`/users/${uuid}`)
         return await enrichWebUserWithGroup(data.data)

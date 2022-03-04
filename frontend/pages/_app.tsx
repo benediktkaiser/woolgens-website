@@ -1,5 +1,6 @@
 import '../styles/global.css'
 import '../styles/toast.css'
+
 import '../plugins/persistent-store.plugin'
 
 import ProgressBar from "@badrap/bar-of-progress";

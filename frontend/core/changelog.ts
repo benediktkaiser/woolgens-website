@@ -7,7 +7,10 @@ const CHANGELOG_CACHE = 30 * 60 * 1000
 async function _fetchChangeLogs(): Promise<ChangeLog[]> {
     try {
         const data = await changeLogAPI.get("/changelogs")
-        return data.data;
+        if (data.data) {
+            return data.data.reverse();
+        }
+        return null;
     }
     catch (error) {
         throwError(`Issue retrieving changelogs" - ${error}`)
