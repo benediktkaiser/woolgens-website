@@ -45,13 +45,13 @@ steps:
     image: appleboy/drone-ssh
     settings:
       host:
-        from_secret: SERVER_HOST
+        from_secret: WOOLGENS_SERVER_HOST
       port:
-        from_secret: SERVER_PORT
+        from_secret: WOOLGENS_SERVER_PORT
       username:
-        from_secret: SERVER_USER
+        from_secret: WOOLGENS_SERVER_USER
       password:
-        from_secret: SERVER_PASSWORD
+        from_secret: WOOLGENS_SERVER_PASSWORD
       script:
         - cd /home/web/website
         - docker-compose down
@@ -63,13 +63,13 @@ steps:
     image: appleboy/drone-scp
     settings:
       host:
-        from_secret: SERVER_HOST
+        from_secret: WOOLGENS_SERVER_HOST
       port:
-        from_secret: SERVER_PORT
+        from_secret: WOOLGENS_SERVER_PORT
       username:
-        from_secret: SERVER_USER
+        from_secret: WOOLGENS_SERVER_USER
       password:
-        from_secret: SERVER_PASSWORD
+        from_secret: WOOLGENS_SERVER_PASSWORD
       target: /home/web/website
       source: ./*
       strip_components: 0
@@ -79,13 +79,13 @@ steps:
     image: appleboy/drone-ssh
     settings:
       host:
-        from_secret: SERVER_HOST
+        from_secret: WOOLGENS_SERVER_HOST
       port:
-        from_secret: SERVER_PORT
+        from_secret: WOOLGENS_SERVER_PORT
       username:
-        from_secret: SERVER_USER
+        from_secret: WOOLGENS_SERVER_USER
       password:
-        from_secret: SERVER_PASSWORD
+        from_secret: WOOLGENS_SERVER_PASSWORD
       script:
         - cd /home/web/website
         - docker-compose up -d --build
