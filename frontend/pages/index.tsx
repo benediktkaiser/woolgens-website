@@ -10,8 +10,7 @@ import styles from "../styles/modules/minecraftButton.module.css"
 import {fetchChangeLogs} from "../core/changelog";
 import Announcement from "../components/common/Announcement";
 import {GiPartyPopper} from "react-icons/gi"
-import {BaseButton} from "../components/common/BaseButton";
-import authStore from "../stores/AuthStore";
+import informationStore from "../stores/InformationStore";
 
 const IndexPage: NextPageWithLayout = observer(({changeLogs}) => {
     return (
@@ -26,7 +25,6 @@ const IndexPage: NextPageWithLayout = observer(({changeLogs}) => {
                     <Announcement
                         icon={<GiPartyPopper/>}
                         text="Welcome to the new WoolGens Website!"
-                        rightComponent={<BaseButton onClick={() => authStore.toggleRegisterModal()} type="success">Create Account</BaseButton>}
                         iconStyles="bg-green-500 text-white"
                     />
                     {changeLogs ?
@@ -48,7 +46,7 @@ const IndexPage: NextPageWithLayout = observer(({changeLogs}) => {
                                 className="px-4 pt-2 pb-1 w-full text-2xl bg-shark-800 border-2 border-shark-400"
                                 value="play.woolgens.net"
                                 disabled />
-                            <button className={`${styles.mcButton} mt-2 text-lg`}>
+                            <button className={`${styles.mcButton} mt-2 text-lg`} onClick={() => informationStore.copyIP()}>
                                 Copy Address
                             </button>
                         </div>
