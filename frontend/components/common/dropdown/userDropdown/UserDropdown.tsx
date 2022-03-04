@@ -5,6 +5,7 @@ import Avatar from "../../../common/Avatar";
 import UserDropdownStartPage from "./views/UserDropdownStartPage";
 import UserDropdownAccountPage from "./views/UserDropdownAccountPage";
 import UserDropdownLandPage from "./views/UserDropdownLandPage";
+import UserDropdownStaffPage from "./views/UserDropdownStaffPage";
 
 declare interface UserDropdownProps {
     user: User
@@ -39,6 +40,7 @@ const UserDropdown: FC<UserDropdownProps> = ({user}) => {
                     <UserDropdownStartPage selectedPage={page} changePage={changePage}  user={user} />
                     <UserDropdownAccountPage selectedPage={page} changePage={changePage} />
                     <UserDropdownLandPage selectedPage={page} changePage={changePage} user={user} />
+                    <UserDropdownStaffPage selectedPage={page} changePage={changePage} />
                 </Menu.Items>
             </Transition>
         </Menu>

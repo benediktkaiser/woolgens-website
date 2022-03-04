@@ -7,7 +7,7 @@ const USERS_SORTED_CACHE = 30 * 1000
 const USER_NAMES_CACHE = 5 * 60 * 1000
 
 export function getLatestSeasonStats(user: MinecraftUser): MinecraftUserSeason {
-    const latestSeason = Object.keys(user.seasons).reverse()[0]
+    const latestSeason = Object.keys(user.seasons)[0]
     return user.seasons[latestSeason]
 }
 
@@ -37,7 +37,7 @@ export async function getMinecraftUser(uuid: string): Promise<MinecraftUser> {
     }
 }
 
-async function _fetchUsersSorted(sorted: string, pageIndex: number, pageSize: number): Promise<MinecraftUser[]> {
+export async function fetchUsersSorted(sorted: string, pageIndex: number, pageSize: number): Promise<MinecraftUser[]> {
     try {
         const data = await minecraftUserAPI.get(`/users?sorted=${sorted}&pageindex=${pageIndex}&pagesize=${pageSize}`)
         return data.data
@@ -47,7 +47,7 @@ async function _fetchUsersSorted(sorted: string, pageIndex: number, pageSize: nu
     }
 }
 
-export const fetchUsersSorted = memoizee(_fetchUsersSorted, {
+export const testfetchUsersSorted = memoizee(fetchUsersSorted, {
     maxAge: USERS_SORTED_CACHE,
     promise: true,
     length: 3,

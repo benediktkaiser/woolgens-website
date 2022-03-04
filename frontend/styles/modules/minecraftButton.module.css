@@ -1,0 +1,14 @@
+.mcButton {
+    background-image: url('/assets/mc-btn-bg.webp');
+    background-size: cover;
+    width: 100%;
+    padding: 8px 10px 5px 10px;
+    border: 2px solid black;
+    text-shadow: 2px 2px rgb(0 0 0 / 67%);
+    box-shadow: inset -2px -4px rgb(0 0 0 / 40%), inset 2px 2px hsl(0deg 0% 100% / 47%);
+    transition: all ease-in-out;
+}
+
+.mcButton:hover {
+    transform: scale(1.01);
+}

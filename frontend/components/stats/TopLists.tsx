@@ -43,7 +43,7 @@ const TopLists: FC<UserStatsContainerProps> = ({seasonNumber}) => {
                                 />
                             )}
                         </AnimatedFade>
-                    ) : <LoadingTopList />}
+                    ) : <LoadingTopList/>}
                 </TopList>
                 <TopList title="Money" background={"bg-gradient-to-l from-amber-400/80 to-yellow-700/80"}>
                     {balanceTopList ? (
@@ -58,7 +58,7 @@ const TopLists: FC<UserStatsContainerProps> = ({seasonNumber}) => {
                                 />
                             )}
                         </AnimatedFade>
-                    ) : <LoadingTopList />}
+                    ) : <LoadingTopList/>}
                 </TopList>
                 <TopList title="Playtime" background={"bg-gradient-to-l from-purple-400/80 to-purple-700/80"}>
                     {playTimeTopList ? (
@@ -73,7 +73,7 @@ const TopLists: FC<UserStatsContainerProps> = ({seasonNumber}) => {
                                 />
                             )}
                         </AnimatedFade>
-                    ) : <LoadingTopList />}
+                    ) : <LoadingTopList/>}
                 </TopList>
             </div>
         </div>

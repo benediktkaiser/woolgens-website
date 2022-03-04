@@ -16,13 +16,13 @@ declare interface HeaderProps {
 
 const Header: FC<HeaderProps> = ({onlineDiscord, onlineMinecraft, discordInviteLink}) => {
     return (
-        <header className="relative bg-center bg-cover bg-100 h-[285px]" style={{backgroundImage: "url('/background/tree.jpeg')"}}>
+        <header className="relative bg-center bg-cover bg-100 h-[220px]" style={{backgroundImage: "url('/background/tree.jpeg')"}}>
             <div className="absolute top-0 w-full h-full bg-gradient-to-b from-dark/80 to-accent/50" />
             <div className="container flex justify-between items-center pt-2 mx-auto w-full">
                 <HeaderSideBox
                     title={process.env.NEXT_PUBLIC_MINECRAFT_IP}
                     subtitle="Click to copy!"
-                    icon={<IoGameController className="text-green-500" size="2.75rem" />}
+                    icon={<IoGameController className="text-green-500" size="2.5rem" />}
                     color="bg-green-500"
                     count={onlineMinecraft}
                     onClick={copyIP}
@@ -34,7 +34,7 @@ const Header: FC<HeaderProps> = ({onlineDiscord, onlineMinecraft, discordInviteL
                     <HeaderSideBox
                         title="WoolGens Discord"
                         subtitle="Click to join!"
-                        icon={<IoLogoDiscord className="text-blue-400" size="2.75rem" />}
+                        icon={<IoLogoDiscord className="text-blue-400" size="2.5rem" />}
                         color="bg-blue-400"
                         count={onlineDiscord}
                     />
