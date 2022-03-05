@@ -50,7 +50,7 @@ const UserDropdownStartPage: FC<UserDropdownStartPageProps> = ({selectedPage, ch
             {user.minecraftUser?.land ? (
                 <Link href={`/stats/lands/${user.minecraftUser.land.id}`} passHref={true}>
                     <a>
-                        <DropdownItem onClick={() => changePage("land")} title="Land" icon={<RiHomeHeartLine size="1.3rem"/>}/>
+                        <DropdownItem title="Land" icon={<RiHomeHeartLine size="1.3rem"/>}/>
                     </a>
                 </Link>
             ) : (
