@@ -40,13 +40,16 @@ const IndexPage: NextPageWithLayout = observer(({changeLogs}) => {
                         <h1 className="text-2xl text-accent-500 font-minecraft">
                             How to join:
                         </h1>
-                        You can easily join our server with the following IP:
+                        <p className="text-gray-300">
+                            You can easily join our server with the following IP:
+                        </p>
                         <div className="mt-4 w-full font-minecraft">
                             <input
                                 className="px-4 pt-2 pb-1 w-full text-2xl bg-shark-800 border-2 border-shark-400"
-                                value="play.woolgens.net"
-                                disabled />
-                            <button className={`${styles.mcButton} mt-2 text-lg`} onClick={() => informationStore.copyIP()}>
+                                value={process.env.NEXT_PUBLIC_MINECRAFT_IP}
+                                disabled/>
+                            <button className={`${styles.mcButton} mt-2 text-lg`}
+                                    onClick={() => informationStore.copyIP()}>
                                 Copy Address
                             </button>
                         </div>
@@ -55,14 +58,22 @@ const IndexPage: NextPageWithLayout = observer(({changeLogs}) => {
                         <h1 className="text-2xl text-accent-500 font-minecraft">
                             About us:
                         </h1>
-                        <p>
-                            We are a large America based Minecraft Gens server with 5000+ Discord Members and Discord Partner status.
-                            We are almost done with completely redesigning our server concept and will be releasing shortly.
-                        </p>
-                        <p className="mt-2">
-                            We are a large America based Minecraft Gens server with 5000+ Discord Members and Discord Partner status.
-                            We are almost done with completely redesigning our server concept and will be releasing shortly.
-                        </p>
+                        <div className="text-gray-300">
+                            <p>
+                                Woolgens is based on a Gens system, where you earn money by placing generators over time and
+                                with the right strategy you have a good chance to win one of our Season Payouts, where you
+                                can win real money.
+                            </p>
+                            <p className="my-2">
+                                Aside from the generators you can also find an amazing farming system, allowing users to make money
+                                through mining, fishing, farming and many other professions. You will also find daily quests waiting for
+                                you to help you level up and take over the entire server!
+                            </p>
+                            <p>
+                                In order to facilitate a relaxed and enjoyable atmosphere, our team will work together with the community
+                                to ensure everyone can find their place on WoolGens! We cannot wait to welcome you in our little family!
+                            </p>
+                        </div>
                     </BasicCard>
                 </aside>
             </section>

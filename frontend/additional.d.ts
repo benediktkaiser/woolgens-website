@@ -194,3 +194,8 @@ declare interface InitialChatLogEntry {
 declare interface ChatLogEntry extends InitialChatLogEntry{
     executor: ChatLogPlayer,
 }
+
+declare interface VotePartyStatus {
+    count: number,
+    maxCount: number
+}

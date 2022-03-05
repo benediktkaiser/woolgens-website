@@ -1,5 +1,5 @@
 import {makeAutoObservable, runInAction} from "mobx";
-import {getDiscordWidget, getMinecraftServerData} from "../core/information";
+import {getDiscordWidget, getMinecraftServerData, getVotePartyStatus} from "../core/information";
 import {toast} from "react-toastify";
 
 class InformationStore {
@@ -7,6 +7,10 @@ class InformationStore {
     discordInviteLink = ""
     onlineDiscord = undefined
     onlineMinecraft = undefined
+    votePartyStatus: VotePartyStatus = {
+        count: 0,
+        maxCount: 100
+    }
 
     constructor() {
         makeAutoObservable(this)
@@ -20,6 +24,13 @@ class InformationStore {
             this.onlineDiscord = discordWidget.presence_count || 0
             this.discordInviteLink = discordWidget.instant_invite || "#"
             this.onlineMinecraft = minecraftData?.players.online || 0
+        })
+    }
+
+    async updateVotePartyStatus() {
+        const votePartyStatus = await getVotePartyStatus()
+        runInAction(() => {
+            this.votePartyStatus = votePartyStatus
         })
     }
 
