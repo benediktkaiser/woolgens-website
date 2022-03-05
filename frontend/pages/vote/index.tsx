@@ -1,11 +1,16 @@
 import {observer} from "mobx-react-lite";
 import NavbarLayout from "../../layout/NavbarLayout";
-import React from "react";
+import React, {useEffect} from "react";
 import SEO from "../../components/SEO";
 import VotePartyProgressBox from "../../components/vote/VotePartyProgressBox";
 import VoteCard from "../../components/vote/VoteCard";
+import informationStore from "../../stores/InformationStore";
 
 const VoteIndexPage: NextPageWithLayout = observer(() => {
+
+    useEffect(() => {
+        informationStore.updateVotePartyStatus().catch(error => console.error(error))
+    }, [])
 
     return (
         <div>
@@ -15,7 +20,7 @@ const VoteIndexPage: NextPageWithLayout = observer(() => {
                 imageSRC: "/seo/Vote.jpg"
             }}/>
 
-            <VotePartyProgressBox votes={0} />
+            <VotePartyProgressBox votes={informationStore.votePartyStatus.count} maxVotes={informationStore.votePartyStatus.maxCount} />
             <div className="flex xl:grid flex-col grid-cols-10 gap-4 items-start mt-5">
                 <main className="grid grid-cols-2 lg:grid-cols-3 col-span-7 gap-4">
                     <VoteCard
@@ -52,7 +57,7 @@ const VoteIndexPage: NextPageWithLayout = observer(() => {
                 <aside className="flex flex-col col-span-3 gap-3">
                     <div className="p-4 bg-gradient-to-r rounded-lg from-purple-700/40 to-purple-900/40">
                         <h1 className="text-2xl text-purple-400 font-minecraft">
-                            What do you get for voting?
+                            What do you get for Voting?
                         </h1>
                         <p className="text-purple-300">
                             In order to thank everyone for their vote, we will reward you with some small in game rewards for every vote you do. You can
@@ -62,7 +67,7 @@ const VoteIndexPage: NextPageWithLayout = observer(() => {
                     </div>
                     <div className="p-4 bg-gradient-to-r rounded-lg from-purple-700/40 to-purple-900/40">
                         <h1 className="text-2xl text-purple-400 font-minecraft">
-                            Why should you vote?
+                            Why should you Vote?
                         </h1>
                         <p className="text-purple-300">
                             By voting you support our search for new players. We are constantly excited about welcoming new players to our server.

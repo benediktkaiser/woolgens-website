@@ -1,4 +1,5 @@
 import axios from "axios";
+import {liveAPI} from "./api";
 
 export const getDiscordWidget = async (serverID: string) => {
     try {
@@ -24,3 +25,17 @@ export const getMinecraftServerData = async (serverIP: string) => {
         return undefined
     }
 }
+
+export async function getVotePartyStatus(): Promise<VotePartyStatus> {
+    try {
+        const data = await liveAPI.get(`/vote/counter`)
+        return data.data
+    } catch (error) {
+        console.error(`Issue retrieving vote party status - ${error}`)
+        return {
+            count: 0,
+            maxCount: 100
+        };
+    }
+}
+
