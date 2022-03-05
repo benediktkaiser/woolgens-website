@@ -9,7 +9,7 @@ import BasicCard from "../components/common/cards/BasicCard";
 import styles from "../styles/modules/minecraftButton.module.css"
 import {fetchChangeLogs} from "../core/changelog";
 import Announcement from "../components/common/Announcement";
-import {GiPartyPopper} from "react-icons/gi"
+import {ImNewspaper} from "react-icons/im"
 import informationStore from "../stores/InformationStore";
 
 const IndexPage: NextPageWithLayout = observer(({changeLogs}) => {
@@ -23,8 +23,8 @@ const IndexPage: NextPageWithLayout = observer(({changeLogs}) => {
             <section className="flex xl:grid flex-col grid-cols-10 gap-4 mt-5">
                 <main className="flex flex-col col-span-7 gap-4">
                     <Announcement
-                        icon={<GiPartyPopper/>}
-                        text="Welcome to the new WoolGens Website!"
+                        icon={<ImNewspaper/>}
+                        text="Changelogs: The newest information around WoolGens!"
                         iconStyles="bg-green-500 text-white"
                     />
                     {changeLogs ?

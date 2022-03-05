@@ -19,7 +19,7 @@ const MobileNavbar: FC<MobileNavbarProps> = ({isOpen, toggleMobileNavbar}) => {
                     <h1 className="flex justify-center items-center my-5 text-2xl">
                         <GiCompass size="2rem" className="mr-3"/>
                         <span className="font-bold">
-                            Navigation
+                            WoolGens
                         </span>
                     </h1>
                     <ul className="grid grid-cols-2 gap-4">
