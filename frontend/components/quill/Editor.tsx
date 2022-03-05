@@ -1,19 +1,32 @@
-import React, {useState} from "react";
+import React, {FC, useState} from "react";
 import 'react-quill/dist/quill.bubble.css';
 import 'react-quill/dist/quill.snow.css';
 import ReactQuill, {Quill} from "react-quill";
-import parse from "html-react-parser"
 
 import MagicUrl from 'quill-magic-url'
+
 Quill.register('modules/magicUrl', MagicUrl)
 
-const Editor = () => {
+interface EditorProps {
+    showWords?: boolean
+}
+
+const Editor: FC<EditorProps> = ({showWords = false}) => {
     const [value, setValue] = useState('');
 
     const modules = {
         toolbar: [
-            ['bold', 'italic', 'underline', 'strike'],
-            [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+            ['bold', 'italic', 'underline', 'strike', {
+                'color': []
+            }],
+            ['blockquote', 'code-block', 'image'],
+            [{
+                'align': []
+            },{
+                list: 'ordered'
+            }, {
+                list: 'bullet'
+            }],
         ],
         magicUrl: true,
     }
@@ -29,11 +42,11 @@ const Editor = () => {
                 />
             </div>
 
-            Words: {value.split(" ").length-1}
-
-            <div className="prose prose-invert">
-                {parse(value)}
-            </div>
+            {showWords && (
+                <div className="flex justify-end text-gray-500">
+                    {value.split(" ").length-1} Words
+                </div>
+            )}
         </div>
     )
 }
