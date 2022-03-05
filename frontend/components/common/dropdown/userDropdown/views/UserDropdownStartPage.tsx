@@ -42,12 +42,19 @@ const UserDropdownStartPage: FC<UserDropdownStartPageProps> = ({selectedPage, ch
 
             <hr className="my-2 border-gray-700"/>
 
-            <DropdownItem onClick={() => changePage("account")} title="Account" icon={<RiUser3Line size="1.3rem"/>}
-                          withArrow={true}/>
-            <DropdownItem onClick={() => changePage("land")} title="Land" icon={<RiHomeHeartLine size="1.3rem"/>}
-                          withArrow={true}/>
+            <DropdownItem title="Account" icon={<RiUser3Line size="1.3rem"/>}
+                          withArrow={true} disabled={true} />
             {user.webUser.group.isStaff && (
                 <DropdownItem onClick={() => changePage("staff")} title="Staff Tools" icon={<RiDashboard3Line size="1.3rem"/>} withArrow={true}/>
+            )}
+            {user.minecraftUser?.land ? (
+                <Link href={`/stats/lands/${user.minecraftUser.land.id}`} passHref={true}>
+                    <a>
+                        <DropdownItem title="Land" icon={<RiHomeHeartLine size="1.3rem"/>}/>
+                    </a>
+                </Link>
+            ) : (
+                <DropdownItem title="Land" icon={<RiHomeHeartLine size="1.3rem"/>} disabled={true} />
             )}
             <DropdownItem onClick={() => authStore.logout()} title="Logout" icon={<RiLogoutBoxRLine size="1.3rem"/>}/>
         </Transition>

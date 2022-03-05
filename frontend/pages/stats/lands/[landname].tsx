@@ -9,13 +9,13 @@ import LandMembersList from "../../../components/stats/land/LandMembersList";
 import {useRouter} from "next/router";
 import Tab from "../../../components/common/Tab";
 import {observer} from "mobx-react-lite";
-import authStore from "../../../stores/AuthStore";
 import {getLandByName} from "../../../core/land";
 import {useState} from "react";
 import LandTransactions from "../../../components/stats/land/transactions/LandTransactions";
 import {isUserInLand} from "../../../core/user/user";
+import authStore from "../../../stores/AuthStore";
 
-const LandProfile: NextPageWithLayout = observer(({ landname, land }) => {
+const LandProfile: NextPageWithLayout = observer(({landname, land}) => {
     const router = useRouter()
     const [page, setPage] = useState("members")
 
@@ -24,7 +24,8 @@ const LandProfile: NextPageWithLayout = observer(({ landname, land }) => {
             <SEO seo={{
                 title: `${land.name}`,
                 description: `${land.name}, a strong band of ${land.members.length === 0 ? "1 player" : ((land.members.length + 1) + " players")}, working together to overcome all challenges thrown at them. Find out more about them here!`,
-                imageSRC: `/api/previews/land/${land.name}.jpg`}} />
+                imageSRC: `/api/previews/land/${land.name}.jpg`
+            }}/>
             <div>
                 <BasicCard>
                     <BreadCrumbs pathName={router ? router.asPath : ""}/>
@@ -35,12 +36,15 @@ const LandProfile: NextPageWithLayout = observer(({ landname, land }) => {
                         <LandGeneralStats land={land}/>
                         <div className="col-span-3">
                             <ul className="flex flex-wrap">
-                                <Tab title="Members" active={page === "members"} onClick={() => setPage("members")} />
-                                <Tab title="Transactions" active={page === "transactions"} onClick={() => setPage("transactions")} />
-                                {isUserInLand(landname, authStore.user) && <Tab title="Settings" disabled={true} />}
+                                <Tab title="Members" active={page === "members"} onClick={() => setPage("members")}/>
+                                {(isUserInLand(landname, authStore.user) || authStore.hasPermission("web.lands.transactions.others.view")) &&
+                                    <Tab title="Transactions" active={page === "transactions"}
+                                         onClick={() => setPage("transactions")}/>
+                                }
                             </ul>
                             {page === "members" && <LandMembersList land={land}/>}
-                            {page === "transactions" && <LandTransactions transactions={land.bank.transactions} />}
+                            {(page === "transactions" && (isUserInLand(landname, authStore.user) || authStore.hasPermission("web.lands.transactions.others.view"))) &&
+                                <LandTransactions transactions={land.bank.transactions}/>}
                         </div>
                     </main>
                 </div>

@@ -2,11 +2,7 @@ import React, {FC} from "react";
 import HeaderSideBox from "./HeaderSideBox";
 import {IoLogoDiscord, IoGameController} from "react-icons/io5"
 import Logo from "../Logo";
-import {toast} from "react-toastify";
-
-const copyIP = () => {
-    navigator.clipboard.writeText(process.env.NEXT_PUBLIC_MINECRAFT_IP).then(() => toast.success("The IP was copied to your clipboard!"))
-}
+import informationStore from "../../../stores/InformationStore";
 
 declare interface HeaderProps {
     onlineDiscord: number,
@@ -25,7 +21,7 @@ const Header: FC<HeaderProps> = ({onlineDiscord, onlineMinecraft, discordInviteL
                     icon={<IoGameController className="text-green-500" size="2.5rem" />}
                     color="bg-green-500"
                     count={onlineMinecraft}
-                    onClick={copyIP}
+                    onClick={informationStore.copyIP}
                 />
                 <div className="mx-auto">
                     <Logo animated={true} />

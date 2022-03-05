@@ -31,7 +31,7 @@ export default async function generateUserImage(req, res) {
                     <img src="${base64BackgroundURL}" alt="Background" height="450px" style="position: absolute; top: 0; left: 0"/>
                     <div style="position: absolute; height: 100%; width: 100%; top: 0; left: 0; background: linear-gradient(117deg, rgba(187,247,208,0.1) 0%, rgba(34,197,94,0.2) 51%, rgba(187,247,208,0.1) 100%);" />
                     <div style="position: absolute; width: 100%; height: 100%; text-align: center; top: -70px;">
-                        <h1 style="font-weight: bold; font-size: 9rem; text-transform: uppercase; color: white; text-shadow: 2px 2px 10px rgba(0, 0, 0, .5);">
+                        <h1 style="font-weight: bold; font-size: 8rem; text-transform: uppercase; color: white; text-shadow: 2px 2px 10px rgba(0, 0, 0, .5);">
                             ${land.name}
                         </h1>
                     </div>

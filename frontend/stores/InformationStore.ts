@@ -1,5 +1,6 @@
 import {makeAutoObservable, runInAction} from "mobx";
 import {getDiscordWidget, getMinecraftServerData} from "../core/information";
+import {toast} from "react-toastify";
 
 class InformationStore {
 
@@ -20,6 +21,12 @@ class InformationStore {
             this.discordInviteLink = discordWidget.instant_invite || "#"
             this.onlineMinecraft = minecraftData?.players.online || 0
         })
+    }
+
+    copyIP() {
+        navigator.clipboard.writeText(process.env.NEXT_PUBLIC_MINECRAFT_IP).then(
+            () => toast.success("The IP was copied to your clipboard!")
+        )
     }
 }
 
