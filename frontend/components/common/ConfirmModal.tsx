@@ -3,7 +3,7 @@ import {BaseButton} from "./BaseButton";
 import React, {FC} from "react";
 
 interface ConfirmModelProps {
-    text: string,
+    text: React.ReactNode,
     close: () => unknown,
     confirm: () => unknown,
 }

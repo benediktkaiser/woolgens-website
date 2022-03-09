@@ -42,8 +42,11 @@ const UserDropdownStartPage: FC<UserDropdownStartPageProps> = ({selectedPage, ch
 
             <hr className="my-2 border-gray-700"/>
 
-            <DropdownItem title="Account" icon={<RiUser3Line size="1.3rem"/>}
-                          withArrow={true} disabled={true} />
+            <Link href={`/profile/${user.name}`} passHref={true}>
+                <a>
+                    <DropdownItem title="Profile" icon={<RiUser3Line size="1.3rem"/>} />
+                </a>
+            </Link>
             {user.webUser.group.isStaff && (
                 <DropdownItem onClick={() => changePage("staff")} title="Staff Tools" icon={<RiDashboard3Line size="1.3rem"/>} withArrow={true}/>
             )}

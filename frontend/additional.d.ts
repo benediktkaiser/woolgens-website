@@ -215,6 +215,7 @@ declare interface VotePartyStatus {
     maxCount: number
 }
 
+/* Tickets */
 declare interface Ticket {
     id: string
     issuer: InitialUser
@@ -246,7 +247,7 @@ declare interface TicketCategory {
     id: string,
     name: string,
     description: string
-    inputs: Record <string, TicketInput>
+    inputs: TicketInput[]
     active: boolean
 }
 

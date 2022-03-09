@@ -53,9 +53,9 @@ const SidebarDropDownLink: FC<SidebarDropDownLinkProps> = ({icon, title, pathNam
                 leaveFrom="translate-y-0 opacity-100"
                 leaveTo="-translate-y-full opacity-0"
             >
-                <div className="flex overflow-hidden flex-col pt-0.5 mx-3 bg-dark-light rounded-lg">
+                <ul className="flex overflow-hidden flex-col pt-0.5 mx-3 bg-dark-light rounded-lg">
                     {children}
-                </div>
+                </ul>
             </Transition>
         </li>
     )

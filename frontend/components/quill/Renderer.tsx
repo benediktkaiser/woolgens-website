@@ -17,7 +17,15 @@ whiteList.s.push('style');
 whiteList.strong.push('style');
 const options = {
     whiteList,
-    css: false,
+    css: {
+        whiteList: {
+            color: true,
+            "background-color": true,
+            display: true,
+            margin: true,
+            float: true,
+        },
+    },
 };
 
 
