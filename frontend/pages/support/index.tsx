@@ -1,15 +1,18 @@
 import {observer} from "mobx-react-lite";
 import NavbarLayout from "../../layout/NavbarLayout";
-import React from "react";
+import React, {useState} from "react";
 import SEO from "../../components/SEO"
 import dynamic from "next/dynamic";
 import BasicCard from "../../components/common/cards/BasicCard";
+import Renderer from "../../components/quill/Renderer";
 
 const Editor = dynamic(() => import('../../components/quill/Editor'), {
     ssr: false
 })
 
 const IndexPage: NextPageWithLayout = observer(() => {
+    const [content, setContent] = useState('')
+
     return (
         <div>
             <SEO seo={{
@@ -21,7 +24,16 @@ const IndexPage: NextPageWithLayout = observer(() => {
                 <h1 className="my-2 text-2xl font-bold text-gray-300">
                     Simple Text
                 </h1>
-                <Editor showWords={true} />
+                <Editor
+                    content={content}
+                    setContent={setContent}
+                    showWords={true}
+                    maxWords={200}
+                />
+            </BasicCard>
+            <br />
+            <BasicCard>
+                <Renderer value={content} />
             </BasicCard>
         </div>
     )

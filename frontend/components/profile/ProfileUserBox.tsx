@@ -27,7 +27,7 @@ const ProfileUserBox: FC<ProfileUserBoxProps> = ({user, seasonNumber}) => {
     return (
         <div className="p-4 w-full bg-dark-light rounded-lg">
             <div className="overflow-hidden relative rounded-lg h-[200px]">
-                <Image className="invisible lg:visible" src={background} alt="profile background" />
+                <Image className="invisible lg:visible select-none" src={background} alt="profile background" />
                 <div className="absolute top-0 w-full h-full bg-gradient-to-l to-gray-500/60 from-green-900/50" />
                 <div className="absolute top-1/2 right-2 md:right-10 mt-1 -translate-y-1/2">
                     <SkillsBadge skill={highestSkill} />

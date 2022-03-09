@@ -1,5 +1,7 @@
 import '../styles/global.css'
-import '../styles/toast.css'
+import '../styles/themes/toast.css'
+import '../styles/themes/quill.snow.css'
+import '../styles/themes/quill.emojies.css'
 
 import '../plugins/persistent-store.plugin'
 

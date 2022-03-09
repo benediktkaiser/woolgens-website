@@ -1,6 +1,6 @@
 import {makeAutoObservable, runInAction} from "mobx";
 import {getDiscordWidget, getMinecraftServerData, getVotePartyStatus} from "../core/information";
-import {toast} from "react-toastify";
+import copyToClipBoard from "../core/helpers/copyToClipBoard";
 
 class InformationStore {
 
@@ -35,9 +35,7 @@ class InformationStore {
     }
 
     copyIP() {
-        navigator.clipboard.writeText(process.env.NEXT_PUBLIC_MINECRAFT_IP).then(
-            () => toast.success("The IP was copied to your clipboard!")
-        )
+        copyToClipBoard(process.env.NEXT_PUBLIC_MINECRAFT_IP, "The IP was copied to your clipboard!")
     }
 }
 

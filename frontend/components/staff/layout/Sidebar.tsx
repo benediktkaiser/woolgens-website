@@ -1,7 +1,8 @@
 import SidebarLink from "./SidebarLink";
-import {HiHome, HiChatAlt, HiX} from "react-icons/hi"
+import {HiHome, HiChatAlt, HiX, HiTicket} from "react-icons/hi"
 import React, {FC} from "react";
 import Logo from "../../common/Logo";
+import SidebarDropDownLink from "./SidebarDropDownLink";
 
 declare interface SidebarProps {
     extended: boolean,
@@ -13,11 +14,11 @@ const Sidebar: FC<SidebarProps> = ({extended = false, pathName = "", toggleSideb
 
     return (
         <div
-            className={`fixed flex flex-col lg:static z-40 h-screen w-72 bg-dark transition-transform lg:transition-none ease-in-out duration-700 transform lg:transform-none ${!extended ? "-translate-x-80" : "translate-x-0"}`}>
+            className={`fixed flex flex-col lg:static z-40 h-screen w-80 bg-dark transition-transform lg:transition-none ease-in-out duration-700 transform lg:transform-none ${!extended ? "-translate-x-80" : "translate-x-0"}`}>
             <div className="flex-grow">
                 <div className="flex items-center px-6 h-28">
                     <div className="flex flex-grow gap-2 items-center">
-                        <Logo height="60px" width="60px" />
+                        <Logo height="60px" width="60px"/>
                         <div className="leading-none">
                             <h1 className="text-xl font-bold">
                                 WoolGens
@@ -45,6 +46,25 @@ const Sidebar: FC<SidebarProps> = ({extended = false, pathName = "", toggleSideb
                         pathName={pathName}
                         link="/staff/chatlogs"
                     />
+                    <SidebarDropDownLink
+                        icon={<HiTicket size="1.2rem"/>}
+                        title="Tickets"
+                        pathName={pathName}
+                        link="/staff/tickets"
+                    >
+                        <SidebarLink
+                            title="Tickets"
+                            pathName={pathName}
+                            link="/staff/tickets"
+                            inDropDown={true}
+                        />
+                        <SidebarLink
+                            title="Categories"
+                            pathName={pathName}
+                            link="/staff/tickets/categories"
+                            inDropDown={true}
+                        />
+                    </SidebarDropDownLink>
                 </ul>
             </div>
             <p className="p-6 font-bold text-gray-500">

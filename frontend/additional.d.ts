@@ -17,7 +17,7 @@ declare interface LiveUser extends InitialUser {
     health: number
 }
 
-declare interface WebInitialUser extends  InitialUser {
+declare interface WebInitialUser extends InitialUser {
     group: string,
     joined: number, // is a timestamp
     notifications: WebNotification[],
@@ -61,7 +61,22 @@ declare interface Badge {
     received: number
 }
 
-declare type MinecraftColorCode = "&1" | "&2" | "&3" | "&4" | "&5" | "&6" | "&7" | "&8" | "&9" | "&a" | "&b" | "&c" | "&d" | "&e" | "&f"
+declare type MinecraftColorCode =
+    "&1"
+    | "&2"
+    | "&3"
+    | "&4"
+    | "&5"
+    | "&6"
+    | "&7"
+    | "&8"
+    | "&9"
+    | "&a"
+    | "&b"
+    | "&c"
+    | "&d"
+    | "&e"
+    | "&f"
 
 declare interface Group {
     name: string,
@@ -102,7 +117,7 @@ declare interface InitialLand {
     roles: Record<string, LandRole>
 }
 
-declare interface Land extends  InitialLand {
+declare interface Land extends InitialLand {
     owner: LandMember
     members: LandMember[]
 }
@@ -191,11 +206,54 @@ declare interface InitialChatLogEntry {
     value: string,
 }
 
-declare interface ChatLogEntry extends InitialChatLogEntry{
+declare interface ChatLogEntry extends InitialChatLogEntry {
     executor: ChatLogPlayer,
 }
 
 declare interface VotePartyStatus {
     count: number,
     maxCount: number
+}
+
+declare interface Ticket {
+    id: string
+    issuer: InitialUser
+    assignee: InitialUser[]
+    category: string // the ID of TicketCategory
+    status: string // the ID of TicketStatus
+    timestamp: number
+    open: boolean
+
+    content: Record<string, string>
+    entries: TicketChatEntry[]
+}
+
+declare interface TicketChatEntry {
+    type: "Message" | "ChangeStatus" | "AddedAssigned" | "RemovedAssigned"
+    value: string
+    history: Record<number, string> // timestamp, old value
+    issuer: InitialUser
+}
+
+declare interface TicketStatus {
+    id: string
+    label: string,
+    color: string,
+    willClose: boolean, // if status is set and willClose is true, the ticket will be closed
+}
+
+declare interface TicketCategory {
+    id: string,
+    name: string,
+    description: string
+    inputs: Record <string, TicketInput>
+    active: boolean
+}
+
+declare interface TicketInput {
+    id: string
+    label: string
+    hint: string
+    type: "Text" | "Select" | "TextBox" | "checkbox" | "radio"
+    meta: Record<string, unknown>
 }

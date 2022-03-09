@@ -30,9 +30,3 @@ html {
     -webkit-filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
     filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
 }
-
-.ql-editor {
-    min-height: 250px;
-    max-height: 500px;
-    font-size: 18px;
-}

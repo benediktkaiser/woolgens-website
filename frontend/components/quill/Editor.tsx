@@ -1,50 +1,66 @@
-import React, {FC, useState} from "react";
+import React, {FC} from "react";
 import 'react-quill/dist/quill.bubble.css';
-import 'react-quill/dist/quill.snow.css';
 import ReactQuill, {Quill} from "react-quill";
 
 import MagicUrl from 'quill-magic-url'
+import BlotFormatter from 'quill-blot-formatter';
+import ImageCompress from 'quill-image-compress';
+import Emoji from "quill-emoji";
+import countWords from "../../core/helpers/countWords";
 
 Quill.register('modules/magicUrl', MagicUrl)
+Quill.register('modules/blotFormatter', BlotFormatter);
+Quill.register('modules/imageCompress', ImageCompress);
+Quill.register("modules/emoji", Emoji);
 
 interface EditorProps {
+    content: string,
+    setContent: (value: string) => void,
     showWords?: boolean
+    maxWords?: number
 }
 
-const Editor: FC<EditorProps> = ({showWords = false}) => {
-    const [value, setValue] = useState('');
+const Editor: FC<EditorProps> = ({showWords = false, maxWords, content, setContent}) => {
 
     const modules = {
         toolbar: [
-            ['bold', 'italic', 'underline', 'strike', {
-                'color': []
-            }],
-            ['blockquote', 'code-block', 'image'],
-            [{
-                'align': []
-            },{
-                list: 'ordered'
-            }, {
-                list: 'bullet'
-            }],
+            [{'header': [1, 2, false]}],
+            ['bold', 'italic', 'underline', 'strike'],
+            ['blockquote', 'code-block'],
+
+            [{'list': 'ordered'}, {'list': 'bullet'}, 'image'],
+
+            [{'color': []}, {'background': []}],
+            [{'align': []}],
+            ['clean'],
         ],
         magicUrl: true,
+        blotFormatter: {},
+        "emoji-shortname": true,
+        imageCompress: {
+            quality: 0.5,
+            maxWidth: 500,
+            maxHeight: 500,
+            imageType: 'image/png',
+            debug: false,
+            suppressErrorLogging: true,
+        },
     }
 
     return (
         <div>
             <div className="rounded border-2 border-dark-light">
                 <ReactQuill
-                    theme="bubble"
+                    theme="snow"
                     modules={modules}
-                    value={value}
-                    onChange={setValue}
+                    value={content}
+                    onChange={setContent}
                 />
             </div>
 
             {showWords && (
-                <div className="flex justify-end text-gray-500">
-                    {value.split(" ").length-1} Words
+                <div className="flex justify-end mt-1 mr-1 text-gray-500">
+                    {countWords(content)}{maxWords && `/${maxWords}`} Words
                 </div>
             )}
         </div>
