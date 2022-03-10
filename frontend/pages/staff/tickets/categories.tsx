@@ -36,14 +36,10 @@ const StaffPage: NextPageWithLayout = observer(() => {
     }
 
     const deleteCategoryById = (categoryId: string) => {
-        toast.promise(
-            ticketCategoryStore.deleteTicketCategoryById(categoryId),
-            {
-                pending: `Category #${categoryId} is being deleted. Please wait a moment.`,
-                success: `Category #${categoryId} was successfully deleted.`,
-                error: `Category #${categoryId} could not be deleted.`
-            }
-        ).then(() => setSelectedCategoryId(null))
+        ticketCategoryStore.deleteTicketCategoryById(categoryId).then(() => {
+            setSelectedCategoryId(null)
+            toast.success(`Category #${categoryId} was successfully deleted.`)
+        })
     }
 
     return (

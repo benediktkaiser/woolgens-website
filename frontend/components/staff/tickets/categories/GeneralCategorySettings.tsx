@@ -46,7 +46,7 @@ const GeneralCategorySettings: FC<GeneralCategorySettingsProps> = ({defaultCateg
                 </div>
             )}
 
-            <section>
+            <section className="mt-3">
                 <form className="flex flex-col space-y-2">
                     <div key={defaultCategory.name}>
                         <BaseInputWithLabel

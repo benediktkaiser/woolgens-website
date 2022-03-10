@@ -216,16 +216,20 @@ declare interface VotePartyStatus {
 }
 
 /* Tickets */
-declare interface Ticket {
+declare interface InitialTicket {
+    title: string,
+    category: string, // the ID of TicketCategory
+    issuer: InitialUser,
+    content: Record<string, string>
+}
+
+declare interface Ticket extends InitialTicket {
     id: string
-    issuer: InitialUser
     assignee: InitialUser[]
-    category: string // the ID of TicketCategory
     status: string // the ID of TicketStatus
     timestamp: number
     open: boolean
 
-    content: Record<string, string>
     entries: TicketChatEntry[]
 }
 
@@ -255,6 +259,7 @@ declare interface TicketInput {
     id: string
     label: string
     hint: string
+    required: boolean
     type: "Text" | "Select" | "TextBox" | "checkbox" | "radio"
     meta: Record<string, unknown>
 }

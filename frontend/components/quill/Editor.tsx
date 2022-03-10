@@ -24,7 +24,7 @@ const Editor: FC<EditorProps> = ({showWords = false, maxWords, content, setConte
 
     const modules = {
         toolbar: [
-            [{'header': [1, 2, false]}],
+            [{'header': [1, 2, 3, false]}],
             ['bold', 'italic', 'underline', 'strike'],
             ['blockquote', 'code-block'],
 
@@ -49,7 +49,7 @@ const Editor: FC<EditorProps> = ({showWords = false, maxWords, content, setConte
 
     return (
         <div>
-            <div className="rounded border-2 border-dark-light">
+            <div className="rounded border-2 border-dark-light ">
                 <ReactQuill
                     theme="snow"
                     modules={modules}

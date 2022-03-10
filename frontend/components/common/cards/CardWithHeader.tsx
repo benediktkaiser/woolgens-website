@@ -4,10 +4,11 @@ import React, {FC} from "react";
 declare interface CardWithHeaderProps {
     title: string,
     right?: React.ReactNode,
+    padding?: string,
     children?: React.ReactNode
 }
 
-const CardWithHeader: FC<CardWithHeaderProps> = ({title, right, children}) => {
+const CardWithHeader: FC<CardWithHeaderProps> = ({title, padding = "p-4", right, children}) => {
     return (
         <BasicCard padding="p-0">
             <div className="flex justify-between items-center py-2 px-4 bg-dark-light rounded-t-md">
@@ -16,7 +17,7 @@ const CardWithHeader: FC<CardWithHeaderProps> = ({title, right, children}) => {
                 </h1>
                 {right}
             </div>
-            <div className="p-4">
+            <div className={padding}>
                 {children}
             </div>
         </BasicCard>

@@ -13,6 +13,7 @@
     ] }],
     "no-alert": "error",
     "tailwindcss/classnames-order": "error",
-    "tailwindcss/no-custom-classname": "off"
+    "tailwindcss/no-custom-classname": "off",
+    "react-hooks/exhaustive-deps": "off"
   }
 }

@@ -63,7 +63,7 @@ const EditCategory: FC<EditCategoryProps> = ({category, deleteCategory}) => {
                 </ul>
 
                 <div className="flex flex-col space-y-4">
-                    <BasicCard>
+                    <BasicCard withTabs={true}>
                         {page === "settings" &&
                             <GeneralCategorySettings defaultCategory={category} category={temporaryCategory}
                                                      setCategory={setTemporaryCategory} />}
@@ -75,7 +75,7 @@ const EditCategory: FC<EditCategoryProps> = ({category, deleteCategory}) => {
                                             onClick={() => updateCategory(temporaryCategory)}>
                                     Save and publish changes
                                 </BaseButton>
-                                <BaseButton type="primary" className="ml-2"
+                                <BaseButton type="dark" className="ml-2"
                                             onClick={() => setTemporaryCategory(category)}>
                                     Reset all changes
                                 </BaseButton>

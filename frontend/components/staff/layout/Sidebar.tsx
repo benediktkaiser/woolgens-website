@@ -64,6 +64,12 @@ const Sidebar: FC<SidebarProps> = ({extended = false, pathName = "", toggleSideb
                             link="/staff/tickets/categories"
                             inDropDown={true}
                         />
+                        <SidebarLink
+                            title="Statuses"
+                            pathName={pathName}
+                            link="/staff/tickets/statuses"
+                            inDropDown={true}
+                        />
                     </SidebarDropDownLink>
                 </ul>
             </div>
