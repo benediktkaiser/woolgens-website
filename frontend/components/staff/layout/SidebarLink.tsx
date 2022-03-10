@@ -26,7 +26,7 @@ const SidebarLink: FC<SidebarLinkProps> = ({icon, title, link, pathName}) => {
                             <div className="absolute inset-y-0 left-0 w-1 bg-blue-400 rounded-tr-lg rounded-br-lg" aria-hidden="true"/>
                             <span className="inline-flex items-center w-full font-semibold text-gray-200 cursor-pointer">
                                 {icon}
-                                <span className="ml-4 font-avenir">
+                                <span className="ml-4">
                                     {title}
                                 </span>
                             </span>
@@ -34,7 +34,7 @@ const SidebarLink: FC<SidebarLinkProps> = ({icon, title, link, pathName}) => {
                     ) : (
                         <span className="inline-flex items-center w-full font-semibold text-gray-500 group-hover:text-gray-200 cursor-pointer">
                             {icon}
-                                <span className="ml-4 font-avenir">
+                                <span className="ml-4">
                                 {title}
                             </span>
                         </span>

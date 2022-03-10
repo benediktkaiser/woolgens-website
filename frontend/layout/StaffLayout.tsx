@@ -43,7 +43,7 @@ const SidebarLayout: React.FC<SidebarProps> = observer(({permission, children, .
     }
 
     return (
-        <main className="flex overflow-hidden h-screen text-gray-200 font-poppins">
+        <main className="flex overflow-hidden h-screen text-gray-200 font-lato">
             <Sidebar extended={staffStore.sidebarExtended} pathName={router ? router.pathname : ""}
                      toggleSidebar={() => staffStore.toggleSidebar()}/>
             <div onClick={() => staffStore.toggleSidebar()}

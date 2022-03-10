@@ -10,13 +10,13 @@ class ChatLogStore {
         makeAutoObservable(this)
     }
 
-    async fetchAllChatLogs(refetch = false) {
-        if (this.allChatLogs.length > 0 && !refetch) {
+    async fetchAllChatLogs(fetch = false) {
+        if (this.allChatLogs.length > 0 && !fetch) {
             return this.allChatLogs
         }
         const allChatLogs = await fetchAllChatLogs()
         runInAction(() => {
-            this.allChatLogs = allChatLogs
+            this.allChatLogs = allChatLogs.reverse()
         })
     }
 
@@ -32,6 +32,15 @@ class ChatLogStore {
             })
         }
         return chatLog
+    }
+
+    getChangeLogsFromUUID(uuid: string, limit = 5): InitialChatLog[] {
+        return this.allChatLogs.filter((chatLog, index) => {
+            if (index > limit) {
+                return false
+            }
+            return chatLog.issuer.uuid === uuid;
+        })
     }
 
     async deleteChatLogFromID(id: string) {
