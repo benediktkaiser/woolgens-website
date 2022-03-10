@@ -4,8 +4,8 @@ const SortableItem = SortableElement(({value, deleteBlock, selectBlock}: { value
 
     return (
         <li className="py-4 px-6 w-full rounded cursor-pointer bg-dark-light/60" style={{listStyle: "none"}}>
-            <div className="flex justify-between items-center">
-                <h1 className="text-xl">
+            <div className="flex gap-2 justify-between items-center">
+                <h1 className="text-lg">
                     {value.label}
                 </h1>
                 <div className="flex items-center">

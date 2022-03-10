@@ -1,6 +1,6 @@
 import React, {FC} from "react";
-import BaseInputWithLabel from "../common/forms/BaseInputWithLabel";
 import dynamic from "next/dynamic";
+import BaseInput from "../common/forms/BaseInput";
 
 const Editor = dynamic(() => import('../../components/quill/Editor'), {
     ssr: false
@@ -20,9 +20,19 @@ const TicketCreateInput: FC<TicketCreateInputProps> = ({input, onChange, content
     if (input.type === "TextBox") {
         return (
             <div>
-                <p className="pl-1 my-1 mr-5 mb-1 text-lg text-gray-200">
-                    {input.label}:
-                </p>
+                <div className="flex justify-between items-end">
+                    <div className="pl-1 my-1.5">
+                        <h1 className="text-xl text-gray-200">
+                            {input.label}:
+                        </h1>
+                        {input.hint && (
+                            <p className="text-sm text-gray-500">
+                                {input.hint}
+                            </p>
+                        )}
+                    </div>
+                </div>
+
                 <div className="relative w-full">
                     <Editor
                         content={content}
@@ -36,10 +46,29 @@ const TicketCreateInput: FC<TicketCreateInputProps> = ({input, onChange, content
 
     return (
         <div>
-            <BaseInputWithLabel
-                onChange={event => setValue(event.target.value)}
-                label={input.label}
-            />
+            <label>
+                <div className="pl-1 my-1.5">
+                    <h1 className="text-xl text-gray-200">
+                        {input.label}:
+                    </h1>
+                    {input.hint && (
+                        <p className="text-sm text-gray-500">
+                            {input.hint}
+                        </p>
+                    )}
+                </div>
+                <div className="relative w-full">
+                    <BaseInput
+                        defaultValue={content}
+                        onChange={event => setValue(event.target.value)}
+                    />
+                    {input.required && (
+                        <p className="absolute right-0 -bottom-5 pr-1 mt-1.5 text-xs text-red-400">
+                            Required
+                        </p>
+                    )}
+                </div>
+            </label>
         </div>
     )
 }
