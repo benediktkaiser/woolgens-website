@@ -25,32 +25,32 @@ const VoteIndexPage: NextPageWithLayout = observer(() => {
                 <main className="grid grid-cols-2 lg:grid-cols-3 col-span-7 gap-4">
                     <VoteCard
                         title="Minecraft MP"
-                        link="https://minecraft-mp.com/server-s300622"
+                        link="https://minecraft-mp.com/server/301468/vote/"
                         voted={false}
                     />
                     <VoteCard
                         title="Minecraft Servers.org"
-                        link="https://minecraftservers.org/server/632489"
+                        link="https://minecraftservers.org/vote/623204"
                         voted={false}
                     />
                     <VoteCard
                         title="Minecraft Servers.biz"
-                        link="https://minecraftservers.biz/servers/151226/"
+                        link="https://minecraftservers.biz/servers/151281/#vote_now"
                         voted={false}
                     />
                     <VoteCard
                         title="Minecraft List"
-                        link="https://minecraftlist.org/server/27684"
+                        link="https://minecraftlist.org/vote/25024"
                         voted={false}
                     />
                     <VoteCard
                         title="Minecraft Server.net"
-                        link="https://minecraft-server.net/details/WoolGens/"
+                        link="https://minecraft-server.net/vote/woolgenss/"
                         voted={false}
                     />
                     <VoteCard
                         title="TopG"
-                        link="https://topg.org/minecraft-servers/server-640596"
+                        link="https://topg.org/minecraft-servers/server-634043"
                         voted={false}
                     />
                 </main>

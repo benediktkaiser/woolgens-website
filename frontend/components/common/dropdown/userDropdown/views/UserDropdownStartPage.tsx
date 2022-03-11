@@ -29,11 +29,11 @@ const UserDropdownStartPage: FC<UserDropdownStartPageProps> = ({selectedPage, ch
             <Link href={`/profile/${user.name}`} passHref={true}>
                 <a className="flex items-center p-3 mb-2 hover:bg-dark rounded-lg cursor-pointer">
                     <Avatar player={user.uuid} size={50}/>
-                    <div className="ml-3 font-avenir">
-                        <h1 className="text-xl">
+                    <div className="ml-3">
+                        <h1 className="text-xl font-semibold">
                             {user.name}
                         </h1>
-                        <h3 className="text-sm font-light" style={{color: COLOR_CODES[user.webUser.group.color]}}>
+                        <h3 className="text-sm" style={{color: COLOR_CODES[user.webUser.group.color]}}>
                             {user.webUser.group.name}
                         </h3>
                     </div>
