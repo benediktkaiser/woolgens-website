@@ -15,13 +15,14 @@ const Legal: NextPageWithLayout = () => {
             <h1>
                 Imprint
             </h1>
-            <address>
-                Name Lastname <br/>
-                Line 1 <br/>
-                Line 2 <br/>
-                Telephone Number<br />
-                admin@woolgens.net
-            </address>
+            <div>
+                <p>
+                    If you need to contact us for any legal reasons please write us an email at:
+                </p>
+                <p className="font-bold">
+                    admin@woolgens.net
+                </p>
+            </div>
         </article>
     )
 }

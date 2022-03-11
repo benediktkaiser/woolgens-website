@@ -23,7 +23,8 @@ const SidebarLayout: React.FC<SidebarProps> = observer(({permission, children, .
         return (
             <div className="flex flex-col justify-center items-center mx-auto w-full h-screen">
                 <SEO seo={{
-                    title: `Loading...`
+                    title: `Internal Staff Interface`,
+                    description: 'WoolGens Internal Staff Interface. Please login to continue.'
                 }} />
                 <AiOutlineLoading3Quarters size="4rem" className="animate-spin"/>
                 <div className="mt-8 text-center">
