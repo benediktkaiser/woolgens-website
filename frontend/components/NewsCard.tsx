@@ -11,7 +11,7 @@ const NewsCard: FC<NewsContainerProps> = ({changelog}) => {
     const month = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
 
     return (
-        <div className="group relative w-full transition ease-in-out hover:scale-101">
+        <div className="group relative w-full">
             <div className="hidden xl:block absolute top-8 left-0 z-0 h-full transition ease-in-out group-hover:-translate-x-full">
                 <div
                     className="py-4 pr-1 pl-2 leading-none text-center bg-red-600 rounded-l-lg border-b-4 border-red-800">
@@ -42,12 +42,17 @@ const NewsCard: FC<NewsContainerProps> = ({changelog}) => {
                 </div>
                 <div className="my-3">
                     {changelog.lines.map((content, index) => (
-                        <p key={index} className="text-xl tracking-wider min-h-[18px]">
+                        <p key={index} className="text-lg min-h-[18px]">
                             <McText prefix="&" style={{fontFamily: "poppins"}}>
                                 {content}
                             </McText>
                         </p>
                     ))}
+                </div>
+                <div className="flex justify-end">
+                    <span className="text-gray-600">
+                        Version {changelog.id}
+                    </span>
                 </div>
             </div>
         </div>

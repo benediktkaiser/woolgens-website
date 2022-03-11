@@ -1,5 +1,6 @@
 import {makeAutoObservable, runInAction} from "mobx";
 import {deleteChatLogFromID, fetchAllChatLogs, fetchChatLogFromID} from "../core/staff/chatlogs";
+import authStore from "./AuthStore";
 
 class ChatLogStore {
 
@@ -44,9 +45,12 @@ class ChatLogStore {
     }
 
     async deleteChatLogFromID(id: string) {
-        await deleteChatLogFromID(id)
-        await this.fetchAllChatLogs(true)
-        return true;
+        if (authStore.hasPermission("web.chatlogs.delete")) {
+            await deleteChatLogFromID(id)
+            await this.fetchAllChatLogs(true)
+            return true;
+        }
+        return false;
     }
 }
 

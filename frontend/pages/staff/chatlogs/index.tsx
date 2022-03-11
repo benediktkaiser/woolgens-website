@@ -8,6 +8,7 @@ import Pagination from "../../../components/common/pagination/Pagination";
 import PaginationWrapper from "../../../components/common/pagination/PaginationWrapper";
 import ChatLogRow from "../../../components/staff/chatlogs/ChatLogRow";
 import {MdOutlineChatBubble} from "react-icons/md";
+import SEO from "../../../components/SEO";
 
 const pagination = new Pagination({itemsPerPage: 5, showPagerNumbers: true, itemName: "chat logs"})
 
@@ -24,6 +25,9 @@ const StaffPage: NextPageWithLayout = observer(() => {
 
     return (
         <div className="flex flex-col space-y-10">
+            <SEO seo={{
+                title: `Chatlogs`
+            }} />
             {chatLogStore.getChangeLogsFromUUID(authStore.user.uuid).length > 0 && (
                 <section className="flex flex-col space-y-4">
                     <h1 className="ml-1 text-xl font-bold text-gray-400">

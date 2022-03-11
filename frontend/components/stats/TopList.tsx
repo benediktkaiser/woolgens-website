@@ -11,7 +11,7 @@ const TopList: FC<TopListProps> = ({background = "bg-gradient-to-r to-blue-500 f
     return (
         <div className="overflow-hidden rounded-lg">
             <div className={background}>
-                <h1 className="py-3 text-4xl font-bold text-center select-none font-avenir">
+                <h1 className="py-3 text-4xl font-bold text-center select-none">
                     {title}
                 </h1>
             </div>

@@ -2,7 +2,7 @@ import memoizee from "memoizee"
 import {changeLogAPI} from "./api";
 import {throwError} from "./error";
 
-const CHANGELOG_CACHE = 30 * 60 * 1000
+const CHANGELOG_CACHE = 5 * 60 * 1000
 
 async function _fetchChangeLogs(): Promise<ChangeLog[]> {
     try {

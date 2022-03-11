@@ -40,55 +40,57 @@ const PaginationWrapper: FC<PaginationProps> = ({title, pagination, loading, chi
                 <div className="flex-grow text-gray-500">
                     {pagination.currentEntries()}
                 </div>
-                <div className="flex items-stretch space-x-3 text-sm">
-                    <BaseButton type="dark" onClick={() => pagination.prevPage()} disabled={!pagination.canPrevPage()}>
-                        <BiLeftArrow color="white"/>
-                    </BaseButton>
-                    {pagination.config.showPagerNumbers && (
-                        <>
-                            {pagination.currentPage > 2 && (
-                                <>
-                                    <BaseButton type="dark" onClick={() => pagination.setPage(1)}>
-                                        1
+                {pagination.maxPages > 1 && (
+                    <div className="flex items-stretch space-x-3 text-sm">
+                        <BaseButton type="dark" onClick={() => pagination.prevPage()} disabled={!pagination.canPrevPage()}>
+                            <BiLeftArrow color="white"/>
+                        </BaseButton>
+                        {pagination.config.showPagerNumbers && (
+                            <>
+                                {pagination.currentPage > 2 && (
+                                    <>
+                                        <BaseButton type="dark" onClick={() => pagination.setPage(1)}>
+                                            1
+                                        </BaseButton>
+                                        {pagination.currentPage > 3 && (
+                                            <div className="flex flex-col justify-end text-xl tracking-wider">
+                                                ...
+                                            </div>
+                                        )}
+                                    </>
+                                )}
+                                {pagination.canPrevPage() && (
+                                    <BaseButton type="dark" onClick={() => pagination.prevPage()}>
+                                        {pagination.currentPage - 1}
                                     </BaseButton>
-                                    {pagination.currentPage > 3 && (
-                                        <div className="flex flex-col justify-end text-xl tracking-wider">
-                                            ...
-                                        </div>
-                                    )}
-                                </>
-                            )}
-                            {pagination.canPrevPage() && (
-                                <BaseButton type="dark" onClick={() => pagination.prevPage()}>
-                                    {pagination.currentPage - 1}
+                                )}
+                                <BaseButton type="dark-light" className="bg-blue-500">
+                                    {pagination.currentPage}
                                 </BaseButton>
-                            )}
-                            <BaseButton type="dark-light" className="bg-blue-500">
-                                {pagination.currentPage}
-                            </BaseButton>
-                            {pagination.canNextPage() && (
-                                <BaseButton type="dark" onClick={() => pagination.nextPage()}>
-                                    {pagination.currentPage + 1}
-                                </BaseButton>
-                            )}
-                            {pagination.currentPage < (pagination.maxPages - 1) && (
-                                <>
-                                    {pagination.currentPage < (pagination.maxPages -2) && (
-                                        <div className="flex flex-col justify-end text-xl tracking-wider">
-                                            ...
-                                        </div>
-                                    )}
-                                    <BaseButton type="dark" onClick={() => pagination.setPage(pagination.maxPages)}>
-                                        {pagination.maxPages}
+                                {pagination.canNextPage() && (
+                                    <BaseButton type="dark" onClick={() => pagination.nextPage()}>
+                                        {pagination.currentPage + 1}
                                     </BaseButton>
-                                </>
-                            )}
-                        </>
-                    )}
-                    <BaseButton type="dark" onClick={() => pagination.nextPage()} disabled={!pagination.canNextPage()}>
-                        <BiRightArrow color="white"/>
-                    </BaseButton>
-                </div>
+                                )}
+                                {pagination.currentPage < (pagination.maxPages - 1) && (
+                                    <>
+                                        {pagination.currentPage < (pagination.maxPages -2) && (
+                                            <div className="flex flex-col justify-end text-xl tracking-wider">
+                                                ...
+                                            </div>
+                                        )}
+                                        <BaseButton type="dark" onClick={() => pagination.setPage(pagination.maxPages)}>
+                                            {pagination.maxPages}
+                                        </BaseButton>
+                                    </>
+                                )}
+                            </>
+                        )}
+                        <BaseButton type="dark" onClick={() => pagination.nextPage()} disabled={!pagination.canNextPage()}>
+                            <BiRightArrow color="white"/>
+                        </BaseButton>
+                    </div>
+                )}
             </footer>
         </div>
     )

@@ -18,6 +18,7 @@ import {confirmAlert} from 'react-confirm-alert';
 import ConfirmModal from "../../../components/common/ConfirmModal";
 import {toast} from "react-toastify";
 import {BASE_URL} from "../../../core/constants";
+import SEO from "../../../components/SEO";
 
 const copyLink = (id: string) => {
     navigator.clipboard.writeText(`${BASE_URL}/staff/chatlogs/${id}`).then(() => toast.success(`The link to chat log #${id} was copied to your clipboard!`))
@@ -92,6 +93,9 @@ const StaffPage: NextPageWithLayout = observer(({chatLogID}) => {
 
     return (
         <div className="flex flex-col gap-4">
+            <SEO seo={{
+                title: `Chatlog #${chatLogID}`
+            }} />
             <div className="flex justify-between items-center pb-5 border-b-2 border-dark-light">
                 <Link href="/staff/chatlogs" passHref={true}>
                     <a>
