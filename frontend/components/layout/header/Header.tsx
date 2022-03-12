@@ -19,7 +19,7 @@ const Header: FC<HeaderProps> = ({onlineDiscord, onlineMinecraft, discordInviteL
                     title={process.env.NEXT_PUBLIC_MINECRAFT_IP}
                     subtitle="Click to copy!"
                     icon={<IoGameController className="text-green-500" size="2.5rem" />}
-                    color="bg-green-500"
+                    color="bg-green-600"
                     count={onlineMinecraft}
                     onClick={informationStore.copyIP}
                 />
@@ -31,7 +31,7 @@ const Header: FC<HeaderProps> = ({onlineDiscord, onlineMinecraft, discordInviteL
                         title="WoolGens Discord"
                         subtitle="Click to join!"
                         icon={<IoLogoDiscord className="text-blue-400" size="2.5rem" />}
-                        color="bg-blue-400"
+                        color="bg-blue-500"
                         count={onlineDiscord}
                     />
                 </a>
