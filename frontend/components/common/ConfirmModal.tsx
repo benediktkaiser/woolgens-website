@@ -1,6 +1,6 @@
 import Modal from "./Modal";
-import {BaseButton} from "./BaseButton";
-import React, {FC} from "react";
+import BaseButton from "./BaseButton";
+import React from "react";
 
 interface ConfirmModelProps {
     text: React.ReactNode,
@@ -8,7 +8,7 @@ interface ConfirmModelProps {
     confirm: () => unknown,
 }
 
-const ConfirmModal: FC<ConfirmModelProps> = ({text, close, confirm}) => {
+const ConfirmModal = ({text, close, confirm}: ConfirmModelProps) => {
 
     const closeAndConfirm = () => {
         close();

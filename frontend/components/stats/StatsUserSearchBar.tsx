@@ -1,7 +1,5 @@
 import { ReactSearchAutocomplete } from 'react-search-autocomplete'
 import { useRouter } from 'next/router'
-import {FC} from "react";
-import {observer} from "mobx-react-lite";
 import Avatar from "../common/Avatar";
 import Image from "next/image"
 import grassBlock from "../../public/icons/grass.jpeg"
@@ -27,7 +25,7 @@ declare interface StatsUserSearchBarProps {
     autoCompleteItems: AutoCompleteListItem[]
 }
 
-const StatsUserSearchBar: FC<StatsUserSearchBarProps> = observer(({autoCompleteItems}) => {
+const StatsUserSearchBar = ({autoCompleteItems}: StatsUserSearchBarProps) => {
     const router = useRouter()
 
     const formatResult = (item: AutoCompleteListItem) => {
@@ -76,7 +74,7 @@ const StatsUserSearchBar: FC<StatsUserSearchBarProps> = observer(({autoCompleteI
             />
         </div>
     )
-})
+}
 
 
 export default StatsUserSearchBar

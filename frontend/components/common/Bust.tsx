@@ -1,13 +1,12 @@
-import {FC} from "react";
 import Image from "next/image";
 
-declare interface BustProps {
+interface BustProps {
     uuid: string,
     size: number,
     facing?: "left" | "right" | "forward",
 }
 
-const Bust: FC<BustProps> = ({uuid, size, facing= "right"}) => {
+const Bust = ({uuid, size, facing= "right"}: BustProps) => {
     if (facing === "forward") {
         return <Image height={size} width={size} className="rounded png-shadow" src={`https://visage.surgeplay.com/front/${size}/${uuid}`} alt="" />
     }

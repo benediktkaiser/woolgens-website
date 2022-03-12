@@ -3,6 +3,7 @@ import React from "react";
 import BasicCard from "../../components/common/cards/BasicCard";
 import Link from "next/link"
 import SEO from "../../components/SEO";
+import {CONTACT_EMAIL} from "../../core/constants";
 
 const Legal: NextPageWithLayout = () => {
     return (
@@ -48,7 +49,7 @@ const Legal: NextPageWithLayout = () => {
                     <p><strong>Terms and Conditions</strong> (also referred as &quot;Terms&quot;) mean these Terms and
                         Conditions that form the entire agreement between You and the Company regarding the use of the
                         Service. This Terms and Conditions agreement has been created with the help of the <a
-                            href="https://www.termsfeed.com/terms-conditions-generator/" target="_blank">Terms and
+                            href="https://www.termsfeed.com/terms-conditions-generator/" target="_blank" rel="noreferrer">Terms and
                             Conditions Generator</a>.</p>
                 </li>
                 <li>
@@ -58,7 +59,7 @@ const Legal: NextPageWithLayout = () => {
                 </li>
                 <li>
                     <p><strong>Website</strong> refers to WoolGens, accessible from <a href="https://woolgens.net"
-                                                                                       rel="external nofollow noopener"
+                                                                                       rel="external nofollow noopener noreferrer"
                                                                                        target="_blank">https://woolgens.net</a>
                     </p>
                 </li>
@@ -101,7 +102,7 @@ const Legal: NextPageWithLayout = () => {
             <h1>Limitation of Liability</h1>
             <p>Notwithstanding any damages that You might incur, the entire liability of the Company and any of its
                 suppliers under any provision of this Terms and Your exclusive remedy for all of the foregoing shall be
-                limited to the amount actually paid by You through the Service or 100 USD if You haven't purchased
+                limited to the amount actually paid by You through the Service or 100 USD if You havent purchased
                 anything through the Service.</p>
             <p>To the maximum extent permitted by applicable law, in no event shall the Company or its suppliers be
                 liable for any special, incidental, indirect, or consequential damages whatsoever (including, but not
@@ -112,7 +113,7 @@ const Legal: NextPageWithLayout = () => {
                 the possibility of such damages and even if the remedy fails of its essential purpose.</p>
             <p>Some states do not allow the exclusion of implied warranties or limitation of liability for incidental or
                 consequential damages, which means that some of the above limitations may not apply. In these states,
-                each party's liability will be limited to the greatest extent permitted by law.</p>
+                each partys liability will be limited to the greatest extent permitted by law.</p>
             <h1>&quot;AS IS&quot; and &quot;AS AVAILABLE&quot; Disclaimer</h1>
             <p>The Service is provided to You &quot;AS IS&quot; and &quot;AS AVAILABLE&quot; and with all faults and
                 defects without warranty of any kind. To the maximum extent permitted under applicable law, the Company,
@@ -125,7 +126,7 @@ const Legal: NextPageWithLayout = () => {
                 requirements, achieve any intended results, be compatible or work with any other software, applications,
                 systems or services, operate without interruption, meet any performance or reliability standards or be
                 error free or that any errors or defects can or will be corrected.</p>
-            <p>Without limiting the foregoing, neither the Company nor any of the company's provider makes any
+            <p>Without limiting the foregoing, neither the Company nor any of the companys provider makes any
                 representation or warranty of any kind, express or implied: (i) as to the operation or availability of
                 the Service, or the information, content, and materials or products included thereon; (ii) that the
                 Service will be uninterrupted or error-free; (iii) as to the accuracy, reliability, or currency of any
@@ -158,7 +159,7 @@ const Legal: NextPageWithLayout = () => {
                 applicable law and the remaining provisions will continue in full force and effect.</p>
             <h2>Waiver</h2>
             <p>Except as provided herein, the failure to exercise a right or to require performance of an obligation
-                under these Terms shall not effect a party's ability to exercise such right or require such performance
+                under these Terms shall not effect a partys ability to exercise such right or require such performance
                 at any time thereafter nor shall the waiver of a breach constitute a waiver of any subsequent
                 breach.</p>
             <h1>Translation Interpretation</h1>
@@ -166,7 +167,7 @@ const Legal: NextPageWithLayout = () => {
                 You agree that the original English text shall prevail in the case of a dispute.</p>
             <h1>Changes to These Terms and Conditions</h1>
             <p>We reserve the right, at Our sole discretion, to modify or replace these Terms at any time. If a revision
-                is material We will make reasonable efforts to provide at least 30 days' notice prior to any new terms
+                is material We will make reasonable efforts to provide at least 30 days notice prior to any new terms
                 taking effect. What constitutes a material change will be determined at Our sole discretion.</p>
             <p>By continuing to access or use Our Service after those revisions become effective, You agree to be bound
                 by the revised terms. If You do not agree to the new terms, in whole or in part, please stop using the
@@ -174,7 +175,7 @@ const Legal: NextPageWithLayout = () => {
             <h1>Contact Us</h1>
             <p>If you have any questions about these Terms and Conditions, You can contact us:</p>
             <ul>
-                <li>By email: admin@woolgens.net</li>
+                <li>By email: {CONTACT_EMAIL}</li>
             </ul>
         </article>
     )

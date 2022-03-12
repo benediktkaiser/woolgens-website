@@ -24,8 +24,8 @@ export function getHighestSkill(skills: Skills): BaseSkills | FarmingSkills | "N
 }
 
 export function getLevelProgressPercentage(level: number, exp: number): number {
-    const neededEXP = 100 * (1.12 ** (level))
-    return (exp * 100) / neededEXP
+    const neededEXP = 100 * (1.098 ** (level + 1)) + 40 * ((level + 1) ** 2)
+    return Math.floor((exp * 100) / neededEXP)
 }
 
 export const SKILL_TITLES: Record<BaseSkills | FarmingSkills | string, string> = {

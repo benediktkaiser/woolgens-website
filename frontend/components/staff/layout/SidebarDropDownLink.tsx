@@ -1,8 +1,8 @@
-import React, {FC, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {HiChevronDown} from "react-icons/hi"
 import { Transition } from '@headlessui/react'
 
-declare interface SidebarDropDownLinkProps {
+interface SidebarDropDownLinkProps {
     icon: React.ReactNode;
     title: string,
     pathName: string,
@@ -17,7 +17,7 @@ const isLinkActive = (link: string, pathName: string) => {
     return pathName.startsWith(link)
 }
 
-const SidebarDropDownLink: FC<SidebarDropDownLinkProps> = ({icon, title, pathName, link, children}) => {
+const SidebarDropDownLink = ({icon, title, pathName, link, children}: SidebarDropDownLinkProps) => {
     const [open, setOpen] = useState(false)
 
     useEffect(() => {

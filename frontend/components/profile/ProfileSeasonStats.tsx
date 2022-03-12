@@ -1,14 +1,14 @@
-import React, {FC} from "react";
+import React from "react";
 import {GiTwoCoins, GiUpgrade, GiTiedScroll} from "react-icons/gi";
 import ProfileStatsCard from "./ProfileStatsCard";
 import {formatMoney} from "../../core/formatters";
 
-declare interface ProfileSeasonStatsProps {
+interface ProfileSeasonStatsProps {
     user?: User
     selectedSeason: string,
 }
 
-const ProfileSeasonStats: FC<ProfileSeasonStatsProps> = ({user, selectedSeason}) => {
+const ProfileSeasonStats = ({user, selectedSeason}: ProfileSeasonStatsProps) => {
 
     if (!user) {
         return <div/>

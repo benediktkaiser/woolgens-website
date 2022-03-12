@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React from "react";
 import Link from "next/link"
 import {formatDateToTime} from "../../../core/formatters";
 import {MdArrowRight} from "react-icons/md"
@@ -13,7 +13,7 @@ interface ChatLogEntryProps {
     selectedLine?: number
 }
 
-const ChatLogEntry: FC<ChatLogEntryProps> = ({entry, index, types, selectedLine, users}) => {
+const ChatLogEntry = ({entry, index, types, selectedLine, users}: ChatLogEntryProps) => {
     if (!users.includes(entry.executor.name) && !(users.length === 0)) {
         return <></>
     }

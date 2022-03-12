@@ -1,12 +1,7 @@
-import {FC} from "react";
 import LandMemberRow from "./LandMemberRow";
 import BasicCard from "../../common/cards/BasicCard";
 
-declare interface LandMembersListProps {
-    land: Land
-}
-
-const LandMembersList: FC<LandMembersListProps> = ({land}) => {
+const LandMembersList = ({land}: {land: Land}) => {
     if (!land) {
         return <div className="p-4 w-full bg-dark-light rounded-md animate-pulse h-[200px]" />
     }

@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React from "react";
 
 interface ProfileStatsCardProps {
     icon: React.ReactNode,
@@ -6,7 +6,7 @@ interface ProfileStatsCardProps {
     value: string
 }
 
-const ProfileStatsCard: FC<ProfileStatsCardProps> = ({icon, title, value}) => {
+const ProfileStatsCard = ({icon, title, value}: ProfileStatsCardProps) => {
     return (
         <div className="group p-3 w-full leading-3 text-center rounded-xl">
             <div className="pt-2 mx-auto w-min text-gray-200">

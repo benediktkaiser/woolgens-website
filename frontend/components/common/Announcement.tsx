@@ -1,13 +1,13 @@
-import React, {FC} from "react";
+import React from "react";
 
-declare interface AnnouncementProps {
+interface AnnouncementProps {
     text: string,
     icon: React.ReactNode,
     iconStyles: string,
     rightComponent?: React.ReactNode
 }
 
-const Announcement: FC<AnnouncementProps> = ({text, iconStyles, rightComponent, icon}) => {
+const Announcement = ({text, iconStyles, rightComponent, icon}: AnnouncementProps) => {
     return (
         <div className="flex justify-between items-center p-3 w-full rounded-xl shadow bg-dark-light/50">
             <div className="flex items-center">

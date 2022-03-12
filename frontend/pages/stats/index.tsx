@@ -6,7 +6,7 @@ import StatsUserSearchBar from "../../components/stats/StatsUserSearchBar";
 import Announcement from "../../components/common/Announcement";
 import {FiUser} from "react-icons/fi";
 import Link from "next/link";
-import {BaseButton} from "../../components/common/BaseButton";
+import BaseButton from "../../components/common/BaseButton";
 import {AiOutlineArrowRight} from "react-icons/ai";
 import TopLists from "../../components/stats/TopLists";
 import autoCompleteStore from "../../stores/AutoCompleteStore";

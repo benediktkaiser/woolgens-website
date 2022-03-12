@@ -24,12 +24,14 @@ const Navbar: FC<NavbarProps> = ({toggleMobileNavbar}) => {
                     <NavbarLink title="Vote" pathName={router ? router.pathname : ""} link="/vote" />
                 </ul>
                 <ul className="flex gap-x-6 items-center">
-                    <Link href="https://woolgens.tebex.io" passHref={true}>
-                        <a className="flex items-center py-3 px-6 text-lg bg-accent rounded-xl cursor-pointer select-none hover:bg-accent/80">
-                            <FiShoppingCart className="mr-2" />
-                            Shop
-                        </a>
-                    </Link>
+                    <li>
+                        <Link href="https://woolgens.tebex.io" passHref={true}>
+                            <a className="flex items-center py-3 px-6 text-lg bg-accent rounded-xl cursor-pointer select-none hover:bg-accent/80">
+                                <FiShoppingCart className="mr-2" />
+                                Shop
+                            </a>
+                        </Link>
+                    </li>
                 </ul>
             </div>
         </div>

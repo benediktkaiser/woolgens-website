@@ -1,6 +1,6 @@
 import Avatar from "../../common/Avatar";
 import ToolTip from "../../common/ToolTip";
-import React, {FC} from "react";
+import React from "react";
 
 interface ChatLogUserClickProps {
     participant: InitialChatLogPlayer,
@@ -8,7 +8,7 @@ interface ChatLogUserClickProps {
     selectedUsers: string[]
 }
 
-const ChatLogUserClick: FC<ChatLogUserClickProps> = ({participant, toggle, selectedUsers}) => {
+const ChatLogUserClick = ({participant, toggle, selectedUsers}: ChatLogUserClickProps) => {
     const selected = selectedUsers.includes(participant.name) || selectedUsers.length === 0
 
     return (

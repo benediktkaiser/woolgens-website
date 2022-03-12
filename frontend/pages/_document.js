@@ -7,7 +7,7 @@ export default function Document() {
                 <script
                     async
                     defer
-                    data-domain='staging.woolgens.net'
+                    data-domain='woolgens.net'
                     src='https://plausible.woolgens.net/js/plausible.js'
                 />
             </Head>

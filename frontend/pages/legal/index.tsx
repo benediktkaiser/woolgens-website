@@ -3,6 +3,7 @@ import React from "react";
 import BasicCard from "../../components/common/cards/BasicCard";
 import Link from "next/link"
 import SEO from "../../components/SEO";
+import {CONTACT_EMAIL} from "../../core/constants";
 
 const Legal: NextPageWithLayout = () => {
     return (
@@ -15,13 +16,18 @@ const Legal: NextPageWithLayout = () => {
             <h1>
                 Imprint
             </h1>
-            <address>
-                Name Lastname <br/>
-                Line 1 <br/>
-                Line 2 <br/>
-                Telephone Number<br />
-                admin@woolgens.net
-            </address>
+            <div>
+                <p>
+                    For urgent matter please contact us at <span className="font-bold">{CONTACT_EMAIL}</span>.
+                </p>
+                <address>
+                    Fabian Gruber <br />
+                    Ziegelstraße 62 <br />
+                    85276 Pfaffenhofen
+                    <br /><br />
+                    {CONTACT_EMAIL}
+                </address>
+            </div>
         </article>
     )
 }

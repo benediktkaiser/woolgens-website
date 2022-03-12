@@ -1,16 +1,16 @@
 import SidebarLink from "./SidebarLink";
 import {HiHome, HiChatAlt, HiX, HiTicket} from "react-icons/hi"
-import React, {FC} from "react";
+import React from "react";
 import Logo from "../../common/Logo";
 import SidebarDropDownLink from "./SidebarDropDownLink";
 
-declare interface SidebarProps {
+interface SidebarProps {
     extended: boolean,
     pathName: string,
     toggleSidebar: () => void;
 }
 
-const Sidebar: FC<SidebarProps> = ({extended = false, pathName = "", toggleSidebar}) => {
+const Sidebar = ({extended = false, pathName = "", toggleSidebar}: SidebarProps) => {
 
     return (
         <div

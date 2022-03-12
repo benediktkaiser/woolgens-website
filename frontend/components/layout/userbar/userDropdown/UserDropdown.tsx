@@ -1,17 +1,13 @@
-import React, {FC, Fragment, useState} from "react";
+import React, {Fragment, useState} from "react";
 import {Menu, Transition} from "@headlessui/react";
 import {BsChevronDown} from "react-icons/bs";
 import Avatar from "../../../common/Avatar";
-import UserDropdownStartPage from "./views/UserDropdownStartPage";
-import UserDropdownAccountPage from "./views/UserDropdownAccountPage";
-import UserDropdownLandPage from "./views/UserDropdownLandPage";
-import UserDropdownStaffPage from "./views/UserDropdownStaffPage";
+import UserDropdownStartPage from "./pages/UserDropdownStartPage";
+import UserDropdownAccountPage from "./pages/UserDropdownAccountPage";
+import UserDropdownLandPage from "./pages/UserDropdownLandPage";
+import UserDropdownStaffPage from "./pages/UserDropdownStaffPage";
 
-declare interface UserDropdownProps {
-    user: User
-}
-
-const UserDropdown: FC<UserDropdownProps> = ({user}) => {
+const UserDropdown = ({user}: {user: User}) => {
     const [page, setPage] = useState("start")
 
     const changePage = (page) => {

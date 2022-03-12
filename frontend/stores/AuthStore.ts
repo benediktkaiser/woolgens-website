@@ -105,6 +105,7 @@ class AuthStore {
 
     hasPermission(permission: string): boolean {
         if (!this.user) return false;
+        if (permission === "staff") return this.user.webUser.group.isStaff;
         if (this.user.webUser.group.permissions.includes('web.*')) return true;
         return this.user.webUser.group.permissions.includes(permission);
     }

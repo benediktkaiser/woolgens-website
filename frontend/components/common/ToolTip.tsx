@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React from "react";
 import styles from "../../styles/modules/tooltip.module.css";
 
 interface ToolTipProps {
@@ -7,7 +7,7 @@ interface ToolTipProps {
     children?: React.ReactNode
 }
 
-const Tooltip: FC<ToolTipProps> = ({position = "top", text, children}) => {
+const Tooltip = ({position = "top", text, children}: ToolTipProps) => {
 
     let positionStyles = styles.Top
 

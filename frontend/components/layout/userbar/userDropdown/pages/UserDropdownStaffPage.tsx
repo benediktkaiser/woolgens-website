@@ -1,16 +1,16 @@
-import React, {FC} from "react";
+import React from "react";
 import {RiChat1Line, RiHome2Line} from "react-icons/ri";
-import DropdownItem from "../../DropdownItem";
 import {Transition} from "@headlessui/react"
 import {MdArrowBackIos} from "react-icons/md"
 import Link from "next/link"
+import DropdownItem from "../../../../common/dropdown/DropdownItem";
 
-declare interface UserDropdownStaffPageProps {
+interface UserDropdownStaffPage {
     selectedPage: string,
     changePage: (page: string) => void,
 }
 
-const UserDropdownLandPage: FC<UserDropdownStaffPageProps> = ({selectedPage, changePage}) => {
+const UserDropdownStaffPage = ({selectedPage, changePage}: UserDropdownStaffPage) => {
     return (
         <Transition
             show={selectedPage === "staff"}
@@ -40,4 +40,4 @@ const UserDropdownLandPage: FC<UserDropdownStaffPageProps> = ({selectedPage, cha
     )
 }
 
-export default UserDropdownLandPage
+export default UserDropdownStaffPage

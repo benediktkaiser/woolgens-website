@@ -1,17 +1,17 @@
-import React, {FC} from "react";
+import React from "react";
 import {RiCoinsLine, RiHome2Line, RiSettings2Line, RiAddCircleLine} from "react-icons/ri";
-import DropdownItem from "../../DropdownItem";
 import {Transition} from "@headlessui/react"
 import {MdArrowBackIos} from "react-icons/md"
 import Link from "next/link"
+import DropdownItem from "../../../../common/dropdown/DropdownItem";
 
-declare interface UserDropdownLandPageProps {
+interface UserDropdownLandPage {
     selectedPage: string,
     changePage: (page: string) => void,
     user: User
 }
 
-const UserDropdownLandPage: FC<UserDropdownLandPageProps> = ({selectedPage, changePage, user}) => {
+const UserDropdownLandPage = ({selectedPage, changePage, user}: UserDropdownLandPage) => {
     return (
         <Transition
             show={selectedPage === "land"}

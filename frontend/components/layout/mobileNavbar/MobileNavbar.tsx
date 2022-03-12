@@ -1,7 +1,7 @@
 import {GiCompass} from "react-icons/gi";
 import MobileNavbarLink from "./MobileNavbarLink";
 import React, {FC} from "react";
-import Modal from "../Modal";
+import Modal from "../../common/Modal";
 
 declare interface MobileNavbarProps {
     isOpen: boolean

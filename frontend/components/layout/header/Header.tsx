@@ -1,7 +1,7 @@
 import React, {FC} from "react";
 import HeaderSideBox from "./HeaderSideBox";
 import {IoLogoDiscord, IoGameController} from "react-icons/io5"
-import Logo from "../Logo";
+import Logo from "../../common/Logo";
 import informationStore from "../../../stores/InformationStore";
 
 declare interface HeaderProps {
@@ -19,7 +19,7 @@ const Header: FC<HeaderProps> = ({onlineDiscord, onlineMinecraft, discordInviteL
                     title={process.env.NEXT_PUBLIC_MINECRAFT_IP}
                     subtitle="Click to copy!"
                     icon={<IoGameController className="text-green-500" size="2.5rem" />}
-                    color="bg-green-500"
+                    color="bg-green-600"
                     count={onlineMinecraft}
                     onClick={informationStore.copyIP}
                 />
@@ -31,7 +31,7 @@ const Header: FC<HeaderProps> = ({onlineDiscord, onlineMinecraft, discordInviteL
                         title="WoolGens Discord"
                         subtitle="Click to join!"
                         icon={<IoLogoDiscord className="text-blue-400" size="2.5rem" />}
-                        color="bg-blue-400"
+                        color="bg-blue-500"
                         count={onlineDiscord}
                     />
                 </a>

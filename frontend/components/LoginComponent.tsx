@@ -3,7 +3,7 @@ import authStore from "../stores/AuthStore";
 import {toast} from "react-toastify";
 import BaseInputWithLabel from "./common/forms/BaseInputWithLabel";
 import PasswordInput from "./common/forms/PasswordInput";
-import {BaseButton} from "./common/BaseButton";
+import BaseButton from "./common/BaseButton";
 import {AiOutlineLoading3Quarters} from "react-icons/ai"
 
 interface LoginComponentProps {

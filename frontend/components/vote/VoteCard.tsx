@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React from "react";
 import styles from "../../styles/modules/minecraftButton.module.css";
 
 declare interface VoteCardProps {
@@ -7,7 +7,7 @@ declare interface VoteCardProps {
     voted?: boolean
 }
 
-const VoteCard: FC<VoteCardProps> = ({voted, link, title}) => {
+const VoteCard = ({voted, link, title}: VoteCardProps) => {
     return (
         <div className={`p-4 rounded border-l-4 ${voted ? "border-green-400" : "border-red-600"} bg-dark-light/30 hover:bg-dark-light/60 transition`}>
             <h1 className="text-2xl font-bold text-purple-400">

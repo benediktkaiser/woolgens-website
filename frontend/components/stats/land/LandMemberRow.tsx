@@ -1,12 +1,7 @@
-import {FC} from "react";
 import Link from "next/link"
 import Avatar from "../../common/Avatar";
 
-declare interface LandMemberRowProps {
-    member: LandMember
-}
-
-const LandMemberRow: FC<LandMemberRowProps> = ({member}) => {
+const LandMemberRow = ({member}: {member: LandMember}) => {
     return (
         <Link href={`/profile/${member.name}`} passHref={true}>
             <a className="p-3 w-full hover:bg-dark-light rounded-xl cursor-pointer">

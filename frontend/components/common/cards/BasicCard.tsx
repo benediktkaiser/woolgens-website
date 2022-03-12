@@ -1,13 +1,13 @@
-import React, {FC} from "react";
+import React from "react";
 
-declare interface BasicCardProps {
+interface BasicCardProps {
     children?: React.ReactNode
     padding?: string,
     withTabs?: boolean
     width?: string
 }
 
-const BasicCard: FC<BasicCardProps> = ({padding = "p-4", withTabs, width, children}) => {
+const BasicCard = ({padding = "p-4", withTabs, width, children}: BasicCardProps) => {
     if (withTabs) {
         return (
             <div className={`${padding} bg-dark-light/50 rounded-b-md rounded-tr-md shadow`}>

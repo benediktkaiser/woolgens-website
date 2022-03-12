@@ -1,13 +1,8 @@
-import {FC} from "react";
 import Image from "next/image";
 import background from "../../../public/background/mine_night.jpeg";
 import Bust from "../../common/Bust";
 
-declare interface LandHeaderBarProps {
-    land?: Land
-}
-
-const LandHeaderBar: FC<LandHeaderBarProps>= ({land}) => {
+const LandHeaderBar = ({land}: {land?: Land}) => {
 
     if (!land) {
         return (

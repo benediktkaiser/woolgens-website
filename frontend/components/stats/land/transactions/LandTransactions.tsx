@@ -1,17 +1,13 @@
 import TimeLineElement from "./TimeLineElement";
 import BasicCard from "../../../common/cards/BasicCard";
-import {FC, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import Pagination from "../../../common/pagination/Pagination";
 import PaginationWrapper from "../../../common/pagination/PaginationWrapper";
 import {MdOutlineMoneyOffCsred} from "react-icons/md";
 
-interface LandTransactionsProps {
-    transactions: LandTransaction[],
-}
-
 const pagination = new Pagination({itemsPerPage: 5, showPagerNumbers: true, itemName: "transactions"})
 
-const LandTransactions: FC<LandTransactionsProps> = ({transactions}) => {
+const LandTransactions = ({transactions}: {transactions: LandTransaction[]}) => {
     const [items, setItems] = useState<LandTransaction[]>(undefined)
 
     useEffect(() => {

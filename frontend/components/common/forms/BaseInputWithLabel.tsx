@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React from "react";
 import BaseInput from "./BaseInput";
 
 declare interface BaseInputWithLabelProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
@@ -7,7 +7,7 @@ declare interface BaseInputWithLabelProps extends React.DetailedHTMLProps<React.
     error?: string
 }
 
-const BaseInputWithLabel: FC<BaseInputWithLabelProps> = ({label, left, error, ...HTMLAttributes}) => {
+const BaseInputWithLabel = ({label, left, error, ...HTMLAttributes}: BaseInputWithLabelProps) => {
     return (
         <label className={`${left && 'flex items-center'}`}>
             <p className="pl-1 my-1 mr-5 text-lg text-gray-200">

@@ -4,11 +4,11 @@ export function formatMillisecondsToTime(duration: number, text = false, long = 
 
     if (text) {
         if (!long) {
-            return `${hours ? (hours + " hrs") : ""} ${minutes ? (minutes + " min"): ""}`
+            return `${hours ? (hours + " hrs") : ""} ${minutes ? (minutes + " min") : ""}`
         }
-        const hoursText = `${hours} Hour${hours !== 1 ? "s": ""}`
+        const hoursText = `${hours} Hour${hours !== 1 ? "s" : ""}`
         const minutesText = `${minutes} Minute${minutes !== 1 ? "s" : ""}`
-        return `${hours ? hoursText : ""} ${minutes ? minutesText: ""}`
+        return `${hours ? hoursText : ""} ${minutes ? minutesText : ""}`
     }
 
     return hours;
@@ -42,4 +42,57 @@ export function formatDateToTime(date: Date, withSeconds = false): string {
         return `${formattedHours}:${formattedMinutes}`
     }
     return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`
+}
+
+export function formatDate(date: Date): string {
+    return date.toLocaleDateString("en-US", {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+    })
+}
+
+export function timeSince(date: Date): string {
+    const seconds = Math.floor((new Date().getTime() - date.getTime()) / 1000);
+    let intervalType;
+
+    let interval = Math.floor(seconds / 31536000);
+    if (interval >= 1) {
+        intervalType = 'year';
+    } else {
+        interval = Math.floor(seconds / 2592000);
+        if (interval >= 1) {
+            intervalType = 'month';
+        } else {
+            interval = Math.floor(seconds / 86400);
+            if (interval >= 1) {
+                intervalType = 'day';
+            } else {
+                interval = Math.floor(seconds / 3600);
+                if (interval >= 1) {
+                    intervalType = "hour";
+                } else {
+                    interval = Math.floor(seconds / 60);
+                    if (interval >= 1) {
+                        intervalType = "minute";
+                    } else {
+                        interval = seconds;
+                        intervalType = "second";
+                    }
+                }
+            }
+        }
+    }
+
+    if (interval !== 1 && interval !== -1) {
+        intervalType += 's';
+    }
+
+    if (interval < 0) {
+        return `in ${Math.abs(interval)} ${intervalType}`
+    }
+
+    return `${Math.abs(interval)} ${intervalType} ago`
 }
