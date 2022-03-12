@@ -1,4 +1,5 @@
 import FooterLink from "./FooterLink";
+import {CONTACT_EMAIL} from "../../../core/constants";
 
 const Footer = () => {
     return (
@@ -11,7 +12,7 @@ const Footer = () => {
                 <ul className="flex justify-center items-center">
                     <FooterLink text="Imprint" link="/legal" />
                     <FooterLink text="Terms and conditions" link="/legal/terms" />
-                    <FooterLink text="Contact" link="mailto:admin@woolgens.net?subject=Contact Inquiry" />
+                    <FooterLink text="Contact" link={`mailto:${CONTACT_EMAIL}?subject=Contact Inquiry`} />
                 </ul>
             </div>
         </footer>
