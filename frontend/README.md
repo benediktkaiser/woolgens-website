@@ -31,6 +31,7 @@ The is a "mono-repo" containing all website from `Woolgens.net`.
 - NEXT_PUBLIC_CURRENT_SEASON
 - NEXT_PUBLIC_MINECRAFT_IP
 - NEXT_PUBLIC_CONTACT_EMAIL
+- NEXT_PUBLIC_STORE_URL
 ```
 
 ## Setup

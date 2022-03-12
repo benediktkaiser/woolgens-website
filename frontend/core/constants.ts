@@ -1,6 +1,7 @@
 export const STAFF_ROLES = ["Admin", "Moderator"]
 export const CURRENT_SEASON = process.env.NEXT_PUBLIC_CURRENT_SEASON || "1"
 export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
+export const STORE_URL = process.env.NEXT_PUBLIC_STORE_URL || "#"
 export const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL || `webmaster@${BASE_URL}`
 
 export const COLOR_CODES = {

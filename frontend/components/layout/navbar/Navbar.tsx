@@ -4,6 +4,7 @@ import NavbarLink from "./NavbarLink";
 import {FiShoppingCart} from "react-icons/fi"
 import {RiMenu2Line} from "react-icons/ri"
 import Link from "next/link"
+import {STORE_URL} from "../../../core/constants";
 
 declare interface NavbarProps {
     toggleMobileNavbar: () => void,
@@ -25,7 +26,7 @@ const Navbar: FC<NavbarProps> = ({toggleMobileNavbar}) => {
                 </ul>
                 <ul className="flex gap-x-6 items-center">
                     <li>
-                        <Link href="https://woolgens.tebex.io" passHref={true}>
+                        <Link href={STORE_URL} passHref={true}>
                             <a className="flex items-center py-3 px-6 text-lg bg-accent rounded-xl cursor-pointer select-none hover:bg-accent/80">
                                 <FiShoppingCart className="mr-2" />
                                 Shop
