@@ -11,7 +11,7 @@ services:
       - "./:/app"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.website.rule=Host(`staging.woolgens.net`)" # Change this from staging.woolgens.net to woolgens.net once we go online!
+      - "traefik.http.routers.website.rule=Host(`woolgens.net`)"
       - "traefik.http.routers.website.tls=true"
       - "traefik.http.services.website.loadbalancer.server.port=3000"
       - "traefik.docker.network=traefik"
