@@ -1,13 +1,13 @@
 import Image from "next/image";
 import chest from "../../public/assets/chest.webp";
-import React, {FC} from "react";
+import React from "react";
 
 interface VotePartyProgressBoxProps {
     votes: number
     maxVotes: number
 }
 
-const VotePartyProgressBox: FC<VotePartyProgressBoxProps> = ({votes, maxVotes}) => {
+const VotePartyProgressBox = ({votes, maxVotes}: VotePartyProgressBoxProps) => {
     return (
         <div className="overflow-hidden relative p-5 bg-gradient-to-r rounded-lg from-purple-700/80 to-purple-900/80">
             <div className="absolute -top-5 -right-5">

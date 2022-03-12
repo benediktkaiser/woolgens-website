@@ -1,4 +1,3 @@
-import {FC} from "react";
 import Image from "next/image"
 import background from "../../public/background/mine_inside.jpeg"
 import Bust from "../common/Bust";
@@ -7,21 +6,12 @@ import {getHighestSkill, getLevelProgressPercentage, SKILL_TITLES} from "../../c
 import OnlinePing from "../common/OnlinePing";
 import {COLOR_CODES} from "../../core/constants";
 
-declare interface ProfileUserBoxProps {
+interface ProfileUserBoxProps {
     user: User
     seasonNumber: string
 }
 
-const ProfileUserBox: FC<ProfileUserBoxProps> = ({user, seasonNumber}) => {
-
-    if (!user) {
-        return (
-            <div className="p-4 w-full bg-dark-light rounded-md animate-pulse">
-                <div className="w-full h-52 bg-dark rounded-lg animate-pulse" />
-            </div>
-        )
-    }
-
+function ProfileUserBox({user, seasonNumber}: ProfileUserBoxProps) {
     const highestSkill = getHighestSkill(user.minecraftUser.seasons[seasonNumber].skills)
 
     return (
@@ -45,7 +35,7 @@ const ProfileUserBox: FC<ProfileUserBoxProps> = ({user, seasonNumber}) => {
                             {user.minecraftUser.name}
                         </h1>
                         <div className="overflow-hidden relative mt-2 w-full sm:w-80 rounded-full bg-dark-light/50">
-                            <div className="absolute py-0.5 pl-4 w-full h-full text-sm leading-3 text-gray-100 bg-green-700 rounded-l-full"
+                            <div className="absolute py-0.5 w-full h-full text-sm leading-3 text-gray-100 bg-green-700 rounded-l-full"
                                 style={{width: `${getLevelProgressPercentage(user.minecraftUser.seasons[seasonNumber].level, user.minecraftUser.seasons[seasonNumber].exp)}%`}} />
                             <p className="relative z-10 py-1 ml-3 font-sans leading-none">
                                 Lvl. {user.minecraftUser.seasons[seasonNumber].level}

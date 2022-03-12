@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React from "react";
 import {Transition} from '@headlessui/react'
 
 interface AnimatedFadeDownProps {
@@ -6,7 +6,7 @@ interface AnimatedFadeDownProps {
     duration?: string
 }
 
-const AnimatedFadeDown: FC<AnimatedFadeDownProps> = ({duration = "duration-500", children}) => {
+const AnimatedFadeDown = ({duration = "duration-500", children}: AnimatedFadeDownProps) => {
     return (
         <Transition
             appear={true}

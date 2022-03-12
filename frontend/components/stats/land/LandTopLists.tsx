@@ -1,13 +1,8 @@
 import LandTopBox from "./LandTopBox";
 import LandTopListRow from "./LandTopListRow";
-import {FC} from "react";
 import BasicCard from "../../common/cards/BasicCard";
 
-declare interface LandTopListsProps {
-    topLands: Land[]
-}
-
-const LandTopLists: FC<LandTopListsProps> = ({topLands}) => {
+const LandTopLists= ({topLands}: {topLands: Land[]}) => {
     if (!topLands) {
         return (
             <div className="my-4">

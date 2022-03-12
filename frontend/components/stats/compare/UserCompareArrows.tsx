@@ -1,4 +1,3 @@
-import {FC} from "react";
 import UserCompareArrowRow from "./UserCompareArrowRow";
 import AnimatedFade from "../../common/animations/AnimatedFade";
 
@@ -8,7 +7,7 @@ interface UserCompareArrowsProps {
     season: string;
 }
 
-const UserCompareArrows: FC<UserCompareArrowsProps> = ({user1, user2, season}) => {
+const UserCompareArrows = ({user1, user2, season}: UserCompareArrowsProps) => {
     if (!user1 || !user2) {
         return (
             <div />

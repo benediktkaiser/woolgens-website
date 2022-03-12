@@ -1,11 +1,11 @@
-import React, {FC} from "react";
+import React from "react";
 import AnimatedFade from "../components/common/animations/AnimatedFade";
 
 interface FullPageLayoutProps {
     children: React.ReactNode
 }
 
-const FullPageLayout: FC<FullPageLayoutProps> = ({children}) => {
+const FullPageLayout = ({children}: FullPageLayoutProps) => {
     return (
         <div className="relative w-full h-screen bg-black">
             <AnimatedFade>
@@ -18,7 +18,7 @@ const FullPageLayout: FC<FullPageLayoutProps> = ({children}) => {
                     }}
                 />
             </AnimatedFade>
-            <div className="flex absolute z-10 flex-col gap-4 justify-center items-center w-full h-full">
+            <div className="flex absolute -top-16 z-10 flex-col justify-center items-center w-full h-full">
                 {children}
             </div>
         </div>

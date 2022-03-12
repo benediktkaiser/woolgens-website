@@ -1,4 +1,4 @@
-import {BaseButton} from "./common/BaseButton";
+import BaseButton from "./common/BaseButton";
 import Link from "next/link";
 import React, {FC} from "react";
 import {useRouter} from "next/router";

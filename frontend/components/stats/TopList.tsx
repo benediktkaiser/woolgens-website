@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React from "react";
 
 declare interface TopListProps {
     background?: string,
@@ -6,7 +6,7 @@ declare interface TopListProps {
     children?: React.ReactNode
 }
 
-const TopList: FC<TopListProps> = ({background = "bg-gradient-to-r to-blue-500 from-cyan-500", title, children}) => {
+const TopList = ({background = "bg-gradient-to-r to-blue-500 from-cyan-500", title, children}: TopListProps) => {
 
     return (
         <div className="overflow-hidden rounded-lg">

@@ -1,4 +1,4 @@
-import React, {FC, useState} from "react";
+import React, {useState} from "react";
 import BaseInput from "./BaseInput";
 import {FiEye, FiEyeOff} from "react-icons/fi";
 
@@ -8,7 +8,7 @@ declare interface PasswordInputProps extends React.DetailedHTMLProps<React.Input
     error?: string
 }
 
-const PasswordInput: FC<PasswordInputProps> = ({label, left, error, ...HTMLAttributes}) => {
+const PasswordInput = ({label, left, error, ...HTMLAttributes}: PasswordInputProps) => {
     const [showPassword, setShowPassword] = useState(false)
 
     return (

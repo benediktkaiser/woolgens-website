@@ -1,8 +1,8 @@
-import {FC, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {RiArrowRightSLine} from "react-icons/ri"
 import Link from "next/link"
 
-declare interface BreadCrumbsProps {
+interface BreadCrumbsProps {
     pathName: string,
 }
 
@@ -10,7 +10,7 @@ const isNumber = (string) => {
     return !/\D/.test(string);
 }
 
-const BreadCrumbs: FC<BreadCrumbsProps> = ({pathName}) => {
+const BreadCrumbs = ({pathName}: BreadCrumbsProps) => {
     const [paths, setPaths] = useState([])
 
     useEffect(() => {

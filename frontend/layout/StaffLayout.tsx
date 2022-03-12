@@ -1,7 +1,6 @@
 import React from "react";
 import {observer} from "mobx-react-lite";
 import {useRouter} from 'next/router'
-
 import Sidebar from "../components/staff/layout/Sidebar";
 import Header from "../components/staff/layout/Header";
 import staffStore from "../stores/StaffStore";
@@ -16,7 +15,7 @@ declare interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
     children?: React.ReactNode
 }
 
-const SidebarLayout: React.FC<SidebarProps> = observer(({permission, children, ...HTMLElements}) => {
+const SidebarLayout = observer(({permission, children, ...HTMLElements}: SidebarProps) => {
     const router = useRouter()
 
     if (authStore.loading) {

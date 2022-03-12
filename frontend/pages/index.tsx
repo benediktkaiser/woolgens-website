@@ -56,10 +56,13 @@ const IndexPage: NextPageWithLayout = observer(({changeLogs}) => {
                             You can easily join our server with the following IP:
                         </p>
                         <div className="mt-4 w-full font-minecraft">
-                            <input
-                                className="px-4 pt-2 pb-1 w-full text-2xl bg-shark-800 border-2 border-shark-400"
-                                value={process.env.NEXT_PUBLIC_MINECRAFT_IP}
-                                disabled/>
+                            <label>
+                                <span className="hidden">Copy {process.env.NEXT_PUBLIC_MINECRAFT_IP}</span>
+                                <input
+                                    className="px-4 pt-2 pb-1 w-full text-2xl bg-shark-800 border-2 border-shark-400"
+                                    value={process.env.NEXT_PUBLIC_MINECRAFT_IP}
+                                    disabled />
+                            </label>
                             <button className={`${styles.mcButton} mt-2 text-lg`}
                                     onClick={() => informationStore.copyIP()}>
                                 Copy Address

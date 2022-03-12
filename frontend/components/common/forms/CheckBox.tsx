@@ -1,4 +1,4 @@
-import {ChangeEvent, FC} from "react";
+import {ChangeEvent} from "react";
 
 interface CheckBoxProps {
     title: string,
@@ -6,7 +6,7 @@ interface CheckBoxProps {
     onChange: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
-const CheckBox: FC<CheckBoxProps> = ({title, checked, onChange}) => {
+const CheckBox = ({title, checked, onChange}: CheckBoxProps) => {
     return (
         <div className="mx-1">
             <label className="inline-flex items-center text-lg">

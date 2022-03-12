@@ -1,19 +1,19 @@
-import React, {FC} from "react";
+import React from "react";
 import {RiUser3Line, RiLogoutBoxRLine, RiHomeHeartLine, RiDashboard3Line} from "react-icons/ri"
-import Avatar from "../../../Avatar";
-import DropdownItem from "../../DropdownItem";
 import {Transition} from "@headlessui/react"
 import Link from "next/link"
+import Avatar from "../../../../common/Avatar";
+import DropdownItem from "../../../../common/dropdown/DropdownItem";
 import authStore from "../../../../../stores/AuthStore";
 import {COLOR_CODES} from "../../../../../core/constants";
 
-declare interface UserDropdownStartPageProps {
+interface UserDropdownStartPage {
     selectedPage: string,
     changePage: (page: string) => void,
     user: User
 }
 
-const UserDropdownStartPage: FC<UserDropdownStartPageProps> = ({selectedPage, changePage, user}) => {
+const UserDropdownStartPage = ({selectedPage, changePage, user}: UserDropdownStartPage) => {
     return (
         <Transition
             show={selectedPage === "start"}
@@ -42,8 +42,11 @@ const UserDropdownStartPage: FC<UserDropdownStartPageProps> = ({selectedPage, ch
 
             <hr className="my-2 border-gray-700"/>
 
-            <DropdownItem title="Account" icon={<RiUser3Line size="1.3rem"/>}
-                          withArrow={true} disabled={true} />
+            <Link href={`/profile/${user.name}`} passHref={true}>
+                <a>
+                    <DropdownItem title="Profile" icon={<RiUser3Line size="1.3rem"/>} />
+                </a>
+            </Link>
             {user.webUser.group.isStaff && (
                 <DropdownItem onClick={() => changePage("staff")} title="Staff Tools" icon={<RiDashboard3Line size="1.3rem"/>} withArrow={true}/>
             )}

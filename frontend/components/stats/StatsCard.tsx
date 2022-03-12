@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React from "react";
 import Link from "next/link"
 
 declare interface StatsCardProps {
@@ -8,7 +8,7 @@ declare interface StatsCardProps {
     link?: string,
 }
 
-const StatsCard: FC<StatsCardProps> = ({title, value, label, link}) => {
+const StatsCard = ({title, value, label, link}: StatsCardProps) => {
     return (
         <div className="flex justify-between items-center">
             <div className="flex justify-between items-center w-full">

@@ -1,13 +1,9 @@
 import {AiFillStar} from "react-icons/ai"
-import {FC, useState} from "react";
+import {useState} from "react";
 import Modal from "../../common/Modal";
 import {COLOR_CODES} from "../../../core/constants";
 
-interface ProfileBadeProps {
-    badge: Badge
-}
-
-const ProfileBadge: FC<ProfileBadeProps> = ({badge}) => {
+const ProfileBadge = ({badge}: {badge: Badge}) => {
     const [open, setOpen] = useState(false)
 
     return (

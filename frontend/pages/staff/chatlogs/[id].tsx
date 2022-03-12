@@ -1,7 +1,7 @@
 import {observer} from "mobx-react-lite";
 import React, {useEffect, useState} from "react";
 import StaffLayout from "../../../layout/StaffLayout";
-import {BaseButton} from "../../../components/common/BaseButton";
+import BaseButton from "../../../components/common/BaseButton";
 import {HiArrowLeft, HiOutlineTrash, HiOutlineLink} from "react-icons/hi"
 import Link from "next/link"
 import ChatLogEntry from "../../../components/staff/chatlogs/ChatLogEntry";

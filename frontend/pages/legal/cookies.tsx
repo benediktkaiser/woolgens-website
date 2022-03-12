@@ -3,6 +3,7 @@ import React from "react";
 import BasicCard from "../../components/common/cards/BasicCard";
 import Link from "next/link"
 import SEO from "../../components/SEO";
+import {CONTACT_EMAIL} from "../../core/constants";
 
 const Legal: NextPageWithLayout = () => {
     return (
@@ -17,7 +18,7 @@ const Legal: NextPageWithLayout = () => {
             <p>This Cookies Policy explains what Cookies are and how We use them. You should read this policy so You can
                 understand what type of cookies We use, or the information We collect using Cookies and how that
                 information is used. This Cookies Policy has been created with the help of the <a
-                    href="https://www.termsfeed.com/cookies-policy-generator/" target="_blank">Cookies Policy
+                    href="https://www.termsfeed.com/cookies-policy-generator/" target="_blank" rel="noreferrer">Cookies Policy
                     Generator</a>.</p>
             <p>Cookies do not typically contain any information that personally identifies a user, but personal
                 information that we store about You may be linked to the information stored in and obtained from
@@ -42,7 +43,7 @@ const Legal: NextPageWithLayout = () => {
                     many uses.
                 </li>
                 <li><strong>Website</strong> refers to WoolGens, accessible from <a href="https://woolgens.net"
-                                                                                    rel="external nofollow noopener"
+                                                                                    rel="external nofollow noopener noreferrer"
                                                                                     target="_blank">https://woolgens.net</a>
                 </li>
                 <li><strong>You</strong> means the individual accessing or using the Website, or a company, or any legal
@@ -81,42 +82,42 @@ const Legal: NextPageWithLayout = () => {
                 this option for preventing the use of Cookies at any time.</p>
             <p>If You do not accept Our Cookies, You may experience some inconvenience in your use of the Website and
                 some features may not function properly.</p>
-            <p>If You'd like to delete Cookies or instruct your web browser to delete or refuse Cookies, please visit
+            <p>If Youd like to delete Cookies or instruct your web browser to delete or refuse Cookies, please visit
                 the help pages of your web browser.</p>
             <ul>
                 <li>
                     <p>For the Chrome web browser, please visit this page from Google: <a
-                        href="https://support.google.com/accounts/answer/32050" rel="external nofollow noopener"
+                        href="https://support.google.com/accounts/answer/32050" rel="external nofollow noopener noreferrer"
                         target="_blank">https://support.google.com/accounts/answer/32050</a></p>
                 </li>
                 <li>
                     <p>For the Internet Explorer web browser, please visit this page from Microsoft: <a
-                        href="http://support.microsoft.com/kb/278835" rel="external nofollow noopener"
+                        href="http://support.microsoft.com/kb/278835" rel="external nofollow noopener noreferrer"
                         target="_blank">http://support.microsoft.com/kb/278835</a></p>
                 </li>
                 <li>
                     <p>For the Firefox web browser, please visit this page from Mozilla: <a
                         href="https://support.mozilla.org/en-US/kb/delete-cookies-remove-info-websites-stored"
-                        rel="external nofollow noopener"
+                        rel="external nofollow noopener noreferrer"
                         target="_blank">https://support.mozilla.org/en-US/kb/delete-cookies-remove-info-websites-stored</a>
                     </p>
                 </li>
                 <li>
                     <p>For the Safari web browser, please visit this page from Apple: <a
                         href="https://support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac"
-                        rel="external nofollow noopener"
+                        rel="external nofollow noopener noreferrer"
                         target="_blank">https://support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac</a>
                     </p>
                 </li>
             </ul>
-            <p>For any other web browser, please visit your web browser's official web pages.</p>
+            <p>For any other web browser, please visit your web browsers official web pages.</p>
             <h2>More Information about Cookies</h2>
-            <p>You can learn more about cookies here: <a href="https://www.termsfeed.com/blog/cookies/" target="_blank">All
+            <p>You can learn more about cookies here: <a href="https://www.termsfeed.com/blog/cookies/" target="_blank" rel="noreferrer">All
                 About Cookies by TermsFeed</a>.</p>
             <h2>Contact Us</h2>
             <p>If you have any questions about this Cookies Policy, You can contact us:</p>
             <ul>
-                <li>By email: admin@woolgens.net</li>
+                <li>By email: {CONTACT_EMAIL}</li>
             </ul>
         </article>
     )

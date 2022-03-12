@@ -1,14 +1,14 @@
 import {Dialog, Transition} from '@headlessui/react'
-import React, {FC, Fragment} from 'react'
+import React, {Fragment} from 'react'
 
-declare interface ModalProps {
+interface ModalProps {
     isOpen: boolean
     toggleModal?: () => void
     children: React.ReactNode
     maxWidth: string
 }
 
-const Modal: FC<ModalProps> = ({isOpen, toggleModal, maxWidth = "max-w-lg", children}) => {
+const Modal = ({isOpen, toggleModal, maxWidth = "max-w-lg", children}: ModalProps) => {
 
     return (
         <Transition appear show={isOpen} as={Fragment}>

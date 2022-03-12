@@ -1,6 +1,5 @@
 import Bust from "../../common/Bust";
 import styles from "../../../styles/modules/landsTop.module.css"
-import {FC} from "react";
 import Link from "next/link"
 import {formatMoney} from "../../../core/formatters";
 
@@ -9,7 +8,7 @@ declare interface LandTopBoxProps {
     place: number
 }
 
-const LandTopBox: FC<LandTopBoxProps> = ({land, place}) => {
+const LandTopBox = ({land, place}: LandTopBoxProps) => {
 
     if (!land) {
         return <div />

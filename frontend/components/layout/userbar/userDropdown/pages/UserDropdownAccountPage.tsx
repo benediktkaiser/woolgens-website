@@ -1,16 +1,16 @@
-import React, {FC} from "react";
+import React from "react";
 import {RiSettings2Line, RiProfileLine, RiNotification3Line} from "react-icons/ri";
-import DropdownItem from "../../DropdownItem";
-import {Transition} from "@headlessui/react"
 import {MdArrowBackIos} from "react-icons/md"
+import {Transition} from "@headlessui/react"
 import Link from "next/link"
+import DropdownItem from "../../../../common/dropdown/DropdownItem";
 
-declare interface UserDropdownStartPageProps {
+interface UserDropdownStartPage {
     selectedPage: string,
     changePage: (page: string) => void,
 }
 
-const UserDropdownAccountPage: FC<UserDropdownStartPageProps> = ({selectedPage, changePage}) => {
+const UserDropdownAccountPage = ({selectedPage, changePage}: UserDropdownStartPage) => {
     return (
         <Transition
             show={selectedPage === "account"}
@@ -26,17 +26,17 @@ const UserDropdownAccountPage: FC<UserDropdownStartPageProps> = ({selectedPage, 
             <DropdownItem onClick={() => changePage("start")} title="Back" icon={<MdArrowBackIos className="opacity-50" size="1rem"/>} />
             <hr className="my-2 border-gray-700"/>
 
-            <Link href="/settings" passHref={true}>
+            <Link href={"/settings"} passHref={true}>
                 <a>
                     <DropdownItem title="Settings" icon={<RiSettings2Line size="1.5rem"/>} />
                 </a>
             </Link>
-            <Link href="/settings/preferences" passHref={true}>
+            <Link href={"/settings/preferences"} passHref={true}>
                 <a>
                     <DropdownItem title="Preferences" icon={<RiProfileLine size="1.5rem"/>} />
                 </a>
             </Link>
-            <Link href="/settings/notifications" passHref={true}>
+            <Link href={"/settings/notifications"} passHref={true}>
                 <a>
                     <DropdownItem title="Notifications" icon={<RiNotification3Line size="1.5rem"/>} />
                 </a>

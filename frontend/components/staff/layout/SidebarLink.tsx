@@ -1,7 +1,7 @@
-import React, {FC} from "react";
+import React from "react";
 import Link from "next/link"
 
-declare interface SidebarLinkProps {
+interface SidebarLinkProps {
     icon: React.ReactNode;
     title: string,
     pathName: string,
@@ -15,7 +15,7 @@ const isLinkActive = (pathName: string, link: string) => {
     return pathName.startsWith(link)
 }
 
-const SidebarLink: FC<SidebarLinkProps> = ({icon, title, link, pathName}) => {
+const SidebarLink = ({icon, title, link, pathName}: SidebarLinkProps) => {
 
     return (
         <li className="group relative py-2 px-6">

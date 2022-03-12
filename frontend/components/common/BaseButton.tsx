@@ -5,7 +5,7 @@ interface BaseButtonProps extends React.DetailedHTMLProps<React.InputHTMLAttribu
     type: "primary" | "secondary" | "success" | "danger" | "dark" | "dark-active" | "dark-light",
 }
 
-export const BaseButton: FC<BaseButtonProps> = ({ type, children, ...HTMLAttributes}) => {
+const BaseButton: FC<BaseButtonProps> = ({ type, children, ...HTMLAttributes}) => {
 
     const colors = {
         "primary": "text-white bg-indigo-500 hover:bg-indigo-700 focus:ring-indigo-400 disabled:hover:bg-indigo-500",
@@ -30,3 +30,5 @@ export const BaseButton: FC<BaseButtonProps> = ({ type, children, ...HTMLAttribu
         </button>
     )
 }
+
+export default BaseButton

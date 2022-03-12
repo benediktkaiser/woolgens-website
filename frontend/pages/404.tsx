@@ -8,7 +8,7 @@ const NotFound: NextPageWithLayout = () => {
         <div>
             <SEO seo={{
                 title: "Not found",
-                description: "We sadly could not find this page. If you belive this is an error, please contact our support team.",
+                description: "We sadly could not find this page. If you believe this is an error, please contact our support team.",
                 imageSRC: "/seo/404.jpg"
             }} />
             <ErrorPage title="Not found" subtitle="We could not find this page!" />

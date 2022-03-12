@@ -1,18 +1,18 @@
-import React, {FC, useState} from "react";
-import Userbar from "../components/common/userbar/Userbar";
-import Header from "../components/common/header/Header"
-import Navbar from "../components/common/navbar/Navbar";
-import Footer from "../components/common/footer/Footer";
+import React, {useState} from "react";
 import authStore from "../stores/AuthStore";
 import {observer} from "mobx-react-lite";
-import MobileNavbar from "../components/common/mobileNavbar/MobileNavbar";
 import informationStore from "../stores/InformationStore";
+import MobileNavbar from "../components/layout/mobileNavbar/MobileNavbar";
+import Userbar from "../components/layout/userbar/Userbar";
+import Header from "../components/layout/header/Header";
+import Navbar from "../components/layout/navbar/Navbar";
+import Footer from "../components/layout/footer/Footer";
 
 interface NavbarLayoutProps {
     children: React.ReactNode
 }
 
-const NavbarLayout: FC<NavbarLayoutProps> = observer(({children}) => {
+const NavbarLayout = observer(({children}: NavbarLayoutProps) => {
     const [mobileNavBarOpen, setMobileNavBarOpen] = useState(false)
 
     return (

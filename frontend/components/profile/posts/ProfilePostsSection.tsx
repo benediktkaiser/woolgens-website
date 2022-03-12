@@ -1,10 +1,4 @@
-import {FC} from "react";
-
-declare interface ProfilePostsSection {
-    user: User
-}
-
-const ProfilePostsSection: FC<ProfilePostsSection> = ({user}) => {
+const ProfilePostsSection = ({user}: {user: User}) => {
 
     if (!user) {
         return <div />

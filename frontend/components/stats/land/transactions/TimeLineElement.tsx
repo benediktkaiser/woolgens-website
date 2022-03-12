@@ -1,14 +1,9 @@
-import {FC} from "react";
 import {AiOutlinePlus, AiOutlineMinus, AiOutlineArrowUp} from "react-icons/ai";
 import Avatar from "../../../common/Avatar";
 import {formatMoney} from "../../../../core/formatters";
 import Link from "next/link"
 
-interface TimeLineElement {
-    transaction: LandTransaction;
-}
-
-const TimeLineElement: FC<TimeLineElement> = ({transaction}) => {
+const TimeLineElement = ({transaction}: {transaction: LandTransaction}) => {
     return (
         <li className="mb-10 ml-7">
             {transaction.type == "DEPOSIT" && (

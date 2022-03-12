@@ -1,13 +1,8 @@
 import StatsCard from "../StatsCard";
 import CardWithHeader from "../../common/cards/CardWithHeader";
-import {FC} from "react";
 import {formatMoney} from "../../../core/formatters";
 
-declare interface LandGeneralStatsProps {
-    land: Land
-}
-
-const LandGeneralStats: FC<LandGeneralStatsProps> = ({land}) => {
+const LandGeneralStats = ({land}: {land: Land}) => {
     if (!land) {
         return <div className="h-44 rounded-md shadow animate-pulse bg-dark-light/50" />
     }

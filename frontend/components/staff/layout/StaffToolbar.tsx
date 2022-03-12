@@ -1,13 +1,13 @@
-import React, {FC} from "react";
+import React from "react";
 import BreadCrumbs from "../../common/BreadCrumbs";
 
-declare interface ToolbarProps {
+interface ToolbarProps {
     title: string
     pathName: string
     children?: React.ReactNode
 }
 
-const Toolbar: FC<ToolbarProps> = ({title, pathName, children}) => {
+const Toolbar = ({title, pathName, children}: ToolbarProps) => {
 
     return (
         <header className="mx-auto mt-4 lg:mt-8 mb-4 w-full">
