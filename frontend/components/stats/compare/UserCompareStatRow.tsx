@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React from "react";
 
 interface UserCompareStatRowProps {
     title: string
@@ -7,7 +7,7 @@ interface UserCompareStatRowProps {
     label?: string
 }
 
-const UserCompareStatRow: FC<UserCompareStatRowProps> = ({ title, icon, value, label }) => {
+const UserCompareStatRow= ({ title, icon, value, label }: UserCompareStatRowProps) => {
     return (
         <div className="flex justify-between items-center text-xl">
             <div className="flex items-center text-gray-400">

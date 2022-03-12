@@ -1,6 +1,6 @@
-import React, {FC} from "react";
+import React from "react";
 import Pagination from "./Pagination";
-import {BaseButton} from "../BaseButton";
+import BaseButton from "../BaseButton";
 import {BiLeftArrow, BiRightArrow} from "react-icons/bi";
 import {AiOutlineLoading3Quarters} from "react-icons/ai"
 
@@ -11,7 +11,7 @@ declare interface PaginationProps {
     children?: React.ReactNode,
 }
 
-const PaginationWrapper: FC<PaginationProps> = ({title, pagination, loading, children}) => {
+const PaginationWrapper = ({title, pagination, loading, children}: PaginationProps) => {
 
     if (pagination.items === undefined || loading) {
         return (

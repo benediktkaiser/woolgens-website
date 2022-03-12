@@ -1,4 +1,3 @@
-import {FC} from "react";
 import Image from "next/image"
 import background from "../../public/background/mine_inside.jpeg"
 import Bust from "../common/Bust";
@@ -7,21 +6,12 @@ import {getHighestSkill, getLevelProgressPercentage, SKILL_TITLES} from "../../c
 import OnlinePing from "../common/OnlinePing";
 import {COLOR_CODES} from "../../core/constants";
 
-declare interface ProfileUserBoxProps {
+interface ProfileUserBoxProps {
     user: User
     seasonNumber: string
 }
 
-const ProfileUserBox: FC<ProfileUserBoxProps> = ({user, seasonNumber}) => {
-
-    if (!user) {
-        return (
-            <div className="p-4 w-full bg-dark-light rounded-md animate-pulse">
-                <div className="w-full h-52 bg-dark rounded-lg animate-pulse" />
-            </div>
-        )
-    }
-
+function ProfileUserBox({user, seasonNumber}: ProfileUserBoxProps) {
     const highestSkill = getHighestSkill(user.minecraftUser.seasons[seasonNumber].skills)
 
     return (

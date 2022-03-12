@@ -11,7 +11,7 @@ const Footer = () => {
                 </div>
                 <ul className="flex justify-center items-center">
                     <FooterLink text="Imprint" link="/legal" />
-                    <FooterLink text="Terms and conditions" link="/legal/terms" />
+                    <FooterLink text="Server Status" link="https://status.woolgens.net/status" />
                     <FooterLink text="Contact" link={`mailto:${CONTACT_EMAIL}?subject=Contact Inquiry`} />
                 </ul>
             </div>

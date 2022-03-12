@@ -1,7 +1,7 @@
 import React, {FC} from "react";
 import HeaderSideBox from "./HeaderSideBox";
 import {IoLogoDiscord, IoGameController} from "react-icons/io5"
-import Logo from "../Logo";
+import Logo from "../../common/Logo";
 import informationStore from "../../../stores/InformationStore";
 
 declare interface HeaderProps {

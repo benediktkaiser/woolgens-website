@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import React, {FC} from "react";
+import React from "react";
 import {useRouter} from "next/router";
 
 interface SEOProps {
@@ -10,7 +10,7 @@ interface SEOProps {
     }
 }
 
-const SEO: FC<SEOProps> = ({seo}) => {
+const SEO = ({seo}: SEOProps) => {
     const router = useRouter()
 
     return (

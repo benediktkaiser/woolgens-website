@@ -1,11 +1,6 @@
 import {RiInformationLine, RiErrorWarningLine, RiCheckboxCircleLine, RiCloseCircleLine} from "react-icons/ri"
-import React, {FC} from "react";
 
-declare interface NotificationDropdownItemProps {
-    notification: WebNotification
-}
-
-const NotificationDropdownItem: FC<NotificationDropdownItemProps> = ({ notification }) => {
+const NotificationDropdownItem = ({ notification }: { notification: WebNotification }) => {
 
     return (
         <div className="flex items-center p-3 w-full hover:bg-dark-light rounded-lg cursor-pointer">

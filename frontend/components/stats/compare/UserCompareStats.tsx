@@ -1,5 +1,6 @@
-import {FC} from "react";
 import UserCompareStatRow from "./UserCompareStatRow";
+import {formatMillisecondsToTime, formatMoney, formatSeasonName} from "../../../core/formatters";
+import AnimatedFadeDown from "../../common/animations/AnimatedFadeDown";
 import {
     GiTwoCoins,
     GiUpgrade,
@@ -13,15 +14,13 @@ import {
     GiWarPick,
     GiWheat
 } from "react-icons/gi";
-import {formatMillisecondsToTime, formatMoney, formatSeasonName} from "../../../core/formatters";
-import AnimatedFadeDown from "../../common/animations/AnimatedFadeDown";
 
 interface UserCompareStatsProps {
     user: User
     season: string
 }
 
-const UserCompareStats: FC<UserCompareStatsProps> = ({user, season}) => {
+const UserCompareStats = ({user, season}: UserCompareStatsProps) => {
 
     return (
         <AnimatedFadeDown>

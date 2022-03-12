@@ -1,4 +1,3 @@
-import {FC} from "react";
 import Avatar from "../common/Avatar";
 import {IoMdTrophy} from "react-icons/io"
 import Link from "next/link"
@@ -10,7 +9,7 @@ declare interface TopListRowProps {
     place: number,
 }
 
-const TopListRow: FC<TopListRowProps> = ({minecraftUser, value, label, place}) => {
+const TopListRow = ({minecraftUser, value, label, place}: TopListRowProps) => {
     return (
         <div className="p-1">
             <Link href={`/profile/${minecraftUser.name}`} passHref={true}>

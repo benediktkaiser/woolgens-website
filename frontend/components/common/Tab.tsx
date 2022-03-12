@@ -1,4 +1,3 @@
-import {FC} from "react";
 import Link from "next/link"
 
 interface TabProps {
@@ -9,7 +8,7 @@ interface TabProps {
     onClick?: () => void,
 }
 
-const Tab: FC<TabProps> = ({title, link, disabled, active, onClick}) => {
+const Tab = ({title, link, disabled, active, onClick}: TabProps) => {
     if (active) {
         return (
             <li className="mr-2">

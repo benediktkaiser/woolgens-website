@@ -1,10 +1,6 @@
-import React, {FC} from "react";
+import React from "react";
 
-interface UserAboutProps {
-    user: User
-}
-
-const UserAbout: FC<UserAboutProps> = ({user}) => {
+const UserAbout = ({user}: {user: User}) => {
     if (!user.webUser) {
         return (
             <div className="mt-2">

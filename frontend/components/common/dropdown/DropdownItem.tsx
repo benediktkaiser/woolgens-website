@@ -1,14 +1,14 @@
-import React, {FC} from "react";
+import React from "react";
 import {MdArrowForwardIos} from "react-icons/md"
 
-declare interface DropdownItemProps extends React.HTMLAttributes<HTMLButtonElement> {
+interface DropdownItem extends React.HTMLAttributes<HTMLButtonElement> {
     title: string,
     icon?: React.ReactNode,
     withArrow?: boolean,
     disabled?: boolean
 }
 
-const DropdownItem: FC<DropdownItemProps> = ({title, icon, withArrow = false, disabled= false, ...HTMLElements}) => {
+const DropdownItem = ({title, icon, withArrow = false, disabled= false, ...HTMLElements}: DropdownItem) => {
 
     if (disabled) {
         return (

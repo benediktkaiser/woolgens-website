@@ -1,11 +1,6 @@
 import ProfileBadge from "./ProfileBadge";
-import {FC} from "react";
 
-declare interface ProfileBadgesProps {
-    user?: User
-}
-
-const ProfileBadges: FC<ProfileBadgesProps> = ({user}) => {
+const ProfileBadges = ({user}: {user?: User}) => {
 
     if (!user) return <div />
 

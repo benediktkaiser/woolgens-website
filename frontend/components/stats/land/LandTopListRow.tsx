@@ -1,4 +1,3 @@
-import {FC} from "react";
 import Avatar from "../../common/Avatar";
 import {IoMdTrophy} from "react-icons/io"
 import Link from "next/link"
@@ -9,7 +8,7 @@ declare interface LandTopListRowProps {
     place: number,
 }
 
-const LandTopListRow: FC<LandTopListRowProps> = ({land, place}) => {
+const LandTopListRow = ({land, place}: LandTopListRowProps) => {
     return (
         <div className="p-1">
             <Link href={`/stats/lands/${land.id}`} passHref={true}>

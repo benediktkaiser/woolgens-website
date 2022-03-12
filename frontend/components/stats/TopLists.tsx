@@ -1,17 +1,13 @@
 import TopList from "./TopList";
 import TopListRow from "./TopListRow";
 import LoadingTopList from "./LoadingTopList";
-import React, {FC, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import topListStore from "../../stores/TopListStore";
 import {formatMillisecondsToTime, formatMoney} from "../../core/formatters";
 import AnimatedFade from "../common/animations/AnimatedFade";
 import {getLatestSeasonStats} from "../../core/user/minecraftUser";
 
-declare interface UserStatsContainerProps {
-    seasonNumber: string
-}
-
-const TopLists: FC<UserStatsContainerProps> = ({seasonNumber}) => {
+const TopLists = ({seasonNumber}: {seasonNumber: string}) => {
     const [levelTopList, setLevelTopList] = useState(undefined)
     const [balanceTopList, setBalanceTopList] = useState(undefined)
     const [playTimeTopList, setPlayTimeTopList] = useState(undefined)

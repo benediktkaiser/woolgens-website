@@ -1,12 +1,11 @@
 import SkillsCard from "./skills/SkillsCard";
-import {FC} from "react";
 
 declare interface SkillsCardProps {
     user?: User
     selectedSeason: string,
 }
 
-const ProfileSkills: FC<SkillsCardProps> = ({user, selectedSeason}) => {
+const ProfileSkills = ({user, selectedSeason}: SkillsCardProps) => {
 
     if (!user) return <div/>
 

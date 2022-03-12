@@ -1,13 +1,8 @@
-import {FC} from "react";
 import Avatar from "../../common/Avatar";
 import {timeSince} from "../../../core/formatters";
 import Link from "next/link"
 
-interface ChatLogRowProps {
-    chatLog: InitialChatLog
-}
-
-const ChatLogRow: FC<ChatLogRowProps> = ({chatLog}) => {
+const ChatLogRow = ({chatLog}: {chatLog: InitialChatLog}) => {
     return (
         <Link href={`/staff/chatlogs/${chatLog.id}`} passHref={true}>
             <a className="p-4 hover:bg-dark-light rounded-lg hover:shadow-xl cursor-pointer bg-dark-light/80">

@@ -1,6 +1,6 @@
 import {FC} from "react";
-import UserDropdown from "../dropdown/userDropdown/UserDropdown";
-import NotificationDropdown from "../dropdown/notificationDropdown/NotificationDropdown";
+import UserDropdown from "./userDropdown/UserDropdown";
+import NotificationDropdown from "./notificationDropdown/NotificationDropdown";
 import UserbarLink from "./UserbarLink";
 import {RiNotificationLine, RiLoginBoxLine, RiUserAddLine} from "react-icons/ri"
 import authStore from "../../../stores/AuthStore";

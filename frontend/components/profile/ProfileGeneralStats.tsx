@@ -1,14 +1,9 @@
 import StatsCard from "../stats/StatsCard";
 import CardWithHeader from "../common/cards/CardWithHeader";
-import {FC} from "react";
 import {formatMillisecondsToTime} from "../../core/formatters";
 import {getPassedTime} from "../../core/formatters";
 
-declare interface ProfileGeneralStatsProps {
-    user?: User
-}
-
-const ProfileGeneralStats: FC<ProfileGeneralStatsProps> = ({ user }) => {
+const ProfileGeneralStats = ({ user }: {user: User}) => {
 
     if (!user) {
         return (

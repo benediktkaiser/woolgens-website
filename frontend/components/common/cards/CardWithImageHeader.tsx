@@ -1,12 +1,12 @@
+import React from "react";
 import BasicCard from "./BasicCard";
-import React, {FC} from "react";
 
-declare interface CardWithHeaderProps {
+interface CardWithImageHeaderProps {
     top?: React.ReactNode,
     children?: React.ReactNode
 }
 
-const CardWithImageHeader: FC<CardWithHeaderProps> = ({top, children}) => {
+const CardWithImageHeader = ({top, children}: CardWithImageHeaderProps) => {
     return (
         <BasicCard padding="p-0 border-b-8 border-dark-light">
             {top}

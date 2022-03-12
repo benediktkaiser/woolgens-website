@@ -1,4 +1,4 @@
-import React, {FC} from "react";
+import React from "react";
 import UserCompareSearch from "./UserCompareSearch";
 import {FiX} from "react-icons/fi"
 import Link from "next/link"
@@ -14,7 +14,7 @@ interface UserCompareBoxProps {
     isLoading: boolean
 }
 
-const UserCompareBox: FC<UserCompareBoxProps> = ({user, setUser, usernames, season, isLoading}) => {
+const UserCompareBox = ({user, setUser, usernames, season, isLoading}: UserCompareBoxProps) => {
 
     if (!user) {
         return (

@@ -1,13 +1,13 @@
+import React from "react";
 import BasicCard from "./BasicCard";
-import React, {FC} from "react";
 
-declare interface CardWithHeaderProps {
+interface CardWithHeaderProps {
     title: string,
     right?: React.ReactNode,
     children?: React.ReactNode
 }
 
-const CardWithHeader: FC<CardWithHeaderProps> = ({title, right, children}) => {
+const CardWithHeader = ({title, right, children}: CardWithHeaderProps) => {
     return (
         <BasicCard padding="p-0">
             <div className="flex justify-between items-center py-2 px-4 bg-dark-light rounded-t-md">

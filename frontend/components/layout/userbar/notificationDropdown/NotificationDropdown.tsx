@@ -1,15 +1,11 @@
-import React, {FC, Fragment} from "react";
+import React, {Fragment} from "react";
 import {Menu, Transition} from "@headlessui/react";
-import UserbarLink from "../../userbar/UserbarLink";
 import {RiNotificationLine, RiNotificationOffLine} from "react-icons/ri";
-import {BaseButton} from "../../BaseButton";
+import UserbarLink from "../../userbar/UserbarLink";
+import BaseButton from "../../../common/BaseButton";
 import NotificationDropdownItem from "./NotificationDropdownItem";
 
-declare interface NotificationDropDownProps {
-    notifications?: WebNotification[]
-}
-
-const NotificationDropdown: FC<NotificationDropDownProps> = ({ notifications}) => {
+const NotificationDropdown = ({ notifications }: { notifications?: WebNotification[] }) => {
 
     return (
         <Menu as="div" className="inline-block relative text-left">

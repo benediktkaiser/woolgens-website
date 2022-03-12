@@ -2,7 +2,7 @@ import Modal from "./common/Modal";
 import authStore from "../stores/AuthStore";
 import {observer} from "mobx-react-lite";
 import React from "react";
-import {BaseButton} from "./common/BaseButton";
+import BaseButton from "./common/BaseButton";
 
 const LoginModal = observer(() => {
     return (

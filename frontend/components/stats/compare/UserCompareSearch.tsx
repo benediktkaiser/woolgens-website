@@ -1,6 +1,5 @@
 import Avatar from "../../common/Avatar";
 import { ReactSearchAutocomplete } from 'react-search-autocomplete'
-import {FC} from "react";
 
 const styles = {
     zIndex: 2,
@@ -24,7 +23,7 @@ interface UserCompareSearchProps {
     usernames: AutoCompleteListItem[]
 }
 
-const UserCompareSearch: FC<UserCompareSearchProps> = ({usernames, setUser}) => {
+const UserCompareSearch = ({usernames, setUser}: UserCompareSearchProps) => {
 
     const formatResult = (item: AutoCompleteListItem) => {
         return (

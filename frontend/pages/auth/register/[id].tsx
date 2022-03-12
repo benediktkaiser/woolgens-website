@@ -1,6 +1,6 @@
 import {useRouter} from "next/router";
 import PasswordInput from "../../../components/common/forms/PasswordInput";
-import {BaseButton} from "../../../components/common/BaseButton";
+import BaseButton from "../../../components/common/BaseButton";
 import React, {useEffect, useState} from "react";
 import {getTemporaryToken, registerUserWithToken} from "../../../core/auth";
 import {toast} from "react-toastify";
@@ -9,6 +9,7 @@ import FullPageLayout from "../../../layout/FullPageLayout";
 import Logo from "../../../components/common/Logo";
 import Bust from "../../../components/common/Bust";
 import SEO from "../../../components/SEO";
+import {AiOutlineLoading3Quarters} from "react-icons/ai"
 
 const RegisterPage: NextPageWithLayout = () => {
     const router = useRouter()
@@ -17,7 +18,7 @@ const RegisterPage: NextPageWithLayout = () => {
     const [password, setPassword] = useState(undefined)
     const [repeatPassword, setRepeatPassword] = useState(undefined)
     const [repeatPasswordError, setRepeatPasswordError] = useState(undefined)
-    const [token, setToken] = useState<TemporaryToken>(undefined)
+    const [token, setToken] = useState<TemporaryToken | undefined>(null)
 
     const checkRepeatPassword = (value) => {
         if (value !== password) {
@@ -47,25 +48,47 @@ const RegisterPage: NextPageWithLayout = () => {
 
     useEffect(() => {
         if (id) {
-            getTemporaryToken(id.toString()).then((result) => {
-                setToken(result)
-            })
+            setTimeout(() => {
+                getTemporaryToken(id.toString()).then((result) => {
+                    setToken(result)
+                })
+            }, 1000)
         }
     }, [id])
 
-    if (!token) {
+    if (token === null) {
         return (
-            <div className="text-center">
+            <div className="text-center font-minecraft">
                 <SEO seo={{
                     title: "Register",
                     description: "Welcome to the Woolgens community! Here you can easily login and access your website account.",
                     imageSRC: "/seo/Login.jpg",
                 }} />
-                <h1 className="text-3xl">
+                <AiOutlineLoading3Quarters size="2.5rem" className="mx-auto mb-6 animate-spin" />
+                <h1 className="text-4xl text-gray-200">
+                    Please wait a second...
+                </h1>
+                <h2 className="text-xl text-gray-400">
+                    We are currently verifying your <span className="text-accent-500">token</span>!
+                </h2>
+            </div>
+        )
+    }
+
+    if (!token) {
+        return (
+            <div className="text-center font-minecraft">
+                <SEO seo={{
+                    title: "Register",
+                    description: "Welcome to the Woolgens community! Here you can easily login and access your website account.",
+                    imageSRC: "/seo/Login.jpg",
+                }} />
+                <Logo height="150px" width="150px" animated={true} />
+                <h1 className="text-4xl text-gray-200">
                     This token was not found.
                 </h1>
-                <h2>
-                    Please join the server and execute <span className="text-accent-300">/register</span> to create an account.
+                <h2 className="text-xl text-gray-400">
+                    Please join the server and execute <span className="text-accent-500">/register</span> to create an account.
                 </h2>
             </div>
         )

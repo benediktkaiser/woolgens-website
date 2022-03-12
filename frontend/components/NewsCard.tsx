@@ -1,13 +1,8 @@
 import Avatar from "./common/Avatar";
-import React, {FC} from "react";
 import McText from 'mctext-react'
 import Link from "next/link"
 
-declare interface NewsContainerProps {
-    changelog: ChangeLog
-}
-
-const NewsCard: FC<NewsContainerProps> = ({changelog}) => {
+const NewsCard = ({changelog}: {changelog: ChangeLog}) => {
     const month = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
 
     return (

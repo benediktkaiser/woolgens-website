@@ -1,13 +1,13 @@
 import {Menu, Transition} from '@headlessui/react'
-import React, {FC, Fragment} from 'react'
+import React, {Fragment} from 'react'
 import {BsChevronDown} from "react-icons/bs"
 
-declare interface DropdownProps extends React.HTMLAttributes<HTMLButtonElement>{
+interface DropdownProps extends React.HTMLAttributes<HTMLButtonElement>{
     children?: React.ReactNode,
     title: string
 }
 
-const Dropdown: FC<DropdownProps> = ({title, children, ...HTMLElements}) => {
+const Dropdown = ({title, children, ...HTMLElements}: DropdownProps) => {
     return (
         <Menu as="div" className="inline-block relative text-left">
             <div>

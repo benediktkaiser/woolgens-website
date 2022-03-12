@@ -1,4 +1,3 @@
-import {FC} from "react";
 import {FiMinus} from "react-icons/fi"
 import {GiCrown} from "react-icons/gi";
 
@@ -7,7 +6,7 @@ interface UserCompareArrowRowProps {
     value2: number
 }
 
-const UserCompareArrowRow: FC<UserCompareArrowRowProps> = ({ value1, value2 }) => {
+const UserCompareArrowRow = ({ value1, value2 }: UserCompareArrowRowProps) => {
     if (value1 > value2 || value2 == undefined && value1) {
         return (
             <div className="flex justify-center items-center mx-auto text-4xl text-gray-400 h-[54px]">

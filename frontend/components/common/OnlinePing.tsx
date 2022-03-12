@@ -1,10 +1,8 @@
-import {FC} from "react";
-
 interface OnlinePingProps {
     status?: "online" | "offline" | "idle"
 }
 
-const OnlinePing: FC<OnlinePingProps> = ({status = "offline"}) => {
+const OnlinePing = ({status = "offline"}: OnlinePingProps) => {
     if (status === "online") {
         return (
             <div className="flex gap-2 items-center py-1.5 px-2 rounded-lg shadow-2xl bg-dark-light/75">
