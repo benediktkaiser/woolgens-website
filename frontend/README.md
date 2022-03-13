@@ -12,6 +12,7 @@ The is a "mono-repo" containing all website from `Woolgens.net`.
 - NEXT_PUBLIC_LAND_ENDPOINT
 - NEXT_PUBLIC_CHANGELOG_ENDPOINT
 - NEXT_PUBLIC_LIVE_ENDPOINT
+- NEXT_PUBLIC_AUCTION_ENDPOINT
 ```
 
 #### Staff API EndPoints

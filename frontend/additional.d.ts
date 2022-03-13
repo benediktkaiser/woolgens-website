@@ -10,6 +10,7 @@ declare interface InitialUser {
 declare interface User extends InitialUser {
     webUser?: WebUser,
     liveUser?: LiveUser,
+    auctionUser?: AuctionUser,
     minecraftUser: MinecraftUser
 }
 
@@ -47,6 +48,7 @@ declare interface MinecraftUserSeason {
     exp: number,
     stats: Record<string, number>,
     crates: Record<string, number>,
+    extensions: Record<string, unknown>,
     skills: Skills
     quests: {
         finished: Record<string, string>,
@@ -198,4 +200,10 @@ declare interface ChatLogEntry extends InitialChatLogEntry{
 declare interface VotePartyStatus {
     count: number,
     maxCount: number
+}
+
+declare interface AuctionUser {
+    uuid: string,
+    auctions: Record<string, string>,
+    bids: Record<string, string>
 }

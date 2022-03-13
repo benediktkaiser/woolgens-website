@@ -14,6 +14,7 @@ import ProfileBadges from "../../components/profile/about/ProfileBadges";
 import UserAbout from "../../components/profile/about/UserAbout";
 import {formatMillisecondsToTime} from "../../core/formatters";
 import {getUserByUsername} from "../../core/user/user";
+import ProfileAuctionStats from "../../components/profile/ProfileAuctionStats";
 
 const ProfilePage: NextPageWithLayout = ({user}) => {
     const [selectedSeason, setSelectedSeason] = useState(Object.keys(user.minecraftUser.seasons)[0])
@@ -62,8 +63,9 @@ const ProfilePage: NextPageWithLayout = ({user}) => {
                                 )}
                             </BasicCard>
                         </main>
-                        <aside className="2xl:mt-11">
+                        <aside className="flex flex-col gap-4 2xl:mt-11">
                             <ProfileGeneralStats user={user}/>
+                            <ProfileAuctionStats user={user}/>
                         </aside>
                     </section>
                 </div>
