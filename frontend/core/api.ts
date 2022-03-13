@@ -15,6 +15,7 @@ export function changeAPIToken(token: string) {
         landAPI.defaults.headers['Authorization'] = bearer;
         authAPI.defaults.headers['Authorization'] = bearer;
         minecraftUserAPI.defaults.headers['Authorization'] = bearer;
+        auctionAPI.defaults.headers['Authorization'] = bearer;
         resolve(true)
     })
 }
@@ -41,6 +42,11 @@ export const changeLogAPI = axios.create({
 
 export const chatLogAPI = axios.create({
     baseURL: process.env.NEXT_PUBLIC_CHATLOG_ENDPOINT,
+    ...DEFAULT_API
+});
+
+export const auctionAPI = axios.create({
+    baseURL: process.env.NEXT_PUBLIC_AUCTION_ENDPOINT,
     ...DEFAULT_API
 });
 

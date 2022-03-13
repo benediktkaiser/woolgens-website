@@ -1,10 +1,12 @@
 import {getMinecraftUser, fetchUserNames} from "./minecraftUser";
 import {getWebUser} from "./webUser";
 import {getLiveUser} from "./liveUser";
+import {getAuctionUserByUUID} from "../auction";
 
 export async function getUserByUUID(uuid: string): Promise<User> {
     const minecraftUser = await getMinecraftUser(uuid);
     const webUser = await getWebUser(uuid);
+    const auctionUser = await getAuctionUserByUUID(uuid);
     const liveUser = await getLiveUser(uuid);
 
     return {
@@ -12,6 +14,7 @@ export async function getUserByUUID(uuid: string): Promise<User> {
         uuid: minecraftUser.uuid,
         minecraftUser,
         webUser,
+        auctionUser,
         liveUser
     }
 }
