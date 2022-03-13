@@ -12,7 +12,7 @@ declare interface TopListRowProps {
 const TopListRow = ({minecraftUser, value, label, place}: TopListRowProps) => {
     return (
         <div className="p-1">
-            <Link href={`/profile/${minecraftUser.name}`} passHref={true}>
+            <Link href={`/members/${minecraftUser.name}`} passHref={true}>
                 <a className="flex justify-between items-center p-3 hover:bg-dark rounded-xl cursor-pointer">
                     <div className="flex overflow-hidden flex-grow items-center">
                         <div className="flex-none">

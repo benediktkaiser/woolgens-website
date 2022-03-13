@@ -26,7 +26,7 @@ const UserDropdownStartPage = ({selectedPage, changePage, user}: UserDropdownSta
             className="w-full shrink-0"
         >
 
-            <Link href={`/profile/${user.name}`} passHref={true}>
+            <Link href={`/members/${user.name}`} passHref={true}>
                 <a className="flex items-center p-3 mb-2 hover:bg-dark rounded-lg cursor-pointer">
                     <Avatar player={user.uuid} size={50}/>
                     <div className="ml-3">
@@ -42,7 +42,7 @@ const UserDropdownStartPage = ({selectedPage, changePage, user}: UserDropdownSta
 
             <hr className="my-2 border-gray-700"/>
 
-            <Link href={`/profile/${user.name}`} passHref={true}>
+            <Link href={`/members/${user.name}`} passHref={true}>
                 <a>
                     <DropdownItem title="Profile" icon={<RiUser3Line size="1.3rem"/>} />
                 </a>

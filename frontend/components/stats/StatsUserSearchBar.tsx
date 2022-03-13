@@ -52,7 +52,7 @@ const StatsUserSearchBar = ({autoCompleteItems}: StatsUserSearchBarProps) => {
 
     const handleOnSelect = (item: AutoCompleteListItem) => {
         if (item.type === "PLAYER") {
-            router.push(`/profile/${item.name}`).then(() => {
+            router.push(`/members/${item.name}`).then(() => {
                 return null;
             })
         } else if (item.type === "LAND") {

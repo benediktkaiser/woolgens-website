@@ -1,7 +1,7 @@
-import StatsCard from "../stats/StatsCard";
-import CardWithHeader from "../common/cards/CardWithHeader";
-import {formatMillisecondsToTime} from "../../core/formatters";
-import {getPassedTime} from "../../core/formatters";
+import StatsCard from "../../stats/StatsCard";
+import CardWithHeader from "../../common/cards/CardWithHeader";
+import {formatMillisecondsToTime} from "../../../core/formatters";
+import {getPassedTime} from "../../../core/formatters";
 
 const ProfileGeneralStats = ({ user }: {user: User}) => {
 

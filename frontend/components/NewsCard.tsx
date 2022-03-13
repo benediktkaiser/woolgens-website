@@ -29,7 +29,7 @@ const NewsCard = ({changelog}: {changelog: ChangeLog}) => {
                         </h3>
                         <hr className="mt-2 border-gray-700"/>
                     </div>
-                    <Link href={`/profile/${changelog.author}`} passHref={true}>
+                    <Link href={`/members/${changelog.author}`} passHref={true}>
                         <a className="cursor-pointer">
                             <Avatar player={changelog.author} size={60}/>
                         </a>

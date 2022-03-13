@@ -49,7 +49,7 @@ const UserCompareBox = ({user, setUser, usernames, season, isLoading}: UserCompa
                 <div className="flex justify-center items-start h-28">
                     <div className="flex items-center h-full">
                         <Avatar player={user.uuid} size={60} />
-                        <Link href={`/profile/${user.name}`} passHref={true}>
+                        <Link href={`/members/${user.name}`} passHref={true}>
                             <a className="ml-4 text-4xl text-gray-300 hover:text-white">
                                 {user.minecraftUser.name}
                             </a>

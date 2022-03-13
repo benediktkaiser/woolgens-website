@@ -1,7 +1,7 @@
 import React from "react";
 import {GiTwoCoins, GiUpgrade, GiTiedScroll} from "react-icons/gi";
 import ProfileStatsCard from "./ProfileStatsCard";
-import {formatMoney} from "../../core/formatters";
+import {formatMoney} from "../../../core/formatters";
 
 interface ProfileSeasonStatsProps {
     user?: User

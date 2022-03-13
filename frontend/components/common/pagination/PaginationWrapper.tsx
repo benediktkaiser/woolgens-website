@@ -38,7 +38,9 @@ const PaginationWrapper = ({title, pagination, loading, children}: PaginationPro
             </main>
             <footer className="flex items-center mt-4">
                 <div className="flex-grow text-gray-500">
-                    {pagination.currentEntries()}
+                    <span className="hidden lg:block">
+                        {pagination.currentEntries()}
+                    </span>
                 </div>
                 {pagination.maxPages > 1 && (
                     <div className="flex items-stretch space-x-3 text-sm">

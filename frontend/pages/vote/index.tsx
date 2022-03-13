@@ -22,7 +22,7 @@ const VoteIndexPage: NextPageWithLayout = observer(() => {
 
             <VotePartyProgressBox votes={informationStore.votePartyStatus.count} maxVotes={informationStore.votePartyStatus.maxCount} />
             <div className="flex xl:grid flex-col grid-cols-10 gap-4 items-start mt-5">
-                <main className="grid grid-cols-2 lg:grid-cols-3 col-span-7 gap-4">
+                <main className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 col-span-7 gap-4">
                     <VoteCard
                         title="Minecraft MP"
                         link="https://minecraft-mp.com/server/301468/vote/"

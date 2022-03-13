@@ -2,19 +2,19 @@ import NavbarLayout from "../../layout/NavbarLayout";
 import React, {useState} from "react";
 import SEO from "../../components/SEO";
 import {GetServerSideProps} from "next";
-import ProfileToolBar from "../../components/profile/ProfileToolBar";
-import ProfileUserBox from "../../components/profile/ProfileUserBox";
-import ProfileSkills from "../../components/profile/ProfileSkills";
-import ProfileGeneralStats from "../../components/profile/ProfileGeneralStats";
+import ProfileToolBar from "../../components/members/profile/ProfileToolBar";
+import ProfileUserBox from "../../components/members/profile/ProfileUserBox";
+import ProfileSkills from "../../components/members/profile/ProfileSkills";
+import ProfileGeneralStats from "../../components/members/profile/ProfileGeneralStats";
 import Tab from "../../components/common/Tab";
-import ProfilePostsSection from "../../components/profile/posts/ProfilePostsSection";
-import ProfileSeasonStats from "../../components/profile/ProfileSeasonStats";
+import ProfilePostsSection from "../../components/members/profile/posts/ProfilePostsSection";
+import ProfileSeasonStats from "../../components/members/profile/ProfileSeasonStats";
 import BasicCard from "../../components/common/cards/BasicCard";
-import ProfileBadges from "../../components/profile/about/ProfileBadges";
-import UserAbout from "../../components/profile/about/UserAbout";
+import ProfileBadges from "../../components/members/profile/about/ProfileBadges";
+import UserAbout from "../../components/members/profile/about/UserAbout";
 import {formatMillisecondsToTime} from "../../core/formatters";
 import {getUserByUsername} from "../../core/user/user";
-import ProfileAuctionStats from "../../components/profile/ProfileAuctionStats";
+import ProfileAuctionStats from "../../components/members/profile/ProfileAuctionStats";
 
 const ProfilePage: NextPageWithLayout = ({user}) => {
     const [selectedSeason, setSelectedSeason] = useState(Object.keys(user.minecraftUser.seasons)[0])

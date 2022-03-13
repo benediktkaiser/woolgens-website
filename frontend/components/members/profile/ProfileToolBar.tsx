@@ -1,12 +1,12 @@
-import Dropdown from "../common/dropdown/Dropdown";
-import DropdownItem from "../common/dropdown/DropdownItem";
-import BasicCard from "../common/cards/BasicCard";
+import Dropdown from "../../common/dropdown/Dropdown";
+import DropdownItem from "../../common/dropdown/DropdownItem";
+import BasicCard from "../../common/cards/BasicCard";
 import React from "react";
 import {FiArchive} from "react-icons/fi"
-import BaseButton from "../common/BaseButton";
+import BaseButton from "../../common/BaseButton";
 import {BiGitCompare} from "react-icons/bi"
 import Link from "next/link"
-import {formatSeasonName} from "../../core/formatters";
+import {formatSeasonName} from "../../../core/formatters";
 
 declare interface ProfileToolBarProps {
     selectedSeason: string,

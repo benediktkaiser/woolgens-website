@@ -28,12 +28,12 @@ const StaffPage: NextPageWithLayout = observer(() => {
             <SEO seo={{
                 title: `Chatlogs`
             }} />
-            {chatLogStore.getChangeLogsFromUUID(authStore.user.uuid).length > 0 && (
+            {chatLogStore.getChangeLogsFromUUID(authStore.user.uuid, 8).length > 0 && (
                 <section className="flex flex-col space-y-4">
                     <h1 className="ml-1 text-xl font-bold text-gray-400">
                         Your recent ChatLogs
                     </h1>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-5 gap-5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-5">
                         {chatLogStore.getChangeLogsFromUUID(authStore.user.uuid, 5).map((chatLog, index) => (
                             <ChatLogBox key={index} chatLog={chatLog} />
                         ))}

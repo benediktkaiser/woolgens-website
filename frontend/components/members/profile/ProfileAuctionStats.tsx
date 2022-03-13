@@ -1,5 +1,5 @@
-import CardWithHeader from "../common/cards/CardWithHeader";
-import StatsCard from "../stats/StatsCard";
+import CardWithHeader from "../../common/cards/CardWithHeader";
+import StatsCard from "../../stats/StatsCard";
 
 const ProfileAuctionStats = ({user}: {user: User}) => {
     return (

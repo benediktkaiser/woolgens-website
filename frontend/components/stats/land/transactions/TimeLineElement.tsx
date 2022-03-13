@@ -23,7 +23,7 @@ const TimeLineElement = ({transaction}: {transaction: LandTransaction}) => {
             )}
             <div className="flex gap-3 items-center">
                 <Avatar player={transaction.issuer} size={30} />
-                <Link href={`/profile/${transaction.issuer}`} passHref={true}>
+                <Link href={`/members/${transaction.issuer}`} passHref={true}>
                     <a className="text-2xl font-semibold text-gray-100 hover:text-accent-200">{transaction.issuer}</a>
                 </Link>
             </div>

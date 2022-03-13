@@ -3,7 +3,7 @@ import Avatar from "../../common/Avatar";
 
 const LandMemberRow = ({member}: {member: LandMember}) => {
     return (
-        <Link href={`/profile/${member.name}`} passHref={true}>
+        <Link href={`/members/${member.name}`} passHref={true}>
             <a className="p-3 w-full hover:bg-dark-light rounded-xl cursor-pointer">
                 <div className="flex justify-between items-center">
                     <div className="flex overflow-hidden items-center max-w-[65%]">

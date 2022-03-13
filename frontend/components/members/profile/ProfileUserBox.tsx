@@ -1,10 +1,10 @@
 import Image from "next/image"
-import background from "../../public/background/mine_inside.jpeg"
-import Bust from "../common/Bust";
+import background from "../../../public/background/mine_inside.jpeg"
+import Bust from "../../common/Bust";
 import SkillsBadge from "./skills/SkillsBadge";
-import {getHighestSkill, getLevelProgressPercentage, SKILL_TITLES} from "../../core/skills";
-import OnlinePing from "../common/OnlinePing";
-import {COLOR_CODES} from "../../core/constants";
+import {getHighestSkill, getLevelProgressPercentage, SKILL_TITLES} from "../../../core/skills";
+import OnlinePing from "../../common/OnlinePing";
+import {COLOR_CODES} from "../../../core/constants";
 
 interface ProfileUserBoxProps {
     user: User
@@ -17,7 +17,7 @@ function ProfileUserBox({user, seasonNumber}: ProfileUserBoxProps) {
     return (
         <div className="p-4 w-full bg-dark-light rounded-lg">
             <div className="overflow-hidden relative rounded-lg h-[200px]">
-                <Image className="invisible lg:visible" src={background} alt="profile background" />
+                <Image className="invisible lg:visible select-none" src={background} alt="profile background" />
                 <div className="absolute top-0 w-full h-full bg-gradient-to-l to-gray-500/60 from-green-900/50" />
                 <div className="absolute top-1/2 right-2 md:right-10 mt-1 -translate-y-1/2">
                     <SkillsBadge skill={highestSkill} />
