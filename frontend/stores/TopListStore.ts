@@ -23,15 +23,7 @@ class TopListStore {
     }
 
     async getFullTopList(key: string, sorted: string) {
-        if (this.fullTopLists[key]) {
-            return this.fullTopLists[key]
-        }
-
-        const topList = await fetchUsersSorted(sorted, 0, 100)
-        runInAction(() => {
-            this.fullTopLists[key] = topList
-        })
-        return topList
+        return await fetchUsersSorted(sorted, 0, 100)
     }
 }
 
