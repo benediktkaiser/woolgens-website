@@ -30,3 +30,7 @@ html {
     -webkit-filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
     filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
 }
+
+.scrollbar-thumb-rounded,::-webkit-scrollbar-thumb,::-webkit-scrollbar-track {
+    border-radius: 10px;
+}

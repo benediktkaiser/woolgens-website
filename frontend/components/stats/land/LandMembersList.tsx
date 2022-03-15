@@ -1,5 +1,6 @@
 import LandMemberRow from "./LandMemberRow";
 import BasicCard from "../../common/cards/BasicCard";
+import OverflowScrollbar from "../../common/OverflowScrollbar";
 
 const LandMembersList = ({land}: {land: Land}) => {
     if (!land) {
@@ -8,12 +9,14 @@ const LandMembersList = ({land}: {land: Land}) => {
 
     return (
         <BasicCard withTabs={true}>
-            <ul className="flex overflow-auto flex-col max-h-[400px]">
-                <LandMemberRow member={land.owner} />
-                {land.members.map((member, index) =>
-                    <LandMemberRow key={index} member={member} />
-                )}
-            </ul>
+            <OverflowScrollbar maxHeight="max-h-[500px]">
+                <ul className="flex flex-col">
+                    <LandMemberRow member={land.owner} />
+                    {land.members.map((member, index) =>
+                        <LandMemberRow key={index} member={member} />
+                    )}
+                </ul>
+            </OverflowScrollbar>
         </BasicCard>
     )
 }
