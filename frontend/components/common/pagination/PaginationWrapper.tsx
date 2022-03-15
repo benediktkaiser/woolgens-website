@@ -9,9 +9,10 @@ declare interface PaginationProps {
     pagination: Pagination
     loading?: boolean,
     children?: React.ReactNode,
+    showEntries?: boolean
 }
 
-const PaginationWrapper = ({title, pagination, loading, children}: PaginationProps) => {
+const PaginationWrapper = ({title, pagination, loading, children, showEntries}: PaginationProps) => {
 
     if (pagination.items === undefined || loading) {
         return (
@@ -36,12 +37,14 @@ const PaginationWrapper = ({title, pagination, loading, children}: PaginationPro
             <main>
                 {children}
             </main>
-            <footer className="flex items-center mt-4">
-                <div className="flex-grow text-gray-500">
-                    <span className="hidden lg:block">
-                        {pagination.currentEntries()}
-                    </span>
-                </div>
+            <footer className={`flex items-center mt-4 ${!showEntries && 'justify-end'}`}>
+                {showEntries && (
+                    <div className="flex-grow text-gray-500">
+                        <span className="hidden lg:block">
+                            {pagination.currentEntries()}
+                        </span>
+                    </div>
+                )}
                 {pagination.maxPages > 1 && (
                     <div className="flex items-stretch space-x-3 text-sm">
                         <BaseButton type="dark" onClick={() => pagination.prevPage()} disabled={!pagination.canPrevPage()}>

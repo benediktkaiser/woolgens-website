@@ -14,7 +14,7 @@ const Announcement = ({text, iconStyles, rightComponent, icon}: AnnouncementProp
                 <div className={`p-3 text-2xl rounded-xl ${iconStyles}`}>
                     {icon}
                 </div>
-                <p className="ml-3">
+                <p className="pt-1 ml-3 text-lg">
                     {text}
                 </p>
             </div>

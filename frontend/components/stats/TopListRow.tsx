@@ -7,9 +7,10 @@ declare interface TopListRowProps {
     value: string | number,
     label?: string,
     place: number,
+    showPlace?: boolean
 }
 
-const TopListRow = ({minecraftUser, value, label, place}: TopListRowProps) => {
+const TopListRow = ({minecraftUser, value, label, place, showPlace = false}: TopListRowProps) => {
     return (
         <div className="p-1">
             <Link href={`/members/${minecraftUser.name}`} passHref={true}>
@@ -28,6 +29,11 @@ const TopListRow = ({minecraftUser, value, label, place}: TopListRowProps) => {
                                 )}
                                 {place === 3 && (
                                     <IoMdTrophy className="mr-1 text-yellow-700"/>
+                                )}
+                                {(showPlace && place > 3) && (
+                                    <span className="mr-2 text-gray-500">
+                                        #{place}
+                                    </span>
                                 )}
                                 {minecraftUser.name}
                             </h1>
