@@ -94,6 +94,9 @@ class Pagination {
     }
 
     currentEntries() {
+        if (this.items === undefined) {
+            return ""
+        }
         const start = (this.currentPage - 1) * this.config.itemsPerPage + 1
         const end = this.currentPage * this.config.itemsPerPage
 

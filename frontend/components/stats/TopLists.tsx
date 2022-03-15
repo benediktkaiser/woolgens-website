@@ -6,6 +6,8 @@ import topListStore from "../../stores/TopListStore";
 import {formatMillisecondsToTime, formatMoney} from "../../core/formatters";
 import AnimatedFade from "../common/animations/AnimatedFade";
 import {getLatestSeasonStats} from "../../core/user/minecraftUser";
+import BaseButton from "../common/BaseButton";
+import Link from "next/link"
 
 const TopLists = ({seasonNumber}: {seasonNumber: string}) => {
     const [levelTopList, setLevelTopList] = useState(undefined)
@@ -38,6 +40,15 @@ const TopLists = ({seasonNumber}: {seasonNumber: string}) => {
                                     place={index + 1}
                                 />
                             )}
+                            <div className="flex justify-center pt-4 pb-1 my-1 mx-4 border-t-2 border-shark-400">
+                                <Link href={"/stats/top/level"} passHref={true}>
+                                    <a>
+                                        <BaseButton type="dark">
+                                            See complete TopList
+                                        </BaseButton>
+                                    </a>
+                                </Link>
+                            </div>
                         </AnimatedFade>
                     ) : <LoadingTopList/>}
                 </TopList>
@@ -53,6 +64,15 @@ const TopLists = ({seasonNumber}: {seasonNumber: string}) => {
                                     place={index + 1}
                                 />
                             )}
+                            <div className="flex justify-center pt-4 pb-1 my-1 mx-4 border-t-2 border-shark-400">
+                                <Link href={"/stats/top/balance"} passHref={true}>
+                                    <a>
+                                        <BaseButton type="dark">
+                                            See complete TopList
+                                        </BaseButton>
+                                    </a>
+                                </Link>
+                            </div>
                         </AnimatedFade>
                     ) : <LoadingTopList/>}
                 </TopList>
@@ -68,6 +88,15 @@ const TopLists = ({seasonNumber}: {seasonNumber: string}) => {
                                     place={index + 1}
                                 />
                             )}
+                            <div className="flex justify-center pt-4 pb-1 my-1 mx-4 border-t-2 border-shark-400">
+                                <Link href={"/stats/top/playtime"} passHref={true}>
+                                    <a>
+                                        <BaseButton type="dark">
+                                            See complete TopList
+                                        </BaseButton>
+                                    </a>
+                                </Link>
+                            </div>
                         </AnimatedFade>
                     ) : <LoadingTopList/>}
                 </TopList>
