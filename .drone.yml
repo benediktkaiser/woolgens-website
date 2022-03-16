@@ -55,7 +55,7 @@ steps:
       password:
         from_secret: WOOLGENS_SERVER_PASSWORD
       script:
-        - cd /home/web/website
+        - cd /home/web/staging
         - docker-compose down
         - cd ..
         - rm -R website/
@@ -72,7 +72,7 @@ steps:
         from_secret: WOOLGENS_SERVER_USER
       password:
         from_secret: WOOLGENS_SERVER_PASSWORD
-      target: /home/web/website
+      target: /home/web/staging
       source: ./*
       strip_components: 0
 
@@ -89,5 +89,5 @@ steps:
       password:
         from_secret: WOOLGENS_SERVER_PASSWORD
       script:
-        - cd /home/web/website
+        - cd /home/web/staging
         - docker-compose up -d --build
