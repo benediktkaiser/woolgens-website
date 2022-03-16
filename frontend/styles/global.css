@@ -1,6 +1,10 @@
 /* Import custom fonts */
 @import "fonts.css";
 
+/* Import Custom Themes */
+@import "themes/quill.css";
+@import "themes/toast.css";
+
 /* Global CSS files for all styles */
 @tailwind base;
 @tailwind components;
