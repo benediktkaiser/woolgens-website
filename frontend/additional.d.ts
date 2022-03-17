@@ -207,3 +207,52 @@ declare interface AuctionUser {
     auctions: Record<string, string>,
     bids: Record<string, string>
 }
+
+/* Tickets */
+declare interface InitialTicket {
+    title: string,
+    category: string, // the ID of TicketCategory
+    issuer: InitialUser,
+    content: Record<string, string>
+}
+
+declare interface Ticket extends InitialTicket {
+    id: string
+    assignee: InitialUser[]
+    status: string // the ID of TicketStatus
+    timestamp: number
+    open: boolean
+
+    entries: TicketChatEntry[]
+}
+
+declare interface TicketChatEntry {
+    type: "Message" | "ChangeStatus" | "AddedAssigned" | "RemovedAssigned"
+    value: string
+    history: Record<number, string> // timestamp, old value
+    issuer: InitialUser
+}
+
+declare interface TicketStatus {
+    id: string
+    label: string,
+    color: string,
+    willClose: boolean, // if status is set and willClose is true, the ticket will be closed
+}
+
+declare interface TicketCategory {
+    id: string,
+    name: string,
+    description: string
+    inputs: TicketInput[]
+    active: boolean
+}
+
+declare interface TicketInput {
+    id: string
+    label: string
+    hint: string
+    required: boolean
+    type: "Text" | "Select" | "TextBox" | "checkbox" | "radio"
+    meta: Record<string, unknown>
+}

@@ -54,3 +54,8 @@ export const liveAPI = axios.create({
     baseURL: process.env.NEXT_PUBLIC_LIVE_ENDPOINT,
     ...DEFAULT_API
 });
+
+export const ticketAPI = axios.create({
+    baseURL: process.env.NEXT_PUBLIC_TICKET_ENDPOINT,
+    ...DEFAULT_API
+});
