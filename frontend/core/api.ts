@@ -16,6 +16,7 @@ export function changeAPIToken(token: string) {
         authAPI.defaults.headers['Authorization'] = bearer;
         minecraftUserAPI.defaults.headers['Authorization'] = bearer;
         auctionAPI.defaults.headers['Authorization'] = bearer;
+        ticketAPI.defaults.headers['Authorization'] = bearer;
         resolve(true)
     })
 }
