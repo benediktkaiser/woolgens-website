@@ -1,12 +1,16 @@
 import {observer} from "mobx-react-lite";
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import StaffLayout from "../../../../layout/StaffLayout";
 import SEO from "../../../../components/SEO";
 import BasicCard from "../../../../components/common/cards/BasicCard";
 import BaseButton from "../../../../components/common/BaseButton";
 import ticketStore from "../../../../stores/TicketStore";
+import CreateTicketCategoryModal from "../../../../components/staff/tickets/category/CreateTicketCategoryModal";
+import CategoryRow from "../../../../components/staff/tickets/category/CategoryRow";
 
 const TicketCategoryPage: NextPageWithLayout = observer(() => {
+    const [createModalOpen, setCreateModalOpen] = useState(false)
+
     useEffect(() => {
         ticketStore.fetchTicketCategories().catch(error => console.error(error))
     }, [])
@@ -16,23 +20,20 @@ const TicketCategoryPage: NextPageWithLayout = observer(() => {
             <SEO seo={{
                 title: `Ticket Categories`
             }} />
+            <header className="flex justify-between items-end mb-4">
+                <h1 className="text-2xl font-bold">
+                    Ticket Categories
+                </h1>
+                <BaseButton type="primary" onClick={() => setCreateModalOpen(true)}>
+                    New Category
+                </BaseButton>
+            </header>
             <BasicCard>
-                <header className="flex justify-between items-end pb-3 border-b-2 border-shark-400">
-                    <h1 className="text-3xl font-bold">
-                        Ticket Categories
-                    </h1>
-                    <BaseButton type="primary">
-                        New Category
-                    </BaseButton>
-                </header>
-                <main>
-                    {Object.values(ticketStore.categories).map((category, index) => (
-                        <li key={index}>
-                            {category.name}
-                        </li>
-                    ))}
+                <main className="overflow-hidden rounded">
+                    {Object.values(ticketStore.categories).map((category, index) => <CategoryRow key={index} category={category} />)}
                 </main>
             </BasicCard>
+            <CreateTicketCategoryModal isOpen={createModalOpen} toggleModal={() => setCreateModalOpen(!createModalOpen)} />
         </div>
     )
 })

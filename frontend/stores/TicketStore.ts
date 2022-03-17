@@ -2,7 +2,7 @@ import {makeAutoObservable, runInAction} from "mobx";
 import {
     deleteTicketCategoryById, deleteTicketStatusById,
     fetchTicketCategories,
-    fetchTicketStatuses,
+    fetchTicketStatuses, getTicketCategoryById,
     updateTicketCategory, updateTicketStatus
 } from "../core/staff/tickets";
 
@@ -22,6 +22,17 @@ class TicketStore {
                 this.categories[ticketCategory.id] = ticketCategory
             })
         }
+    }
+
+    async getTicketCategoryById(ticketCategoryId: string) {
+        if (this.categories[ticketCategoryId]) {
+            return this.categories[ticketCategoryId]
+        }
+        const ticketCategory = await getTicketCategoryById(ticketCategoryId)
+        runInAction(() => {
+            this.categories[ticketCategoryId] = ticketCategory
+        })
+        return ticketCategory
     }
 
     async updateTicketCategory(ticketCategory: TicketCategory) {

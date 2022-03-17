@@ -3,9 +3,10 @@ import React, {FC} from "react";
 interface BaseButtonProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
     children?: React.ReactNode,
     type: "primary" | "secondary" | "success" | "danger" | "dark" | "dark-active" | "dark-light",
+    htmlType?: "button" | "reset" | "submit",
 }
 
-const BaseButton: FC<BaseButtonProps> = ({ type, children, ...HTMLAttributes}) => {
+const BaseButton: FC<BaseButtonProps> = ({ type, children, htmlType = "button", ...HTMLAttributes}) => {
 
     const colors = {
         "primary": "text-white bg-indigo-500 hover:bg-indigo-700 focus:ring-indigo-400 disabled:hover:bg-indigo-500",
@@ -25,7 +26,7 @@ const BaseButton: FC<BaseButtonProps> = ({ type, children, ...HTMLAttributes}) =
     ];
 
     return (
-        <button {...HTMLAttributes} className={classList.join(" ")}>
+        <button {...HTMLAttributes} className={classList.join(" ")} type={htmlType}>
             { children }
         </button>
     )

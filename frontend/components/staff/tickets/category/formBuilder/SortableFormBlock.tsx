@@ -1,0 +1,24 @@
+import {SortableElement} from "react-sortable-hoc";
+
+const SortableItem = SortableElement(({value, deleteBlock, selectBlock}: { value: TicketInput, deleteBlock: (id: string) => void, selectBlock: (input: TicketInput) => void }) => {
+
+    return (
+        <li className="py-4 px-6 w-full rounded cursor-pointer bg-dark-light/60" style={{listStyle: "none"}}>
+            <div className="flex gap-2 justify-between items-center">
+                <h1 className="text-lg">
+                    {value.label}
+                </h1>
+                <div className="flex items-center">
+                    <button onClick={() => selectBlock(value)} className="flex items-center py-2 px-6 bg-shark-300 hover:bg-shark-200 rounded-l-lg border-l-8 border-blue-400">
+                        Edit
+                    </button>
+                    <button onClick={() => deleteBlock(value.id)} className="flex items-center py-2 px-6 bg-shark-300 hover:bg-shark-200 rounded-r-lg border-r-8 border-red-500">
+                        Remove
+                    </button>
+                </div>
+            </div>
+        </li>
+    )
+});
+
+export default SortableItem

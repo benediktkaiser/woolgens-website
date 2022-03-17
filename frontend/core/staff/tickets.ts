@@ -10,6 +10,16 @@ export async function fetchTicketCategories(): Promise<TicketCategory[]> {
     }
 }
 
+export async function getTicketCategoryById(categoryId: string): Promise<TicketCategory> {
+    try {
+        const data = await ticketAPI.get(`/categories/${categoryId}`)
+        return data.data
+    } catch (error) {
+        console.error(`Could not find Ticket Category ${categoryId}`)
+        return undefined
+    }
+}
+
 export async function updateTicketCategory(category: TicketCategory): Promise<boolean> {
     try {
         await ticketAPI.put('/categories', category)
