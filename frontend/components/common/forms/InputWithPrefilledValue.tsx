@@ -2,7 +2,7 @@ import React, {FC, useState} from "react";
 
 interface InputWithPrefilledValueProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
     label: string,
-    prefilledValue: string,
+    prefilledValue: React.ReactNode,
     left?: boolean
 }
 
@@ -23,7 +23,7 @@ const InputWithPrefilledValue: FC<InputWithPrefilledValueProps> = ({label, prefi
                         <input
                             onFocus={() => setFocus(true)}
                             onBlur={() => setFocus(false)}
-                            className="bg-transparent focus:ring-0 focus:outline-none"
+                            className="w-full bg-transparent focus:ring-0 focus:outline-none"
                             {...HTMLAttributes}
                         />
                     </div>

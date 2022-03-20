@@ -1,4 +1,4 @@
-import React, {FC, useState} from "react";
+import React, {FC, FormEvent, useState} from "react";
 import authStore from "../stores/AuthStore";
 import {toast} from "react-toastify";
 import BaseInputWithLabel from "./common/forms/BaseInputWithLabel";
@@ -32,7 +32,8 @@ const LoginComponent: FC<LoginComponentProps> = ({showRegisterButton = true}) =>
         })
     }
 
-    const login = (username, password) => {
+    const login = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
         toast.promise(
             _login(username, password),
             {
@@ -52,17 +53,19 @@ const LoginComponent: FC<LoginComponentProps> = ({showRegisterButton = true}) =>
             <div
                 className="p-4 w-full h-full text-3xl font-bold text-center bg-gradient-to-l from-accent-600 to-accent-500 rounded-t-lg">Login
             </div>
-            <div className="flex relative flex-col gap-5 p-4">
+            <form className="flex relative flex-col gap-5 p-4" onSubmit={(event) => login(event)}>
                 <BaseInputWithLabel
+                    required={true}
                     label="Username"
                     onChange={(event) => setUsername(event.target.value)}
                 />
                 <PasswordInput
+                    required={true}
                     label="Password"
                     onChange={(event) => setPassword(event.target.value)}
                 />
                 <div className="flex flex-col gap-4 justify-end m-2">
-                    <BaseButton onClick={() => login(username, password)} type="success">
+                    <BaseButton type="success" htmlType="submit">
                         Login
                     </BaseButton>
                     {showRegisterButton && (
@@ -83,7 +86,7 @@ const LoginComponent: FC<LoginComponentProps> = ({showRegisterButton = true}) =>
                         <h1 className="my-2 text-xl">Logging in...</h1>
                     </div>
                 )}
-            </div>
+            </form>
         </div>
     )
 }

@@ -5,14 +5,14 @@ import SEO from "../../../../components/SEO";
 import BasicCard from "../../../../components/common/cards/BasicCard";
 import BaseButton from "../../../../components/common/BaseButton";
 import ticketStore from "../../../../stores/TicketStore";
-import CreateTicketCategoryModal from "../../../../components/staff/tickets/category/CreateTicketCategoryModal";
-import CategoryRow from "../../../../components/staff/tickets/category/CategoryRow";
+import StatusRow from "../../../../components/staff/tickets/status/StatusRow";
+import CreateTicketStatusModal from "../../../../components/staff/tickets/status/CreateTicketStatusModal";
 
-const TicketCategoryPage: NextPageWithLayout = observer(() => {
+const TicketStatusPage: NextPageWithLayout = observer(() => {
     const [createModalOpen, setCreateModalOpen] = useState(false)
 
     useEffect(() => {
-        ticketStore.fetchTicketCategories(true).catch(error => console.error(error))
+        ticketStore.fetchTicketStatuses().catch(error => console.error(error))
     }, [])
 
     return (
@@ -22,23 +22,23 @@ const TicketCategoryPage: NextPageWithLayout = observer(() => {
             }} />
             <header className="flex justify-between items-end mb-4">
                 <h1 className="text-2xl font-bold">
-                    Ticket Categories
+                    Ticket Statuses
                 </h1>
                 <BaseButton type="primary" onClick={() => setCreateModalOpen(true)}>
-                    New Category
+                    New Status
                 </BaseButton>
             </header>
             <BasicCard>
                 <main className="overflow-hidden rounded">
-                    {Object.values(ticketStore.categories).map((category, index) => <CategoryRow key={index} category={category} />)}
+                    {Object.values(ticketStore.statuses).map((status, index) => <StatusRow key={index} status={status} />)}
                 </main>
             </BasicCard>
-            <CreateTicketCategoryModal isOpen={createModalOpen} toggleModal={() => setCreateModalOpen(!createModalOpen)} />
+            <CreateTicketStatusModal isOpen={createModalOpen} toggleModal={() => setCreateModalOpen(!createModalOpen)} />
         </div>
     )
 })
 
-TicketCategoryPage.getLayout = function getLayout(page) {
+TicketStatusPage.getLayout = function getLayout(page) {
     return (
         <StaffLayout permission="staff">
             {page}
@@ -46,4 +46,4 @@ TicketCategoryPage.getLayout = function getLayout(page) {
     )
 }
 
-export default TicketCategoryPage
+export default TicketStatusPage

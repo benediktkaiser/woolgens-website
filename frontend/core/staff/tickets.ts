@@ -50,6 +50,16 @@ export async function fetchTicketStatuses(): Promise<TicketStatus[]> {
     }
 }
 
+export async function getTicketStatusById(statusId: string): Promise<TicketStatus> {
+    try {
+        const data = await ticketAPI.get(`/status/${statusId}`)
+        return data.data
+    } catch (error) {
+        console.error(`Could not find Ticket Status ${statusId}`)
+        return undefined
+    }
+}
+
 export async function updateTicketStatus(status: TicketStatus): Promise<boolean> {
     try {
         await ticketAPI.put('/status', status)
@@ -69,3 +79,34 @@ export async function deleteTicketStatusById(ticketStatusId: string): Promise<bo
         return false;
     }
 }
+
+export async function fetchTickets(): Promise<Ticket[]> {
+    try {
+        const tickets = await ticketAPI.get(`/tickets`)
+        return tickets.data
+    }
+    catch (error) {
+        console.error(error)
+        return []
+    }
+}
+
+export async function createNewTicket(category: TicketCategory, initialTicket: InitialTicket): Promise<string> {
+    try {
+        const ticket: Ticket = {
+            timestamp: Date.now(),
+            id: `${initialTicket.issuer.name}-${category.id}-${Date.now().toString().slice(-4)}`,
+            assignee: [],
+            entries: [],
+            status: undefined,
+            open: true,
+            ...initialTicket,
+        }
+        await ticketAPI.put(`/tickets`, ticket)
+        return ticket.id
+    } catch (error) {
+        console.error(error)
+        return undefined
+    }
+}
+

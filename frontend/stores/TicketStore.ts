@@ -1,18 +1,33 @@
 import {makeAutoObservable, runInAction} from "mobx";
 import {
-    deleteTicketCategoryById, deleteTicketStatusById,
-    fetchTicketCategories,
-    fetchTicketStatuses, getTicketCategoryById,
-    updateTicketCategory, updateTicketStatus
+    createNewTicket,
+    deleteTicketCategoryById,
+    deleteTicketStatusById,
+    fetchTicketCategories, fetchTickets,
+    fetchTicketStatuses,
+    getTicketCategoryById,
+    getTicketStatusById,
+    updateTicketCategory,
+    updateTicketStatus
 } from "../core/staff/tickets";
+import {makePersistable} from "mobx-persist-store";
 
 class TicketStore {
 
     categories: Record<string, TicketCategory> = {}
     statuses: Record<string, TicketStatus> = {}
 
+    tickets: Record<string, Ticket> = {}
+    temporaryTickets: Record<string, InitialTicket> = {}
+
     constructor() {
         makeAutoObservable(this)
+        makePersistable(this, {
+            name: "TicketStore",
+            properties: ["temporaryTickets"],
+        }).then(() => {
+            return;
+        });
     }
 
     async fetchTicketCategories(reFetch = false) {
@@ -63,6 +78,17 @@ class TicketStore {
         }
     }
 
+    async getTicketStatusById(ticketStatusId: string) {
+        if (this.statuses[ticketStatusId]) {
+            return this.statuses[ticketStatusId]
+        }
+        const ticketStatus = await getTicketStatusById(ticketStatusId)
+        runInAction(() => {
+            this.statuses[ticketStatusId] = ticketStatus
+        })
+        return ticketStatus
+    }
+
     async updateTicketStatus(ticketStatus: TicketStatus) {
         runInAction(() => {
             this.statuses[ticketStatus.id] = ticketStatus
@@ -80,6 +106,29 @@ class TicketStore {
             delete this.statuses[ticketStatusId]
         })
         return true;
+    }
+
+    setTemporaryTicket(categoryId: string, ticket: InitialTicket) {
+        runInAction(() => {
+            this.temporaryTickets[categoryId] = ticket
+        })
+    }
+
+    deleteTemporaryTicket(categoryId: string) {
+        runInAction(() => {
+            delete this.temporaryTickets[categoryId]
+        })
+    }
+
+    async submitTicket(category: TicketCategory): Promise<string | undefined> {
+        return await createNewTicket(category, this.temporaryTickets[category.id])
+    }
+
+    async fetchAllTickets() {
+        const tickets = await fetchTickets()
+        tickets.map(ticket => {
+            this.tickets[ticket.id] = ticket
+        })
     }
 }
 
