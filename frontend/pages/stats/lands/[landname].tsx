@@ -14,6 +14,7 @@ import {useState} from "react";
 import LandTransactions from "../../../components/stats/land/transactions/LandTransactions";
 import {isUserInLand} from "../../../core/user/user";
 import authStore from "../../../stores/AuthStore";
+import LandBannerEditor from "../../../components/stats/land/banner/LandBannerEditor";
 
 const LandProfile: NextPageWithLayout = observer(({landname, land}) => {
     const router = useRouter()
@@ -41,10 +42,17 @@ const LandProfile: NextPageWithLayout = observer(({landname, land}) => {
                                     <Tab title="Transactions" active={page === "transactions"}
                                          onClick={() => setPage("transactions")}/>
                                 }
+                                {(isUserInLand(landname, authStore.user)) &&
+                                    <Tab title="Banner" active={page === "banner"}
+                                         onClick={() => setPage("banner")}/>
+                                }
                             </ul>
                             {page === "members" && <LandMembersList land={land}/>}
                             {(page === "transactions" && (isUserInLand(landname, authStore.user) || authStore.hasPermission("web.lands.transactions.others.view"))) &&
                                 <LandTransactions transactions={land.bank.transactions}/>}
+                            {(page === "banner" && isUserInLand(landname, authStore.user)) &&
+                                <LandBannerEditor />
+                            }
                         </div>
                     </main>
                 </div>

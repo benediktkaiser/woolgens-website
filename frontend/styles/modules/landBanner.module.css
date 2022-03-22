@@ -1,0 +1,5 @@
+.pattern {
+    height: 100%;
+    width: 100%;
+    background: url("/assets/banners.png") -160px 0;
+}
