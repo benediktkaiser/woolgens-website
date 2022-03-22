@@ -64,7 +64,7 @@ const CreateTicket = observer(({category}: {category: TicketCategory}) => {
                         </h1>
                         {category.description && (
                             <div className="mt-3">
-                                <Collapse title={`Requirements and more information for ${category.name}`}>
+                                <Collapse title={`Requirements and more information for ${category.name}`} isOpen={true}>
                                     <Renderer value={category.description}/>
                                 </Collapse>
                             </div>
