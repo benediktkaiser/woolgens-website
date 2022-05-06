@@ -16,6 +16,7 @@ export function changeAPIToken(token: string) {
         authAPI.defaults.headers['Authorization'] = bearer;
         minecraftUserAPI.defaults.headers['Authorization'] = bearer;
         auctionAPI.defaults.headers['Authorization'] = bearer;
+        ticketAPI.defaults.headers['Authorization'] = bearer;
         resolve(true)
     })
 }
@@ -52,5 +53,10 @@ export const auctionAPI = axios.create({
 
 export const liveAPI = axios.create({
     baseURL: process.env.NEXT_PUBLIC_LIVE_ENDPOINT,
+    ...DEFAULT_API
+});
+
+export const ticketAPI = axios.create({
+    baseURL: process.env.NEXT_PUBLIC_TICKET_ENDPOINT,
     ...DEFAULT_API
 });

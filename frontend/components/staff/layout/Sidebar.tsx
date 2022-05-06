@@ -1,7 +1,8 @@
 import SidebarLink from "./SidebarLink";
-import {HiHome, HiChatAlt, HiX} from "react-icons/hi"
+import {HiHome, HiChatAlt, HiX, HiTicket} from "react-icons/hi"
 import React from "react";
 import Logo from "../../common/Logo";
+import SidebarDropDownLink from "./SidebarDropDownLink";
 
 interface SidebarProps {
     extended: boolean,
@@ -45,6 +46,31 @@ const Sidebar = ({extended = false, pathName = "", toggleSidebar}: SidebarProps)
                         pathName={pathName}
                         link="/staff/chatlogs"
                     />
+                    <SidebarDropDownLink
+                        icon={<HiTicket size="1.2rem"/>}
+                        title="Tickets"
+                        pathName={pathName}
+                        link="/staff/tickets"
+                    >
+                        <SidebarLink
+                            title="Tickets"
+                            pathName={pathName}
+                            link="/staff/tickets"
+                            inDropDown={true}
+                        />
+                        <SidebarLink
+                            title="Categories"
+                            pathName={pathName}
+                            link="/staff/tickets/categories"
+                            inDropDown={true}
+                        />
+                        <SidebarLink
+                            title="Statuses"
+                            pathName={pathName}
+                            link="/staff/tickets/statuses"
+                            inDropDown={true}
+                        />
+                    </SidebarDropDownLink>
                 </ul>
             </div>
             <p className="p-6 font-bold text-gray-500">
