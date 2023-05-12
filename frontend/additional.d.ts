@@ -134,6 +134,16 @@ declare interface LandTransaction {
     type: 'DEPOSIT' | 'WITHDRAW' | 'BUY_UPGRADE',
 }
 
+declare interface Banner {
+    baseColor: import("./core/banner").BannerColor,
+    patterns: BannerLayer[]
+}
+
+declare interface BannerLayer {
+    color: import("./core/banner").BannerColor
+    pattern: import("./core/banner").BannerPattern
+}
+
 declare interface ChangeLog {
     id: string,
     title: string,
